@@ -1,0 +1,13 @@
+# Payment webhooks, fresh inventory and domain preparation
+
+Owner requirements: do not import WordPress products, accounts or orders; new inventory will follow our schema. Existing site remains active until the replacement is ready. Domain is grnutritionsnikol.com. Shiprocket account/KYC and Razorpay test/live API credentials exist. The supplied pickup business address is GR Nutritions, B/4 Shantiniketan Business Hub, Near Gangotri Circle, Nikol, Ahmedabad, Gujarat 382350; phone 7490020905.
+
+Implementation choice: separate Supabase function URLs for Razorpay test and live webhooks. This makes dashboard mode selection clear and isolates secrets/receipt records. A single URL with a caller-controlled mode or a temporary request-bin URL is less suitable. Retain the owner's existing RAZOR_PAY_{TEST,LIVE}_{API_KEY,SECRET_KEY} names. Add RAZOR_PAY_TEST_WEBHOOK_SECRET and RAZOR_PAY_LIVE_WEBHOOK_SECRET; webhook secrets differ from API secrets.
+
+Verify raw-body HMAC-SHA256 before parsing. Bound body size to 256 KiB, require a provider event ID, validate the supported event shape and persist a minimal private receipt before acknowledging. Deduplicate by mode/account/event ID; an ID reused with a different body is a conflict. Return non-2xx on database failure to preserve provider retries. Store no raw buyer PII or secrets. These receipt endpoints do not create a paid store order or trigger a shipment: reconciliation must later match server-created checkout orders and captured amounts. Never map existing WordPress payments into fresh store inventory.
+
+The present unit is a working webhook receipt foundation plus accurate account/domain instructions. Complete checkout, reservation/reconciliation, refunds and shipment execution remain the next implementation unit, not something a webhook URL alone activates. Testing must prove signature/mode isolation, malformed/large input rejection, failure retries, duplicate receipt semantics and anonymous database denial.
+
+Shiprocket API login requires its API user's email/password, not a main account password or an unexplained bearer token. Screenshot confirms an active user; verify which generated credential is saved without reading or printing its value. Pickup configuration will be saved only from the owner's explicit business details. Do not submit real shipment creation or courier purchases while testing.
+
+GoDaddy: inspect DNS and current hosting; do not replace root/www records until a verified hosted replacement and exact host-provided records exist. Preserve mail/TXT records and nameservers. No inventory migration and no deletion of WordPress are part of this phase. Owner is already signed into dashboard; no shared password is needed.

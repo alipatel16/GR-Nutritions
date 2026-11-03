@@ -1,0 +1,12 @@
+project_id = "gr-nutritions"
+
+[functions.commerce]
+# Firebase tokens are verified inside the function, not by Supabase Auth's gateway.
+verify_jwt = false
+
+[functions.razorpay-webhook-test]
+# Razorpay HMAC verification is performed inside the endpoint.
+verify_jwt = false
+
+[functions.razorpay-webhook-live]
+verify_jwt = false

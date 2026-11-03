@@ -1,0 +1,66 @@
+{
+  "domain": "grnutritionsnikol.com",
+  "note": "Public DNS snapshot only; not a complete DNS zone export.",
+  "records": {
+    "MX": [
+      {
+        "exchange": "mx2.hostinger.com",
+        "priority": 10
+      },
+      {
+        "exchange": "mx1.hostinger.com",
+        "priority": 5
+      }
+    ],
+    "NS": [
+      "byte.dns-parking.com",
+      "pixel.dns-parking.com"
+    ],
+    "A": [
+      {
+        "address": "91.108.106.224",
+        "ttl": 60
+      },
+      {
+        "address": "88.222.243.101",
+        "ttl": 60
+      }
+    ],
+    "CAA": {
+      "status": "ENODATA"
+    },
+    "DMARC": [
+      [
+        "v=DMARC1; p=none"
+      ]
+    ],
+    "AAAA": [
+      {
+        "address": "2a02:4780:20:8b5e:af71:75bf:98a5:9637",
+        "ttl": 60
+      },
+      {
+        "address": "2a02:4780:3d:fc43:ee0e:89dd:6e71:a5ed",
+        "ttl": 60
+      }
+    ],
+    "TXT": [
+      [
+        "v=spf1 include:_spf.mail.hostinger.com ~all"
+      ]
+    ],
+    "WWW_CNAME": [
+      "www.grnutritionsnikol.com.cdn.hstgr.net"
+    ],
+    "WWW_A": [
+      {
+        "address": "91.108.106.67",
+        "ttl": 60
+      },
+      {
+        "address": "93.127.173.47",
+        "ttl": 60
+      }
+    ]
+  }
+}

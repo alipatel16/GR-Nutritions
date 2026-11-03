@@ -1,0 +1,286 @@
+[
+  {
+    "domain": "grnutritionsnikol.com",
+    "hostState": "HOST_MISMATCH",
+    "ownershipState": "OWNERSHIP_MISSING",
+    "requiredDnsUpdates": {
+      "discovered": [
+        {
+          "domainName": "grnutritionsnikol.com",
+          "records": [
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "A",
+              "rdata": "145.223.124.199",
+              "requiredAction": "REMOVE"
+            },
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "A",
+              "rdata": "147.79.72.10",
+              "requiredAction": "REMOVE"
+            },
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "TXT",
+              "rdata": "v=spf1 include:_spf.mail.hostinger.com ~all"
+            },
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "AAAA",
+              "rdata": "2a02:4780:4b:bc51:fae3:f32a:d72d:1753",
+              "requiredAction": "REMOVE"
+            },
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "AAAA",
+              "rdata": "2a02:4780:4d:372e:b9d7:76d9:7f3b:5ec8",
+              "requiredAction": "REMOVE"
+            }
+          ]
+        }
+      ],
+      "desired": [
+        {
+          "domainName": "grnutritionsnikol.com",
+          "records": [
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "A",
+              "rdata": "199.36.158.100",
+              "requiredAction": "ADD"
+            },
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "TXT",
+              "rdata": "hosting-site=grnutritions",
+              "requiredAction": "ADD"
+            },
+            {
+              "domainName": "grnutritionsnikol.com",
+              "type": "TXT",
+              "rdata": "v=spf1 include:_spf.mail.hostinger.com ~all"
+            }
+          ]
+        }
+      ],
+      "checkTime": "2026-11-02T18:20:25.220393769Z"
+    },
+    "cert": {
+      "type": "TEMPORARY",
+      "state": "CERT_VALIDATING",
+      "verification": {
+        "dns": {
+          "discovered": [
+            {
+              "domainName": "_acme-challenge.grnutritionsnikol.com"
+            }
+          ],
+          "desired": [
+            {
+              "domainName": "_acme-challenge.grnutritionsnikol.com",
+              "records": [
+                {
+                  "domainName": "_acme-challenge.grnutritionsnikol.com",
+                  "type": "TXT",
+                  "rdata": "iGortEfMbH1e9yRn0JlGHgBKz3WwARu6tskxWyNHgkc",
+                  "requiredAction": "ADD"
+                }
+              ]
+            }
+          ],
+          "checkTime": "2026-11-02T18:18:57.346456833Z"
+        },
+        "http": {
+          "path": "/.well-known/acme-challenge/xg2C5pBStu8Rc_C5lZaw2fSA6v-6coSza-72ywrTXvlyvn4yt4oaYcE7y2gr0I2E",
+          "desired": "xg2C5pBStu8Rc_C5lZaw2fSA6v-6coSza-72ywrTXvlyvn4yt4oaYcE7y2gr0I2E.M0-GObbb5ePi63ASQsPKBrDqfgayGnOWpyrEF0nHqug",
+          "lastCheckTime": "2026-11-02T18:18:57.346456833Z",
+          "checkError": {
+            "code": 9,
+            "message": "One or more of Hosting's HTTP GET request for the ACME challenge failed: 147.79.79.67: 404 Not Found, 2a02:4780:4a:2fb2:a157:9fa4:a16a:45b7: 404 Not Found, 2a02:4780:4d:f07e:1a64:96e5:239b:94a9: 404 Not Found, 88.223.87.82: 404 Not Found",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+                "reason": "ACME_HTTP_ERROR",
+                "domain": "firebasehosting.googleapis.com",
+                "metadata": {
+                  "failures": "147.79.79.67: 404 Not Found, 2a02:4780:4a:2fb2:a157:9fa4:a16a:45b7: 404 Not Found, 2a02:4780:4d:f07e:1a64:96e5:239b:94a9: 404 Not Found, 88.223.87.82: 404 Not Found"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "issues": [
+        {
+          "code": 9,
+          "message": "One or more of Hosting's HTTP GET request for the ACME challenge failed: 147.79.79.67: 404 Not Found, 2a02:4780:4a:2fb2:a157:9fa4:a16a:45b7: 404 Not Found, 2a02:4780:4d:f07e:1a64:96e5:239b:94a9: 404 Not Found, 88.223.87.82: 404 Not Found",
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+              "reason": "ACME_HTTP_ERROR",
+              "domain": "firebasehosting.googleapis.com",
+              "metadata": {
+                "failures": "147.79.79.67: 404 Not Found, 2a02:4780:4a:2fb2:a157:9fa4:a16a:45b7: 404 Not Found, 2a02:4780:4d:f07e:1a64:96e5:239b:94a9: 404 Not Found, 88.223.87.82: 404 Not Found"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "issues": [
+      {
+        "code": 9,
+        "message": "One or more of Hosting's HTTP GET request for the ACME challenge failed: 147.79.79.67: 404 Not Found, 2a02:4780:4a:2fb2:a157:9fa4:a16a:45b7: 404 Not Found, 2a02:4780:4d:f07e:1a64:96e5:239b:94a9: 404 Not Found, 88.223.87.82: 404 Not Found",
+        "details": [
+          {
+            "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+            "reason": "ACME_HTTP_ERROR",
+            "domain": "firebasehosting.googleapis.com",
+            "metadata": {
+              "failures": "147.79.79.67: 404 Not Found, 2a02:4780:4a:2fb2:a157:9fa4:a16a:45b7: 404 Not Found, 2a02:4780:4d:f07e:1a64:96e5:239b:94a9: 404 Not Found, 88.223.87.82: 404 Not Found"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "domain": "www.grnutritionsnikol.com",
+    "hostState": "HOST_MISMATCH",
+    "ownershipState": "OWNERSHIP_MISSING",
+    "requiredDnsUpdates": {
+      "discovered": [
+        {
+          "domainName": "www.grnutritionsnikol.com",
+          "records": [
+            {
+              "domainName": "www.grnutritionsnikol.com",
+              "type": "CNAME",
+              "rdata": "www.grnutritionsnikol.com.cdn.hstgr.net",
+              "requiredAction": "REMOVE"
+            }
+          ]
+        },
+        {
+          "domainName": "www.grnutritionsnikol.com.cdn.hstgr.net",
+          "records": [
+            {
+              "domainName": "www.grnutritionsnikol.com.cdn.hstgr.net",
+              "type": "A",
+              "rdata": "145.223.124.42"
+            },
+            {
+              "domainName": "www.grnutritionsnikol.com.cdn.hstgr.net",
+              "type": "A",
+              "rdata": "147.79.79.250"
+            },
+            {
+              "domainName": "www.grnutritionsnikol.com.cdn.hstgr.net",
+              "type": "AAAA",
+              "rdata": "2a02:4780:4f:5aad:10a1:8532:bbf0:1801"
+            },
+            {
+              "domainName": "www.grnutritionsnikol.com.cdn.hstgr.net",
+              "type": "AAAA",
+              "rdata": "2a02:4780:51:1b16:c731:e99:3c93:e3a3"
+            }
+          ]
+        }
+      ],
+      "desired": [
+        {
+          "domainName": "www.grnutritionsnikol.com",
+          "records": [
+            {
+              "domainName": "www.grnutritionsnikol.com",
+              "type": "CNAME",
+              "rdata": "grnutritions.web.app",
+              "requiredAction": "ADD"
+            }
+          ]
+        }
+      ],
+      "checkTime": "2026-11-02T18:18:58.317057386Z"
+    },
+    "cert": {
+      "type": "TEMPORARY",
+      "state": "CERT_VALIDATING",
+      "verification": {
+        "dns": {
+          "discovered": [
+            {
+              "domainName": "_acme-challenge.www.grnutritionsnikol.com"
+            }
+          ],
+          "desired": [
+            {
+              "domainName": "_acme-challenge.www.grnutritionsnikol.com",
+              "records": [
+                {
+                  "domainName": "_acme-challenge.www.grnutritionsnikol.com",
+                  "type": "TXT",
+                  "rdata": "HJ2prdRtWsvPl_8yKFmW9jn8qsJAm32-YHOtav6cNL8",
+                  "requiredAction": "ADD"
+                }
+              ]
+            }
+          ],
+          "checkTime": "2026-11-02T18:19:10.826862059Z"
+        },
+        "http": {
+          "path": "/.well-known/acme-challenge/gIAKgdXJCIeH5O9f8LtYciw7tgIfpDy6t4OUmlYu3roxfkbgO9SUYAI8_3W1o8h_",
+          "desired": "gIAKgdXJCIeH5O9f8LtYciw7tgIfpDy6t4OUmlYu3roxfkbgO9SUYAI8_3W1o8h_.M0-GObbb5ePi63ASQsPKBrDqfgayGnOWpyrEF0nHqug",
+          "lastCheckTime": "2026-11-02T18:19:10.826862059Z",
+          "checkError": {
+            "code": 9,
+            "message": "One or more of Hosting's HTTP GET request for the ACME challenge failed: 145.223.124.42: 404 Not Found, 147.79.79.250: 404 Not Found, 2a02:4780:4f:5aad:10a1:8532:bbf0:1801: 404 Not Found, 2a02:4780:51:1b16:c731:e99:3c93:e3a3: 404 Not Found",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+                "reason": "ACME_HTTP_ERROR",
+                "domain": "firebasehosting.googleapis.com",
+                "metadata": {
+                  "failures": "145.223.124.42: 404 Not Found, 147.79.79.250: 404 Not Found, 2a02:4780:4f:5aad:10a1:8532:bbf0:1801: 404 Not Found, 2a02:4780:51:1b16:c731:e99:3c93:e3a3: 404 Not Found"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "issues": [
+        {
+          "code": 9,
+          "message": "One or more of Hosting's HTTP GET request for the ACME challenge failed: 145.223.124.42: 404 Not Found, 147.79.79.250: 404 Not Found, 2a02:4780:4f:5aad:10a1:8532:bbf0:1801: 404 Not Found, 2a02:4780:51:1b16:c731:e99:3c93:e3a3: 404 Not Found",
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+              "reason": "ACME_HTTP_ERROR",
+              "domain": "firebasehosting.googleapis.com",
+              "metadata": {
+                "failures": "145.223.124.42: 404 Not Found, 147.79.79.250: 404 Not Found, 2a02:4780:4f:5aad:10a1:8532:bbf0:1801: 404 Not Found, 2a02:4780:51:1b16:c731:e99:3c93:e3a3: 404 Not Found"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "issues": [
+      {
+        "code": 9,
+        "message": "One or more of Hosting's HTTP GET request for the ACME challenge failed: 145.223.124.42: 404 Not Found, 147.79.79.250: 404 Not Found, 2a02:4780:4f:5aad:10a1:8532:bbf0:1801: 404 Not Found, 2a02:4780:51:1b16:c731:e99:3c93:e3a3: 404 Not Found",
+        "details": [
+          {
+            "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+            "reason": "ACME_HTTP_ERROR",
+            "domain": "firebasehosting.googleapis.com",
+            "metadata": {
+              "failures": "145.223.124.42: 404 Not Found, 147.79.79.250: 404 Not Found, 2a02:4780:4f:5aad:10a1:8532:bbf0:1801: 404 Not Found, 2a02:4780:51:1b16:c731:e99:3c93:e3a3: 404 Not Found"
+            }
+          }
+        ]
+      }
+    ],
+    "redirectTarget": "grnutritionsnikol.com"
+  }
+]

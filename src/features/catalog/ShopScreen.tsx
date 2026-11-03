@@ -6,11 +6,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { BadgeCheck, SearchX } from 'lucide-react-native';
 
 import { PageShell } from '@/components/layout/PageShell';
 import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
-import { colors, spacing } from '@/theme/tokens';
+import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
 
 import { ActiveFilters } from './ActiveFilters';
 import type { CatalogRepository } from './catalog-repository';
@@ -120,56 +121,71 @@ export function ShopScreen({
       contentContainerStyle={styles.scrollContent}
       style={styles.page}
     >
-      <PageShell style={styles.shell}>
-        <View style={styles.intro}>
-          <AppText tone="accent" variant="label">
-            THE FULL SHELF
-          </AppText>
-          <AppText accessibilityRole="header" variant="display">
-            FIND YOUR EVERYDAY FUEL.
-          </AppText>
-          <AppText style={styles.introCopy} tone="muted" variant="bodyLarge">
-            Training fuel, recovery essentials, and everyday wellness—organized
-            to make the right choice feel obvious.
-          </AppText>
-        </View>
-
-        <FilterRail
-          filters={filters}
-          onCategoryChange={changeCategory}
-          onSearchChange={(search) => updateFilters({ ...filters, search })}
-          onSortChange={updateSort}
-          sort={sort}
-        />
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-          {brands.map((b) => (
-            <Pressable
-              key={b}
-              accessibilityRole="button"
-              accessibilityLabel={`Filter by brand ${b}`}
-              accessibilityState={{ selected: filters.brand === b }}
-              onPress={() =>
-                updateFilters({
-                  ...filters,
-                  brand: filters.brand === b ? undefined : b,
-                })
-              }
-              style={{
-                backgroundColor: filters.brand === b ? colors.violet : '#FFF',
-                borderColor: colors.line,
-                borderWidth: 1,
-                borderRadius: 99,
-                padding: 12,
-              }}
-            >
-              <AppText
-                variant="caption"
-                style={{ color: filters.brand === b ? '#FFF' : colors.bone }}
-              >
-                {b}
+      <View style={styles.banner}>
+        <PageShell>
+          <View style={styles.intro}>
+            <View style={styles.eyebrowRow}>
+              <BadgeCheck color={colors.gold} size={15} />
+              <AppText style={styles.eyebrow}>
+                THE FULL SHELF · 100% AUTHENTIC
               </AppText>
-            </Pressable>
-          ))}
+            </View>
+            <AppText
+              accessibilityRole="header"
+              tone="inverse"
+              variant="display"
+            >
+              FIND YOUR EVERYDAY FUEL.
+            </AppText>
+            <AppText style={styles.introCopy} variant="bodyLarge">
+              Training fuel, recovery essentials, and everyday
+              wellness—organized to make the right choice feel obvious.
+            </AppText>
+          </View>
+        </PageShell>
+      </View>
+      <PageShell style={styles.shell}>
+        <View style={styles.filterPanel}>
+          <FilterRail
+            filters={filters}
+            onCategoryChange={changeCategory}
+            onSearchChange={(search) => updateFilters({ ...filters, search })}
+            onSortChange={updateSort}
+            sort={sort}
+          />
+          {brands.length ? (
+            <AppText style={styles.filterLabel}>BRANDS</AppText>
+          ) : null}
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {brands.map((b) => (
+              <Pressable
+                key={b}
+                accessibilityRole="button"
+                accessibilityLabel={`Filter by brand ${b}`}
+                accessibilityState={{ selected: filters.brand === b }}
+                onPress={() =>
+                  updateFilters({
+                    ...filters,
+                    brand: filters.brand === b ? undefined : b,
+                  })
+                }
+                style={[
+                  styles.brandChip,
+                  filters.brand === b && styles.brandChipSelected,
+                ]}
+              >
+                <AppText
+                  variant="caption"
+                  style={[
+                    styles.brandChipText,
+                    filters.brand === b && styles.brandChipTextSelected,
+                  ]}
+                >
+                  {b}
+                </AppText>
+              </Pressable>
+            ))}
+          </View>
         </View>
         {error ? (
           <AppText tone="danger" accessibilityRole="alert">
@@ -178,7 +194,7 @@ export function ShopScreen({
         ) : null}
 
         <View style={styles.resultHeader}>
-          <AppText variant="label">
+          <AppText style={styles.count} variant="label">
             {count} {count === 1 ? 'product' : 'products'}
           </AppText>
           <ActiveFilters
@@ -190,17 +206,20 @@ export function ShopScreen({
 
         {isLoading ? (
           <View accessibilityLabel="Loading products" style={styles.loading}>
-            <ActivityIndicator color={colors.lime} />
+            <ActivityIndicator color={colors.gold} size="large" />
           </View>
         ) : result && result.items.length > 0 ? (
           <View style={{ gap: 16 }}>
             <ProductGrid products={result.items} />
             {result.items.length < result.total ? (
-              <Button onPress={() => setPageSize((size) => size + 12)}>Show more products</Button>
+              <Button onPress={() => setPageSize((size) => size + 12)}>
+                Show more products
+              </Button>
             ) : null}
           </View>
         ) : (
           <View style={styles.empty}>
+            <SearchX color={colors.goldInk} size={34} />
             <AppText variant="heading">No products match those filters</AppText>
             <AppText tone="muted">
               Keep the filters you want, or clear them to reopen the full shelf.
@@ -220,17 +239,62 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
   },
-  shell: {
-    gap: spacing[8],
-    paddingBottom: spacing[24],
+  banner: {
+    backgroundColor: colors.midnight,
+    borderBottomColor: colors.gold,
+    borderBottomWidth: 3,
+    paddingBottom: spacing[12],
     paddingTop: spacing[12],
+  },
+  shell: {
+    gap: spacing[6],
+    paddingBottom: spacing[24],
+    paddingTop: spacing[8],
   },
   intro: {
     gap: spacing[4],
   },
+  eyebrowRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
+  eyebrow: {
+    color: colors.gold,
+    fontFamily: typography.bodyBold,
+    fontSize: 11,
+    letterSpacing: 2,
+  },
   introCopy: {
+    color: colors.onDarkMuted,
     maxWidth: 700,
   },
+  filterPanel: {
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    gap: spacing[4],
+    padding: spacing[5],
+    ...shadows.card,
+  },
+  filterLabel: {
+    color: colors.mineral,
+    fontFamily: typography.bodyBold,
+    fontSize: 11,
+    letterSpacing: 1.6,
+  },
+  brandChip: {
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.pill,
+    borderWidth: 1.5,
+    justifyContent: 'center',
+    minHeight: 40,
+    paddingHorizontal: spacing[4],
+  },
+  brandChipSelected: {
+    backgroundColor: colors.midnight,
+    borderColor: colors.midnight,
+  },
+  brandChipText: { color: colors.ink, fontFamily: typography.bodySemibold },
+  brandChipTextSelected: { color: colors.gold },
   resultHeader: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -238,13 +302,17 @@ const styles = StyleSheet.create({
     gap: spacing[4],
     justifyContent: 'space-between',
   },
+  count: { fontSize: 15 },
   loading: {
     alignItems: 'center',
     minHeight: 280,
     justifyContent: 'center',
   },
   empty: {
+    alignItems: 'center',
+    backgroundColor: colors.paper,
     borderColor: colors.line,
+    borderRadius: radii.md,
     borderWidth: 1,
     gap: spacing[4],
     minHeight: 280,

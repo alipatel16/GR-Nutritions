@@ -13,8 +13,9 @@ describe('storefront accessibility', () => {
 
     expect(screen.getAllByRole('header')).toHaveLength(1);
     expect(screen.getByRole('header')).toHaveTextContent(/YOUR GOAL/);
+    expect(screen.getByLabelText('Message GR Coach')).toBeOnTheScreen();
     expect(
-      screen.getByRole('button', { name: 'Find my options' }),
+      screen.getByRole('button', { name: 'Send message' }),
     ).toBeDisabled();
 
     await unmount();

@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 
+import { Search } from 'lucide-react-native';
 import { AppText } from '@/components/ui/AppText';
 import { colors, layout, radii, spacing, typography } from '@/theme/tokens';
 
@@ -45,14 +46,17 @@ export function FilterRail({
 }: FilterRailProps) {
   return (
     <View style={styles.container}>
-      <TextInput
-        accessibilityLabel="Search supplements"
-        onChangeText={onSearchChange}
-        placeholder="Search products or ingredients"
-        placeholderTextColor={colors.mineral}
-        style={styles.search}
-        value={filters.search ?? ''}
-      />
+      <View style={styles.searchWrap}>
+        <Search color={colors.mineral} size={18} />
+        <TextInput
+          accessibilityLabel="Search supplements"
+          onChangeText={onSearchChange}
+          placeholder="Search products or ingredients"
+          placeholderTextColor={colors.mineral}
+          style={styles.search}
+          value={filters.search ?? ''}
+        />
+      </View>
       <ScrollView
         contentContainerStyle={styles.chips}
         horizontal
@@ -94,9 +98,9 @@ export function FilterRail({
               accessibilityState={{ selected }}
               key={option.value}
               onPress={() => onSortChange(option.value)}
-              style={styles.sortButton}
+              style={[styles.sortButton, selected && styles.sortSelected]}
             >
-              <AppText tone={selected ? 'accent' : 'muted'} variant="caption">
+              <AppText style={[styles.sortText, selected && styles.sortTextSelected]} variant="caption">
                 {option.label}
               </AppText>
             </Pressable>
@@ -111,41 +115,53 @@ const styles = StyleSheet.create({
   container: {
     gap: spacing[4],
   },
-  search: {
-    backgroundColor: colors.obsidianRaised,
+  searchWrap: {
+    alignItems: 'center',
+    backgroundColor: colors.obsidian,
     borderColor: colors.line,
-    borderRadius: radii.xs,
-    borderWidth: 1,
+    borderRadius: radii.sm,
+    borderWidth: 1.5,
+    flexDirection: 'row',
+    gap: spacing[2],
+    paddingHorizontal: spacing[4],
+  },
+  search: {
     color: colors.bone,
+    flex: 1,
     fontFamily: typography.body,
     fontSize: 16,
-    minHeight: layout.minimumPressTarget,
-    paddingHorizontal: spacing[4],
+    minHeight: 50,
     paddingVertical: spacing[3],
   },
   chips: {
     gap: spacing[2],
   },
   chip: {
+    backgroundColor: colors.paper,
     borderColor: colors.line,
     borderRadius: radii.pill,
-    borderWidth: 1,
+    borderWidth: 1.5,
     justifyContent: 'center',
     minHeight: layout.minimumPressTarget,
     paddingHorizontal: spacing[4],
   },
   chipSelected: {
-    backgroundColor: colors.lime,
-    borderColor: colors.lime,
+    backgroundColor: colors.midnight,
+    borderColor: colors.midnight,
   },
   chipTextSelected: {
-    color: colors.obsidian,
+    color: colors.gold,
   },
   sorts: {
-    gap: spacing[4],
+    gap: spacing[2],
   },
   sortButton: {
+    borderRadius: radii.xs,
     justifyContent: 'center',
-    minHeight: layout.minimumPressTarget,
+    minHeight: 36,
+    paddingHorizontal: spacing[3],
   },
+  sortSelected: { backgroundColor: colors.goldSoft },
+  sortText: { color: colors.mineral, fontFamily: typography.bodySemibold },
+  sortTextSelected: { color: colors.goldInk, fontFamily: typography.bodyBold },
 });

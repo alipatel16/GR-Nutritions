@@ -84,12 +84,15 @@ export function CartLine({ line, onUpdateQuantity, onRemove }: CartLineProps) {
 const styles = StyleSheet.create({
   line: {
     alignItems: 'center',
-    borderBottomColor: colors.line,
-    borderBottomWidth: 1,
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.md,
+    borderWidth: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing[5],
-    paddingVertical: spacing[6],
+    marginBottom: spacing[3],
+    padding: spacing[5],
   },
   media: {
     alignItems: 'center',
@@ -120,6 +123,7 @@ const styles = StyleSheet.create({
   },
   quantityButton: {
     alignItems: 'center',
+    backgroundColor: colors.obsidian,
     borderColor: colors.line,
     borderRadius: radii.pill,
     borderWidth: 1,

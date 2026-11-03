@@ -4,6 +4,7 @@ import { StyleSheet, Text, type TextProps, type TextStyle } from 'react-native';
 import { colors, typography } from '@/theme/tokens';
 
 export type AppTextVariant =
+  | 'eyebrow'
   | 'caption'
   | 'label'
   | 'body'
@@ -16,15 +17,17 @@ export type AppTextVariant =
 type AppTextProps = PropsWithChildren<
   TextProps & {
     variant?: AppTextVariant;
-    tone?: 'primary' | 'muted' | 'accent' | 'danger';
+    tone?: 'primary' | 'muted' | 'accent' | 'danger' | 'success' | 'inverse';
   }
 >;
 
 const toneStyles: Record<NonNullable<AppTextProps['tone']>, TextStyle> = {
   primary: { color: colors.bone },
   muted: { color: colors.mineral },
-  accent: { color: colors.lime },
+  accent: { color: colors.goldInk },
   danger: { color: colors.danger },
+  success: { color: colors.success },
+  inverse: { color: colors.onDark },
 };
 
 export function AppText({
@@ -42,6 +45,13 @@ export function AppText({
 }
 
 const styles = StyleSheet.create({
+  eyebrow: {
+    fontFamily: typography.bodyBold,
+    fontSize: 11,
+    letterSpacing: 2,
+    lineHeight: 16,
+    textTransform: 'uppercase',
+  },
   caption: {
     fontFamily: typography.bodyMedium,
     fontSize: typography.sizes.caption,
@@ -71,19 +81,22 @@ const styles = StyleSheet.create({
   heading: {
     fontFamily: typography.display,
     fontSize: typography.sizes.heading,
-    letterSpacing: -0.8,
+    letterSpacing: -0.4,
+    textTransform: 'uppercase',
     lineHeight: typography.lineHeights.heading,
   },
   display: {
     fontFamily: typography.display,
     fontSize: typography.sizes.display,
-    letterSpacing: -2,
+    letterSpacing: -1,
+    textTransform: 'uppercase',
     lineHeight: typography.lineHeights.display,
   },
   hero: {
     fontFamily: typography.displayHeavy,
     fontSize: typography.sizes.hero,
-    letterSpacing: -3,
+    letterSpacing: -1.5,
+    textTransform: 'uppercase',
     lineHeight: typography.lineHeights.hero,
   },
 });

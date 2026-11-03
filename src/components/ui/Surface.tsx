@@ -1,11 +1,11 @@
 import type { PropsWithChildren } from 'react';
 import { StyleSheet, View, type ViewProps } from 'react-native';
 
-import { colors, radii } from '@/theme/tokens';
+import { colors, radii, shadows } from '@/theme/tokens';
 
 type SurfaceProps = PropsWithChildren<
   ViewProps & {
-    tone?: 'raised' | 'graphite' | 'outlined';
+    tone?: 'raised' | 'graphite' | 'outlined' | 'midnight';
   }
 >;
 
@@ -24,10 +24,16 @@ export function Surface({
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: radii.sm,
+    borderRadius: radii.md,
   },
   raised: {
     backgroundColor: colors.obsidianRaised,
+    borderColor: colors.line,
+    borderWidth: 1,
+    ...shadows.card,
+  },
+  midnight: {
+    backgroundColor: colors.midnight,
   },
   graphite: {
     backgroundColor: colors.graphite,

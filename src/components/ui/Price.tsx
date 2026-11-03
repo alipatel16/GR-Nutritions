@@ -1,7 +1,7 @@
 import { StyleSheet, View, type ViewProps } from 'react-native';
 
 import { formatInr } from '@/lib/money';
-import { spacing } from '@/theme/tokens';
+import { colors, spacing, typography } from '@/theme/tokens';
 
 import { AppText } from './AppText';
 
@@ -30,6 +30,11 @@ export function Price({
           MRP {formatInr(mrpPaise)}
         </AppText>
       ) : null}
+      {hasDiscount ? (
+        <AppText style={styles.save} variant="caption">
+          {Math.round(((mrpPaise - amountPaise) / mrpPaise) * 100)}% off
+        </AppText>
+      ) : null}
     </View>
   );
 }
@@ -43,5 +48,9 @@ const styles = StyleSheet.create({
   },
   mrp: {
     textDecorationLine: 'line-through',
+  },
+  save: {
+    color: colors.success,
+    fontFamily: typography.bodyBold,
   },
 });

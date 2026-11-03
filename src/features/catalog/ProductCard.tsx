@@ -1,6 +1,7 @@
 import { Link, type Href } from 'expo-router';
 import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
+import { ArrowRight, BadgeCheck } from 'lucide-react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
 import { Price } from '@/components/ui/Price';
@@ -11,6 +12,8 @@ import type { Product } from './types';
 
 type ProductCardProps = {
   product: Product;
+  // Two-up phone grids drop secondary copy so name, price and action stay readable.
+  compact?: boolean;
 };
 
 function titleCase(value: string): string {
@@ -20,7 +23,7 @@ function titleCase(value: string): string {
     .join(' ');
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, compact = false }: ProductCardProps) {
   const inStockVariants = product.variants.filter(
     (variant) => variant.stockAvailable > 0,
   );
@@ -53,69 +56,84 @@ export function ProductCard({ product }: ProductCardProps) {
               ? { uri: product.media[0].uri }
               : require('../../../assets/images/gr-campaign.png')
           }
-          style={StyleSheet.absoluteFill}
+          style={[
+            StyleSheet.absoluteFill,
+            product.media[0]?.uri ? (compact ? styles.packShotCompact : styles.packShot) : undefined,
+          ]}
           contentFit={product.media[0]?.uri ? 'contain' : 'cover'}
           contentPosition="center"
           accessibilityLabel={product.media[0]?.alt ?? product.name}
         />
-        <AppText style={styles.demoLabel} variant="caption">
-          {product.demoContent ? 'CONCEPT PACK' : 'THE GR COLLECTION'}
-        </AppText>
-        {savingPercent > 0 ? (
-          <AppText style={styles.savingLabel} variant="caption">
-            SAVE {savingPercent}%
-          </AppText>
-        ) : null}
+        <View style={styles.badgeRow}>
+          <View style={styles.authentic}>
+            <BadgeCheck color={colors.gold} size={12} />
+            {compact && !product.demoContent ? null : (
+              <AppText style={styles.authenticText}>
+                {product.demoContent ? 'CONCEPT PACK' : 'AUTHENTIC'}
+              </AppText>
+            )}
+          </View>
+          {savingPercent > 0 ? (
+            <AppText style={styles.savingLabel} variant="caption">
+              SAVE {savingPercent}%
+            </AppText>
+          ) : null}
+        </View>
       </View>
-      <View style={styles.content}>
-        <AppText tone="muted" style={{ letterSpacing: 1, fontSize: 10 }}>
-          {product.brand.toUpperCase()}
-        </AppText>
+      <View style={[styles.content, compact && styles.contentCompact]}>
         <View style={styles.metaRow}>
-          <AppText tone="muted" variant="caption">
-            {titleCase(product.category)}
+          <AppText numberOfLines={1} style={[styles.brand, compact && styles.brandCompact]}>
+            {product.brand.toUpperCase()}
           </AppText>
           {isSoldOut ? (
-            <AppText tone="danger" variant="caption">
+            <AppText style={styles.soldOut} variant="caption">
               Sold out
             </AppText>
-          ) : (
-            <AppText tone="accent" variant="caption">
-              In stock
-            </AppText>
+          ) : compact ? null : (
+            <View style={styles.stockRow}>
+              <View style={styles.stockDot} />
+              <AppText style={styles.inStock} variant="caption">
+                In stock
+              </AppText>
+            </View>
           )}
         </View>
-        <AppText numberOfLines={2} variant="title">
+        <AppText numberOfLines={2} style={[styles.name, compact && styles.nameCompact]}>
           {product.name}
         </AppText>
-        <AppText numberOfLines={2} tone="muted" variant="caption">
-          {product.summary}
-        </AppText>
+        {compact ? null : (
+          <AppText numberOfLines={2} tone="muted" variant="caption">
+            {product.summary}
+          </AppText>
+        )}
         <View style={styles.tags}>
-          {product.dietaryTags.slice(0, 2).map((tag) => (
+          <AppText style={styles.tag} variant="caption">
+            {titleCase(product.category)}
+          </AppText>
+          {product.dietaryTags.slice(0, compact ? 1 : 2).map((tag) => (
             <AppText key={tag} style={styles.tag} variant="caption">
               {titleCase(tag)}
             </AppText>
           ))}
         </View>
-        <AppText tone="muted" variant="caption">
+        <AppText numberOfLines={1} tone="muted" variant="caption">
           {variant.label} • {product.variants.length} option
           {product.variants.length === 1 ? '' : 's'}
         </AppText>
-        <View style={styles.bottomRow}>
-          <Price
-            amountPaise={variant.price.amountPaise}
-            mrpPaise={variant.mrp.amountPaise}
-            size="compact"
-          />
-          <Link
-            accessibilityLabel={`View ${product.name}`}
-            href={href}
-            style={styles.link}
-          >
-            View
-          </Link>
-        </View>
+        <View style={styles.divider} />
+        <Price
+          amountPaise={variant.price.amountPaise}
+          mrpPaise={variant.mrp.amountPaise}
+          size={compact ? 'compact' : 'regular'}
+        />
+        <Link accessibilityLabel={`View ${product.name}`} asChild href={href}>
+          <Pressable style={StyleSheet.flatten([styles.link, isSoldOut && styles.linkMuted])}>
+            <AppText style={[styles.linkText, isSoldOut && styles.linkTextMuted]}>
+              {isSoldOut ? 'View details' : compact ? 'View' : 'View & add to cart'}
+            </AppText>
+            <ArrowRight color={isSoldOut ? colors.ink : colors.gold} size={16} />
+          </Pressable>
+        </Link>
       </View>
     </Surface>
   );
@@ -123,66 +141,99 @@ export function ProductCard({ product }: ProductCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    borderColor: colors.line,
-    borderRadius: radii.sm,
-    borderWidth: 1,
     flexGrow: 1,
     minWidth: 0,
     overflow: 'hidden',
-    backgroundColor: colors.obsidianRaised,
   },
   media: {
-    aspectRatio: 1.12,
-    justifyContent: 'space-between',
-    padding: spacing[5],
+    aspectRatio: 1.05,
+    padding: spacing[3],
   },
-  mediaMark: {
-    color: colors.obsidian,
-  },
-  demoLabel: {
-    alignSelf: 'flex-start',
-    backgroundColor: colors.obsidian,
-    color: colors.bone,
-    paddingHorizontal: spacing[2],
-    paddingVertical: spacing[1],
-  },
-  savingLabel: {
-    alignSelf: 'flex-end',
-    backgroundColor: colors.lime,
-    color: '#FFF',
-    fontFamily: typography.bodyBold,
-    paddingHorizontal: spacing[2],
-    paddingVertical: spacing[1],
-  },
-  content: {
-    gap: spacing[3],
-    padding: spacing[5],
-  },
-  metaRow: {
+  packShot: { margin: spacing[6] },
+  packShotCompact: { margin: spacing[3] },
+  badgeRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  tags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[2] },
+  authentic: {
+    alignItems: 'center',
+    backgroundColor: colors.midnight,
+    borderRadius: radii.pill,
+    flexDirection: 'row',
+    gap: 4,
+    paddingHorizontal: spacing[2],
+    paddingVertical: 4,
+  },
+  authenticText: {
+    color: colors.onDark,
+    fontFamily: typography.bodyBold,
+    fontSize: 9.5,
+    letterSpacing: 1,
+    lineHeight: 13,
+  },
+  savingLabel: {
+    backgroundColor: colors.gold,
+    borderRadius: radii.pill,
+    color: colors.midnight,
+    fontFamily: typography.bodyBold,
+    fontSize: 10.5,
+    lineHeight: 14,
+    paddingHorizontal: spacing[2],
+    paddingVertical: 4,
+  },
+  content: {
+    flexGrow: 1,
+    gap: spacing[2],
+    padding: spacing[4],
+  },
+  contentCompact: { gap: 6, padding: spacing[3] },
+  metaRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  brand: {
+    color: colors.goldInk,
+    fontFamily: typography.bodyBold,
+    fontSize: 11,
+    letterSpacing: 1.4,
+  },
+  brandCompact: { flexShrink: 1, fontSize: 10, letterSpacing: 0.8 },
+  stockRow: { alignItems: 'center', flexDirection: 'row', gap: 5 },
+  stockDot: { backgroundColor: colors.success, borderRadius: 4, height: 7, width: 7 },
+  inStock: { color: colors.success, fontFamily: typography.bodySemibold },
+  soldOut: { color: colors.danger, fontFamily: typography.bodySemibold },
+  name: {
+    color: colors.ink,
+    fontFamily: typography.bodyBold,
+    fontSize: 17,
+    lineHeight: 23,
+  },
+  nameCompact: { fontSize: 14, lineHeight: 19 },
+  tags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[1] },
   tag: {
     backgroundColor: colors.graphite,
     borderRadius: radii.pill,
     color: colors.boneMuted,
-    fontSize: 9,
+    fontFamily: typography.bodySemibold,
+    fontSize: 10.5,
     lineHeight: 14,
     paddingHorizontal: spacing[2],
-    paddingVertical: spacing[1],
+    paddingVertical: 3,
   },
-  bottomRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: spacing[3],
-    justifyContent: 'space-between',
-  },
+  divider: { backgroundColor: colors.line, height: 1, marginVertical: spacing[1] },
   link: {
-    color: colors.lime,
-    fontFamily: typography.bodyBold,
-    minHeight: 44,
-    paddingVertical: spacing[3],
-    textDecorationLine: 'none',
+    alignItems: 'center',
+    backgroundColor: colors.midnight,
+    borderRadius: radii.xs,
+    flexDirection: 'row',
+    gap: spacing[2],
+    justifyContent: 'center',
+    marginTop: spacing[2],
+    minHeight: 46,
+    paddingHorizontal: spacing[4],
   },
+  linkMuted: { backgroundColor: colors.graphite },
+  linkText: { color: colors.onDark, fontFamily: typography.bodyBold, fontSize: 13.5 },
+  linkTextMuted: { color: colors.ink },
 });

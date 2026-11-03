@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, View } from "react-native";
+import { PageHero } from "@/components/layout/PageHero";
 import { PageShell } from "@/components/layout/PageShell";
 import { AppText } from "@/components/ui/AppText";
 import { Button } from "@/components/ui/Button";
@@ -29,16 +30,16 @@ export default function BrandsRoute() {
 
   return (
     <ScrollView
-      contentContainerStyle={{ paddingVertical: 36, paddingBottom: 112 }}
+      style={{ flex: 1, backgroundColor: colors.obsidian }}
+      contentContainerStyle={{ paddingBottom: 112 }}
     >
-      <PageShell>
+      <PageHero
+        description="Find your favourite nutrition brands and explore their products."
+        eyebrow="TRUSTED NAMES, ONE SHELF"
+        title="SHOP BY BRAND"
+      />
+      <PageShell style={{ paddingTop: 40 }}>
         <View style={{ gap: 20 }}>
-          <AppText variant="display" accessibilityRole="header">
-            SHOP BY BRAND
-          </AppText>
-          <AppText tone="muted">
-            Find your favourite nutrition brands and explore their products.
-          </AppText>
           {error ? (
             <View style={{ gap: 12, alignItems: "flex-start" }}>
               <AppText tone="danger">

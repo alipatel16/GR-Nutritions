@@ -22,6 +22,7 @@ import {
 } from '@/features/checkout/customer-orders';
 import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
+import { PageHero } from '@/components/layout/PageHero';
 import { PageShell } from '@/components/layout/PageShell';
 import { formatInr } from '@/lib/money';
 import { colors, radii, spacing, typography } from '@/theme/tokens';
@@ -114,23 +115,13 @@ function OrdersContent() {
   }
   return (
     <ScrollView style={styles.page}>
+      <PageHero
+        description="Order updates and delivery tracking, all in one place."
+        eyebrow="GR STORE / YOUR ACCOUNT"
+        title="Your orders."
+      />
       <PageShell style={styles.shell}>
         <View style={styles.content}>
-          <View style={styles.heading}>
-            <AppText tone="accent" variant="caption">
-              GR STORE / YOUR ACCOUNT
-            </AppText>
-            <AppText
-              accessibilityRole="header"
-              style={styles.title}
-              variant="display"
-            >
-              Your orders.
-            </AppText>
-            <AppText tone="muted">
-              Order updates and delivery tracking, all in one place.
-            </AppText>
-          </View>
           {error ? (
             <View style={styles.error}>
               <AppText accessibilityRole="alert" tone="danger">
@@ -290,13 +281,15 @@ function OrdersContent() {
 }
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.obsidian },
-  shell: { paddingTop: spacing[10], paddingBottom: spacing[20] },
+  shell: { paddingTop: spacing[8], paddingBottom: spacing[20] },
   content: { gap: spacing[6] },
   heading: { gap: spacing[3], marginBottom: spacing[3] },
   title: { color: colors.violet },
   card: {
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
+    borderLeftColor: colors.gold,
+    borderLeftWidth: 4,
     borderWidth: 1,
     borderRadius: radii.md,
     padding: spacing[6],
@@ -311,7 +304,7 @@ const styles = StyleSheet.create({
   },
   orderIdentity: { gap: spacing[2], flexShrink: 1, minWidth: 0 },
   badge: {
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.goldSoft,
     borderRadius: radii.pill,
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[2],
@@ -337,7 +330,9 @@ const styles = StyleSheet.create({
   empty: {
     alignItems: 'flex-start',
     gap: spacing[5],
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderWidth: 1,
     borderRadius: radii.md,
     padding: spacing[8],
   },

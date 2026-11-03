@@ -24,7 +24,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (Platform.OS !== 'web' || typeof document === 'undefined') return;
 
-    document.title = 'GR Nutritions · Fuel Your Everyday';
+    document.title = 'GR Nutritions · Authentic Supplements, Delivered Across India';
     document.documentElement.style.backgroundColor = colors.obsidian;
     document.body.style.backgroundColor = colors.obsidian;
     document.body.style.fontFamily =
@@ -34,8 +34,8 @@ export default function RootLayout() {
     style.dataset.grNutritions = 'global';
     style.textContent = `
       * { box-sizing: border-box; }
-      :focus-visible { outline: 2px solid #214A33; outline-offset: 3px; }
-      ::selection { background: #FFD4CB; color: #161918; }
+      :focus-visible { outline: 2px solid #D4A537; outline-offset: 3px; }
+      ::selection { background: #F6EBCB; color: #0A1020; }
     `;
     document.head.appendChild(style);
 

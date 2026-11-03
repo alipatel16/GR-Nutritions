@@ -1,10 +1,11 @@
 import { Link, type Href } from 'expo-router';
-import { ArrowUpRight, MessageCircle } from 'lucide-react-native';
+import { BadgeCheck, LockKeyhole, Sparkles, Truck } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { colors, spacing, typography } from '@/theme/tokens';
 
 import { PageShell } from './PageShell';
+import { BrandMark } from '../brand/BrandMark';
 import { AppText } from '../ui/AppText';
 
 const columns = [
@@ -43,19 +44,14 @@ export function StoreFooter() {
       <PageShell>
         <View style={styles.top}>
           <View style={styles.brandBlock}>
-            <View style={styles.logoRow}>
-              <View style={styles.mark}><AppText style={styles.markText}>GR</AppText></View>
-              <View>
-                <AppText style={styles.brand}>GR NUTRITIONS</AppText>
-                <AppText style={styles.tagline}>FUEL YOUR EVERYDAY</AppText>
-              </View>
-            </View>
+            <BrandMark />
             <AppText style={styles.brandCopy}>
-              A clearer way to explore performance, recovery, and everyday nutrition.
+              Genuine sports nutrition and everyday wellness from the brands athletes trust,
+              delivered across India from Ahmedabad.
             </AppText>
             <Link accessibilityLabel="Open GR Coach from footer" href="/advisor" style={styles.coachLink}>
-              <MessageCircle color="#FFF" size={16} />
-              <AppText style={styles.coachText}>Ask GR Coach</AppText>
+              <Sparkles color={colors.midnight} size={16} />
+              <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
             </Link>
           </View>
 
@@ -70,12 +66,25 @@ export function StoreFooter() {
                     key={label}
                     style={styles.link}
                   >
-                    {label}  ↗
+                    {label}
                   </Link>
                 ))}
               </View>
             ))}
           </View>
+        </View>
+
+        <View style={styles.assurances}>
+          {([
+            [BadgeCheck, 'Authentic brand products'],
+            [LockKeyhole, 'Secure Razorpay checkout'],
+            [Truck, 'Free delivery above ₹999'],
+          ] as const).map(([Icon, label]) => (
+            <View key={label} style={styles.assurance}>
+              <Icon color={colors.gold} size={16} />
+              <AppText style={styles.assuranceText}>{label}</AppText>
+            </View>
+          ))}
         </View>
 
         <View style={styles.bottom}>
@@ -85,7 +94,6 @@ export function StoreFooter() {
             <Link href="/account" style={styles.smallLink}>Customer account</Link>
             <Link href="/admin" style={styles.smallLink}>Store administration</Link>
           </View>
-          <ArrowUpRight color="#8FA093" size={16} />
         </View>
       </PageShell>
     </View>
@@ -93,51 +101,57 @@ export function StoreFooter() {
 }
 
 const styles = StyleSheet.create({
-  footer: { backgroundColor: '#153526', marginTop: 72, paddingVertical: 48 },
-  top: { flexDirection: 'row', flexWrap: 'wrap', gap: 56, justifyContent: 'space-between' },
-  brandBlock: { gap: spacing[5], maxWidth: 340, minWidth: 250 },
-  logoRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[3] },
-  mark: {
-    alignItems: 'center',
-    backgroundColor: colors.lime,
-    height: 48,
-    justifyContent: 'center',
-    transform: [{ skewX: '-6deg' }],
-    width: 44,
+  footer: {
+    backgroundColor: colors.midnight,
+    borderTopColor: colors.gold,
+    borderTopWidth: 3,
+    marginTop: 80,
+    paddingBottom: 40,
+    paddingTop: 56,
   },
-  markText: { color: '#FFF', fontFamily: typography.displayHeavy, fontSize: 31, lineHeight: 35 },
-  brand: { color: '#FFF', fontFamily: typography.bodyBold, fontSize: 18, letterSpacing: 0.8 },
-  tagline: { color: '#AFC0B2', fontSize: 8, letterSpacing: 2.2, lineHeight: 15 },
-  brandCopy: { color: '#C7D4C9', fontSize: 13, lineHeight: 22 },
+  top: { flexDirection: 'row', flexWrap: 'wrap', gap: 56, justifyContent: 'space-between' },
+  brandBlock: { gap: spacing[5], maxWidth: 360, minWidth: 250 },
+  brandCopy: { color: colors.onDarkMuted, fontSize: 14, lineHeight: 22 },
   coachLink: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: colors.lime,
-    borderRadius: 6,
+    backgroundColor: colors.gold,
+    borderRadius: 99,
     flexDirection: 'row',
     gap: spacing[2],
     minHeight: 44,
-    paddingHorizontal: spacing[4],
+    paddingHorizontal: spacing[5],
     paddingVertical: spacing[3],
     textDecorationLine: 'none',
   },
-  coachText: { color: '#FFF', fontFamily: typography.bodyBold, fontSize: 12 },
-  columns: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 44, justifyContent: 'flex-end', minWidth: 280 },
+  coachText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 13 },
+  columns: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 48, justifyContent: 'flex-end', minWidth: 280 },
   column: { gap: spacing[3], minWidth: 130 },
-  columnTitle: { color: '#FFF', fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.4 },
-  link: { color: '#C7D4C9', fontFamily: typography.body, fontSize: 12, lineHeight: 20, textDecorationLine: 'none' },
+  columnTitle: { color: colors.gold, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
+  link: { color: colors.onDark, fontFamily: typography.body, fontSize: 14, lineHeight: 22, textDecorationLine: 'none' },
+  assurances: {
+    borderTopColor: colors.midnightLine,
+    borderTopWidth: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing[8],
+    marginTop: 48,
+    paddingTop: spacing[6],
+  },
+  assurance: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
+  assuranceText: { color: colors.onDark, fontFamily: typography.bodySemibold, fontSize: 13 },
   bottom: {
     alignItems: 'center',
-    borderTopColor: '#355445',
+    borderTopColor: colors.midnightLine,
     borderTopWidth: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing[4],
     justifyContent: 'space-between',
-    marginTop: 44,
+    marginTop: spacing[6],
     paddingTop: spacing[5],
   },
   bottomLinks: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[5] },
-  small: { color: '#8FA093', fontSize: 10, lineHeight: 16 },
-  smallLink: { color: '#AFC0B2', fontFamily: typography.body, fontSize: 10, textDecorationLine: 'none' },
+  small: { color: colors.onDarkMuted, fontSize: 12, lineHeight: 18 },
+  smallLink: { color: colors.onDarkMuted, fontFamily: typography.body, fontSize: 12, textDecorationLine: 'none' },
 });

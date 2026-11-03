@@ -9,6 +9,7 @@ import {
 import {
   Check,
   CreditCard,
+  LockKeyhole,
   PackageCheck,
   Truck,
   Wallet,
@@ -18,11 +19,12 @@ import { AddressBook } from '@/features/addresses/AddressBook';
 import { useCheckout } from '@/features/checkout/use-checkout';
 import { orderStatusLabel } from '@/features/checkout/checkout-service';
 import { AppText } from '@/components/ui/AppText';
+import { PageHero } from '@/components/layout/PageHero';
 import { PageShell } from '@/components/layout/PageShell';
 import { Button } from '@/components/ui/Button';
 import { cartTotals } from '@/features/cart/cart-domain';
 import { formatInr } from '@/lib/money';
-import { colors, radii, spacing, typography } from '@/theme/tokens';
+import { colors, radii, spacing, typography, shadows } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 export default function Checkout() {
@@ -48,26 +50,23 @@ function CheckoutContent({
   const mode = session?.mode ?? quote?.mode;
   return (
     <ScrollView style={styles.page}>
+      <PageHero
+        description="Choose where we deliver and how you’d like to pay."
+        eyebrow="GR STORE / SECURE CHECKOUT"
+        title="The final step."
+      >
+        <View style={styles.secureRow}>
+          <LockKeyhole color={colors.gold} size={15} />
+          <AppText style={styles.secureText} variant="caption">
+            Payments processed by Razorpay · Your card details never touch our servers
+          </AppText>
+        </View>
+      </PageHero>
       <PageShell style={styles.shell}>
         <View style={styles.content}>
           <Link href="/cart" style={styles.link}>
             ← Back to your bag
           </Link>
-          <View style={styles.heading}>
-            <AppText tone="accent" variant="caption">
-              GR STORE / CHECKOUT
-            </AppText>
-            <AppText
-              accessibilityRole="header"
-              style={styles.title}
-              variant="display"
-            >
-              The final step.
-            </AppText>
-            <AppText tone="muted">
-              Choose where we deliver and how you’d like to pay.
-            </AppText>
-          </View>
           {confirmed ? (
             <View style={styles.card}>
               <PackageCheck size={36} color={colors.violet} />
@@ -351,7 +350,8 @@ const styles = StyleSheet.create({
   shell: { paddingTop: spacing[6], paddingBottom: spacing[20] },
   content: { gap: spacing[8] },
   heading: { gap: spacing[3] },
-  title: { color: colors.violet },
+  secureRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2], marginTop: spacing[2] },
+  secureText: { color: colors.onDark, flexShrink: 1 },
   link: {
     color: colors.violet,
     fontFamily: typography.bodySemibold,
@@ -368,7 +368,10 @@ const styles = StyleSheet.create({
     minWidth: 0,
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
+    borderTopColor: colors.gold,
+    borderTopWidth: 4,
     borderWidth: 1,
+    ...shadows.raised,
     borderRadius: radii.md,
     padding: spacing[6],
     gap: spacing[5],
@@ -391,25 +394,25 @@ const styles = StyleSheet.create({
   step: {
     width: 30,
     height: 30,
-    backgroundColor: colors.violet,
+    backgroundColor: colors.gold,
     borderRadius: radii.pill,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  stepText: { color: colors.obsidianRaised },
+  stepText: { color: colors.midnight },
   method: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing[4],
     borderColor: colors.line,
-    borderWidth: 1,
+    borderWidth: 1.5,
     padding: spacing[5],
     borderRadius: radii.sm,
     backgroundColor: colors.obsidianRaised,
   },
   selectedMethod: {
-    backgroundColor: colors.graphite,
-    borderColor: colors.violet,
+    backgroundColor: colors.goldSoft,
+    borderColor: colors.gold,
   },
   methodCopy: { flex: 1, minWidth: 0, gap: spacing[1] },
   radio: {
@@ -421,7 +424,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  selectedRadio: { backgroundColor: colors.violet, borderColor: colors.violet },
+  selectedRadio: { backgroundColor: colors.midnight, borderColor: colors.gold, borderWidth: 2 },
   item: {
     flexDirection: 'row',
     gap: spacing[3],
@@ -450,7 +453,7 @@ const styles = StyleSheet.create({
   delivery: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing[3] },
   testBadge: {
     padding: spacing[3],
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.goldSoft,
     borderRadius: radii.sm,
   },
 });

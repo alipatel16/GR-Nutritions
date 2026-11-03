@@ -2,7 +2,7 @@ import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
 import { AppText } from "@/components/ui/AppText";
-import { colors } from "@/theme/tokens";
+import { colors, shadows } from "@/theme/tokens";
 
 const logos = new Map([
   ["MuscleBlaze", "muscleblaze.svg"],
@@ -67,15 +67,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 10,
     padding: 16,
-    minWidth: 136,
-    minHeight: 100,
+    minWidth: 150,
+    minHeight: 120,
     flexGrow: 1,
     flexBasis: 136,
     maxWidth: 240,
-    backgroundColor: "#FFF",
+    backgroundColor: colors.paper,
     borderWidth: 1,
     borderColor: colors.line,
-    borderRadius: 12,
+    borderRadius: 16,
+    ...shadows.card,
   },
   logoFrame: {
     width: 124,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 6,
   },
-  darkLogo: { backgroundColor: "#181b19" },
+  darkLogo: { backgroundColor: colors.midnight },
   logo: { width: "100%", height: "100%" },
   name: { textAlign: "center" },
 });

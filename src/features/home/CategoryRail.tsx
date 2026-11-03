@@ -3,7 +3,8 @@ import { Activity, Apple, Dumbbell, HeartPulse, Leaf, Zap } from 'lucide-react-n
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
-import { colors, radii, spacing, typography } from '@/theme/tokens';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
 
 const categories = [
   { label: 'Protein', note: 'Whey, isolate & plant', href: '/shop?category=protein', Icon: Dumbbell },
@@ -17,13 +18,12 @@ const categories = [
 export function CategoryRail() {
   return (
     <View style={styles.section}>
-      <View style={styles.headingRow}>
-        <View>
-          <AppText style={styles.kicker}>SHOP YOUR WAY</AppText>
-          <AppText variant="heading">START WITH A CATEGORY</AppText>
-        </View>
-        <Link href="/shop" style={styles.viewAll}>See the full catalogue →</Link>
-      </View>
+      <SectionHeader
+        eyebrow="SHOP YOUR WAY"
+        href="/shop"
+        linkLabel="See the full catalogue"
+        title="START WITH A CATEGORY"
+      />
       <ScrollView
         contentContainerStyle={styles.rail}
         horizontal
@@ -37,9 +37,12 @@ export function CategoryRail() {
             key={label}
           >
             <Pressable style={styles.card}>
-              <View style={styles.icon}><Icon color={colors.violet} size={24} /></View>
-              <AppText style={styles.title}>{label}</AppText>
-              <AppText style={styles.note}>{note}</AppText>
+              <View style={styles.icon}><Icon color={colors.gold} size={24} /></View>
+              <View>
+                <AppText style={styles.title}>{label}</AppText>
+                <AppText style={styles.note}>{note}</AppText>
+              </View>
+              <AppText style={styles.shop}>Shop now →</AppText>
             </Pressable>
           </Link>
         ))}
@@ -49,48 +52,28 @@ export function CategoryRail() {
 }
 
 const styles = StyleSheet.create({
-  section: { gap: spacing[5] },
-  headingRow: {
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing[4],
-    justifyContent: 'space-between',
-  },
-  kicker: {
-    color: colors.mineral,
-    fontFamily: typography.bodyBold,
-    fontSize: 10,
-    letterSpacing: 1.6,
-    lineHeight: 17,
-    marginBottom: spacing[1],
-  },
-  viewAll: {
-    color: colors.violet,
-    fontFamily: typography.bodyBold,
-    minHeight: 44,
-    paddingVertical: spacing[3],
-    textDecorationLine: 'none',
-  },
-  rail: { gap: spacing[3], paddingBottom: spacing[1] },
+  section: { gap: spacing[6] },
+  rail: { gap: spacing[4], paddingBottom: spacing[2] },
   card: {
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
     borderRadius: radii.md,
     borderWidth: 1,
-    minHeight: 150,
+    gap: spacing[4],
+    minHeight: 196,
     padding: spacing[5],
-    width: 190,
+    width: 200,
+    ...shadows.card,
   },
   icon: {
     alignItems: 'center',
-    backgroundColor: '#E8EFE8',
-    borderRadius: radii.pill,
-    height: 44,
+    backgroundColor: colors.midnight,
+    borderRadius: radii.sm,
+    height: 52,
     justifyContent: 'center',
-    marginBottom: spacing[5],
-    width: 44,
+    width: 52,
   },
-  title: { fontFamily: typography.bodyBold, fontSize: 16, lineHeight: 22 },
-  note: { color: colors.mineral, fontSize: 11, lineHeight: 17, marginTop: spacing[1] },
+  title: { fontFamily: typography.display, fontSize: 24, letterSpacing: 0.3, lineHeight: 28, textTransform: 'uppercase' },
+  note: { color: colors.mineral, fontSize: 13, lineHeight: 19, marginTop: spacing[1] },
+  shop: { color: colors.goldInk, fontFamily: typography.bodyBold, fontSize: 12.5, marginTop: 'auto' },
 });

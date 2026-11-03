@@ -53,17 +53,17 @@ export function FormField({
 }
 const styles = StyleSheet.create({
   field: { gap: 7 },
-  label: { fontSize: 12, lineHeight: 18, fontFamily: typography.bodySemibold },
+  label: { fontSize: 13, lineHeight: 18, fontFamily: typography.bodySemibold, color: colors.inkMuted },
   input: {
     backgroundColor: "#FFF",
     borderColor: colors.line,
-    borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 10,
+    borderWidth: 1.5,
     paddingHorizontal: 14,
     paddingVertical: 13,
-    minHeight: 46,
+    minHeight: 50,
     fontFamily: typography.body,
-    fontSize: 14,
+    fontSize: 15,
     color: colors.bone,
   },
 });

@@ -1,23 +1,27 @@
-import { Slot, Link } from 'expo-router';
+import { Slot, Link, usePathname } from 'expo-router';
 import { StyleSheet, View, Pressable } from 'react-native';
 
 import { MobileTabs } from '@/components/navigation/MobileTabs';
 import { WebHeader } from '@/components/navigation/WebHeader';
-import { colors } from '@/theme/tokens';
-import { MessageCircle } from 'lucide-react-native';
+import { colors, shadows, typography } from '@/theme/tokens';
+import { Sparkles } from 'lucide-react-native';
 import { AppText } from '@/components/ui/AppText';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 function CoachButton() {
-  const mobile = useBreakpoint() === 'mobile';
+  const breakpoint = useBreakpoint();
+  const mobile = breakpoint === 'mobile';
+  const path = usePathname();
+  // Phones reach GR Coach from the tab bar; the floating button is for larger screens.
+  if (path === '/advisor' || mobile) return null;
 
   return (
     <Link href="/advisor" accessibilityLabel="Ask GR Coach" asChild>
       <Pressable
-        style={StyleSheet.flatten([styles.coach, mobile && styles.mobileCoach])}
+        style={StyleSheet.flatten([styles.coach, breakpoint === 'tablet' && styles.aboveTabs])}
       >
-        <MessageCircle color="#FFF" size={19} />
-        {!mobile ? <AppText style={styles.coachText}>Ask GR Coach</AppText> : null}
+        <Sparkles color={colors.midnight} size={19} />
+        <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
       </Pressable>
     </Link>
   );
@@ -46,15 +50,20 @@ const styles = StyleSheet.create({
   },
   coach: {
     alignItems: 'center',
-    backgroundColor: colors.violet,
+    backgroundColor: colors.gold,
+    borderColor: colors.midnight,
     borderRadius: 99,
+    borderWidth: 2,
     bottom: 24,
     flexDirection: 'row',
     gap: 8,
-    padding: 14,
+    paddingHorizontal: 18,
+    paddingVertical: 13,
     position: 'absolute',
     right: 18,
+    ...shadows.raised,
   },
-  mobileCoach: { bottom: 84, height: 48, justifyContent: 'center', padding: 0, width: 48 },
-  coachText: { color: '#FFF', fontSize: 11 },
+  // Tablets also show the bottom tab bar.
+  aboveTabs: { bottom: 92 },
+  coachText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 13 },
 });

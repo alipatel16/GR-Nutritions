@@ -138,7 +138,7 @@ export function AdminScreen() {
                 {
                   id: randomUUID(),
                   alt: `${p.name || 'Supplement'} product pack`,
-                  backgroundColor: '#EFF0E9',
+                  backgroundColor: colors.goldSoft,
                   uri: uploaded.uri,
                   storagePath: uploaded.path,
                   sortOrder: p.media.length,

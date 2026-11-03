@@ -78,14 +78,14 @@ const styles = StyleSheet.create({
     gap: spacing[2],
   },
   activeChip: {
-    backgroundColor: colors.bone,
+    backgroundColor: colors.midnight,
     borderRadius: radii.pill,
     minHeight: 36,
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[2],
   },
   activeChipText: {
-    color: colors.obsidian,
+    color: colors.gold,
   },
   searchChip: {
     borderColor: colors.line,

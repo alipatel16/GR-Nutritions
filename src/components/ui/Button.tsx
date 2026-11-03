@@ -8,11 +8,11 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { colors, focus, layout, radii, spacing } from '@/theme/tokens';
+import { colors, focus, radii, spacing } from '@/theme/tokens';
 
 import { AppText } from './AppText';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'inverse';
 
 type ButtonProps = PropsWithChildren<
   Omit<PressableProps, 'children' | 'style'> & {
@@ -32,9 +32,20 @@ const variantStyles: Record<ButtonVariant, ViewStyle> = {
     borderColor: colors.bone,
   },
   ghost: {
-    backgroundColor: colors.transparent,
+    backgroundColor: colors.paper,
     borderColor: colors.line,
   },
+  inverse: {
+    backgroundColor: colors.transparent,
+    borderColor: colors.midnightLine,
+  },
+};
+
+const labelColors: Record<ButtonVariant, string> = {
+  primary: colors.midnight,
+  secondary: colors.onDark,
+  ghost: colors.ink,
+  inverse: colors.onDark,
 };
 
 export function Button({
@@ -74,10 +85,10 @@ export function Button({
       ]}
     >
       {loading ? (
-        <ActivityIndicator color={colors.obsidian} size="small" />
+        <ActivityIndicator color={labelColors[variant]} size="small" />
       ) : null}
       <AppText
-        style={variant === 'ghost' ? styles.ghostLabel : styles.solidLabel}
+        style={[styles.label, { color: labelColors[variant] }]}
         variant="label"
       >
         {children}
@@ -90,29 +101,25 @@ const styles = StyleSheet.create({
   base: {
     alignItems: 'center',
     borderRadius: radii.xs,
-    borderWidth: 1,
+    borderWidth: 1.5,
     flexDirection: 'row',
     gap: spacing[2],
     justifyContent: 'center',
-    minHeight: layout.minimumPressTarget,
-    paddingHorizontal: spacing[5],
+    minHeight: 48,
+    paddingHorizontal: spacing[6],
     paddingVertical: spacing[3],
   },
   pressed: {
-    opacity: 0.82,
+    opacity: 0.88,
     transform: [{ scale: 0.99 }],
   },
   focused: {
     borderColor: focus.color,
-    borderWidth: focus.width,
   },
   disabled: {
     opacity: 0.45,
   },
-  solidLabel: {
-    color: '#FFFFFF',
-  },
-  ghostLabel: {
-    color: colors.bone,
+  label: {
+    letterSpacing: 0.3,
   },
 });

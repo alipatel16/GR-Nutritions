@@ -1,3 +1,4 @@
+import { BadgeCheck, LockKeyhole, Truck } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/features/auth/AuthProvider';
@@ -7,7 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Price } from '@/components/ui/Price';
 import { Surface } from '@/components/ui/Surface';
 import { formatInr } from '@/lib/money';
-import { colors, spacing } from '@/theme/tokens';
+import { colors, radii, spacing, typography } from '@/theme/tokens';
 
 import type { CartTotals } from './types';
 
@@ -19,7 +20,7 @@ export function CartSummary({ totals }: CartSummaryProps) {
   const router = useRouter();
   const { user, ready } = useAuth();
   return (
-    <Surface style={styles.summary} tone="outlined">
+    <Surface style={styles.summary} tone="raised">
       <AppText variant="title">Order summary</AppText>
       <View style={styles.row}>
         <AppText tone="muted">
@@ -51,13 +52,20 @@ export function CartSummary({ totals }: CartSummaryProps) {
           : 'Sign in securely, then choose a delivery address.'}
       </AppText>
       <View style={styles.note}>
-        <AppText tone="accent" variant="caption">
-          LIVE VALIDATION
-        </AppText>
-        <AppText tone="muted" variant="caption">
-          The backend will re-check stock, price, discounts, and tax before any
-          Razorpay order is created.
-        </AppText>
+        {(
+          [
+            [LockKeyhole, 'Secure Razorpay payments or cash on delivery'],
+            [Truck, 'Free delivery on orders above ₹999'],
+            [BadgeCheck, 'Stock and prices re-checked before payment'],
+          ] as const
+        ).map(([Icon, label]) => (
+          <View key={label} style={styles.noteRow}>
+            <Icon color={colors.goldInk} size={16} />
+            <AppText style={styles.noteText} variant="caption">
+              {label}
+            </AppText>
+          </View>
+        ))}
       </View>
     </Surface>
   );
@@ -83,8 +91,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   note: {
-    backgroundColor: colors.obsidianRaised,
-    gap: spacing[2],
+    backgroundColor: colors.obsidian,
+    borderRadius: radii.sm,
+    gap: spacing[3],
     padding: spacing[4],
   },
+  noteRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
+  noteText: { color: colors.inkMuted, flexShrink: 1, fontFamily: typography.bodySemibold },
 });

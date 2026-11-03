@@ -125,7 +125,7 @@ export function ProductEditor({
       {Object.keys(errors).length > 0 && (
         <View
           style={{
-            backgroundColor: "#FFF2EE",
+            backgroundColor: colors.dangerSoft,
             borderRadius: 8,
             padding: 14,
             gap: 8,

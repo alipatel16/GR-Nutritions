@@ -8,13 +8,14 @@ import {
   View,
   type ViewStyle,
 } from 'react-native';
+import { BadgeCheck, LockKeyhole, Sparkles, Truck } from 'lucide-react-native';
 
 import { PageShell } from '@/components/layout/PageShell';
 import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
 import { Price } from '@/components/ui/Price';
 import { useCartStore } from '@/features/cart/cart-store';
-import { colors, radii, spacing, typography } from '@/theme/tokens';
+import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 import type { CatalogRepository } from './catalog-repository';
@@ -161,6 +162,31 @@ export function ProductDetailScreen({
               >
                 {deliveryPending ? 'Delivery coming soon' : 'Add to cart'}
               </Button>
+              <View style={styles.assurances}>
+                {(
+                  [
+                    [BadgeCheck, 'Authentic product'],
+                    [Truck, 'Free delivery above ₹999'],
+                    [LockKeyhole, 'Secure checkout'],
+                  ] as const
+                ).map(([Icon, label]) => (
+                  <View key={label} style={styles.assurance}>
+                    <Icon color={colors.goldInk} size={15} />
+                    <AppText style={styles.assuranceText} variant="caption">
+                      {label}
+                    </AppText>
+                  </View>
+                ))}
+              </View>
+              <Link
+                href={{ pathname: '/advisor', params: { product: product.slug } }}
+                style={styles.coachLink}
+              >
+                <Sparkles color={colors.gold} size={16} />
+                <AppText style={styles.coachLinkText}>
+                  Not sure? Ask GR Coach about this product
+                </AppText>
+              </Link>
               {added ? (
                 <AppText
                   accessibilityLiveRegion="polite"
@@ -231,7 +257,7 @@ export function ProductDetailRouteContent({
   if (lookup.slug !== slug) {
     return (
       <View accessibilityLabel="Loading product" style={styles.routeLoading}>
-        <ActivityIndicator color={colors.lime} />
+        <ActivityIndicator color={colors.gold} size="large" />
       </View>
     );
   }
@@ -292,7 +318,7 @@ const styles = StyleSheet.create({
     gap: spacing[2],
   },
   crumbLink: {
-    color: colors.lime,
+    color: colors.goldInk,
     fontFamily: typography.bodySemibold,
     minHeight: 44,
     paddingVertical: spacing[3],
@@ -305,18 +331,24 @@ const styles = StyleSheet.create({
   },
   stackedLayout: { flexDirection: 'column', gap: spacing[8] },
   purchase: {
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.lg,
+    borderWidth: 1,
     flexGrow: 0.9,
     flexShrink: 1,
     flexBasis: 0,
     gap: spacing[4],
     minWidth: 0,
-    paddingTop: spacing[2],
+    padding: spacing[8],
+    ...shadows.card,
   },
   mobilePurchase: {
     flexGrow: 0,
     flexShrink: 0,
     flexBasis: 'auto',
     minWidth: 0,
+    padding: spacing[5],
     width: '100%',
   },
   metaRow: {
@@ -326,7 +358,7 @@ const styles = StyleSheet.create({
     gap: spacing[3],
     justifyContent: 'space-between',
   },
-  brand: { color: colors.violet, flexShrink: 1 },
+  brand: { color: colors.goldInk, flexShrink: 1, letterSpacing: 1.4, textTransform: 'uppercase' },
   sampleBadge: {
     borderColor: colors.line,
     borderRadius: radii.pill,
@@ -335,12 +367,12 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[1],
   },
   productTitle: {
-    color: colors.violet,
-    fontSize: 52,
-    lineHeight: 56,
-    letterSpacing: -1,
+    color: colors.midnight,
+    fontSize: 50,
+    lineHeight: 52,
+    letterSpacing: -0.5,
   },
-  mobileTitle: { fontSize: 42, lineHeight: 46 },
+  mobileTitle: { fontSize: 38, lineHeight: 41 },
   priceBlock: {
     gap: spacing[3],
     borderBottomColor: colors.line,
@@ -356,14 +388,36 @@ const styles = StyleSheet.create({
     backgroundColor: colors.success,
   },
   soldOutDot: { backgroundColor: colors.danger },
-  addButton: { minHeight: 54, borderRadius: radii.sm },
+  addButton: { minHeight: 56, borderRadius: radii.sm },
+  assurances: {
+    backgroundColor: colors.obsidian,
+    borderRadius: radii.sm,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing[4],
+    padding: spacing[3],
+  },
+  assurance: { alignItems: 'center', flexDirection: 'row', gap: 6 },
+  assuranceText: { color: colors.inkMuted, fontFamily: typography.bodySemibold },
+  coachLink: {
+    alignItems: 'center',
+    backgroundColor: colors.midnight,
+    borderRadius: radii.sm,
+    flexDirection: 'row',
+    gap: spacing[2],
+    minHeight: 48,
+    paddingHorizontal: spacing[4],
+    textDecorationLine: 'none',
+  },
+  coachLinkText: { color: colors.onDark, flexShrink: 1, fontFamily: typography.bodySemibold, fontSize: 13.5 },
   tags: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing[2],
   },
   tag: {
-    borderColor: colors.line,
+    backgroundColor: colors.goldSoft,
+    borderColor: colors.goldSoft,
     borderRadius: radii.pill,
     borderWidth: 1,
     paddingHorizontal: spacing[3],
@@ -384,9 +438,9 @@ const styles = StyleSheet.create({
   },
   backLink: {
     alignSelf: 'flex-start',
-    backgroundColor: colors.lime,
+    backgroundColor: colors.gold,
     borderRadius: radii.xs,
-    color: colors.obsidian,
+    color: colors.midnight,
     fontFamily: typography.bodyBold,
     minHeight: 44,
     paddingHorizontal: spacing[5],

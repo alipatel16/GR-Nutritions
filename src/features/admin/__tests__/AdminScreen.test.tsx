@@ -7,6 +7,7 @@ import {
 import { useAuth } from "@/features/auth/AuthProvider";
 import { adminRepository } from "../admin-repository";
 import { AdminScreen } from "../AdminScreen";
+import { colors } from "@/theme/tokens";
 import { makeProduct } from "../../../../test/factories/product";
 import * as ImagePicker from 'expo-image-picker';
 jest.mock("../admin-repository", () => ({
@@ -37,7 +38,7 @@ it("allows a signed-in admin to save and displays success with a success color",
   await fireEvent.press(await screen.findByText(product.name));
   await fireEvent.press(screen.getByRole("button", { name: "Save product" }));
   const success = await screen.findByText("Product saved.");
-  expect(success).toHaveStyle({ color: "#2B7046" });
+  expect(success).toHaveStyle({ color: colors.success });
 });
 it("does not reveal raw backend errors from product save", async () => {
   jest

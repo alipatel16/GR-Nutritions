@@ -79,8 +79,9 @@ const styles = StyleSheet.create({
   },
   option: {
     borderColor: colors.line,
+    backgroundColor: colors.paper,
     borderRadius: radii.sm,
-    borderWidth: 1,
+    borderWidth: 1.5,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing[3],
@@ -89,8 +90,8 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[3],
   },
   optionSelected: {
-    backgroundColor: colors.graphite,
-    borderColor: colors.violet,
+    backgroundColor: colors.goldSoft,
+    borderColor: colors.gold,
   },
   optionTextSelected: {
     color: colors.violet,
@@ -105,8 +106,9 @@ const styles = StyleSheet.create({
     borderRadius: radii.pill,
   },
   indicatorSelected: {
-    backgroundColor: colors.violet,
-    borderColor: colors.violet,
+    backgroundColor: colors.midnight,
+    borderColor: colors.gold,
+    borderWidth: 2,
   },
   copy: { flex: 1, gap: spacing[1], minWidth: 0 },
 });

@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'expo-router';
-import { Headphones, Leaf, ShieldCheck, Truck } from 'lucide-react-native';
 import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
 
+import { TrustBar } from '@/components/commerce/TrustBar';
 import { PageShell } from '@/components/layout/PageShell';
 import { StoreFooter } from '@/components/layout/StoreFooter';
 import { Reveal } from '@/components/motion/Reveal';
 import { AppText } from '@/components/ui/AppText';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 import { BrandGrid } from '@/features/catalog/BrandGrid';
 import type { CatalogRepository } from '@/features/catalog/catalog-repository';
 import type { Product } from '@/features/catalog/types';
@@ -18,13 +19,6 @@ import { CategoryRail } from './CategoryRail';
 import { GoalRail } from './GoalRail';
 import { HeroCarousel } from './HeroCarousel';
 import { ProductRail } from './ProductRail';
-
-const trustItems = [
-  { Icon: ShieldCheck, title: 'Shop with confidence', body: 'Clear product and sourcing information' },
-  { Icon: Truck, title: 'Delivery across India', body: 'Address-aware delivery at checkout' },
-  { Icon: Leaf, title: 'Every routine covered', body: 'Performance through daily wellness' },
-  { Icon: Headphones, title: 'Help when you need it', body: 'Guided discovery with GR Coach' },
-] as const;
 
 function uniqueById(products: readonly Product[]): Product[] {
   return [...new Map(products.map((product) => [product.id, product])).values()];
@@ -82,15 +76,7 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
 
       <PageShell>
         <View style={[styles.trust, mobile && styles.mobileTrust]}>
-          {trustItems.map(({ Icon, title, body }) => (
-            <View key={title} style={[styles.trustItem, mobile && styles.mobileTrustItem]}>
-              <View style={styles.trustIcon}><Icon color={colors.violet} size={21} /></View>
-              <View style={styles.trustCopy}>
-                <AppText style={styles.trustTitle}>{title}</AppText>
-                <AppText style={styles.trustBody}>{body}</AppText>
-              </View>
-            </View>
-          ))}
+          <TrustBar />
         </View>
 
         <View style={styles.contentStack}>
@@ -122,15 +108,13 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
 
               <Reveal delay={100}>
                 <View style={styles.brandSection}>
-                  <View style={styles.sectionHeading}>
-                    <View>
-                      <AppText style={styles.kicker}>TRUSTED NAMES, ONE SHELF</AppText>
-                      <AppText variant="heading">SHOP BY BRAND</AppText>
-                    </View>
-                    <Link accessibilityLabel="Browse all brands" href="/brands" style={styles.viewAll}>
-                      Browse all brands →
-                    </Link>
-                  </View>
+                  <SectionHeader
+                    eyebrow="TRUSTED NAMES, ONE SHELF"
+                    href="/brands"
+                    linkAccessibilityLabel="Browse all brands"
+                    linkLabel="Browse all brands"
+                    title="SHOP BY BRAND"
+                  />
                   <BrandGrid brands={brands} />
                 </View>
               </Reveal>
@@ -174,30 +158,10 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
 
 const styles = StyleSheet.create({
   page: { backgroundColor: colors.obsidian, flex: 1 },
-  pageContent: { paddingBottom: 64 },
-  trust: {
-    backgroundColor: colors.obsidianRaised,
-    borderBottomColor: colors.line,
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    gap: spacing[5],
-    paddingVertical: spacing[6],
-  },
-  mobileTrust: { flexWrap: 'wrap', gap: spacing[4] },
-  trustItem: { alignItems: 'center', flex: 1, flexDirection: 'row', gap: spacing[3], minWidth: 0 },
-  mobileTrustItem: { flexBasis: '46%', minWidth: 145 },
-  trustIcon: {
-    alignItems: 'center',
-    backgroundColor: '#E8EFE8',
-    borderRadius: radii.pill,
-    height: 42,
-    justifyContent: 'center',
-    width: 42,
-  },
-  trustCopy: { flex: 1, minWidth: 0 },
-  trustTitle: { fontFamily: typography.bodyBold, fontSize: 11, lineHeight: 16 },
-  trustBody: { color: colors.mineral, fontSize: 9, lineHeight: 14 },
-  contentStack: { gap: 64, paddingTop: 48 },
+  pageContent: { paddingBottom: 0 },
+  trust: { marginTop: -36, zIndex: 2 },
+  mobileTrust: { marginTop: spacing[5] },
+  contentStack: { gap: 80, paddingTop: 64 },
   stateCard: {
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
@@ -206,28 +170,6 @@ const styles = StyleSheet.create({
     gap: spacing[3],
     padding: spacing[6],
   },
-  stateLink: { color: colors.violet, fontFamily: typography.bodyBold, textDecorationLine: 'none' },
-  brandSection: { gap: spacing[5] },
-  sectionHeading: {
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing[4],
-    justifyContent: 'space-between',
-  },
-  kicker: {
-    color: colors.mineral,
-    fontFamily: typography.bodyBold,
-    fontSize: 10,
-    letterSpacing: 1.6,
-    lineHeight: 17,
-    marginBottom: spacing[1],
-  },
-  viewAll: {
-    color: colors.violet,
-    fontFamily: typography.bodyBold,
-    minHeight: 44,
-    paddingVertical: spacing[3],
-    textDecorationLine: 'none',
-  },
+  stateLink: { color: colors.goldInk, fontFamily: typography.bodyBold, textDecorationLine: 'none' },
+  brandSection: { gap: spacing[6] },
 });

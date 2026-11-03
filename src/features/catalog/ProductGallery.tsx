@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
-import { colors, layout, radii, spacing } from '@/theme/tokens';
+import { colors, layout, radii, spacing, shadows } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 import type { ProductMedia } from './types';
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     overflow: 'hidden',
     width: '100%',
+    ...shadows.card,
   },
   photo: { height: '86%', width: '86%' },
   placeholder: {
@@ -216,7 +217,7 @@ const styles = StyleSheet.create({
     width: 56,
   },
   selectedThumbnail: {
-    borderColor: colors.violet,
+    borderColor: colors.gold,
     borderWidth: 2,
     backgroundColor: colors.graphite,
   },

@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { Link } from 'expo-router';
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { ShoppingBag } from 'lucide-react-native';
 
+import { PageHero } from '@/components/layout/PageHero';
 import { PageShell } from '@/components/layout/PageShell';
 import { AppText } from '@/components/ui/AppText';
 import { colors, radii, spacing, typography } from '@/theme/tokens';
@@ -24,18 +26,16 @@ export function CartScreen() {
       contentContainerStyle={styles.scrollContent}
       style={styles.page}
     >
+      <PageHero
+        description="Review your selections. Delivery, COD fee and the final total are confirmed at checkout."
+        eyebrow="YOUR CURRENT STACK"
+        title="Cart"
+      />
       <PageShell style={styles.shell}>
-        <View style={styles.heading}>
-          <AppText tone="accent" variant="label">
-            YOUR CURRENT STACK
-          </AppText>
-          <AppText accessibilityRole="header" variant="display">
-            Cart
-          </AppText>
-        </View>
 
         {cart.lines.length === 0 ? (
           <View style={styles.empty}>
+            <ShoppingBag color={colors.goldInk} size={40} />
             <AppText variant="heading">
               Your cart is ready for a fresh start
             </AppText>
@@ -98,14 +98,13 @@ const styles = StyleSheet.create({
   shell: {
     gap: spacing[8],
     paddingBottom: spacing[24],
-    paddingTop: spacing[10],
-  },
-  heading: {
-    gap: spacing[2],
+    paddingTop: spacing[8],
   },
   empty: {
+    alignItems: 'flex-start',
+    backgroundColor: colors.paper,
     borderColor: colors.line,
-    borderRadius: radii.sm,
+    borderRadius: radii.lg,
     borderWidth: 1,
     gap: spacing[5],
     justifyContent: 'center',
@@ -114,9 +113,9 @@ const styles = StyleSheet.create({
   },
   shopLink: {
     alignSelf: 'flex-start',
-    backgroundColor: colors.lime,
+    backgroundColor: colors.gold,
     borderRadius: radii.xs,
-    color: colors.obsidian,
+    color: colors.midnight,
     fontFamily: typography.bodyBold,
     minHeight: 44,
     paddingHorizontal: spacing[5],

@@ -10,12 +10,12 @@ import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { AppText } from '@/components/ui/AppText';
 import { useCartStore } from '@/features/cart/cart-store';
 import { cartTotals } from '@/features/cart/cart-domain';
-import { colors } from '@/theme/tokens';
+import { colors, typography } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 const tabs = [
   { href: '/', label: 'Home', Icon: Home },
   { href: '/shop', label: 'Shop', Icon: Grid2X2 },
-  { href: '/advisor', label: 'Coach', Icon: Sparkles },
+  { href: '/advisor', label: 'GR Coach', Icon: Sparkles },
   { href: '/cart', label: 'Cart', Icon: ShoppingBag },
   { href: '/account', label: 'Account', Icon: UserRound },
 ];
@@ -46,7 +46,7 @@ export function MobileTabs() {
             >
               <Icon
                 size={21}
-                color={path === href ? colors.violet : colors.mineral}
+                color={path === href ? colors.gold : colors.onDarkMuted}
               />
               {label === 'Cart' && count > 0 ? (
                 <View testID="mobile-cart-badge" style={styles.badge}>
@@ -55,7 +55,7 @@ export function MobileTabs() {
               ) : null}
             </View>
             <AppText
-              style={[styles.label, path === href && { color: colors.violet }]}
+              style={[styles.label, path === href && styles.activeLabel]}
             >
               {label}
             </AppText>
@@ -67,8 +67,8 @@ export function MobileTabs() {
 }
 const styles = StyleSheet.create({
   tabs: {
-    backgroundColor: '#FFF',
-    borderTopColor: colors.line,
+    backgroundColor: colors.midnight,
+    borderTopColor: colors.midnightLine,
     borderTopWidth: 1,
     flexDirection: 'row',
     paddingTop: 9,
@@ -81,12 +81,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 4,
   },
-  label: { fontSize: 10, lineHeight: 15, color: colors.mineral },
+  label: { fontSize: 10.5, lineHeight: 15, color: colors.onDarkMuted, fontFamily: typography.bodySemibold },
+  activeLabel: { color: colors.gold },
   cartIconWrap: { position: 'relative' },
   badge: {
     alignItems: 'center',
-    backgroundColor: colors.lime,
-    borderColor: '#FFF',
+    backgroundColor: colors.gold,
+    borderColor: colors.midnight,
     borderRadius: 99,
     borderWidth: 1.5,
     height: 16,
@@ -96,5 +97,5 @@ const styles = StyleSheet.create({
     right: -9,
     top: -7,
   },
-  badgeText: { color: '#FFF', fontSize: 8, lineHeight: 11 },
+  badgeText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 8.5, lineHeight: 11 },
 });

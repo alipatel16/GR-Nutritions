@@ -1,27 +1,27 @@
 import { Image } from 'expo-image';
 import { Link, type Href } from 'expo-router';
-import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react-native';
+import { ArrowRight, BadgeCheck, LockKeyhole, Sparkles, Truck } from 'lucide-react-native';
 import { Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
 
 import { Carousel } from '@/components/commerce/Carousel';
 import { PageShell } from '@/components/layout/PageShell';
 import { AppText } from '@/components/ui/AppText';
-import { colors, spacing, typography } from '@/theme/tokens';
+import { colors, radii, spacing, typography } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 const campaigns = [
   {
-    eyebrow: 'BUILT AROUND YOUR NEXT LEVEL',
+    eyebrow: 'INDIA’S TRUSTED SUPPLEMENT STORE',
     title: 'GOOD FUEL. GREAT POTENTIAL.',
-    body: 'From your first scoop to your next personal best. Discover nutrition that fits your goal, routine, and life.',
-    primaryLabel: 'Find your fuel',
+    body: 'Genuine protein, creatine, pre-workout and daily wellness from the brands serious athletes rely on. Not sure where to start? GR Coach AI will help you choose.',
+    primaryLabel: 'Shop bestsellers',
     primaryAccessibilityLabel: 'Shop all supplements',
     primaryHref: '/shop',
-    secondaryLabel: 'Help me choose',
+    secondaryLabel: 'Ask GR Coach AI',
     secondaryAccessibilityLabel: 'Find my stack',
     secondaryHref: '/advisor',
-    accent: '#FF806A',
-    shade: '#07110966',
+    accent: colors.onDark,
+    shade: '#0A102033',
   },
   {
     eyebrow: 'SIMPLE CHOICES. SMARTER ROUTINES.',
@@ -33,8 +33,8 @@ const campaigns = [
     secondaryLabel: 'Shop by goal',
     secondaryAccessibilityLabel: 'Explore products by goal',
     secondaryHref: '/shop?goal=muscle-gain',
-    accent: '#E9F2D8',
-    shade: '#173526A8',
+    accent: colors.onDark,
+    shade: '#0A102033',
   },
   {
     eyebrow: 'TRAIN. RESET. GO AGAIN.',
@@ -46,10 +46,12 @@ const campaigns = [
     secondaryLabel: 'View wellness',
     secondaryAccessibilityLabel: 'Shop wellness products',
     secondaryHref: '/shop?category=wellness',
-    accent: '#FFD7B5',
-    shade: '#17241DB8',
+    accent: colors.onDark,
+    shade: '#0A102033',
   },
 ] as const;
+
+const scrimSteps = [0.86, 0.82, 0.76, 0.68, 0.56, 0.4, 0.22, 0.08, 0, 0];
 
 export function HeroCarousel() {
   const { width } = useWindowDimensions();
@@ -72,13 +74,23 @@ export function HeroCarousel() {
               style={StyleSheet.absoluteFill}
             />
             <View style={[StyleSheet.absoluteFill, { backgroundColor: campaign.shade }]} />
+            {/* Stepped left-to-right scrim keeps copy legible while the pack shot stays visible. */}
+            <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.scrim]}>
+              {scrimSteps.map((opacity, step) => (
+                <View key={step} style={[styles.scrimStep, { opacity: mobile ? Math.max(opacity, 0.55) : opacity }]} />
+              ))}
+            </View>
+            <View style={styles.goldEdge} />
             <PageShell style={styles.heroShell}>
               <View style={[styles.layout, mobile && styles.mobileLayout]}>
                 <View
                   style={[styles.copy, mobile && styles.mobileColumn]}
                   testID={index === 0 ? 'home-hero-copy' : undefined}
                 >
-                  <AppText style={styles.eyebrow}>{campaign.eyebrow}</AppText>
+                  <View style={styles.eyebrowPill}>
+                    <BadgeCheck color={colors.gold} size={14} />
+                    <AppText style={styles.eyebrow}>{campaign.eyebrow}</AppText>
+                  </View>
                   <AppText
                     accessibilityRole="header"
                     style={[
@@ -97,8 +109,8 @@ export function HeroCarousel() {
                       href={campaign.primaryHref as Href}
                     >
                       <Pressable style={styles.primaryButton}>
-                        <AppText style={styles.buttonText}>{campaign.primaryLabel}</AppText>
-                        <ArrowRight color="#FFF" size={17} />
+                        <AppText style={styles.primaryText}>{campaign.primaryLabel}</AppText>
+                        <ArrowRight color={colors.midnight} size={17} />
                       </Pressable>
                     </Link>
                     <Link
@@ -107,16 +119,22 @@ export function HeroCarousel() {
                       href={campaign.secondaryHref as Href}
                     >
                       <Pressable style={styles.secondaryButton}>
-                        <Sparkles color="#FFF" size={16} />
+                        <Sparkles color={colors.gold} size={16} />
                         <AppText style={styles.buttonText}>{campaign.secondaryLabel}</AppText>
                       </Pressable>
                     </Link>
                   </View>
-                  <View style={styles.note}>
-                    <ShieldCheck color="#D8E2D5" size={15} />
-                    <AppText style={styles.noteText}>
-                      Clear product information for confident choices.
-                    </AppText>
+                  <View style={styles.notes}>
+                    {([
+                      [BadgeCheck, 'Authentic products'],
+                      [Truck, 'Free delivery over ₹999'],
+                      [LockKeyhole, 'Secure checkout'],
+                    ] as const).map(([Icon, label]) => (
+                      <View key={label} style={styles.note}>
+                        <Icon color={colors.gold} size={15} />
+                        <AppText style={styles.noteText}>{label}</AppText>
+                      </View>
+                    ))}
                   </View>
                 </View>
                 <View
@@ -133,52 +151,70 @@ export function HeroCarousel() {
 }
 
 const styles = StyleSheet.create({
-  frame: { backgroundColor: '#111A16', overflow: 'hidden' },
-  slide: { justifyContent: 'center', minHeight: 520, overflow: 'hidden' },
-  mobileSlide: { minHeight: 570 },
-  heroShell: { paddingVertical: spacing[10] },
+  frame: { backgroundColor: colors.midnight, overflow: 'hidden', paddingBottom: 64 },
+  slide: { justifyContent: 'center', minHeight: 560, overflow: 'hidden' },
+  mobileSlide: { minHeight: 600 },
+  scrim: { flexDirection: 'row' },
+  scrimStep: { backgroundColor: colors.midnight, flex: 1 },
+  goldEdge: { backgroundColor: colors.gold, bottom: 0, height: 3, left: 0, position: 'absolute', right: 0 },
+  heroShell: { paddingVertical: spacing[12] },
   layout: { flexDirection: 'row', width: '100%' },
   mobileLayout: { flexWrap: 'wrap' },
-  copy: { gap: spacing[4], maxWidth: 660, minWidth: 0, width: '58%' },
+  copy: { gap: spacing[5], maxWidth: 680, minWidth: 0, width: '58%' },
   visual: { minWidth: 0, width: '42%' },
   mobileColumn: { flexBasis: '100%', minWidth: 0, width: '100%' },
-  eyebrow: {
-    color: '#E5EDE2',
-    fontFamily: typography.bodyBold,
-    fontSize: 11,
-    letterSpacing: 2,
-    lineHeight: 17,
-  },
-  title: {
-    fontFamily: typography.displayHeavy,
-    fontSize: 88,
-    letterSpacing: -1.8,
-    lineHeight: 80,
-    maxWidth: 650,
-  },
-  mobileTitle: { fontSize: 58, letterSpacing: -1, lineHeight: 54 },
-  body: { color: '#E0E7DE', fontSize: 15, lineHeight: 24, maxWidth: 470 },
-  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[3] },
-  primaryButton: {
+  eyebrowPill: {
     alignItems: 'center',
-    backgroundColor: colors.lime,
-    borderRadius: 6,
-    flexDirection: 'row',
-    gap: spacing[3],
-    minHeight: 48,
-    paddingHorizontal: spacing[5],
-  },
-  secondaryButton: {
-    alignItems: 'center',
-    borderColor: '#A9B5A7',
-    borderRadius: 6,
+    alignSelf: 'flex-start',
+    backgroundColor: '#0A102099',
+    borderColor: '#D4A53766',
+    borderRadius: radii.pill,
     borderWidth: 1,
     flexDirection: 'row',
     gap: spacing[2],
-    minHeight: 48,
-    paddingHorizontal: spacing[5],
+    paddingHorizontal: spacing[3],
+    paddingVertical: 6,
   },
-  buttonText: { color: '#FFF', fontFamily: typography.bodyBold, fontSize: 13 },
+  eyebrow: {
+    color: colors.gold,
+    fontFamily: typography.bodyBold,
+    fontSize: 11,
+    letterSpacing: 1.8,
+    lineHeight: 16,
+  },
+  title: {
+    fontFamily: typography.displayHeavy,
+    fontSize: 96,
+    letterSpacing: -1,
+    lineHeight: 88,
+    maxWidth: 660,
+  },
+  mobileTitle: { fontSize: 60, letterSpacing: -0.5, lineHeight: 56 },
+  body: { color: '#D5DCE8', fontSize: 16, lineHeight: 26, maxWidth: 500 },
+  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[3], marginTop: spacing[1] },
+  primaryButton: {
+    alignItems: 'center',
+    backgroundColor: colors.gold,
+    borderRadius: radii.xs,
+    flexDirection: 'row',
+    gap: spacing[3],
+    minHeight: 52,
+    paddingHorizontal: spacing[6],
+  },
+  secondaryButton: {
+    alignItems: 'center',
+    backgroundColor: '#0A102080',
+    borderColor: '#F8FAFC55',
+    borderRadius: radii.xs,
+    borderWidth: 1.5,
+    flexDirection: 'row',
+    gap: spacing[2],
+    minHeight: 52,
+    paddingHorizontal: spacing[6],
+  },
+  primaryText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 14, letterSpacing: 0.3 },
+  buttonText: { color: colors.onDark, fontFamily: typography.bodyBold, fontSize: 14, letterSpacing: 0.3 },
+  notes: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[5], marginTop: spacing[2] },
   note: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
-  noteText: { color: '#D8E2D5', fontSize: 11, lineHeight: 17 },
+  noteText: { color: colors.onDark, fontFamily: typography.bodySemibold, fontSize: 12.5, lineHeight: 18 },
 });

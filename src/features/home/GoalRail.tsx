@@ -3,6 +3,7 @@ import { Activity, Dumbbell, HeartPulse, Leaf, Scale, Zap } from 'lucide-react-n
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 import { colors, radii, spacing, typography } from '@/theme/tokens';
 
 const goals = [
@@ -17,13 +18,12 @@ const goals = [
 export function GoalRail() {
   return (
     <View style={styles.section}>
-      <View style={styles.headingRow}>
-        <View>
-          <AppText style={styles.kicker}>YOUR ROUTINE. YOUR RULES.</AppText>
-          <AppText variant="heading">SHOP BY GOAL</AppText>
-        </View>
-        <AppText style={styles.helper}>Six clear paths into the shelf</AppText>
-      </View>
+      <SectionHeader
+        description="Six clear paths into the shelf, built around what you are training for."
+        eyebrow="YOUR ROUTINE. YOUR RULES."
+        title="SHOP BY GOAL"
+        tone="dark"
+      />
       <ScrollView contentContainerStyle={styles.rail} horizontal showsHorizontalScrollIndicator={false}>
         {goals.map(({ label, detail, goal, Icon }, index) => (
           <Link
@@ -34,7 +34,7 @@ export function GoalRail() {
           >
             <Pressable style={styles.card}>
               <View style={styles.topRow}>
-                <View style={styles.icon}><Icon color={colors.violet} size={25} /></View>
+                <View style={styles.icon}><Icon color={colors.gold} size={24} /></View>
                 <AppText style={styles.index}>0{index + 1}</AppText>
               </View>
               <AppText style={styles.title}>{label}</AppText>
@@ -48,43 +48,40 @@ export function GoalRail() {
 }
 
 const styles = StyleSheet.create({
-  section: { gap: spacing[5] },
-  headingRow: {
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing[4],
-    justifyContent: 'space-between',
+  section: {
+    backgroundColor: colors.midnight,
+    borderRadius: radii.lg,
+    gap: spacing[6],
+    overflow: 'hidden',
+    padding: spacing[8],
   },
-  kicker: {
-    color: colors.mineral,
-    fontFamily: typography.bodyBold,
-    fontSize: 10,
-    letterSpacing: 1.6,
-    lineHeight: 17,
-    marginBottom: spacing[1],
-  },
-  helper: { color: colors.mineral, fontSize: 12, lineHeight: 18 },
   rail: { gap: spacing[3], paddingBottom: spacing[1] },
   card: {
-    backgroundColor: '#F0F3EB',
-    borderColor: colors.line,
+    backgroundColor: colors.midnightRaised,
+    borderColor: colors.midnightLine,
     borderRadius: radii.md,
     borderWidth: 1,
-    minHeight: 176,
+    minHeight: 184,
     padding: spacing[5],
     width: 216,
   },
   topRow: { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' },
   icon: {
     alignItems: 'center',
-    backgroundColor: '#FFF',
-    borderRadius: radii.pill,
-    height: 46,
+    backgroundColor: '#1B2540',
+    borderRadius: radii.sm,
+    height: 48,
     justifyContent: 'center',
-    width: 46,
+    width: 48,
   },
-  index: { color: '#9AA398', fontFamily: typography.display, fontSize: 20 },
-  title: { fontFamily: typography.bodyBold, fontSize: 16, lineHeight: 22, marginTop: spacing[6] },
-  detail: { color: colors.mineral, fontSize: 11, lineHeight: 17, marginTop: spacing[1] },
+  index: { color: colors.gold, fontFamily: typography.displayHeavy, fontSize: 26 },
+  title: {
+    color: colors.onDark,
+    fontFamily: typography.display,
+    fontSize: 24,
+    lineHeight: 28,
+    marginTop: spacing[6],
+    textTransform: 'uppercase',
+  },
+  detail: { color: colors.onDarkMuted, fontSize: 13, lineHeight: 19, marginTop: spacing[1] },
 });

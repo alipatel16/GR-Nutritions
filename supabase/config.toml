@@ -10,3 +10,7 @@ verify_jwt = false
 
 [functions.razorpay-webhook-live]
 verify_jwt = false
+
+[functions.coach]
+# Guests can chat; optional Firebase tokens are verified inside the function.
+verify_jwt = false

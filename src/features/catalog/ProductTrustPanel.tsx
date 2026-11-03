@@ -2,7 +2,7 @@ import { ClipboardList, PackageCheck, ShoppingBag } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
-import { colors, spacing } from '@/theme/tokens';
+import { colors, radii, spacing } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 const shoppingNotes = [
@@ -33,7 +33,9 @@ export function ProductTrustPanel() {
           testID={`product-shopping-note-${index}`}
           style={[styles.item, breakpoint === 'mobile' && styles.mobileItem]}
         >
-          <Icon color={colors.violet} size={22} strokeWidth={1.5} />
+          <View style={styles.icon}>
+            <Icon color={colors.gold} size={20} strokeWidth={1.8} />
+          </View>
           <View style={styles.copy}>
             <AppText variant="label">{title}</AppText>
             <AppText tone="muted" variant="caption">
@@ -48,13 +50,21 @@ export function ProductTrustPanel() {
 
 const styles = StyleSheet.create({
   panel: {
-    borderBottomColor: colors.line,
-    borderBottomWidth: 1,
-    borderTopColor: colors.line,
-    borderTopWidth: 1,
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.md,
+    borderWidth: 1,
     flexDirection: 'row',
     gap: spacing[6],
-    paddingVertical: spacing[6],
+    padding: spacing[6],
+  },
+  icon: {
+    alignItems: 'center',
+    backgroundColor: colors.midnight,
+    borderRadius: radii.sm,
+    height: 42,
+    justifyContent: 'center',
+    width: 42,
   },
   stacked: { flexDirection: 'column', gap: spacing[5] },
   item: {

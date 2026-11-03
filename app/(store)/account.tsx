@@ -22,7 +22,7 @@ import {
   authFieldErrors,
   type FieldErrors,
 } from "@/lib/form-errors";
-import { colors } from "@/theme/tokens";
+import { colors, shadows, typography } from "@/theme/tokens";
 
 export default function AccountRoute() {
   const { user, ready, isAdmin, logout } = useAuth();
@@ -118,7 +118,7 @@ export default function AccountRoute() {
         ) : (
           <View style={styles.authLayout}>
             <View style={styles.intro}>
-              <ShieldCheck size={42} color={colors.violet} />
+              <View style={styles.shield}><ShieldCheck size={30} color={colors.gold} /></View>
               <AppText tone="accent" variant="caption">
                 YOUR ROUTINE, ALL TOGETHER
               </AppText>
@@ -130,7 +130,7 @@ export default function AccountRoute() {
                 nutrition routine moving.
               </AppText>
               <View style={styles.promise}>
-                <Mail size={21} color={colors.violet} />
+                <Mail size={21} color={colors.goldInk} />
                 <AppText variant="caption">
                   Browse freely. Sign in securely when you’re ready to order.
                 </AppText>
@@ -268,24 +268,45 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   intro: { flex: 1, minWidth: 260, gap: 22, paddingTop: 25, maxWidth: 560 },
+  shield: {
+    alignItems: "center",
+    backgroundColor: colors.midnight,
+    borderRadius: 16,
+    height: 64,
+    justifyContent: "center",
+    width: 64,
+  },
   card: {
     flex: 1,
     minWidth: 260,
     maxWidth: 480,
-    backgroundColor: "#FFF",
+    backgroundColor: colors.paper,
     borderColor: colors.line,
+    borderTopColor: colors.gold,
+    borderTopWidth: 4,
     borderWidth: 1,
-    borderRadius: 14,
-    padding: 26,
+    borderRadius: 18,
+    padding: 28,
     gap: 16,
+    ...shadows.raised,
   },
   promise: {
-    backgroundColor: "#E9EDDE",
+    backgroundColor: colors.goldSoft,
     padding: 18,
     borderRadius: 9,
     flexDirection: "row",
     gap: 12,
     alignItems: "center",
   },
-  link: { color: colors.violet, paddingVertical: 12, fontSize: 15 },
+  link: {
+    alignSelf: "flex-start",
+    backgroundColor: colors.midnight,
+    borderRadius: 10,
+    color: colors.gold,
+    fontFamily: typography.bodyBold,
+    fontSize: 15,
+    paddingHorizontal: 18,
+    paddingVertical: 13,
+    textDecorationLine: "none",
+  },
 });

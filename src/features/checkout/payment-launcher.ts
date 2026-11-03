@@ -19,7 +19,7 @@ export async function launchPayment(session: PaymentSession, customer: { name: s
   try {
     const result = await checkout.open({ key: session.keyId, order_id: session.razorpayOrderId, amount: session.amountPaise,
       currency: session.currency, name: 'GR Nutritions', description: 'Nutrition and wellness order',
-      prefill: { name: customer.name, email: customer.email ?? '', contact: customer.phone }, theme: { color: '#214A33' },
+      prefill: { name: customer.name, email: customer.email ?? '', contact: customer.phone }, theme: { color: '#0A1020' },
     });
     if (result.razorpay_order_id !== session.razorpayOrderId) throw new Error('Payment session mismatch');
     return result;

@@ -1,0 +1,2 @@
+product_key,name,category,goals,diet,summary,description,usage,warnings,nutrition,flavour,size,mrp,price,stock,default,status,sku,weight_g,ship_weight_g,ship_length_cm,ship_width_cm,ship_height_cm
+example-biozyme-whey,Biozyme Performance Whey,protein,muscle-gain; recovery,vegetarian,25 g protein and 5.5 g BCAA per serving.,Paste the product description here.,Mix 1 scoop (33 g) in 200 ml water or milk.,Contains milk.; Not for children.,Protein=25 g; BCAA=5.5 g; EAA=11.9 g,Rich Chocolate,1 kg,3299,2499,100,yes,active,,,,,,

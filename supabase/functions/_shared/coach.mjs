@@ -125,6 +125,8 @@ export function createCoachHandler({ db, allowedOrigins, createMessage, verify =
       return respond({ data: reply });
     } catch (error) {
       if (error instanceof z.ZodError || error instanceof SyntaxError) return respond({ error: 'Please check your message and try again.' }, 400);
+      // Server log only: error class, HTTP status and message (provider errors never echo the key).
+      console.error('coach_failed', error?.name, error?.status ?? '', String(error?.message ?? '').slice(0, 300));
       return respond({ error: 'GR Coach is unavailable right now. Please try again shortly.' }, 503);
     }
     async function rpc(name, args) {

@@ -6,6 +6,7 @@ import { ActivityIndicator, Pressable, ScrollView, View, type ScrollViewInstance
 import { Package, Boxes, ShoppingBag, Plus } from 'lucide-react-native';
 import { adminRepository, type AdminOrder } from './admin-repository';
 import { AdminOrderCard } from './AdminOrderCard';
+import { compressProductImage } from './compress-image';
 import { AdminIntegrationPanel } from './AdminIntegrationPanel';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { AppText } from '@/components/ui/AppText';
@@ -119,8 +120,8 @@ export function AdminScreen() {
     });
     if (result.canceled) return;
     const asset = result.assets[0];
-    if (asset.fileSize && asset.fileSize > 6 * 1024 * 1024) {
-      setMessage('Choose an image smaller than 6 MB.');
+    if (asset.fileSize && asset.fileSize > 25 * 1024 * 1024) {
+      setMessage('Choose an image smaller than 25 MB.');
       return;
     }
     const mime = asset.mimeType ?? 'image/jpeg';
@@ -128,7 +129,9 @@ export function AdminScreen() {
       setMessage('Use a JPEG, PNG or WebP image.');
       return;
     }
-      const uploaded = await adminRepository.upload(edit.id, asset.uri, mime);
+      // Resize and convert before upload so storage holds small, sharp WebP files.
+      const compressed = await compressProductImage(asset.uri);
+      const uploaded = await adminRepository.upload(edit.id, compressed.uri, compressed.mime);
       setEdit((p) =>
         p
           ? {

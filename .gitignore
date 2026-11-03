@@ -53,3 +53,8 @@ firebase-debug.log
 outputs/
 deploy.tar.gz
 supabase/.temp/
+
+# Catalogue import: source photos and compressed copies stay on this machine
+catalog-images/
+catalog-import/*/photos/
+catalog-import/*/publish.sql

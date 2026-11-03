@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { auth } from './firebase-auth';
 import { requireSupabase } from './supabase';
 
@@ -33,12 +32,13 @@ export async function storeRequest(action: string, payload: Record<string, unkno
   return result.data;
 }
 
+// Product photos live in the public product-media bucket, so every image has a
+// stable, CDN-cacheable URL and listing pages need no per-image signing calls.
+export function productMediaUrl(storagePath: string): string {
+  const base = process.env.EXPO_PUBLIC_SUPABASE_URL;
+  return `${base}/storage/v1/object/public/product-media/${storagePath.split('/').map(encodeURIComponent).join('/')}`;
+}
+
 export async function resolveProductMedia<T extends { media: { storagePath?: string; uri?: string }[] }>(products: T[]): Promise<T[]> {
-  const paths = [...new Set(products.flatMap(p => p.media.flatMap(m => m.storagePath ? [m.storagePath] : [])))];
-  if (!paths.length) return products;
-  const urls: Record<string, string> = {};
-  for (let i = 0; i < paths.length; i += 60) {
-    Object.assign(urls, z.record(z.string(), z.url()).parse(await storeRequest('media.get', { paths: paths.slice(i, i + 60) })));
-  }
-  return products.map(p => ({ ...p, media: p.media.map(m => ({ ...m, ...(m.storagePath ? { uri: urls[m.storagePath] } : {}) })) }));
+  return products.map(p => ({ ...p, media: p.media.map(m => ({ ...m, ...(m.storagePath ? { uri: productMediaUrl(m.storagePath) } : {}) })) }));
 }

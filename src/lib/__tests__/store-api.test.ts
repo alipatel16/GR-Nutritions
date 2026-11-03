@@ -1,5 +1,5 @@
 import { auth } from '@/lib/firebase-auth';
-import { storeRequest } from '../store-api';
+import { resolveProductMedia, storeRequest } from '../store-api';
 jest.mock('@/lib/supabase', () => ({ requireSupabase: () => ({}) }));
 const authState=auth as unknown as {currentUser:{getIdToken:jest.Mock}|null};
 const originalFetch=globalThis.fetch;
@@ -25,4 +25,11 @@ it('turns expired login and non-JSON outages into safe typed errors',async()=>{
 it('handles network failures without exposing browser diagnostics',async()=>{
   globalThis.fetch=jest.fn().mockRejectedValue(new TypeError('fetch failed with internal trace'));
   await expect(storeRequest('orders.list')).rejects.toMatchObject({name:'StoreRequestError',status:0,message:'Could not connect. Please check your internet connection and retry.'});
+});
+it('builds public, encoded product image URLs without any network request',async()=>{
+  globalThis.fetch=jest.fn();
+  const [product]=await resolveProductMedia([{media:[{storagePath:'whey/12345678-1234-1234-1234-123456789abc.webp'},{uri:'https://cdn.example/a.webp'}]}]);
+  expect(product.media[0].uri).toBe('https://store.example/storage/v1/object/public/product-media/whey/12345678-1234-1234-1234-123456789abc.webp');
+  expect(product.media[1].uri).toBe('https://cdn.example/a.webp');
+  expect(globalThis.fetch).not.toHaveBeenCalled();
 });

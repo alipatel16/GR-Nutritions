@@ -30,7 +30,7 @@ export const adminRepository = {
   async upload(productId: string, uri: string, mime: string) {
     const response = await fetch(uri);
     const bytes = await response.arrayBuffer();
-    if (!bytes.byteLength || bytes.byteLength > 6 * 1024 * 1024) throw new Error('Choose an image smaller than 6 MB.');
+    if (!bytes.byteLength || bytes.byteLength > 1.5 * 1024 * 1024) throw new Error('This image is still too large after compression. Try a smaller photo.');
     const target = z.object({ path: z.string(), token: z.string() }).parse(await storeRequest('media.upload', { productId, mime }));
     const { error } = await requireSupabase().storage.from('product-media').uploadToSignedUrl(target.path, target.token, bytes, { contentType: mime, upsert: false });
     if (error) throw new Error('Image upload failed. Please retry.');

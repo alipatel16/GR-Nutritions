@@ -146,11 +146,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing[4],
   },
   chipSelected: {
-    backgroundColor: colors.midnight,
-    borderColor: colors.midnight,
+    backgroundColor: colors.graphite,
+    borderColor: colors.graphite,
   },
   chipTextSelected: {
-    color: colors.gold,
+    color: colors.mint,
   },
   sorts: {
     gap: spacing[2],
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     minHeight: 36,
     paddingHorizontal: spacing[3],
   },
-  sortSelected: { backgroundColor: colors.goldSoft },
+  sortSelected: { backgroundColor: colors.mintSoft },
   sortText: { color: colors.mineral, fontFamily: typography.bodySemibold },
-  sortTextSelected: { color: colors.goldInk, fontFamily: typography.bodyBold },
+  sortTextSelected: { color: colors.mintInk, fontFamily: typography.bodyBold },
 });

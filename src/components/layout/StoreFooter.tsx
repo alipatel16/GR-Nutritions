@@ -50,7 +50,7 @@ export function StoreFooter() {
               delivered across India from Ahmedabad.
             </AppText>
             <Link accessibilityLabel="Open GR Coach from footer" href="/advisor" style={styles.coachLink}>
-              <Sparkles color={colors.midnight} size={16} />
+              <Sparkles color={colors.graphite} size={16} />
               <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
             </Link>
           </View>
@@ -81,7 +81,7 @@ export function StoreFooter() {
             [Truck, 'Free delivery above ₹999'],
           ] as const).map(([Icon, label]) => (
             <View key={label} style={styles.assurance}>
-              <Icon color={colors.gold} size={16} />
+              <Icon color={colors.mint} size={16} />
               <AppText style={styles.assuranceText}>{label}</AppText>
             </View>
           ))}
@@ -102,8 +102,8 @@ export function StoreFooter() {
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: colors.midnight,
-    borderTopColor: colors.gold,
+    backgroundColor: colors.graphite,
+    borderTopColor: colors.mint,
     borderTopWidth: 3,
     marginTop: 80,
     paddingBottom: 40,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   coachLink: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: 99,
     flexDirection: 'row',
     gap: spacing[2],
@@ -124,13 +124,13 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[3],
     textDecorationLine: 'none',
   },
-  coachText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 13 },
+  coachText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 13 },
   columns: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 48, justifyContent: 'flex-end', minWidth: 280 },
   column: { gap: spacing[3], minWidth: 130 },
-  columnTitle: { color: colors.gold, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
+  columnTitle: { color: colors.mint, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
   link: { color: colors.onDark, fontFamily: typography.body, fontSize: 14, lineHeight: 22, textDecorationLine: 'none' },
   assurances: {
-    borderTopColor: colors.midnightLine,
+    borderTopColor: colors.graphiteLine,
     borderTopWidth: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   assuranceText: { color: colors.onDark, fontFamily: typography.bodySemibold, fontSize: 13 },
   bottom: {
     alignItems: 'center',
-    borderTopColor: colors.midnightLine,
+    borderTopColor: colors.graphiteLine,
     borderTopWidth: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',

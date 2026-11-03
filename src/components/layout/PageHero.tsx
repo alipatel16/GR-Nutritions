@@ -42,16 +42,16 @@ export function PageHero({ eyebrow, title, description, children }: PageHeroProp
 
 const styles = StyleSheet.create({
   hero: {
-    backgroundColor: colors.midnight,
-    borderBottomColor: colors.gold,
+    backgroundColor: colors.graphite,
+    borderBottomColor: colors.mint,
     borderBottomWidth: 3,
     paddingVertical: spacing[12],
   },
   mobileHero: { paddingVertical: spacing[8] },
   copy: { gap: spacing[3], maxWidth: 760 },
   eyebrowRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
-  rule: { backgroundColor: colors.gold, height: 2, width: 22 },
-  eyebrow: { color: colors.gold, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
+  rule: { backgroundColor: colors.mint, height: 2, width: 22 },
+  eyebrow: { color: colors.mint, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
   mobileTitle: { fontSize: 44, lineHeight: 46 },
   description: { color: colors.onDarkMuted, fontSize: 16, lineHeight: 25 },
 });

@@ -1,49 +1,53 @@
-// GR Nutritions "Midnight & Gold" design system.
-// Legacy token names (obsidian, bone, lime, violet…) are kept as aliases so every
-// screen picks up the new palette; new code should prefer the semantic names.
+// GR Nutritions "HK2" design system: graphite + mint at the top of every page,
+// a warm sand shelf below. Legacy names (obsidian, bone, lime, violet…) stay as
+// aliases so older components follow the palette; new code uses semantic names.
 const palette = {
-  midnight: '#0A1020',
-  midnightRaised: '#121A2E',
-  midnightLine: '#24304A',
-  midnightMuted: '#97A3B8',
-  gold: '#D4A537',
-  goldPressed: '#BE8F26',
-  goldSoft: '#F6EBCB',
-  goldInk: '#7A5600',
-  ivory: '#F6F4EF',
+  graphite: '#121417',
+  graphiteRaised: '#1B1F24',
+  graphiteLine: '#2A2F36',
+  graphiteMuted: '#9BA3AE',
+  mint: '#3EE6B0',
+  mintPressed: '#2FCF9C',
+  mintSoft: '#DDF7EE',
+  // Mint text/icons on light surfaces (AA on sand and white).
+  mintInk: '#0B7A5C',
+  // Text on solid mint fills.
+  onMint: '#0B2A21',
+  olive: '#5C6B2E',
+  sand: '#F2EEE6',
+  sandSoft: '#F7F4EE',
   paper: '#FFFFFF',
-  sand: '#EEEAE1',
-  ink: '#0A1020',
-  inkMuted: '#3A4458',
-  slate: '#5D677A',
-  hairline: '#E3DED3',
+  ink: '#1C1C17',
+  inkMuted: '#3F3D35',
+  slate: '#6B6658',
+  hairline: '#E2DCCF',
   danger: '#B42318',
   dangerSoft: '#FDECEA',
-  success: '#127A46',
-  successSoft: '#E5F4EC',
+  success: '#0B7A5C',
+  successSoft: '#DDF7EE',
 } as const;
 
 export const colors = {
   ...palette,
   // Page background
-  obsidian: palette.ivory,
+  obsidian: palette.sand,
   // Card / raised surface
   obsidianRaised: palette.paper,
   // Subtle filled surface
-  graphite: palette.sand,
+  graphiteSurface: palette.sandSoft,
   // Primary text
   bone: palette.ink,
   boneMuted: palette.inkMuted,
-  // Accent (CTA fills). Use goldInk for accent text on light surfaces.
-  lime: palette.gold,
-  limePressed: palette.goldPressed,
+  // Accent fill (CTAs). Pair with onMint text.
+  lime: palette.mint,
+  limePressed: palette.mintPressed,
   // Muted text
   mineral: palette.slate,
   // Brand dark (icons, links, dark panels)
-  violet: palette.midnight,
+  violet: palette.graphite,
   line: palette.hairline,
-  onDark: '#F8FAFC',
-  onDarkMuted: palette.midnightMuted,
+  onDark: '#F2F4F7',
+  onDarkMuted: palette.graphiteMuted,
   transparent: 'transparent',
 } as const;
 
@@ -87,7 +91,7 @@ export const typography = {
     body: 16,
     bodyLarge: 18,
     title: 22,
-    heading: 40,
+    heading: 30,
     display: 60,
     hero: 84,
   },
@@ -97,7 +101,7 @@ export const typography = {
     body: 25,
     bodyLarge: 28,
     title: 28,
-    heading: 42,
+    heading: 36,
     display: 60,
     hero: 80,
   },
@@ -105,14 +109,14 @@ export const typography = {
 
 export const shadows = {
   card: {
-    shadowColor: '#0A1020',
+    shadowColor: '#121417',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.06,
     shadowRadius: 18,
     elevation: 2,
   },
   raised: {
-    shadowColor: '#0A1020',
+    shadowColor: '#121417',
     shadowOffset: { width: 0, height: 14 },
     shadowOpacity: 0.14,
     shadowRadius: 30,
@@ -135,7 +139,7 @@ export const motion = {
 } as const;
 
 export const focus = {
-  color: palette.gold,
+  color: palette.mintInk,
   width: 2,
   offset: 2,
 } as const;

@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 6,
   },
-  darkLogo: { backgroundColor: colors.midnight },
+  darkLogo: { backgroundColor: colors.graphite },
   logo: { width: "100%", height: "100%" },
   name: { textAlign: "center" },
 });

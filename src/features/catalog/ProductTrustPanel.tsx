@@ -34,7 +34,7 @@ export function ProductTrustPanel() {
           style={[styles.item, breakpoint === 'mobile' && styles.mobileItem]}
         >
           <View style={styles.icon}>
-            <Icon color={colors.gold} size={20} strokeWidth={1.8} />
+            <Icon color={colors.mint} size={20} strokeWidth={1.8} />
           </View>
           <View style={styles.copy}>
             <AppText variant="label">{title}</AppText>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     alignItems: 'center',
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: radii.sm,
     height: 42,
     justifyContent: 'center',

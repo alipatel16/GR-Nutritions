@@ -21,7 +21,7 @@ const campaigns = [
     secondaryAccessibilityLabel: 'Find my stack',
     secondaryHref: '/advisor',
     accent: colors.onDark,
-    shade: '#0A102033',
+    shade: '#12141733',
   },
   {
     eyebrow: 'SIMPLE CHOICES. SMARTER ROUTINES.',
@@ -34,7 +34,7 @@ const campaigns = [
     secondaryAccessibilityLabel: 'Explore products by goal',
     secondaryHref: '/shop?goal=muscle-gain',
     accent: colors.onDark,
-    shade: '#0A102033',
+    shade: '#12141733',
   },
   {
     eyebrow: 'TRAIN. RESET. GO AGAIN.',
@@ -47,7 +47,7 @@ const campaigns = [
     secondaryAccessibilityLabel: 'Shop wellness products',
     secondaryHref: '/shop?category=wellness',
     accent: colors.onDark,
-    shade: '#0A102033',
+    shade: '#12141733',
   },
 ] as const;
 
@@ -80,7 +80,6 @@ export function HeroCarousel() {
                 <View key={step} style={[styles.scrimStep, { opacity: mobile ? Math.max(opacity, 0.55) : opacity }]} />
               ))}
             </View>
-            <View style={styles.goldEdge} />
             <PageShell style={styles.heroShell}>
               <View style={[styles.layout, mobile && styles.mobileLayout]}>
                 <View
@@ -88,7 +87,7 @@ export function HeroCarousel() {
                   testID={index === 0 ? 'home-hero-copy' : undefined}
                 >
                   <View style={styles.eyebrowPill}>
-                    <BadgeCheck color={colors.gold} size={14} />
+                    <BadgeCheck color={colors.mint} size={14} />
                     <AppText style={styles.eyebrow}>{campaign.eyebrow}</AppText>
                   </View>
                   <AppText
@@ -110,7 +109,7 @@ export function HeroCarousel() {
                     >
                       <Pressable style={styles.primaryButton}>
                         <AppText style={styles.primaryText}>{campaign.primaryLabel}</AppText>
-                        <ArrowRight color={colors.midnight} size={17} />
+                        <ArrowRight color={colors.graphite} size={17} />
                       </Pressable>
                     </Link>
                     <Link
@@ -119,7 +118,7 @@ export function HeroCarousel() {
                       href={campaign.secondaryHref as Href}
                     >
                       <Pressable style={styles.secondaryButton}>
-                        <Sparkles color={colors.gold} size={16} />
+                        <Sparkles color={colors.mint} size={16} />
                         <AppText style={styles.buttonText}>{campaign.secondaryLabel}</AppText>
                       </Pressable>
                     </Link>
@@ -131,7 +130,7 @@ export function HeroCarousel() {
                       [LockKeyhole, 'Secure checkout'],
                     ] as const).map(([Icon, label]) => (
                       <View key={label} style={styles.note}>
-                        <Icon color={colors.gold} size={15} />
+                        <Icon color={colors.mint} size={15} />
                         <AppText style={styles.noteText}>{label}</AppText>
                       </View>
                     ))}
@@ -151,12 +150,11 @@ export function HeroCarousel() {
 }
 
 const styles = StyleSheet.create({
-  frame: { backgroundColor: colors.midnight, overflow: 'hidden', paddingBottom: 64 },
+  frame: { backgroundColor: colors.graphite, overflow: 'hidden', paddingBottom: spacing[4] },
   slide: { justifyContent: 'center', minHeight: 560, overflow: 'hidden' },
   mobileSlide: { minHeight: 600 },
   scrim: { flexDirection: 'row' },
-  scrimStep: { backgroundColor: colors.midnight, flex: 1 },
-  goldEdge: { backgroundColor: colors.gold, bottom: 0, height: 3, left: 0, position: 'absolute', right: 0 },
+  scrimStep: { backgroundColor: colors.graphite, flex: 1 },
   heroShell: { paddingVertical: spacing[12] },
   layout: { flexDirection: 'row', width: '100%' },
   mobileLayout: { flexWrap: 'wrap' },
@@ -166,8 +164,8 @@ const styles = StyleSheet.create({
   eyebrowPill: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: '#0A102099',
-    borderColor: '#D4A53766',
+    backgroundColor: '#12141799',
+    borderColor: '#3EE6B066',
     borderRadius: radii.pill,
     borderWidth: 1,
     flexDirection: 'row',
@@ -176,7 +174,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   eyebrow: {
-    color: colors.gold,
+    color: colors.mint,
     fontFamily: typography.bodyBold,
     fontSize: 11,
     letterSpacing: 1.8,
@@ -194,7 +192,7 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[3], marginTop: spacing[1] },
   primaryButton: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.xs,
     flexDirection: 'row',
     gap: spacing[3],
@@ -203,7 +201,7 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     alignItems: 'center',
-    backgroundColor: '#0A102080',
+    backgroundColor: '#12141780',
     borderColor: '#F8FAFC55',
     borderRadius: radii.xs,
     borderWidth: 1.5,
@@ -212,7 +210,7 @@ const styles = StyleSheet.create({
     minHeight: 52,
     paddingHorizontal: spacing[6],
   },
-  primaryText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 14, letterSpacing: 0.3 },
+  primaryText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 14, letterSpacing: 0.3 },
   buttonText: { color: colors.onDark, fontFamily: typography.bodyBold, fontSize: 14, letterSpacing: 0.3 },
   notes: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[5], marginTop: spacing[2] },
   note: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },

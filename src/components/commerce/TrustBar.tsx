@@ -23,7 +23,7 @@ export function TrustBar({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
       {items.map(({ Icon, title, body }) => (
         <View key={title} style={[styles.item, mobile && styles.mobileItem]}>
           <View style={[styles.icon, dark && styles.darkIcon]}>
-            <Icon color={dark ? colors.gold : colors.goldInk} size={20} />
+            <Icon color={dark ? colors.mint : colors.mintInk} size={20} />
           </View>
           <View style={styles.copy}>
             <AppText style={[styles.title, { color: dark ? colors.onDark : colors.ink }]}>{title}</AppText>
@@ -44,19 +44,19 @@ const styles = StyleSheet.create({
     padding: spacing[5],
   },
   light: { backgroundColor: colors.paper, borderColor: colors.line },
-  dark: { backgroundColor: colors.midnightRaised, borderColor: colors.midnightLine },
+  dark: { backgroundColor: colors.graphiteRaised, borderColor: colors.graphiteLine },
   mobileBar: { flexWrap: 'wrap', gap: spacing[4], padding: spacing[4] },
   item: { alignItems: 'center', flex: 1, flexDirection: 'row', gap: spacing[3], minWidth: 0 },
   mobileItem: { flexBasis: '46%', minWidth: 140 },
   icon: {
     alignItems: 'center',
-    backgroundColor: colors.goldSoft,
+    backgroundColor: colors.mintSoft,
     borderRadius: radii.sm,
     height: 42,
     justifyContent: 'center',
     width: 42,
   },
-  darkIcon: { backgroundColor: '#1B2540' },
+  darkIcon: { backgroundColor: '#22272D' },
   copy: { flex: 1, minWidth: 0 },
   title: { fontFamily: typography.bodyBold, fontSize: 13, lineHeight: 18 },
   body: { fontSize: 11.5, lineHeight: 16 },

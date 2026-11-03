@@ -118,7 +118,7 @@ export default function AccountRoute() {
         ) : (
           <View style={styles.authLayout}>
             <View style={styles.intro}>
-              <View style={styles.shield}><ShieldCheck size={30} color={colors.gold} /></View>
+              <View style={styles.shield}><ShieldCheck size={30} color={colors.mint} /></View>
               <AppText tone="accent" variant="caption">
                 YOUR ROUTINE, ALL TOGETHER
               </AppText>
@@ -130,7 +130,7 @@ export default function AccountRoute() {
                 nutrition routine moving.
               </AppText>
               <View style={styles.promise}>
-                <Mail size={21} color={colors.goldInk} />
+                <Mail size={21} color={colors.mintInk} />
                 <AppText variant="caption">
                   Browse freely. Sign in securely when you’re ready to order.
                 </AppText>
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
   intro: { flex: 1, minWidth: 260, gap: 22, paddingTop: 25, maxWidth: 560 },
   shield: {
     alignItems: "center",
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: 16,
     height: 64,
     justifyContent: "center",
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     maxWidth: 480,
     backgroundColor: colors.paper,
     borderColor: colors.line,
-    borderTopColor: colors.gold,
+    borderTopColor: colors.mint,
     borderTopWidth: 4,
     borderWidth: 1,
     borderRadius: 18,
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     ...shadows.raised,
   },
   promise: {
-    backgroundColor: colors.goldSoft,
+    backgroundColor: colors.mintSoft,
     padding: 18,
     borderRadius: 9,
     flexDirection: "row",
@@ -300,9 +300,9 @@ const styles = StyleSheet.create({
   },
   link: {
     alignSelf: "flex-start",
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: 10,
-    color: colors.gold,
+    color: colors.mint,
     fontFamily: typography.bodyBold,
     fontSize: 15,
     paddingHorizontal: 18,

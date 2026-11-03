@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[3],
   },
   optionSelected: {
-    backgroundColor: colors.goldSoft,
-    borderColor: colors.gold,
+    backgroundColor: colors.mintSoft,
+    borderColor: colors.mint,
   },
   optionTextSelected: {
     color: colors.violet,
@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
     borderRadius: radii.pill,
   },
   indicatorSelected: {
-    backgroundColor: colors.midnight,
-    borderColor: colors.gold,
+    backgroundColor: colors.graphite,
+    borderColor: colors.mint,
     borderWidth: 2,
   },
   copy: { flex: 1, gap: spacing[1], minWidth: 0 },

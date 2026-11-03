@@ -20,7 +20,7 @@ function CoachButton() {
       <Pressable
         style={StyleSheet.flatten([styles.coach, breakpoint === 'tablet' && styles.aboveTabs])}
       >
-        <Sparkles color={colors.midnight} size={19} />
+        <Sparkles color={colors.graphite} size={19} />
         <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
       </Pressable>
     </Link>
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
   },
   coach: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
-    borderColor: colors.midnight,
+    backgroundColor: colors.mint,
+    borderColor: colors.graphite,
     borderRadius: 99,
     borderWidth: 2,
     bottom: 24,
@@ -65,5 +65,5 @@ const styles = StyleSheet.create({
   },
   // Tablets also show the bottom tab bar.
   aboveTabs: { bottom: 92 },
-  coachText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 13 },
+  coachText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 13 },
 });

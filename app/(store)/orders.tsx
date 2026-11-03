@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
-    borderLeftColor: colors.gold,
+    borderLeftColor: colors.mint,
     borderLeftWidth: 4,
     borderWidth: 1,
     borderRadius: radii.md,
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
   },
   orderIdentity: { gap: spacing[2], flexShrink: 1, minWidth: 0 },
   badge: {
-    backgroundColor: colors.goldSoft,
+    backgroundColor: colors.mintSoft,
     borderRadius: radii.pill,
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[2],
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   tracking: {
     flex: 0.7,
     minWidth: 0,
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
     borderRadius: radii.sm,
     padding: spacing[5],
     gap: spacing[3],

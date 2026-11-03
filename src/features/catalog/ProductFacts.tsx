@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     minWidth: 0,
     padding: spacing[6],
     borderRadius: radii.md,
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
   },
   warningRow: {
     alignItems: 'flex-start',

@@ -1,10 +1,11 @@
 import { Link, type Href } from 'expo-router';
 import { Activity, Apple, Dumbbell, HeartPulse, Leaf, Zap } from 'lucide-react-native';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
+import { colors, radii, spacing, typography } from '@/theme/tokens';
+import { useBreakpoint } from '@/theme/use-breakpoint';
 
 const categories = [
   { label: 'Protein', note: 'Whey, isolate & plant', href: '/shop?category=protein', Icon: Dumbbell },
@@ -16,64 +17,63 @@ const categories = [
 ] as const;
 
 export function CategoryRail() {
+  const breakpoint = useBreakpoint();
+  const columns = breakpoint === 'desktop' ? 6 : 3;
+  const basis = `${100 / columns}%` as `${number}%`;
   return (
     <View style={styles.section}>
       <SectionHeader
         eyebrow="SHOP YOUR WAY"
         href="/shop"
         linkLabel="See the full catalogue"
-        title="START WITH A CATEGORY"
+        title="Shop by category"
       />
-      <ScrollView
-        contentContainerStyle={styles.rail}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      >
+      <View style={styles.grid}>
         {categories.map(({ label, note, href, Icon }) => (
-          <Link
-            accessibilityLabel={`Shop ${label.toLowerCase().replaceAll('-', ' ')}`}
-            asChild
-            href={href as Href}
-            key={label}
-          >
-            <Pressable style={styles.card}>
-              <View style={styles.icon}><Icon color={colors.gold} size={24} /></View>
-              <View>
+          <View key={label} style={[styles.cell, { width: basis }]}>
+            <Link
+              accessibilityLabel={`Shop ${label.toLowerCase().replaceAll('-', ' ')}`}
+              asChild
+              href={href as Href}
+            >
+              <Pressable style={styles.card}>
+                <View style={styles.icon}>
+                  <Icon color={colors.mint} size={26} />
+                </View>
                 <AppText style={styles.title}>{label}</AppText>
-                <AppText style={styles.note}>{note}</AppText>
-              </View>
-              <AppText style={styles.shop}>Shop now →</AppText>
-            </Pressable>
-          </Link>
+                {breakpoint === 'mobile' ? null : <AppText style={styles.note}>{note}</AppText>}
+              </Pressable>
+            </Link>
+          </View>
         ))}
-      </ScrollView>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   section: { gap: spacing[6] },
-  rail: { gap: spacing[4], paddingBottom: spacing[2] },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', margin: -6 },
+  cell: { padding: 6 },
   card: {
-    backgroundColor: colors.obsidianRaised,
+    alignItems: 'center',
+    backgroundColor: colors.paper,
     borderColor: colors.line,
     borderRadius: radii.md,
     borderWidth: 1,
-    gap: spacing[4],
-    minHeight: 196,
-    padding: spacing[5],
-    width: 200,
-    ...shadows.card,
+    gap: spacing[2],
+    paddingHorizontal: spacing[3],
+    paddingVertical: spacing[5],
   },
   icon: {
     alignItems: 'center',
-    backgroundColor: colors.midnight,
-    borderRadius: radii.sm,
-    height: 52,
+    backgroundColor: colors.graphite,
+    borderRadius: radii.pill,
+    height: 60,
     justifyContent: 'center',
-    width: 52,
+    marginBottom: spacing[1],
+    width: 60,
   },
-  title: { fontFamily: typography.display, fontSize: 24, letterSpacing: 0.3, lineHeight: 28, textTransform: 'uppercase' },
-  note: { color: colors.mineral, fontSize: 13, lineHeight: 19, marginTop: spacing[1] },
-  shop: { color: colors.goldInk, fontFamily: typography.bodyBold, fontSize: 12.5, marginTop: 'auto' },
+  title: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 15, lineHeight: 20, textAlign: 'center' },
+  note: { color: colors.mineral, fontSize: 12, lineHeight: 17, textAlign: 'center' },
 });

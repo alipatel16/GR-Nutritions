@@ -171,7 +171,7 @@ export function ProductDetailScreen({
                   ] as const
                 ).map(([Icon, label]) => (
                   <View key={label} style={styles.assurance}>
-                    <Icon color={colors.goldInk} size={15} />
+                    <Icon color={colors.mintInk} size={15} />
                     <AppText style={styles.assuranceText} variant="caption">
                       {label}
                     </AppText>
@@ -182,7 +182,7 @@ export function ProductDetailScreen({
                 href={{ pathname: '/advisor', params: { product: product.slug } }}
                 style={styles.coachLink}
               >
-                <Sparkles color={colors.gold} size={16} />
+                <Sparkles color={colors.mint} size={16} />
                 <AppText style={styles.coachLinkText}>
                   Not sure? Ask GR Coach about this product
                 </AppText>
@@ -257,7 +257,7 @@ export function ProductDetailRouteContent({
   if (lookup.slug !== slug) {
     return (
       <View accessibilityLabel="Loading product" style={styles.routeLoading}>
-        <ActivityIndicator color={colors.gold} size="large" />
+        <ActivityIndicator color={colors.mint} size="large" />
       </View>
     );
   }
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
     gap: spacing[2],
   },
   crumbLink: {
-    color: colors.goldInk,
+    color: colors.mintInk,
     fontFamily: typography.bodySemibold,
     minHeight: 44,
     paddingVertical: spacing[3],
@@ -358,7 +358,7 @@ const styles = StyleSheet.create({
     gap: spacing[3],
     justifyContent: 'space-between',
   },
-  brand: { color: colors.goldInk, flexShrink: 1, letterSpacing: 1.4, textTransform: 'uppercase' },
+  brand: { color: colors.mintInk, flexShrink: 1, letterSpacing: 1.4, textTransform: 'uppercase' },
   sampleBadge: {
     borderColor: colors.line,
     borderRadius: radii.pill,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[1],
   },
   productTitle: {
-    color: colors.midnight,
+    color: colors.graphite,
     fontSize: 50,
     lineHeight: 52,
     letterSpacing: -0.5,
@@ -401,7 +401,7 @@ const styles = StyleSheet.create({
   assuranceText: { color: colors.inkMuted, fontFamily: typography.bodySemibold },
   coachLink: {
     alignItems: 'center',
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: radii.sm,
     flexDirection: 'row',
     gap: spacing[2],
@@ -416,8 +416,8 @@ const styles = StyleSheet.create({
     gap: spacing[2],
   },
   tag: {
-    backgroundColor: colors.goldSoft,
-    borderColor: colors.goldSoft,
+    backgroundColor: colors.mintSoft,
+    borderColor: colors.mintSoft,
     borderRadius: radii.pill,
     borderWidth: 1,
     paddingHorizontal: spacing[3],
@@ -438,9 +438,9 @@ const styles = StyleSheet.create({
   },
   backLink: {
     alignSelf: 'flex-start',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.xs,
-    color: colors.midnight,
+    color: colors.graphite,
     fontFamily: typography.bodyBold,
     minHeight: 44,
     paddingHorizontal: spacing[5],

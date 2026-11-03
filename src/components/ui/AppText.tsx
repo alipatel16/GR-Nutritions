@@ -24,7 +24,7 @@ type AppTextProps = PropsWithChildren<
 const toneStyles: Record<NonNullable<AppTextProps['tone']>, TextStyle> = {
   primary: { color: colors.bone },
   muted: { color: colors.mineral },
-  accent: { color: colors.goldInk },
+  accent: { color: colors.mintInk },
   danger: { color: colors.danger },
   success: { color: colors.success },
   inverse: { color: colors.onDark },
@@ -79,10 +79,9 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeights.title,
   },
   heading: {
-    fontFamily: typography.display,
+    fontFamily: typography.bodyBold,
     fontSize: typography.sizes.heading,
-    letterSpacing: -0.4,
-    textTransform: 'uppercase',
+    letterSpacing: -0.6,
     lineHeight: typography.lineHeights.heading,
   },
   display: {

@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     ...shadows.card,
   },
   midnight: {
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
   },
   graphite: {
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
   },
   outlined: {
     backgroundColor: colors.transparent,

@@ -35,7 +35,7 @@ export function CartScreen() {
 
         {cart.lines.length === 0 ? (
           <View style={styles.empty}>
-            <ShoppingBag color={colors.goldInk} size={40} />
+            <ShoppingBag color={colors.mintInk} size={40} />
             <AppText variant="heading">
               Your cart is ready for a fresh start
             </AppText>
@@ -113,9 +113,9 @@ const styles = StyleSheet.create({
   },
   shopLink: {
     alignSelf: 'flex-start',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.xs,
-    color: colors.midnight,
+    color: colors.graphite,
     fontFamily: typography.bodyBold,
     minHeight: 44,
     paddingHorizontal: spacing[5],

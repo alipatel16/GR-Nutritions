@@ -31,7 +31,7 @@ export async function launchPayment(session: PaymentSession, customer: { name: s
     const finish = (action: () => void) => { if (!completed) { completed = true; action(); } };
     const checkout = new window.Razorpay!({ key: session.keyId, order_id: session.razorpayOrderId, amount: session.amountPaise,
       currency: session.currency, name: 'GR Nutritions', description: 'Nutrition and wellness order',
-      prefill: { name: customer.name, email: customer.email ?? '', contact: customer.phone }, theme: { color: '#0A1020' },
+      prefill: { name: customer.name, email: customer.email ?? '', contact: customer.phone }, theme: { color: '#121417' },
       handler: (result: PaymentResult) => finish(() => result.razorpay_order_id === session.razorpayOrderId ? resolve(result) : reject(new Error('Payment session mismatch'))),
       modal: { ondismiss: () => finish(() => reject(new PaymentCancelledError())) },
     });

@@ -56,7 +56,7 @@ function CheckoutContent({
         title="The final step."
       >
         <View style={styles.secureRow}>
-          <LockKeyhole color={colors.gold} size={15} />
+          <LockKeyhole color={colors.mint} size={15} />
           <AppText style={styles.secureText} variant="caption">
             Payments processed by Razorpay · Your card details never touch our servers
           </AppText>
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
     minWidth: 0,
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
-    borderTopColor: colors.gold,
+    borderTopColor: colors.mint,
     borderTopWidth: 4,
     borderWidth: 1,
     ...shadows.raised,
@@ -394,12 +394,12 @@ const styles = StyleSheet.create({
   step: {
     width: 30,
     height: 30,
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.pill,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  stepText: { color: colors.midnight },
+  stepText: { color: colors.graphite },
   method: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -411,8 +411,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.obsidianRaised,
   },
   selectedMethod: {
-    backgroundColor: colors.goldSoft,
-    borderColor: colors.gold,
+    backgroundColor: colors.mintSoft,
+    borderColor: colors.mint,
   },
   methodCopy: { flex: 1, minWidth: 0, gap: spacing[1] },
   radio: {
@@ -424,7 +424,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  selectedRadio: { backgroundColor: colors.midnight, borderColor: colors.gold, borderWidth: 2 },
+  selectedRadio: { backgroundColor: colors.graphite, borderColor: colors.mint, borderWidth: 2 },
   item: {
     flexDirection: 'row',
     gap: spacing[3],
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
   delivery: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing[3] },
   testBadge: {
     padding: spacing[3],
-    backgroundColor: colors.goldSoft,
+    backgroundColor: colors.mintSoft,
     borderRadius: radii.sm,
   },
 });

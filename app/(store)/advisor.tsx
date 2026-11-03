@@ -165,7 +165,7 @@ export default function AdvisorRoute() {
         <View style={[styles.layout, mobile && styles.mobileLayout]}>
           <View style={[styles.intro, mobile && styles.mobileIntro]}>
             <View style={styles.badge}>
-              <Sparkles color={colors.midnight} size={14} />
+              <Sparkles color={colors.graphite} size={14} />
               <AppText style={styles.badgeText}>GR COACH AI</AppText>
             </View>
             <AppText accessibilityRole="header" style={mobile ? styles.mobileTitle : undefined} tone="inverse" variant="display">
@@ -188,7 +188,7 @@ export default function AdvisorRoute() {
                 ).map(([Icon, label]) => (
                   <View key={label} style={styles.feature}>
                     <View style={styles.featureIcon}>
-                      <Icon color={colors.gold} size={18} />
+                      <Icon color={colors.mint} size={18} />
                     </View>
                     <AppText style={styles.featureText}>{label}</AppText>
                   </View>
@@ -201,7 +201,7 @@ export default function AdvisorRoute() {
           <View style={[styles.chat, mobile && styles.mobileChat]}>
             <View style={styles.chatHeader}>
               <View style={styles.avatar}>
-                <Bot color={colors.midnight} size={20} />
+                <Bot color={colors.graphite} size={20} />
               </View>
               <View style={styles.chatHeaderCopy}>
                 <AppText style={styles.chatName}>GR Coach</AppText>
@@ -230,7 +230,7 @@ export default function AdvisorRoute() {
                 <View key={message.id} style={message.role === 'user' ? styles.userRow : styles.assistantRow}>
                   {message.role === 'assistant' ? (
                     <View style={styles.smallAvatar}>
-                      <Bot color={colors.midnight} size={14} />
+                      <Bot color={colors.graphite} size={14} />
                     </View>
                   ) : null}
                   <View style={styles.messageColumn}>
@@ -255,10 +255,10 @@ export default function AdvisorRoute() {
               {busy ? (
                 <View style={styles.assistantRow}>
                   <View style={styles.smallAvatar}>
-                    <Bot color={colors.midnight} size={14} />
+                    <Bot color={colors.graphite} size={14} />
                   </View>
                   <View style={[styles.assistantBubble, styles.typing]}>
-                    <ActivityIndicator color={colors.goldInk} size="small" />
+                    <ActivityIndicator color={colors.mintInk} size="small" />
                     <AppText tone="muted" variant="caption">
                       GR Coach is checking the shelf…
                     </AppText>
@@ -322,7 +322,7 @@ export default function AdvisorRoute() {
                 onPress={() => void send(draft)}
                 style={[styles.send, (!draft.trim() || busy) && styles.sendDisabled]}
               >
-                <SendHorizontal color={colors.midnight} size={20} />
+                <SendHorizontal color={colors.graphite} size={20} />
               </Pressable>
             </View>
           </View>
@@ -343,7 +343,7 @@ function ProductPick({ product, rank }: { product: Product; rank: number }) {
   return (
     <Link accessibilityLabel={`View ${product.name}`} asChild href={`/product/${product.slug}` as Href}>
       <Pressable style={styles.pick}>
-        <View style={[styles.pickMedia, { backgroundColor: media?.backgroundColor ?? colors.graphite }]}>
+        <View style={[styles.pickMedia, { backgroundColor: media?.backgroundColor ?? colors.graphiteSurface }]}>
           {media?.uri ? (
             <Image accessibilityLabel={media.alt} contentFit="contain" source={{ uri: media.uri }} style={styles.pickImage} />
           ) : (
@@ -366,14 +366,14 @@ function ProductPick({ product, rank }: { product: Product; rank: number }) {
             </View>
           ) : null}
         </View>
-        <ArrowRight color={colors.goldInk} size={18} />
+        <ArrowRight color={colors.mintInk} size={18} />
       </Pressable>
     </Link>
   );
 }
 
 const styles = StyleSheet.create({
-  page: { backgroundColor: colors.midnight, flex: 1 },
+  page: { backgroundColor: colors.graphite, flex: 1 },
   pageContent: { flexGrow: 1 },
   shell: { paddingBottom: spacing[16], paddingTop: spacing[8] },
   layout: { alignItems: 'stretch', flexDirection: 'row', gap: spacing[12] },
@@ -383,22 +383,22 @@ const styles = StyleSheet.create({
   badge: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.pill,
     flexDirection: 'row',
     gap: 6,
     paddingHorizontal: spacing[3],
     paddingVertical: 6,
   },
-  badgeText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.6 },
+  badgeText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.6 },
   mobileTitle: { fontSize: 46, lineHeight: 46 },
   introCopy: { color: colors.onDarkMuted, fontSize: 16, lineHeight: 26, maxWidth: 480 },
   features: { gap: spacing[3], marginTop: spacing[2] },
   feature: { alignItems: 'center', flexDirection: 'row', gap: spacing[3] },
   featureIcon: {
     alignItems: 'center',
-    backgroundColor: colors.midnightRaised,
-    borderColor: colors.midnightLine,
+    backgroundColor: colors.graphiteRaised,
+    borderColor: colors.graphiteLine,
     borderRadius: radii.sm,
     borderWidth: 1,
     height: 40,
@@ -409,7 +409,7 @@ const styles = StyleSheet.create({
   disclaimer: { color: colors.onDarkMuted, marginTop: spacing[2], maxWidth: 480 },
   chat: {
     backgroundColor: colors.obsidian,
-    borderColor: colors.midnightLine,
+    borderColor: colors.graphiteLine,
     borderRadius: radii.lg,
     borderWidth: 1,
     flex: 1.15,
@@ -421,8 +421,8 @@ const styles = StyleSheet.create({
   mobileChat: { height: 600 },
   chatHeader: {
     alignItems: 'center',
-    backgroundColor: colors.midnightRaised,
-    borderBottomColor: colors.gold,
+    backgroundColor: colors.graphiteRaised,
+    borderBottomColor: colors.mint,
     borderBottomWidth: 2,
     flexDirection: 'row',
     gap: spacing[3],
@@ -431,7 +431,7 @@ const styles = StyleSheet.create({
   },
   avatar: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.pill,
     height: 40,
     justifyContent: 'center',
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
   onlineText: { color: colors.onDarkMuted },
   resetButton: {
     alignItems: 'center',
-    borderColor: colors.midnightLine,
+    borderColor: colors.graphiteLine,
     borderRadius: radii.pill,
     borderWidth: 1,
     height: 40,
@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
   userRow: { alignSelf: 'flex-end', maxWidth: '85%' },
   smallAvatar: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.pill,
     height: 28,
     justifyContent: 'center',
@@ -475,7 +475,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[3],
   },
   userBubble: {
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: radii.md,
     borderTopRightRadius: 4,
     paddingHorizontal: spacing[4],
@@ -488,7 +488,7 @@ const styles = StyleSheet.create({
   pick: {
     alignItems: 'center',
     backgroundColor: colors.paper,
-    borderColor: colors.gold,
+    borderColor: colors.mint,
     borderRadius: radii.md,
     borderWidth: 1.5,
     flexDirection: 'row',
@@ -504,23 +504,23 @@ const styles = StyleSheet.create({
     width: 64,
   },
   pickImage: { height: '88%', width: '88%' },
-  pickRank: { color: colors.midnight, fontFamily: typography.displayHeavy, fontSize: 28 },
+  pickRank: { color: colors.graphite, fontFamily: typography.displayHeavy, fontSize: 28 },
   pickCopy: { flex: 1, gap: 2, minWidth: 0 },
-  pickBrand: { color: colors.goldInk, fontFamily: typography.bodyBold, fontSize: 10.5, letterSpacing: 1.2 },
+  pickBrand: { color: colors.mintInk, fontFamily: typography.bodyBold, fontSize: 10.5, letterSpacing: 1.2 },
   pickPrice: { alignItems: 'baseline', flexDirection: 'row', flexWrap: 'wrap', gap: 4 },
   pickName: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 14.5, lineHeight: 20 },
   chipScroll: { flexGrow: 0 },
   chips: { gap: spacing[2], paddingHorizontal: spacing[5], paddingVertical: spacing[3] },
   chip: {
-    backgroundColor: colors.goldSoft,
-    borderColor: '#E9D49A',
+    backgroundColor: colors.mintSoft,
+    borderColor: '#A8EBD3',
     borderRadius: radii.pill,
     borderWidth: 1,
     justifyContent: 'center',
     minHeight: 38,
     paddingHorizontal: spacing[4],
   },
-  chipText: { color: colors.goldInk, fontFamily: typography.bodySemibold },
+  chipText: { color: colors.mintInk, fontFamily: typography.bodySemibold },
   error: { paddingHorizontal: spacing[5], paddingBottom: spacing[2] },
   composer: {
     alignItems: 'flex-end',
@@ -548,7 +548,7 @@ const styles = StyleSheet.create({
   },
   send: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.md,
     height: 50,
     justifyContent: 'center',

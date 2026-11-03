@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
   },
   arrow: {
     alignItems: 'center',
-    backgroundColor: colors.midnightRaised,
-    borderColor: colors.midnightLine,
+    backgroundColor: colors.graphiteRaised,
+    borderColor: colors.graphiteLine,
     borderRadius: radii.pill,
     borderWidth: 1,
     height: layout.minimumPressTarget,
@@ -147,12 +147,12 @@ const styles = StyleSheet.create({
     width: layout.minimumPressTarget,
   },
   arrowText: {
-    color: colors.gold,
+    color: colors.mint,
     fontSize: 28,
     lineHeight: 30,
   },
   controlPressed: {
-    backgroundColor: colors.midnightLine,
+    backgroundColor: colors.graphiteLine,
   },
   indicators: {
     alignItems: 'center',
@@ -160,13 +160,13 @@ const styles = StyleSheet.create({
     gap: spacing[2],
   },
   indicator: {
-    backgroundColor: colors.midnightMuted,
+    backgroundColor: colors.graphiteMuted,
     borderRadius: radii.pill,
     height: 8,
     width: 8,
   },
   indicatorSelected: {
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     width: 24,
   },
 });

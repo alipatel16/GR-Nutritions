@@ -34,8 +34,8 @@ export default function RootLayout() {
     style.dataset.grNutritions = 'global';
     style.textContent = `
       * { box-sizing: border-box; }
-      :focus-visible { outline: 2px solid #D4A537; outline-offset: 3px; }
-      ::selection { background: #F6EBCB; color: #0A1020; }
+      :focus-visible { outline: 2px solid #0B7A5C; outline-offset: 3px; }
+      ::selection { background: #DDF7EE; color: #1C1C17; }
     `;
     document.head.appendChild(style);
 

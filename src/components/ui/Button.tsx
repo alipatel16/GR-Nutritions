@@ -37,12 +37,12 @@ const variantStyles: Record<ButtonVariant, ViewStyle> = {
   },
   inverse: {
     backgroundColor: colors.transparent,
-    borderColor: colors.midnightLine,
+    borderColor: colors.graphiteLine,
   },
 };
 
 const labelColors: Record<ButtonVariant, string> = {
-  primary: colors.midnight,
+  primary: colors.graphite,
   secondary: colors.onDark,
   ghost: colors.ink,
   inverse: colors.onDark,

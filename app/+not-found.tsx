@@ -17,7 +17,7 @@ export default function NotFoundScreen() {
 const styles = StyleSheet.create({
   page: {
     alignItems: 'center',
-    backgroundColor: '#0A1020',
+    backgroundColor: '#121417',
     flex: 1,
     gap: 20,
     justifyContent: 'center',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   link: {
-    color: '#D4A537',
+    color: '#3EE6B0',
     fontSize: 16,
     fontWeight: '700',
   },

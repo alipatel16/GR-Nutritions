@@ -46,7 +46,7 @@ export function ProductCard({ product, compact = false }: ProductCardProps) {
           styles.media,
           {
             backgroundColor:
-              product.media[0]?.backgroundColor ?? colors.graphite,
+              product.media[0]?.backgroundColor ?? colors.graphiteSurface,
           },
         ]}
       >
@@ -66,7 +66,7 @@ export function ProductCard({ product, compact = false }: ProductCardProps) {
         />
         <View style={styles.badgeRow}>
           <View style={styles.authentic}>
-            <BadgeCheck color={colors.gold} size={12} />
+            <BadgeCheck color={colors.mint} size={12} />
             {compact && !product.demoContent ? null : (
               <AppText style={styles.authenticText}>
                 {product.demoContent ? 'CONCEPT PACK' : 'AUTHENTIC'}
@@ -131,7 +131,7 @@ export function ProductCard({ product, compact = false }: ProductCardProps) {
             <AppText style={[styles.linkText, isSoldOut && styles.linkTextMuted]}>
               {isSoldOut ? 'View details' : compact ? 'View' : 'View & add to cart'}
             </AppText>
-            <ArrowRight color={isSoldOut ? colors.ink : colors.gold} size={16} />
+            <ArrowRight color={isSoldOut ? colors.ink : colors.mint} size={16} />
           </Pressable>
         </Link>
       </View>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },
   authentic: {
     alignItems: 'center',
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: radii.pill,
     flexDirection: 'row',
     gap: 4,
@@ -172,9 +172,9 @@ const styles = StyleSheet.create({
     lineHeight: 13,
   },
   savingLabel: {
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: radii.pill,
-    color: colors.midnight,
+    color: colors.graphite,
     fontFamily: typography.bodyBold,
     fontSize: 10.5,
     lineHeight: 14,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   brand: {
-    color: colors.goldInk,
+    color: colors.mintInk,
     fontFamily: typography.bodyBold,
     fontSize: 11,
     letterSpacing: 1.4,
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
   nameCompact: { fontSize: 14, lineHeight: 19 },
   tags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[1] },
   tag: {
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
     borderRadius: radii.pill,
     color: colors.boneMuted,
     fontFamily: typography.bodySemibold,
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   divider: { backgroundColor: colors.line, height: 1, marginVertical: spacing[1] },
   link: {
     alignItems: 'center',
-    backgroundColor: colors.midnight,
+    backgroundColor: colors.graphite,
     borderRadius: radii.xs,
     flexDirection: 'row',
     gap: spacing[2],
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     minHeight: 46,
     paddingHorizontal: spacing[4],
   },
-  linkMuted: { backgroundColor: colors.graphite },
+  linkMuted: { backgroundColor: colors.graphiteSurface },
   linkText: { color: colors.onDark, fontFamily: typography.bodyBold, fontSize: 13.5 },
   linkTextMuted: { color: colors.ink },
 });

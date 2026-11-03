@@ -125,7 +125,7 @@ export function ShopScreen({
         <PageShell>
           <View style={styles.intro}>
             <View style={styles.eyebrowRow}>
-              <BadgeCheck color={colors.gold} size={15} />
+              <BadgeCheck color={colors.mint} size={15} />
               <AppText style={styles.eyebrow}>
                 THE FULL SHELF · 100% AUTHENTIC
               </AppText>
@@ -206,7 +206,7 @@ export function ShopScreen({
 
         {isLoading ? (
           <View accessibilityLabel="Loading products" style={styles.loading}>
-            <ActivityIndicator color={colors.gold} size="large" />
+            <ActivityIndicator color={colors.mint} size="large" />
           </View>
         ) : result && result.items.length > 0 ? (
           <View style={{ gap: 16 }}>
@@ -219,7 +219,7 @@ export function ShopScreen({
           </View>
         ) : (
           <View style={styles.empty}>
-            <SearchX color={colors.goldInk} size={34} />
+            <SearchX color={colors.mintInk} size={34} />
             <AppText variant="heading">No products match those filters</AppText>
             <AppText tone="muted">
               Keep the filters you want, or clear them to reopen the full shelf.
@@ -240,8 +240,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   banner: {
-    backgroundColor: colors.midnight,
-    borderBottomColor: colors.gold,
+    backgroundColor: colors.graphite,
+    borderBottomColor: colors.mint,
     borderBottomWidth: 3,
     paddingBottom: spacing[12],
     paddingTop: spacing[12],
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   },
   eyebrowRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
   eyebrow: {
-    color: colors.gold,
+    color: colors.mint,
     fontFamily: typography.bodyBold,
     fontSize: 11,
     letterSpacing: 2,
@@ -290,11 +290,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing[4],
   },
   brandChipSelected: {
-    backgroundColor: colors.midnight,
-    borderColor: colors.midnight,
+    backgroundColor: colors.graphite,
+    borderColor: colors.graphite,
   },
   brandChipText: { color: colors.ink, fontFamily: typography.bodySemibold },
-  brandChipTextSelected: { color: colors.gold },
+  brandChipTextSelected: { color: colors.mint },
   resultHeader: {
     alignItems: 'center',
     flexDirection: 'row',

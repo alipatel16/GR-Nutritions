@@ -64,7 +64,7 @@ export function WebHeader() {
           onPress={submitSearch}
           style={styles.searchSubmit}
         >
-          <Search size={17} color={colors.midnight} />
+          <Search size={17} color={colors.graphite} />
         </Pressable>
       ) : null}
     </View>
@@ -73,13 +73,13 @@ export function WebHeader() {
     <View style={styles.header}>
       <View style={styles.announcement}>
         <View style={styles.announceItem}>
-          <BadgeCheck size={13} color={colors.midnight} />
-          <AppText style={styles.announceText}>100% AUTHENTIC PRODUCTS</AppText>
+          <BadgeCheck size={13} color={colors.mint} />
+          <AppText style={styles.announceText}>100% authentic products</AppText>
         </View>
         {!mobile ? (
           <View style={styles.announceItem}>
-            <Truck size={13} color={colors.midnight} />
-            <AppText style={styles.announceText}>FREE DELIVERY ON ORDERS ABOVE ₹999</AppText>
+            <Truck size={13} color={colors.mint} />
+            <AppText style={styles.announceText}>Free delivery on orders above ₹999 · Cash on delivery available</AppText>
           </View>
         ) : null}
       </View>
@@ -94,7 +94,7 @@ export function WebHeader() {
           {!mobile && (
             <Link href="/account" asChild>
               <Pressable style={styles.action}>
-                <MapPin size={20} color={colors.gold} />
+                <MapPin size={20} color={colors.mint} />
                 <AppText style={styles.actionText} variant="caption">Choose delivery address</AppText>
               </Pressable>
             </Link>
@@ -149,7 +149,7 @@ export function WebHeader() {
         ))}
         <Link href="/advisor" asChild>
           <Pressable style={styles.coach}>
-            <Sparkles size={15} color={colors.midnight} />
+            <Sparkles size={15} color={colors.graphite} />
             <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
           </Pressable>
         </Link>
@@ -159,12 +159,14 @@ export function WebHeader() {
 }
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: colors.midnight,
-    borderBottomColor: colors.midnightLine,
+    backgroundColor: colors.graphite,
+    borderBottomColor: colors.graphiteLine,
     borderBottomWidth: 1,
   },
   announcement: {
-    backgroundColor: colors.gold,
+    backgroundColor: colors.graphiteRaised,
+    borderBottomColor: colors.graphiteLine,
+    borderBottomWidth: 1,
     flexDirection: 'row',
     gap: 28,
     justifyContent: 'center',
@@ -174,10 +176,10 @@ const styles = StyleSheet.create({
   },
   announceItem: { alignItems: 'center', flexDirection: 'row', gap: 6 },
   announceText: {
-    color: colors.midnight,
+    color: colors.onDark,
     fontFamily: typography.bodyBold,
     fontSize: 10.5,
-    letterSpacing: 1.2,
+    letterSpacing: 0.4,
     lineHeight: 16,
   },
   main: {
@@ -194,9 +196,9 @@ const styles = StyleSheet.create({
   logo: { flexDirection: 'row', alignItems: 'center' },
   search: {
     flex: 1,
-    maxWidth: 520,
-    backgroundColor: colors.midnightRaised,
-    borderColor: colors.midnightLine,
+    maxWidth: 640,
+    backgroundColor: colors.graphiteRaised,
+    borderColor: colors.graphiteLine,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 15,
@@ -218,7 +220,7 @@ const styles = StyleSheet.create({
   },
   searchSubmit: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: 7,
     height: 38,
     justifyContent: 'center',
@@ -258,7 +260,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: -9,
     top: -8,
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: 99,
     minWidth: 18,
     height: 18,
@@ -266,7 +268,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 3,
   },
-  countText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 10, lineHeight: 14 },
+  countText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 10, lineHeight: 14 },
   nav: {
     gap: 30,
     alignItems: 'center',
@@ -274,7 +276,7 @@ const styles = StyleSheet.create({
     minHeight: 48,
     minWidth: '100%',
     justifyContent: 'center',
-    borderTopColor: colors.midnightLine,
+    borderTopColor: colors.graphiteLine,
     borderTopWidth: 1,
   },
   navLink: {
@@ -289,9 +291,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 7,
     alignItems: 'center',
-    backgroundColor: colors.gold,
+    backgroundColor: colors.mint,
     borderRadius: 99,
     paddingHorizontal: 14,
   },
-  coachText: { fontFamily: typography.bodyBold, fontSize: 12.5, color: colors.midnight },
+  coachText: { fontFamily: typography.bodyBold, fontSize: 12.5, color: colors.graphite },
 });

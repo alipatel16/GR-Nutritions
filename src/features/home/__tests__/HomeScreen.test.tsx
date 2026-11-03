@@ -31,10 +31,13 @@ describe('HomeScreen', () => {
       'href',
       '/shop?category=pre-workout',
     );
-    expect(await screen.findByText('BESTSELLERS')).toBeOnTheScreen();
-    expect(screen.getByText('PERFORMANCE & TRAINING')).toBeOnTheScreen();
-    expect(screen.getByText('EVERYDAY WELLNESS')).toBeOnTheScreen();
-    expect(screen.getByText('NEW TO THE SHELF')).toBeOnTheScreen();
+    expect(await screen.findByText('Bestsellers')).toBeOnTheScreen();
+    expect(screen.getByText('Top deals')).toBeOnTheScreen();
+    expect(screen.getByText('Protein powders')).toBeOnTheScreen();
+    expect(screen.getByText('Performance & training')).toBeOnTheScreen();
+    expect(screen.getByRole('header', { name: 'Everyday wellness' })).toBeOnTheScreen();
+    expect(screen.getByText('New to the shelf')).toBeOnTheScreen();
+    expect(screen.getByText('What’s your goal?')).toBeOnTheScreen();
     expect(screen.getByRole('link', { name: 'Browse all brands' })).toBeOnTheScreen();
     expect(screen.getByText('SHOP')).toBeOnTheScreen();
     expect(screen.getByRole('link', { name: 'Footer account' })).toBeOnTheScreen();

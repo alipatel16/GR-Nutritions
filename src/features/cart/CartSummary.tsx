@@ -60,7 +60,7 @@ export function CartSummary({ totals }: CartSummaryProps) {
           ] as const
         ).map(([Icon, label]) => (
           <View key={label} style={styles.noteRow}>
-            <Icon color={colors.goldInk} size={16} />
+            <Icon color={colors.mintInk} size={16} />
             <AppText style={styles.noteText} variant="caption">
               {label}
             </AppText>

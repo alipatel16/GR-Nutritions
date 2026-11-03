@@ -12,11 +12,10 @@ import { BrandGrid } from '@/features/catalog/BrandGrid';
 import type { CatalogRepository } from '@/features/catalog/catalog-repository';
 import type { Product } from '@/features/catalog/types';
 import { colors, radii, spacing, typography } from '@/theme/tokens';
-import { useBreakpoint } from '@/theme/use-breakpoint';
 
 import { AdvisorBanner } from './AdvisorBanner';
 import { CategoryRail } from './CategoryRail';
-import { GoalRail } from './GoalRail';
+import { GoalGrid } from './GoalGrid';
 import { HeroCarousel } from './HeroCarousel';
 import { ProductRail } from './ProductRail';
 
@@ -24,8 +23,23 @@ function uniqueById(products: readonly Product[]): Product[] {
   return [...new Map(products.map((product) => [product.id, product])).values()];
 }
 
+function inStock(product: Product) {
+  return product.variants.filter((variant) => variant.stockAvailable > 0);
+}
+
+function lowestPrice(product: Product) {
+  const variants = inStock(product);
+  return Math.min(...(variants.length ? variants : product.variants).map((v) => v.price.amountPaise));
+}
+
+function bestSaving(product: Product) {
+  return Math.max(
+    0,
+    ...inStock(product).map((v) => (v.mrp.amountPaise - v.price.amountPaise) / v.mrp.amountPaise),
+  );
+}
+
 export function HomeScreen({ repository }: { repository: CatalogRepository }) {
-  const mobile = useBreakpoint() === 'mobile';
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -48,23 +62,30 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
     };
   }, [repository]);
 
-  const merchandising = useMemo(() => {
-    const bestsellers = products.slice(0, 8);
-    const performance = products.filter((product) =>
-      ['pre-workout', 'post-workout', 'energy'].includes(product.category),
-    );
-    const wellness = products.filter((product) =>
-      ['wellness', 'vitamins', 'healthy-snacks'].includes(product.category),
-    );
-    const newest = [...products]
-      .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
-      .slice(0, 8);
-
+  // Every shelf is derived from the live catalogue, so empty shelves simply hide.
+  const shelves = useMemo(() => {
+    const byCategory = (...categories: string[]) =>
+      products.filter((product) => categories.includes(product.category));
+    const performance = byCategory('pre-workout', 'post-workout', 'energy');
+    const wellness = byCategory('wellness', 'vitamins', 'healthy-snacks');
     return {
-      bestsellers,
+      bestsellers: products.slice(0, 10),
+      deals: [...products]
+        .filter((product) => bestSaving(product) > 0)
+        .sort((a, b) => bestSaving(b) - bestSaving(a))
+        .slice(0, 10),
+      protein: byCategory('protein'),
       performance: uniqueById(performance.length ? performance : products.slice(0, 4)),
+      budget: [...products]
+        .filter((product) => inStock(product).length && lowestPrice(product) <= 99900)
+        .sort((a, b) => lowestPrice(a) - lowestPrice(b)),
       wellness: uniqueById(wellness.length ? wellness : products.slice(-4)),
-      newest,
+      plant: products.filter((product) =>
+        product.dietaryTags.some((tag) => tag === 'vegetarian' || tag === 'vegan'),
+      ),
+      newest: [...products]
+        .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
+        .slice(0, 10),
     };
   }, [products]);
 
@@ -73,22 +94,26 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
   return (
     <ScrollView contentContainerStyle={styles.pageContent} style={styles.page}>
       <HeroCarousel />
+      <GoalGrid />
 
       <PageShell>
-        <View style={[styles.trust, mobile && styles.mobileTrust]}>
+        <View style={styles.trust}>
           <TrustBar />
         </View>
 
         <View style={styles.contentStack}>
-          <Reveal><CategoryRail /></Reveal>
-          <Reveal delay={50}><GoalRail /></Reveal>
+          <Reveal>
+            <CategoryRail />
+          </Reveal>
 
           {loading ? (
-            <ActivityIndicator color={colors.violet} size="large" />
+            <ActivityIndicator color={colors.mintInk} size="large" />
           ) : error ? (
             <View style={styles.stateCard}>
               <AppText tone="danger">{error}</AppText>
-              <Link href="/shop" style={styles.stateLink}>Open the catalogue →</Link>
+              <Link href="/shop" style={styles.stateLink}>
+                Open the catalogue →
+              </Link>
             </View>
           ) : products.length === 0 ? (
             <View style={styles.stateCard}>
@@ -99,11 +124,22 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
             <>
               {products.some((product) => product.demoContent) ? (
                 <AppText tone="muted" variant="caption">
-                  Sample collection · Illustrative products and inventory. Live products arrive from the store catalogue.
+                  Sample collection · Illustrative products and inventory. Live products arrive from
+                  the store catalogue.
                 </AppText>
               ) : null}
+
+              <Reveal delay={60}>
+                <ProductRail eyebrow="MOST-EXPLORED PICKS" products={shelves.bestsellers} title="Bestsellers" />
+              </Reveal>
+
               <Reveal delay={80}>
-                <ProductRail eyebrow="MOST-EXPLORED PICKS" products={merchandising.bestsellers} title="BESTSELLERS" />
+                <ProductRail
+                  description="The biggest discounts off MRP on in-stock options right now."
+                  eyebrow="SAVE MORE"
+                  products={shelves.deals}
+                  title="Top deals"
+                />
               </Reveal>
 
               <Reveal delay={100}>
@@ -113,7 +149,7 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
                     href="/brands"
                     linkAccessibilityLabel="Browse all brands"
                     linkLabel="Browse all brands"
-                    title="SHOP BY BRAND"
+                    title="Shop by brand"
                   />
                   <BrandGrid brands={brands} />
                 </View>
@@ -121,31 +157,54 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
 
               <Reveal delay={120}>
                 <ProductRail
-                  eyebrow="ENERGY, ENDURANCE & RECOVERY"
-                  href="/shop?category=pre-workout"
-                  products={merchandising.performance}
-                  title="PERFORMANCE & TRAINING"
+                  eyebrow="WHEY, ISOLATE AND PLANT"
+                  href="/shop?category=protein"
+                  products={shelves.protein}
+                  title="Protein powders"
                 />
               </Reveal>
 
-              <Reveal delay={140}><AdvisorBanner /></Reveal>
+              <Reveal delay={140}>
+                <ProductRail
+                  eyebrow="ENERGY, ENDURANCE AND RECOVERY"
+                  href="/shop?category=pre-workout"
+                  products={shelves.performance}
+                  title="Performance & training"
+                />
+              </Reveal>
 
               <Reveal delay={160}>
-                <ProductRail
-                  eyebrow="BUILD THE DAILY FOUNDATION"
-                  href="/shop?category=wellness"
-                  products={merchandising.wellness}
-                  title="EVERYDAY WELLNESS"
-                />
+                <AdvisorBanner />
               </Reveal>
 
               <Reveal delay={180}>
                 <ProductRail
-                  eyebrow="FRESH ARRIVALS"
-                  href="/shop"
-                  products={merchandising.newest}
-                  title="NEW TO THE SHELF"
+                  description="Quality picks with an option at ₹999 or less."
+                  eyebrow="BUDGET FRIENDLY"
+                  products={shelves.budget}
+                  title="Under ₹999"
                 />
+              </Reveal>
+
+              <Reveal delay={200}>
+                <ProductRail
+                  eyebrow="BUILD THE DAILY FOUNDATION"
+                  href="/shop?category=wellness"
+                  products={shelves.wellness}
+                  title="Everyday wellness"
+                />
+              </Reveal>
+
+              <Reveal delay={220}>
+                <ProductRail
+                  eyebrow="VEGETARIAN AND VEGAN"
+                  products={shelves.plant}
+                  title="Veg-friendly picks"
+                />
+              </Reveal>
+
+              <Reveal delay={240}>
+                <ProductRail eyebrow="FRESH ARRIVALS" products={shelves.newest} title="New to the shelf" />
               </Reveal>
             </>
           )}
@@ -159,9 +218,8 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
 const styles = StyleSheet.create({
   page: { backgroundColor: colors.obsidian, flex: 1 },
   pageContent: { paddingBottom: 0 },
-  trust: { marginTop: -36, zIndex: 2 },
-  mobileTrust: { marginTop: spacing[5] },
-  contentStack: { gap: 80, paddingTop: 64 },
+  trust: { marginTop: spacing[8] },
+  contentStack: { gap: 64, paddingTop: 56 },
   stateCard: {
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
@@ -170,6 +228,6 @@ const styles = StyleSheet.create({
     gap: spacing[3],
     padding: spacing[6],
   },
-  stateLink: { color: colors.goldInk, fontFamily: typography.bodyBold, textDecorationLine: 'none' },
+  stateLink: { color: colors.mintInk, fontFamily: typography.bodyBold, textDecorationLine: 'none' },
   brandSection: { gap: spacing[6] },
 });

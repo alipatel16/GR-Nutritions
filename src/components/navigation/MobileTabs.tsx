@@ -46,7 +46,7 @@ export function MobileTabs() {
             >
               <Icon
                 size={21}
-                color={path === href ? colors.gold : colors.onDarkMuted}
+                color={path === href ? colors.mint : colors.onDarkMuted}
               />
               {label === 'Cart' && count > 0 ? (
                 <View testID="mobile-cart-badge" style={styles.badge}>
@@ -67,8 +67,8 @@ export function MobileTabs() {
 }
 const styles = StyleSheet.create({
   tabs: {
-    backgroundColor: colors.midnight,
-    borderTopColor: colors.midnightLine,
+    backgroundColor: colors.graphite,
+    borderTopColor: colors.graphiteLine,
     borderTopWidth: 1,
     flexDirection: 'row',
     paddingTop: 9,
@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   label: { fontSize: 10.5, lineHeight: 15, color: colors.onDarkMuted, fontFamily: typography.bodySemibold },
-  activeLabel: { color: colors.gold },
+  activeLabel: { color: colors.mint },
   cartIconWrap: { position: 'relative' },
   badge: {
     alignItems: 'center',
-    backgroundColor: colors.gold,
-    borderColor: colors.midnight,
+    backgroundColor: colors.mint,
+    borderColor: colors.graphite,
     borderRadius: 99,
     borderWidth: 1.5,
     height: 16,
@@ -97,5 +97,5 @@ const styles = StyleSheet.create({
     right: -9,
     top: -7,
   },
-  badgeText: { color: colors.midnight, fontFamily: typography.bodyBold, fontSize: 8.5, lineHeight: 11 },
+  badgeText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 8.5, lineHeight: 11 },
 });

@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   placeholderIcon: {
     alignItems: 'center',
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
     borderRadius: radii.pill,
     height: 80,
     justifyContent: 'center',
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: spacing[4],
     left: spacing[4],
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
     borderRadius: radii.pill,
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[2],
@@ -217,9 +217,9 @@ const styles = StyleSheet.create({
     width: 56,
   },
   selectedThumbnail: {
-    borderColor: colors.gold,
+    borderColor: colors.mint,
     borderWidth: 2,
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
   },
   thumbnailPhoto: { width: '80%', height: '80%' },
   control: {

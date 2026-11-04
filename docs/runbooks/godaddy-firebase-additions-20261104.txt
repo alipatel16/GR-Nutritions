@@ -1,0 +1,13 @@
+$ORIGIN grnutritionsnikol.com.
+$TTL 600
+@ IN TXT "hosting-site=grnutritions"
+@ IN TXT "v=spf1 include:_spf.mail.hostinger.com ~all"
+@ IN MX 5 mx1.hostinger.com.
+@ IN MX 10 mx2.hostinger.com.
+hostingermail-a._domainkey IN CNAME hostingermail-a.dkim.mail.hostinger.com.
+hostingermail-b._domainkey IN CNAME hostingermail-b.dkim.mail.hostinger.com.
+hostingermail-c._domainkey IN CNAME hostingermail-c.dkim.mail.hostinger.com.
+autoconfig IN CNAME autoconfig.mail.hostinger.com.
+autodiscover IN CNAME autodiscover.mail.hostinger.com.
+_acme-challenge.grnutritionsnikol.com. IN TXT "iGortEfMbH1e9yRn0JlGHgBKz3WwARu6tskxWyNHgkc"
+_acme-challenge.www.grnutritionsnikol.com. IN TXT "HJ2prdRtWsvPl_8yKFmW9jn8qsJAm32-YHOtav6cNL8"

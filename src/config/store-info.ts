@@ -8,7 +8,7 @@ export const storeInfo = {
   phoneLinks: ['917490020905', '916353122140'],
   whatsapp: '917490020905',
   email: 'grnutritionweb@gmail.com',
-  website: 'https://grnutritions.web.app',
+  website: 'https://grnutritionsnikol.com',
   address: {
     line1: 'Ground Floor, B/4 Shantiniketan Business Hub',
     line2: 'Near Gangotri Circle, Nikol',

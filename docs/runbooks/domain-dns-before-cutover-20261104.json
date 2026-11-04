@@ -1,0 +1,147 @@
+{
+  "capturedAt": "2026-11-04T05:21:54.436Z",
+  "note": "Public DNS snapshot, not complete zone export.",
+  "records": [
+    {
+      "name": "grnutritionsnikol.com",
+      "type": "NS",
+      "data": [
+        "pixel.dns-parking.com",
+        "byte.dns-parking.com"
+      ]
+    },
+    {
+      "name": "hostingermail-b._domainkey.grnutritionsnikol.com",
+      "type": "CNAME",
+      "data": [
+        "hostingermail-b.dkim.mail.hostinger.com"
+      ]
+    },
+    {
+      "name": "autodiscover.grnutritionsnikol.com",
+      "type": "CNAME",
+      "data": [
+        "autodiscover.mail.hostinger.com"
+      ]
+    },
+    {
+      "name": "grnutritionsnikol.com",
+      "type": "A",
+      "data": [
+        "147.79.69.52",
+        "88.222.243.191"
+      ]
+    },
+    {
+      "name": "hostingermail-a._domainkey.grnutritionsnikol.com",
+      "type": "CNAME",
+      "data": [
+        "hostingermail-a.dkim.mail.hostinger.com"
+      ]
+    },
+    {
+      "name": "grnutritionsnikol.com",
+      "type": "AAAA",
+      "data": [
+        "2a02:4780:20:c24:bf72:6c1b:34c9:a9e2",
+        "2a02:4780:3d:a864:35df:b24a:a4c5:3d03"
+      ]
+    },
+    {
+      "name": "_dmarc.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": [
+        [
+          "v=DMARC1; p=none"
+        ]
+      ]
+    },
+    {
+      "name": "autoconfig.grnutritionsnikol.com",
+      "type": "CNAME",
+      "data": [
+        "autoconfig.mail.hostinger.com"
+      ]
+    },
+    {
+      "name": "hostingermail-c._domainkey.grnutritionsnikol.com",
+      "type": "CNAME",
+      "data": [
+        "hostingermail-c.dkim.mail.hostinger.com"
+      ]
+    },
+    {
+      "name": "autodiscover.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": []
+    },
+    {
+      "name": "autoconfig.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": []
+    },
+    {
+      "name": "hostingermail-c._domainkey.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": [
+        [
+          "v=DKIM1;p="
+        ]
+      ]
+    },
+    {
+      "name": "grnutritionsnikol.com",
+      "type": "MX",
+      "data": [
+        {
+          "exchange": "mx1.hostinger.com",
+          "priority": 5
+        },
+        {
+          "exchange": "mx2.hostinger.com",
+          "priority": 10
+        }
+      ]
+    },
+    {
+      "name": "hostingermail-a._domainkey.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": [
+        [
+          "v=DKIM1;k=rsa;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+RijpkYCOFcf5HdHXcwSJJdaqCIf9jyybiM8GFNhzhQMYKXmKGefVdmAIaqcKstjtkCMktZRl6uqrd+gnAsslRoEOtfBbWuqtL/1NRovLakhLngQQChKrJQ1EIgbBBtQyJVN3+m/d6Bzq/xSJKqZjyX2LYwJArwZSpp3JoKp0X7JrzYSXCH312/WSv8htE/cHZ",
+          "+K7PYJYRmu2CzeNUhh/pJr7liC6nrvWmJCfRAov5g8lAJPR9dKH/EvtCBiMk+sC8fv8395CEmQaOHMj54XCH9fYYHx9qxK4IfsbnvN3jYv+Rel6nSgluaapSwEll0Rl+YBY71bieyV0ZY2lrJ2wIDAQAB"
+        ]
+      ]
+    },
+    {
+      "name": "www.grnutritionsnikol.com",
+      "type": "CNAME",
+      "data": [
+        "www.grnutritionsnikol.com.cdn.hstgr.net"
+      ]
+    },
+    {
+      "name": "hostingermail-b._domainkey.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": [
+        [
+          "v=DKIM1;p="
+        ]
+      ]
+    },
+    {
+      "name": "grnutritionsnikol.com",
+      "type": "TXT",
+      "data": [
+        [
+          "v=spf1 include:_spf.mail.hostinger.com ~all"
+        ]
+      ]
+    },
+    {
+      "name": "www.grnutritionsnikol.com",
+      "type": "TXT",
+      "data": []
+    }
+  ]
+}

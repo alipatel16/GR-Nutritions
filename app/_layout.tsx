@@ -39,7 +39,28 @@ export default function RootLayout() {
     `;
     document.head.appendChild(style);
 
-    return () => style.remove();
+    // Brand icons: crisp SVG for modern browsers, PNGs for home screens; favicon.ico stays as fallback.
+    const icons = [
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/icon-192.png' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+    ].map((attributes) => {
+      const link = document.createElement('link');
+      Object.assign(link, attributes);
+      if (attributes.sizes) link.setAttribute('sizes', attributes.sizes);
+      document.head.appendChild(link);
+      return link;
+    });
+    const theme = document.createElement('meta');
+    theme.name = 'theme-color';
+    theme.content = colors.graphite;
+    document.head.appendChild(theme);
+
+    return () => {
+      style.remove();
+      icons.forEach((link) => link.remove());
+      theme.remove();
+    };
   }, []);
   if (!loaded && !error)
     return <View style={{ backgroundColor: colors.obsidian, flex: 1 }} />;

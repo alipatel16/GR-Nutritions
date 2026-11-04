@@ -73,11 +73,14 @@ test('shipment actions require staff, real live eligibility and provider trackin
  await assert.rejects(rpc('bob','shipment.get',{orderId:x.order.id}),/Order not found/);
  assert.equal((await callCustomer('alice','orders.list')).some(o=>o.id===x.order.id&&o.mode==='live'&&o.codFeePaise===20000),true);
 });
-test('packaging is required and bounded; quote mode remains explicit',async()=>{
+test('checkout uses bounded packed weight without requiring dimensions',async()=>{
  await db.exec("update public.store_variants set stock=100 where id='v'");const q=await quote('alice','test');assert.equal(q.mode,'test');
- await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0,shipping,heightCm}','0.5') where id='p'");
- await assert.rejects(quote('alice','test'),/Shipping measurements are invalid/);
- await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0,shipping,heightCm}','20') where id='p'");
+ await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0,shipping}','{\"weightGrams\":1200}') where id='p'");
+ const context=await rpc('alice','context',{addressId:'a',items,mode:'test',paymentMethod:'cod'});
+ assert.deepEqual(context.parcel,{weightGrams:1200});
+ await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0,shipping,weightGrams}','0') where id='p'");
+ await assert.rejects(quote('alice','test'),/Packed shipping weight is invalid/);
+ await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0,shipping,weightGrams}','1200') where id='p'");
  await assert.rejects(rpc('alice','context',{addressId:'a',items:[{...items[0],quantity:99}],mode:'test',paymentMethod:'cod'}),/stock|exceeds one parcel/);
 });
 test('expired reservations cannot be broken by removing their catalog variant',async()=>{
@@ -85,6 +88,28 @@ test('expired reservations cannot be broken by removing their catalog variant',a
  const p=(await db.query("select private.product_document(p) as p from public.store_products p where id='p'")).rows[0].p;
  await assert.rejects(db.query("select public.admin_action('owner','product.save',$1)",[JSON.stringify({...p,id:'p',slug:'p',status:'active',media:[],variants:[{...p.variants[0],id:'replacement',sku:'REPLACEMENT'}]})]),/reserved by a pending order/);
  await db.query("update public.store_orders set reservation_expires_at=now()-interval '1 second' where id=$1",[o.order.id]);await rpc('alice','order.get',{orderId:o.order.id});
+});
+
+test('legacy net weight supports delivery without a separate shipping record or dimensions', async () => {
+ await db.exec("update public.store_variants set stock=100 where id='v'");
+ await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0}',((payload#>'{variants,0}')-'shipping')||'{\"weightGrams\":1000}'::jsonb) where id='p'");
+ const context=await rpc('alice','context',{addressId:'a',items,mode:'test',paymentMethod:'razorpay'});
+ assert.deepEqual(context.parcel,{weightGrams:1200});
+ await db.exec("update public.store_products set payload=jsonb_set(payload,'{variants,0,shipping}','{\"weightGrams\":1200}') where id='p'");
+});
+
+test('catalog repair preserves stock and replaces retailer boilerplate with the correct option', async () => {
+ const payload={name:'Correct Whey 500 g',brand:'Atlas',category:'protein',summary:'Buy 5 kg at HealthKart.com',
+  description:'Buy 5 kg at HealthKart.com',usage:'Follow label',warnings:['Read label'],
+  variants:[{id:'clean-variant',label:'Vanilla • 500 g',weightGrams:500}]};
+ await db.query("insert into public.store_products(id,slug,status,payload) values ('clean-copy','clean-copy','draft',$1)",[JSON.stringify(payload)]);
+ await db.exec("insert into public.store_variants values ('clean-variant','clean-copy','CLEAN-SKU',10000,10000,13)");
+ await db.exec(await readFile(new URL('../migrations/20261104041554_legacy_delivery_and_catalog_copy.sql',import.meta.url),'utf8'));
+ const stored=(await db.query("select payload from public.store_products where id='clean-copy'")).rows[0].payload;
+ assert.deepEqual(stored.variants[0].shipping,{weightGrams:650});
+ assert.match(stored.description,/Vanilla • 500 g/);
+ assert.doesNotMatch(JSON.stringify(stored),/healthkart|5 kg/i);
+ assert.equal((await db.query("select stock from public.store_variants where id='clean-variant'")).rows[0].stock,13);
 });
 test('already refunded captured payment enters review rather than becoming shippable',async()=>{
  const x=await create();await rpc('','order.attach',{orderId:x.order.id,providerOrderId:'order_refunded',mode:'live',amountPaise:x.order.totalPaise,currency:'INR'});

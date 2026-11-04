@@ -32,9 +32,9 @@ export function createNumberDrafts(product: Product): NumberDrafts {
         weightGrams: String(v.weightGrams),
         stockAvailable: String(v.stockAvailable),
         packedWeight: v.shipping ? String(v.shipping.weightGrams) : "",
-        lengthCm: v.shipping ? String(v.shipping.lengthCm) : "",
-        widthCm: v.shipping ? String(v.shipping.widthCm) : "",
-        heightCm: v.shipping ? String(v.shipping.heightCm) : "",
+        lengthCm: v.shipping?.lengthCm?.toString() ?? "",
+        widthCm: v.shipping?.widthCm?.toString() ?? "",
+        heightCm: v.shipping?.heightCm?.toString() ?? "",
       },
     ]),
   );
@@ -128,6 +128,7 @@ export function validateProductDraft(
     if (shippingFields.some(([field]) => draft[field].trim())) {
       const packed: Record<string, number> = {};
       for (const [field, key, label, integer] of shippingFields) {
+        if (!integer && !draft[field].trim()) continue;
         const value = positiveNumber(draft[field], integer);
         if (value === null)
           errors[`${prefix}.shipping.${key}`] =

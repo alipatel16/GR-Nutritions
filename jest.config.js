@@ -6,5 +6,11 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   watchman: false,
-  testPathIgnorePatterns: ['/node_modules/', '/work/', '/functions/', '/supabase/'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/work/',
+    '/functions/',
+    '/supabase/',
+    '<rootDir>/scripts/tests/',
+  ],
 };

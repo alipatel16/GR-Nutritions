@@ -34,7 +34,7 @@ Rows that share a `product_key` become one product with several options. You onl
 | `nutrition` | | Per serving, e.g. `Protein=25 g; BCAA=5.5 g` |
 | `flavour`, `size` | yes | Per option, e.g. `Rich Chocolate`, `1 kg` |
 | `mrp`, `price` | yes | Rupees, e.g. `3299` and `2499`; price can't be above MRP |
-| `stock` | | Units available (default 100) |
+| `stock` | | Sellable units from your inventory. Blank means zero. |
 | `default` | | `yes` on the option to show first |
 | `status` | | `active` (default) or `draft` |
 | `sku` | | Your SKU; generated when blank |

@@ -4,6 +4,8 @@ import { StyleSheet, View } from 'react-native';
 
 import { colors, spacing, typography } from '@/theme/tokens';
 
+import { storeInfo } from '@/config/store-info';
+
 import { PageShell } from './PageShell';
 import { BrandMark } from '../brand/BrandMark';
 import { AppText } from '../ui/AppText';
@@ -36,6 +38,16 @@ const columns = [
       ['Recovery', '/shop?goal=recovery', 'Footer recovery'],
     ],
   },
+  {
+    title: 'COMPANY',
+    links: [
+      ['About us', '/about', 'Footer about us'],
+      ['Contact us', '/contact', 'Footer contact us'],
+      ['Help & support', '/help', 'Footer help'],
+      ['Terms & conditions', '/terms', 'Footer terms'],
+      ['Privacy policy', '/privacy', 'Footer privacy'],
+    ],
+  },
 ] as const;
 
 export function StoreFooter() {
@@ -51,7 +63,7 @@ export function StoreFooter() {
             </AppText>
             <Link accessibilityLabel="Open GR Coach from footer" href="/advisor" style={styles.coachLink}>
               <Sparkles color={colors.graphite} size={16} />
-              <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
+              <AppText style={styles.coachText}>GR Coach</AppText>
             </Link>
           </View>
 
@@ -90,8 +102,9 @@ export function StoreFooter() {
         <View style={styles.bottom}>
           <AppText style={styles.small}>© {new Date().getFullYear()} GR Nutritions</AppText>
           <View style={styles.bottomLinks}>
-            <Link href="/shop" style={styles.smallLink}>Catalogue</Link>
-            <Link href="/account" style={styles.smallLink}>Customer account</Link>
+            <Link href="/terms" style={styles.smallLink}>Terms</Link>
+            <Link href="/privacy" style={styles.smallLink}>Privacy</Link>
+            <Link href="/contact" style={styles.smallLink}>{storeInfo.phones[0]}</Link>
             <Link href="/admin" style={styles.smallLink}>Store administration</Link>
           </View>
         </View>
@@ -125,7 +138,7 @@ const styles = StyleSheet.create({
     textDecorationLine: 'none',
   },
   coachText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 13 },
-  columns: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 48, justifyContent: 'flex-end', minWidth: 280 },
+  columns: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', gap: 40, justifyContent: 'flex-end', minWidth: 280 },
   column: { gap: spacing[3], minWidth: 130 },
   columnTitle: { color: colors.mint, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
   link: { color: colors.onDark, fontFamily: typography.body, fontSize: 14, lineHeight: 22, textDecorationLine: 'none' },

@@ -6,8 +6,8 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { ActivityIndicator, ScrollView, StyleSheet, View } from "react-native";
-import { ShieldCheck, Mail } from "lucide-react-native";
+import { ActivityIndicator, Pressable, StyleSheet, View } from "react-native";
+import { BadgeCheck, Mail, MapPin, Package, Settings, ShieldCheck, ShoppingBag, Sparkles, Wallet } from "lucide-react-native";
 import { auth } from "@/lib/firebase-auth";
 import { useAuth } from "@/features/auth/AuthProvider";
 import { signInGoogle } from "@/features/auth/google-signin";
@@ -22,7 +22,8 @@ import {
   authFieldErrors,
   type FieldErrors,
 } from "@/lib/form-errors";
-import { colors, shadows, typography } from "@/theme/tokens";
+import { colors, radii, shadows, spacing, typography } from "@/theme/tokens";
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
 
 export default function AccountRoute() {
   const { user, ready, isAdmin, logout } = useAuth();
@@ -63,74 +64,131 @@ export default function AccountRoute() {
     }
     return true;
   }
+  const displayName = user?.displayName?.trim() || user?.email?.split("@")[0] || "GR member";
+  const initial = displayName.charAt(0).toUpperCase();
+  const messageView = message ? (
+    <AppText
+      accessibilityRole={successMessage ? undefined : "alert"}
+      accessibilityLiveRegion="polite"
+      style={[styles.message, successMessage ? styles.messageSuccess : styles.messageError]}
+      tone={successMessage ? "primary" : "danger"}
+    >
+      {message}
+    </AppText>
+  ) : null;
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: colors.obsidian }}>
-      <PageShell style={{ paddingTop: 35, paddingBottom: 90 }}>
-        {!ready ? (
-          <ActivityIndicator color={colors.violet} />
-        ) : user ? (
-          <View style={{ gap: 28 }}>
-            <View style={styles.heading}>
-              <View>
-                <AppText tone="accent" variant="caption">
-                  YOUR GR ACCOUNT
-                </AppText>
-                <AppText accessibilityRole="header" variant="display">
-                  GOOD TO SEE YOU.
-                </AppText>
-                <AppText tone="muted">{user.email}</AppText>
-              </View>
-              <Button variant="ghost" onPress={() => run(logout)}>
-                Sign out
-              </Button>
-            </View>
-            {!user.emailVerified && (
-              <View style={{ gap: 12 }}>
-                <AppText variant="heading">Verify your email for Cash on Delivery</AppText>
-                <AppText tone="muted">Open the verification link sent to your email, then refresh your account here.</AppText>
-                <Button variant="ghost" disabled={busy} onPress={() => run(() => sendEmailVerification(user), "A verification email is on its way. Please check your inbox and spam folder.")}>
-                  Resend verification email
-                </Button>
-                <Button disabled={busy} onPress={() => run(async () => {
-                  await user.reload();
-                  await user.getIdToken(true);
-                  if (!user.emailVerified) throw new Error('Email is not verified');
-                }, "Your email is verified. Cash on Delivery is available.")}>
-                  I have verified my email
+    <ChromeScrollView style={{ flex: 1, backgroundColor: colors.obsidian }}>
+      {!ready ? (
+        <ActivityIndicator color={colors.violet} style={{ marginTop: 48 }} />
+      ) : user ? (
+        <>
+          <View style={styles.profileBand}>
+            <PageShell>
+              <View style={styles.profileRow}>
+                <View style={styles.avatar}>
+                  <AppText style={styles.avatarText}>{initial}</AppText>
+                </View>
+                <View style={styles.profileCopy}>
+                  <AppText style={styles.eyebrow}>YOUR GR ACCOUNT</AppText>
+                  <AppText accessibilityRole="header" style={styles.profileName}>
+                    GOOD TO SEE YOU.
+                  </AppText>
+                  <AppText style={styles.profileEmail}>{user.email}</AppText>
+                  <View style={[styles.verify, user.emailVerified ? styles.verified : styles.unverified]}>
+                    {user.emailVerified ? <BadgeCheck color={colors.mint} size={13} /> : <Mail color="#FFD27A" size={13} />}
+                    <AppText style={[styles.verifyText, { color: user.emailVerified ? colors.mint : "#FFD27A" }]}>
+                      {user.emailVerified ? "Email verified" : "Email not verified"}
+                    </AppText>
+                  </View>
+                </View>
+                <Button variant="inverse" onPress={() => run(logout)} style={styles.signOut}>
+                  Sign out
                 </Button>
               </View>
-            )}
-            {next === "/checkout" && (
-              <Button onPress={() => router.push("/checkout")}>
-                Continue to checkout
-              </Button>
-            )}
-            <AddressBook uid={user.uid} />
-            <Link href={"/orders" as Href} style={styles.link}>
-              My orders →
-            </Link>
-            {isAdmin && (
-              <Link href={"/admin" as Href} style={styles.link}>
-                Open store administration →
-              </Link>
-            )}
+            </PageShell>
           </View>
-        ) : (
+          <PageShell style={styles.shell}>
+            <View style={styles.stack}>
+              {next === "/checkout" && (
+                <Button onPress={() => router.push("/checkout")}>
+                  Continue to checkout
+                </Button>
+              )}
+              {!user.emailVerified && (
+                <View style={styles.verifyCard}>
+                  <View style={styles.verifyIcon}><Mail color="#8A5A00" size={20} /></View>
+                  <View style={styles.verifyBody}>
+                    <AppText style={styles.cardTitle}>Verify your email for Cash on Delivery</AppText>
+                    <AppText tone="muted">Open the verification link sent to your email, then refresh your account here.</AppText>
+                    <View style={styles.verifyActions}>
+                      <Button disabled={busy} onPress={() => run(async () => {
+                        await user.reload();
+                        await user.getIdToken(true);
+                        if (!user.emailVerified) throw new Error('Email is not verified');
+                      }, "Your email is verified. Cash on Delivery is available.")}>
+                        I have verified my email
+                      </Button>
+                      <Button variant="ghost" disabled={busy} onPress={() => run(() => sendEmailVerification(user), "A verification email is on its way. Please check your inbox and spam folder.")}>
+                        Resend verification email
+                      </Button>
+                    </View>
+                  </View>
+                </View>
+              )}
+              {messageView}
+              <View style={styles.tiles}>
+                {([
+                  ["/orders", "My orders", "Track deliveries and past orders", Package],
+                  ["/shop", "Shop", "Browse the full catalogue", ShoppingBag],
+                  ["/advisor", "GR Coach", "Find products for your goal", Sparkles],
+                  ...(isAdmin ? [["/admin", "Store administration", "Products, orders and settings", Settings] as const] : []),
+                ] as const).map(([href, title, note, Icon]) => (
+                  <Link key={href} href={href as Href} asChild>
+                    <Pressable style={styles.tile}>
+                      <View style={styles.tileIcon}><Icon color={colors.mint} size={20} /></View>
+                      <View style={styles.tileCopy}>
+                        <AppText style={styles.tileTitle}>{title}</AppText>
+                        <AppText tone="muted" variant="caption">{note}</AppText>
+                      </View>
+                    </Pressable>
+                  </Link>
+                ))}
+              </View>
+              <View style={styles.section}>
+                <AddressBook uid={user.uid} />
+              </View>
+            </View>
+          </PageShell>
+        </>
+      ) : (
+        <PageShell style={styles.shell}>
           <View style={styles.authLayout}>
             <View style={styles.intro}>
-              <View style={styles.shield}><ShieldCheck size={30} color={colors.mint} /></View>
+              <View style={styles.shield}><ShieldCheck size={26} color={colors.mint} /></View>
               <AppText tone="accent" variant="caption">
                 YOUR ROUTINE, ALL TOGETHER
               </AppText>
-              <AppText accessibilityRole="header" variant="display">
+              <AppText accessibilityRole="header" style={styles.welcome}>
                 WELCOME{"\n"}TO YOUR NEXT LEVEL.
               </AppText>
-              <AppText tone="muted" variant="bodyLarge">
+              <AppText tone="muted">
                 Save your delivery addresses, follow your orders, and keep your
                 nutrition routine moving.
               </AppText>
+              <View style={styles.benefits}>
+                {([
+                  [MapPin, "Saved delivery addresses"],
+                  [Package, "Order tracking in one place"],
+                  [Wallet, "Cash on delivery once verified"],
+                ] as const).map(([Icon, label]) => (
+                  <View key={label} style={styles.benefit}>
+                    <Icon color={colors.mintInk} size={16} />
+                    <AppText variant="caption" style={styles.benefitText}>{label}</AppText>
+                  </View>
+                ))}
+              </View>
               <View style={styles.promise}>
-                <Mail size={21} color={colors.mintInk} />
+                <Mail size={18} color={colors.mintInk} />
                 <AppText variant="caption">
                   Browse freely. Sign in securely when you’re ready to order.
                 </AppText>
@@ -236,77 +294,139 @@ export default function AccountRoute() {
               </Button>
             </View>
           </View>
-        )}
-        {message ? (
-          <AppText
-            accessibilityRole={successMessage ? undefined : "alert"}
-            accessibilityLiveRegion="polite"
-            style={{
-              marginTop: 20,
-              ...(successMessage ? { color: colors.success } : {}),
-            }}
-            tone={successMessage ? "primary" : "danger"}
-          >
-            {message}
-          </AppText>
-        ) : null}
-      </PageShell>
-    </ScrollView>
+          {messageView}
+        </PageShell>
+      )}
+    </ChromeScrollView>
   );
 }
 const styles = StyleSheet.create({
-  heading: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    gap: 16,
-  },
-  authLayout: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 50,
-    justifyContent: "space-between",
-  },
-  intro: { flex: 1, minWidth: 260, gap: 22, paddingTop: 25, maxWidth: 560 },
-  shield: {
+  shell: { paddingBottom: 90, paddingTop: spacing[6] },
+  stack: { gap: spacing[5] },
+  profileBand: { backgroundColor: colors.graphite, paddingVertical: spacing[8] },
+  profileRow: { alignItems: "center", flexDirection: "row", flexWrap: "wrap", gap: spacing[4] },
+  avatar: {
     alignItems: "center",
-    backgroundColor: colors.graphite,
-    borderRadius: 16,
+    backgroundColor: colors.mint,
+    borderRadius: radii.pill,
     height: 64,
     justifyContent: "center",
     width: 64,
   },
+  avatarText: { color: colors.onMint, fontFamily: typography.bodyBold, fontSize: 26 },
+  profileCopy: { flex: 1, gap: 2, minWidth: 200 },
+  eyebrow: { color: colors.mint, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.8 },
+  profileName: { color: colors.onDark, fontFamily: typography.displayHeavy, fontSize: 34, lineHeight: 38 },
+  profileEmail: { color: colors.graphiteMuted, fontSize: 14 },
+  verify: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    borderRadius: radii.pill,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 5,
+    marginTop: spacing[2],
+    paddingHorizontal: spacing[3],
+    paddingVertical: 4,
+  },
+  verified: { borderColor: "#1F5A49" },
+  unverified: { borderColor: "#6B5520" },
+  verifyText: { fontFamily: typography.bodySemibold, fontSize: 12 },
+  signOut: { minHeight: 44 },
+  verifyCard: {
+    backgroundColor: "#FFF8E6",
+    borderColor: "#F1DDA6",
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: spacing[4],
+    padding: spacing[5],
+  },
+  verifyIcon: {
+    alignItems: "center",
+    backgroundColor: "#FFEBB5",
+    borderRadius: radii.pill,
+    height: 40,
+    justifyContent: "center",
+    width: 40,
+  },
+  verifyBody: { flex: 1, gap: spacing[2], minWidth: 0 },
+  verifyActions: { flexDirection: "row", flexWrap: "wrap", gap: spacing[2], marginTop: spacing[2] },
+  cardTitle: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 17 },
+  tiles: { flexDirection: "row", flexWrap: "wrap", gap: spacing[3] },
+  tile: {
+    alignItems: "center",
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    flexBasis: 260,
+    flexDirection: "row",
+    flexGrow: 1,
+    gap: spacing[3],
+    padding: spacing[4],
+  },
+  tileIcon: {
+    alignItems: "center",
+    backgroundColor: colors.graphite,
+    borderRadius: radii.sm,
+    height: 44,
+    justifyContent: "center",
+    width: 44,
+  },
+  tileCopy: { flex: 1, gap: 2, minWidth: 0 },
+  tileTitle: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 15 },
+  section: {
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    padding: spacing[5],
+  },
+  authLayout: {
+    alignItems: "flex-start",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing[8],
+    justifyContent: "space-between",
+  },
+  intro: { flex: 1, gap: spacing[3], maxWidth: 520, minWidth: 260 },
+  shield: {
+    alignItems: "center",
+    backgroundColor: colors.graphite,
+    borderRadius: 14,
+    height: 52,
+    justifyContent: "center",
+    width: 52,
+  },
+  welcome: { color: colors.ink, fontFamily: typography.displayHeavy, fontSize: 40, lineHeight: 42 },
+  benefits: { gap: spacing[2], marginTop: spacing[1] },
+  benefit: { alignItems: "center", flexDirection: "row", gap: spacing[2] },
+  benefitText: { color: colors.inkMuted, fontSize: 13.5 },
   card: {
     flex: 1,
     minWidth: 260,
-    maxWidth: 480,
+    maxWidth: 460,
     backgroundColor: colors.paper,
     borderColor: colors.line,
     borderTopColor: colors.mint,
     borderTopWidth: 4,
     borderWidth: 1,
     borderRadius: 18,
-    padding: 28,
-    gap: 16,
+    padding: 24,
+    gap: 14,
     ...shadows.raised,
   },
   promise: {
     backgroundColor: colors.mintSoft,
-    padding: 18,
-    borderRadius: 9,
-    flexDirection: "row",
-    gap: 12,
-    alignItems: "center",
-  },
-  link: {
-    alignSelf: "flex-start",
-    backgroundColor: colors.graphite,
+    padding: 14,
     borderRadius: 10,
-    color: colors.mint,
-    fontFamily: typography.bodyBold,
-    fontSize: 15,
-    paddingHorizontal: 18,
-    paddingVertical: 13,
-    textDecorationLine: "none",
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+    marginTop: spacing[2],
   },
+  message: { borderRadius: radii.sm, marginTop: spacing[4], padding: spacing[3] },
+  messageSuccess: { backgroundColor: colors.successSoft, color: colors.success },
+  messageError: { backgroundColor: colors.dangerSoft },
 });

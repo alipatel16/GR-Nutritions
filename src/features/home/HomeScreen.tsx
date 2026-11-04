@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'expo-router';
-import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import { TrustBar } from '@/components/commerce/TrustBar';
 import { PageShell } from '@/components/layout/PageShell';
@@ -8,7 +8,7 @@ import { StoreFooter } from '@/components/layout/StoreFooter';
 import { Reveal } from '@/components/motion/Reveal';
 import { AppText } from '@/components/ui/AppText';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { BrandGrid } from '@/features/catalog/BrandGrid';
+import { BrandMarquee } from '@/features/catalog/BrandGrid';
 import type { CatalogRepository } from '@/features/catalog/catalog-repository';
 import type { Product } from '@/features/catalog/types';
 import { colors, radii, spacing, typography } from '@/theme/tokens';
@@ -18,6 +18,7 @@ import { CategoryRail } from './CategoryRail';
 import { GoalGrid } from './GoalGrid';
 import { HeroCarousel } from './HeroCarousel';
 import { ProductRail } from './ProductRail';
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
 
 function uniqueById(products: readonly Product[]): Product[] {
   return [...new Map(products.map((product) => [product.id, product])).values()];
@@ -92,7 +93,7 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
   const brands = [...new Set(products.map((product) => product.brand))];
 
   return (
-    <ScrollView contentContainerStyle={styles.pageContent} style={styles.page}>
+    <ChromeScrollView contentContainerStyle={styles.pageContent} style={styles.page}>
       <HeroCarousel />
       <GoalGrid />
 
@@ -151,7 +152,7 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
                     linkLabel="Browse all brands"
                     title="Shop by brand"
                   />
-                  <BrandGrid brands={brands} />
+                  <BrandMarquee brands={brands} />
                 </View>
               </Reveal>
 
@@ -211,7 +212,7 @@ export function HomeScreen({ repository }: { repository: CatalogRepository }) {
         </View>
       </PageShell>
       <StoreFooter />
-    </ScrollView>
+    </ChromeScrollView>
   );
 }
 

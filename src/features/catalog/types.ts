@@ -46,9 +46,9 @@ export type ProductVariant = {
   weightGrams: number;
   shipping?: {
     weightGrams: number;
-    lengthCm: number;
-    widthCm: number;
-    heightCm: number;
+    lengthCm?: number;
+    widthCm?: number;
+    heightCm?: number;
   };
   mrp: Money;
   price: Money;

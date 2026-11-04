@@ -1,5 +1,5 @@
 import { Link } from 'expo-router';
-import { Bot, Sparkles } from 'lucide-react-native';
+import { SlidersHorizontal, Sparkles } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/AppText';
@@ -7,9 +7,9 @@ import { colors, radii, spacing, typography } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
 
 const sampleQuestions = [
-  'Whey or isolate for a lactose-sensitive beginner?',
-  'Best creatine under ₹1,500?',
-  'Stimulant-free pre-workout options?',
+  'Goal · Muscle gain',
+  'Budget · Up to ₹1,500 per product',
+  'Diet · Vegetarian',
 ];
 
 export function AdvisorBanner() {
@@ -19,18 +19,18 @@ export function AdvisorBanner() {
       <View style={styles.copy}>
         <View style={styles.eyebrowRow}>
           <Sparkles color={colors.mint} size={15} />
-          <AppText style={styles.eyebrow}>GR COACH AI</AppText>
+          <AppText style={styles.eyebrow}>GR COACH</AppText>
         </View>
         <AppText style={styles.title} variant="heading">
-          Ask anything. Get the right product.
+          Find products that fit your preferences.
         </AppText>
         <AppText style={styles.body} variant="bodyLarge">
-          Tell GR Coach your goal, diet, budget and training routine. It answers your
-          nutrition questions and picks the best match from our in-stock shelf.
+          Choose your goal, diet, budget and stimulant preference to see matching
+          in-stock products from our catalogue.
         </AppText>
         <Link accessibilityLabel="Start guided advisor" href="/advisor" style={styles.link}>
-          <Bot color={colors.graphite} size={18} />
-          <AppText style={styles.linkText}>Chat with GR Coach</AppText>
+          <SlidersHorizontal color={colors.graphite} size={18} />
+          <AppText style={styles.linkText}>Find my matches</AppText>
         </Link>
       </View>
       <View style={[styles.preview, mobile && styles.mobilePreview]}>
@@ -41,10 +41,10 @@ export function AdvisorBanner() {
         ))}
         <View style={styles.answer}>
           <View style={styles.answerAvatar}>
-            <Bot color={colors.graphite} size={16} />
+            <SlidersHorizontal color={colors.graphite} size={16} />
           </View>
           <AppText style={styles.answerText}>
-            Here are 3 picks that fit your goal and budget, with the reasons why…
+            See up to three matches and why each fits.
           </AppText>
         </View>
       </View>

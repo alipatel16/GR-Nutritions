@@ -65,6 +65,16 @@ const product = makeProduct({
 });
 
 describe('ProductDetailScreen', () => {
+  it('allows an in-stock legacy product with net weight and no shipping dimensions into the cart', async () => {
+    const previous = process.env.EXPO_PUBLIC_CATALOG_MODE;
+    process.env.EXPO_PUBLIC_CATALOG_MODE = 'live';
+    try {
+      await render(<ProductDetailScreen product={{ ...product, demoContent: false,
+        variants: [makeVariant({ stockAvailable: 5, shipping: undefined })] }} />);
+      expect(screen.getByRole('button', { name: 'Add to cart' })).toBeEnabled();
+      expect(screen.queryByText('Delivery coming soon')).toBeNull();
+    } finally { process.env.EXPO_PUBLIC_CATALOG_MODE = previous; }
+  });
   afterEach(() => jest.restoreAllMocks());
   beforeEach(() => {
     useCartStore.setState({ cart: { lines: [] }, lastError: null });
@@ -203,14 +213,14 @@ describe('ProductDetailScreen', () => {
     expect(
       screen.getByRole('button', { name: 'Select Cocoa • 1 kg' }),
     ).toBeSelected();
-    expect(screen.getByText('₹1,000')).toBeOnTheScreen();
+    expect(screen.getByLabelText('Selected price ₹1,000')).toBeOnTheScreen();
     expect(screen.getByText('MRP ₹1,200')).toBeOnTheScreen();
 
     await user.press(
       screen.getByRole('button', { name: 'Select Cocoa • 2 kg' }),
     );
 
-    expect(screen.getByText('₹2,000')).toBeOnTheScreen();
+    expect(screen.getByLabelText('Selected price ₹2,000')).toBeOnTheScreen();
     expect(screen.getByText('MRP ₹2,300')).toBeOnTheScreen();
   });
 

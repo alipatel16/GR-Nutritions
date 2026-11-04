@@ -13,11 +13,11 @@ const campaigns = [
   {
     eyebrow: 'INDIA’S TRUSTED SUPPLEMENT STORE',
     title: 'GOOD FUEL. GREAT POTENTIAL.',
-    body: 'Genuine protein, creatine, pre-workout and daily wellness from the brands serious athletes rely on. Not sure where to start? GR Coach AI will help you choose.',
+    body: 'Genuine protein, creatine, pre-workout and daily wellness from the brands serious athletes rely on. Not sure where to start? GR Coach will help you choose.',
     primaryLabel: 'Shop bestsellers',
     primaryAccessibilityLabel: 'Shop all supplements',
     primaryHref: '/shop',
-    secondaryLabel: 'Ask GR Coach AI',
+    secondaryLabel: 'Ask GR Coach',
     secondaryAccessibilityLabel: 'Find my stack',
     secondaryHref: '/advisor',
     accent: colors.onDark,

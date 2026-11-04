@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Pressable,
-  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -23,6 +22,7 @@ import type {
   CatalogSort,
   ProductCategory,
 } from './types';
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
 
 type ShopScreenProps = {
   repository: CatalogRepository;
@@ -117,7 +117,7 @@ export function ShopScreen({
   const count = result?.total ?? 0;
 
   return (
-    <ScrollView
+    <ChromeScrollView
       contentContainerStyle={styles.scrollContent}
       style={styles.page}
     >
@@ -227,7 +227,7 @@ export function ShopScreen({
           </View>
         )}
       </PageShell>
-    </ScrollView>
+    </ChromeScrollView>
   );
 }
 

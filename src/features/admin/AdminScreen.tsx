@@ -2,10 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import { Link } from 'expo-router';
 import { randomUUID } from 'expo-crypto';
-import { ActivityIndicator, Pressable, ScrollView, View, type ScrollViewInstance } from 'react-native';
-import { Package, Boxes, ShoppingBag, Plus } from 'lucide-react-native';
+import { ActivityIndicator, ScrollView, View, type ScrollViewInstance } from 'react-native';
+import { Package, Boxes, ShoppingBag, Plus, IndianRupee } from 'lucide-react-native';
 import { adminRepository, type AdminOrder } from './admin-repository';
-import { AdminOrderCard } from './AdminOrderCard';
+import { AdminCatalogPanel } from './AdminCatalogPanel';
+import { AdminOrdersPanel } from './AdminOrdersPanel';
+import { salesMetrics } from './admin-listing';
+import { formatInr } from '@/lib/money';
 import { compressProductImage } from './compress-image';
 import { AdminIntegrationPanel } from './AdminIntegrationPanel';
 import { useAuth } from '@/features/auth/AuthProvider';
@@ -156,6 +159,22 @@ export function AdminScreen() {
       setBusy(false);
     }
   }
+  async function remove(product: Product) {
+    setBusy(true);
+    setMessage('');
+    setMessageSuccess(false);
+    try {
+      await adminRepository.remove(product);
+      await load();
+      setMessage('Product deleted from the store. Restore it using the Archived filter.');
+      setMessageSuccess(true);
+    } catch {
+      setMessage('Product could not be deleted. Refresh the list and try again.');
+    } finally {
+      setBusy(false);
+    }
+  }
+  const metrics = salesMetrics(orders);
   if (!ready) return <ActivityIndicator />;
   if (!user || !isAdmin)
     return (
@@ -206,15 +225,18 @@ export function AdminScreen() {
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
             {[
-              { Icon: Package, label: 'Products', value: products.length },
+              { Icon: IndianRupee, label: 'Total earnings', value: formatInr(metrics.earningsPaise) },
+              { Icon: IndianRupee, label: 'COD awaiting collection', value: formatInr(metrics.pendingCodPaise) },
+              { Icon: Package, label: 'Products', value: products.filter((product) => product.status !== 'archived').length },
               {
                 Icon: Boxes,
                 label: 'Low-stock options',
                 value: products
+                  .filter((product) => product.status !== 'archived')
                   .flatMap((p) => p.variants)
                   .filter((v) => v.stockAvailable < 5).length,
               },
-              { Icon: ShoppingBag, label: 'Orders', value: orders.length },
+              { Icon: ShoppingBag, label: 'Live orders', value: metrics.liveOrders },
             ].map(({ Icon, label, value }) => (
               <View
                 key={label}
@@ -235,6 +257,7 @@ export function AdminScreen() {
               </View>
             ))}
           </View>
+          <AppText tone="muted" variant="caption">Earnings are merchandise sales from paid online orders and delivered COD orders. Test orders, shipping fees and orders under payment review are excluded.</AppText>
           {message ? (
             <AppText accessibilityRole={messageSuccess ? undefined : "alert"} accessibilityLiveRegion="polite" tone={messageSuccess ? "primary" : "danger"} style={messageSuccess ? { color: colors.success } : undefined}>
               {message}
@@ -266,48 +289,9 @@ export function AdminScreen() {
                 </Button>
               </View>
               {tab === 'settings' ? <AdminIntegrationPanel /> : dataLoading || loadError ? null : tab === 'products' ? (
-                products.length ? (
-                  products.map((p) => (
-                    <Pressable
-                      key={p.id}
-                      onPress={() => {
-                        setEdit(p);
-                        setMessage('');
-                      }}
-                      style={{
-                        backgroundColor: '#FFF',
-                        padding: 20,
-                        borderRadius: 9,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        gap: 15,
-                        flexWrap: 'wrap',
-                      }}
-                    >
-                      <View>
-                        <AppText variant="label">{p.name}</AppText>
-                        <AppText tone="muted" variant="caption">
-                          {p.brand} · {p.category} · {p.status}
-                        </AppText>
-                      </View>
-                      <AppText variant="caption">
-                        {p.variants.length} options ·{' '}
-                        {p.variants.reduce((s, v) => s + v.stockAvailable, 0)}{' '}
-                        units · Edit →
-                      </AppText>
-                    </Pressable>
-                  ))
-                ) : (
-                  <AppText tone="muted">
-                    Your catalog is empty. Add your first real product above.
-                  </AppText>
-                )
-              ) : orders.length ? (
-                orders.map((o) => <AdminOrderCard key={o.id} order={o} onChanged={() => { void load(); }} />)
+                <AdminCatalogPanel products={products} busy={busy} onEdit={(product) => { setEdit(product); setMessage(''); }} onRemove={remove} />
               ) : (
-                <AppText tone="muted">
-                  No orders yet. New orders will appear here when shoppers place them.
-                </AppText>
+                <AdminOrdersPanel orders={orders} onChanged={() => { void load(); }} />
               )}
             </>
           )}

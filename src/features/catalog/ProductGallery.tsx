@@ -125,7 +125,7 @@ export function ProductGallery({
           </Pressable>
         </View>
       ) : null}
-      {media.length > 0 ? (
+      {media.length > 1 ? (
         <AppText
           accessibilityLiveRegion="polite"
           style={styles.caption}
@@ -133,7 +133,6 @@ export function ProductGallery({
           variant="caption"
         >
           {index + 1} / {media.length}
-          {active?.uri ? ` · ${active.alt || productName}` : ''}
         </AppText>
       ) : null}
     </View>

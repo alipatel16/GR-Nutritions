@@ -44,13 +44,13 @@ export function createProviders({env,fetchImpl=fetch,timeoutMs=12000}) {
   async razorpayPayments(mode,orderId){if(!id(orderId,/^order_[a-zA-Z0-9]+$/))throw new Error('Invalid order reference');const r=await request(`https://api.razorpay.com/v1/orders/${orderId}/payments`,{headers:credentials(mode)});if(!Array.isArray(r.items))throw new ProviderError();return r.items;},
   async shiprocketPickups(){const r=await shiprocket('settings/company/pickup?isActive=1&is_order_creation=true');const rows=r.data?.shipping_address;if(!Array.isArray(rows))throw new ProviderError('Pickup locations could not be checked');return rows;},
   async shiprocketServiceability(context){
-   const p=context.parcel;const query=new URLSearchParams({pickup_postcode:'382350',delivery_postcode:context.address.pincode,cod:context.paymentMethod==='cod'?'1':'0',weight:String(p.weightGrams/1000),length:String(p.lengthCm),breadth:String(p.widthCm),height:String(p.heightCm),declared_value:String(context.totalPaise/100)});
+   const p=context.parcel;const query=new URLSearchParams({pickup_postcode:'382350',delivery_postcode:context.address.pincode,cod:context.paymentMethod==='cod'?'1':'0',weight:String(p.weightGrams/1000),declared_value:String(context.totalPaise/100)});
    const r=await shiprocket(`courier/serviceability/?${query}`);if(!Array.isArray(r.data?.available_courier_companies))throw new ProviderError('Delivery availability could not be checked');return r.data.available_courier_companies;
   },
   async shiprocketCreate(order){
    const a=order.address,p=order.parcel;
    if(!isValidCustomerEmail(a?.email))throw new ProviderError('This order needs a valid billing email before creating a shipment',false);
-   // All values come from immutable local order snapshots. No warehouse is created.
+   // Staff measure the packed parcel. Other values come from the saved order.
    return shiprocket('orders/create/adhoc',{method:'POST',body:{order_id:`gr-${order.id}`,order_date:new Date(order.created_at).toISOString().replace('T',' ').slice(0,16),pickup_location:order.pickup_location,
     billing_customer_name:a.fullName,billing_last_name:'',billing_address:a.line1,billing_address_2:a.line2??'',billing_city:a.city,billing_pincode:a.pincode,billing_state:a.state,billing_country:'India',billing_email:a.email,billing_phone:a.phone,shipping_is_billing:true,
     order_items:order.items.map(i=>({name:i.productName,sku:i.sku,units:i.quantity,selling_price:i.unitPricePaise/100})),payment_method:order.payment_method==='cod'?'COD':'Prepaid',

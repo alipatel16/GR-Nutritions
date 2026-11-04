@@ -3,11 +3,10 @@ import { Link, Redirect } from 'expo-router';
 import {
   ActivityIndicator,
   Linking,
-  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
-import { Package, Truck } from 'lucide-react-native';
+import { CreditCard, Package, Truck, Wallet } from 'lucide-react-native';
 import { storeRequest } from '@/lib/store-api';
 import { useAuth } from '@/features/auth/AuthProvider';
 import {
@@ -25,8 +24,31 @@ import { Button } from '@/components/ui/Button';
 import { PageHero } from '@/components/layout/PageHero';
 import { PageShell } from '@/components/layout/PageShell';
 import { formatInr } from '@/lib/money';
-import { colors, radii, spacing, typography } from '@/theme/tokens';
+import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
+
+const progressSteps = ['Confirmed', 'Preparing', 'Shipped', 'Delivered'] as const;
+
+// Visual progress only; the order status itself is unchanged.
+function progressStep(status: string): number {
+  return ({ paid: 1, cod_confirmed: 1, processing: 2, shipped: 3, delivered: 4 } as Record<string, number>)[status] ?? 0;
+}
+
+type StatusTone = 'good' | 'waiting' | 'bad';
+function statusTone(status: string): StatusTone {
+  if (['paid', 'cod_confirmed', 'processing', 'shipped', 'delivered'].includes(status)) return 'good';
+  if (['cancelled', 'refunded', 'payment_failed', 'payment_expired', 'expired'].includes(status)) return 'bad';
+  return 'waiting';
+}
+
+function formatPlaced(value?: string) {
+  if (!value) return '';
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? ''
+    : date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
 
 export default function Orders() {
   const { user, ready } = useAuth();
@@ -114,7 +136,7 @@ function OrdersContent() {
     }
   }
   return (
-    <ScrollView style={styles.page}>
+    <ChromeScrollView style={styles.page}>
       <PageHero
         description="Order updates and delivery tracking, all in one place."
         eyebrow="GR STORE / YOUR ACCOUNT"
@@ -157,191 +179,316 @@ function OrdersContent() {
               </Link>
             </View>
           ) : (
-            orders.map((order) => (
-              <View key={order.id} style={styles.card}>
-                <View style={styles.cardHeading}>
-                  <View style={styles.orderIdentity}>
-                    <AppText tone="muted" variant="caption">
-                      ORDER REFERENCE
-                    </AppText>
-                    <AppText selectable variant="label">
-                      {order.id}
-                    </AppText>
-                  </View>
-                  {order.mode === 'test' ? (
-                    <View style={styles.badge}>
-                      <AppText tone="accent" variant="caption">
-                        Test order · Will not ship
-                      </AppText>
-                    </View>
-                  ) : null}
-                </View>
-                <View style={[styles.columns, !desktop && styles.stacked]}>
-                  <View style={styles.details}>
-                    <AppText style={styles.status} variant="title">
-                      {orderStatusLabel(order.status)}
-                    </AppText>
-                    {order.items?.map((item, index) => (
-                      <AppText
-                        key={`${item.productName}-${index}`}
-                        tone="muted"
-                        variant="caption"
-                      >
-                        {item.productName} × {item.quantity}
-                      </AppText>
-                    ))}
-                    <AppText variant="label">
-                      {order.paymentMethod === 'cod' &&
-                      !['cancelled', 'refunded', 'delivered'].includes(
-                        order.status,
-                      )
-                        ? 'Amount due on delivery: '
-                        : 'Order total: '}
-                      {formatInr(order.totalPaise)}
-                    </AppText>
-                    <AppText tone="muted" variant="caption">
-                      {order.paymentMethod === 'cod'
-                        ? 'Cash on delivery'
-                        : order.paymentMethod === 'razorpay'
-                          ? 'Online payment · Razorpay'
-                          : 'Payment details unavailable'}
-                    </AppText>
-                    {order.shippingPaise != null ? (
-                      <AppText tone="muted" variant="caption">
-                        Delivery {formatInr(order.shippingPaise)}
-                        {order.codFeePaise
-                          ? ` · COD fee ${formatInr(order.codFeePaise)}`
-                          : ''}
-                      </AppText>
-                    ) : null}
-                  </View>
-                  <View style={[styles.tracking, !desktop && styles.fullWidth]}>
-                    <View style={styles.trackingHeading}>
-                      <Truck color={colors.violet} size={20} />
-                      <AppText variant="label">Delivery tracking</AppText>
-                    </View>
-                    {order.tracking ? (
-                      <>
-                        {order.tracking.courierName ? (
+            <>
+              <AppText tone="muted" variant="caption">
+                {orders.length} {orders.length === 1 ? 'order' : 'orders'}
+              </AppText>
+              {orders.map((order) => {
+                const tone = statusTone(order.status);
+                const step = progressStep(order.status);
+                const placed = formatPlaced(order.createdAt);
+                return (
+                  <View key={order.id} style={styles.card}>
+                    <View style={styles.cardHeading}>
+                      <View style={styles.orderIdentity}>
+                        <AppText tone="muted" variant="caption">
+                          ORDER REFERENCE
+                        </AppText>
+                        <AppText selectable variant="label">
+                          {order.id}
+                        </AppText>
+                        {placed ? (
                           <AppText tone="muted" variant="caption">
-                            {order.tracking.courierName}
+                            Placed {placed}
                           </AppText>
                         ) : null}
-                        {order.tracking.awb ? (
-                          <View>
-                            <AppText tone="muted" variant="caption">
-                              Tracking number
-                            </AppText>
-                            <AppText selectable variant="label">
-                              {order.tracking.awb}
+                      </View>
+                      <View style={styles.badges}>
+                        <View style={[styles.statusPill, styles[`pill_${tone}`]]}>
+                          <View style={[styles.statusDot, styles[`dot_${tone}`]]} />
+                          <AppText style={[styles.status, styles[`text_${tone}`]]}>
+                            {orderStatusLabel(order.status)}
+                          </AppText>
+                        </View>
+                        {order.mode === 'test' ? (
+                          <View style={styles.badge}>
+                            <AppText tone="accent" variant="caption">
+                              Test order · Will not ship
                             </AppText>
                           </View>
                         ) : null}
-                        {order.tracking.status ? (
-                          <AppText tone="muted" variant="caption">
-                            Shipment update:{' '}
-                            {order.tracking.status.replace(/_/g, ' ')}
+                      </View>
+                    </View>
+
+                    {step > 0 ? (
+                      <View
+                        accessible
+                        accessibilityLabel={`Order progress: ${progressSteps[step - 1]}, step ${step} of 4`}
+                        style={styles.progress}
+                      >
+                        {progressSteps.map((name, index) => {
+                          const reached = index < step;
+                          return (
+                            <View
+                              accessibilityElementsHidden
+                              importantForAccessibility="no-hide-descendants"
+                              key={name}
+                              style={styles.progressStep}
+                            >
+                              <View style={styles.progressTrack}>
+                                <View style={[styles.progressBar, reached && styles.progressReached]} />
+                              </View>
+                              <AppText style={[styles.progressLabel, reached && styles.progressLabelReached]}>
+                                {name}
+                              </AppText>
+                            </View>
+                          );
+                        })}
+                      </View>
+                    ) : null}
+
+                    <View style={[styles.columns, !desktop && styles.stacked]}>
+                      <View style={styles.details}>
+                        {order.items?.length ? (
+                          <View style={styles.items}>
+                            {order.items.map((item, index) => (
+                              <View key={`${item.productName}-${index}`} style={styles.itemRow}>
+                                <View style={styles.itemIcon}>
+                                  <Package color={colors.mintInk} size={16} />
+                                </View>
+                                <AppText style={styles.itemName} variant="caption">
+                                  {item.productName} × {item.quantity}
+                                </AppText>
+                              </View>
+                            ))}
+                          </View>
+                        ) : null}
+                        <View style={styles.totals}>
+                          {order.shippingPaise != null ? (
+                            <AppText tone="muted" variant="caption">
+                              Delivery {formatInr(order.shippingPaise)}
+                              {order.codFeePaise
+                                ? ` · COD fee ${formatInr(order.codFeePaise)}`
+                                : ''}
+                            </AppText>
+                          ) : null}
+                          <AppText style={styles.total} variant="label">
+                            {order.paymentMethod === 'cod' &&
+                            !['cancelled', 'refunded', 'delivered'].includes(
+                              order.status,
+                            )
+                              ? 'Amount due on delivery: '
+                              : 'Order total: '}
+                            {formatInr(order.totalPaise)}
                           </AppText>
-                        ) : null}
-                        {order.tracking.url ? (
-                          <Button
-                            variant="ghost"
-                            accessibilityLabel={`Track order ${order.id}`}
-                            onPress={() => openTracking(order.tracking?.url)}
-                          >
-                            Track delivery
-                          </Button>
-                        ) : null}
-                      </>
-                    ) : (
-                      <AppText tone="muted" variant="caption">
-                        {order.mode === 'test'
-                          ? 'Test orders do not create a delivery.'
-                          : 'Tracking will appear here once your order has a shipment.'}
-                      </AppText>
-                    )}
-                    <Button
-                      variant="ghost"
-                      accessibilityLabel={`Refresh order ${order.id}`}
-                      disabled={Boolean(refreshing)}
-                      loading={refreshing === order.id}
-                      onPress={() => refreshOrder(order.id)}
-                    >
-                      Refresh order status
-                    </Button>
+                          <View style={styles.payment}>
+                            {order.paymentMethod === 'razorpay' ? (
+                              <CreditCard color={colors.mineral} size={14} />
+                            ) : (
+                              <Wallet color={colors.mineral} size={14} />
+                            )}
+                            <AppText tone="muted" variant="caption">
+                              {order.paymentMethod === 'cod'
+                                ? 'Cash on delivery'
+                                : order.paymentMethod === 'razorpay'
+                                  ? 'Online payment · Razorpay'
+                                  : 'Payment details unavailable'}
+                            </AppText>
+                          </View>
+                        </View>
+                      </View>
+                      <View style={[styles.tracking, !desktop && styles.fullWidth]}>
+                        <View style={styles.trackingHeading}>
+                          <Truck color={colors.mint} size={18} />
+                          <AppText style={styles.trackingTitle} variant="label">Delivery tracking</AppText>
+                        </View>
+                        {order.tracking ? (
+                          <>
+                            {order.tracking.courierName ? (
+                              <AppText style={styles.trackingMuted} variant="caption">
+                                {order.tracking.courierName}
+                              </AppText>
+                            ) : null}
+                            {order.tracking.awb ? (
+                              <View>
+                                <AppText style={styles.trackingMuted} variant="caption">
+                                  Tracking number
+                                </AppText>
+                                <AppText selectable style={styles.trackingValue} variant="label">
+                                  {order.tracking.awb}
+                                </AppText>
+                              </View>
+                            ) : null}
+                            {order.tracking.status ? (
+                              <AppText style={styles.trackingMuted} variant="caption">
+                                Shipment update:{' '}
+                                {order.tracking.status.replace(/_/g, ' ')}
+                              </AppText>
+                            ) : null}
+                            {order.tracking.url ? (
+                              <Button
+                                accessibilityLabel={`Track order ${order.id}`}
+                                onPress={() => openTracking(order.tracking?.url)}
+                              >
+                                Track delivery
+                              </Button>
+                            ) : null}
+                          </>
+                        ) : (
+                          <AppText style={styles.trackingMuted} variant="caption">
+                            {order.mode === 'test'
+                              ? 'Test orders do not create a delivery.'
+                              : 'Tracking will appear here once your order has a shipment.'}
+                          </AppText>
+                        )}
+                        <Link
+                          accessibilityLabel={`Get help with order ${order.id}`}
+                          href={{ pathname: '/help', params: { order: order.id } }}
+                          style={styles.helpLink}
+                        >
+                          Need help with this order?
+                        </Link>
+                        <Button
+                          variant="inverse"
+                          accessibilityLabel={`Refresh order ${order.id}`}
+                          disabled={Boolean(refreshing)}
+                          loading={refreshing === order.id}
+                          onPress={() => refreshOrder(order.id)}
+                        >
+                          Refresh order status
+                        </Button>
+                      </View>
+                    </View>
                   </View>
-                </View>
-              </View>
-            ))
+                );
+              })}
+            </>
           )}
         </View>
       </PageShell>
-    </ScrollView>
+    </ChromeScrollView>
   );
 }
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.obsidian },
   shell: { paddingTop: spacing[8], paddingBottom: spacing[20] },
-  content: { gap: spacing[6] },
-  heading: { gap: spacing[3], marginBottom: spacing[3] },
-  title: { color: colors.violet },
+  content: { gap: spacing[4] },
   card: {
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
-    borderLeftColor: colors.mint,
-    borderLeftWidth: 4,
     borderWidth: 1,
-    borderRadius: radii.md,
-    padding: spacing[6],
-    gap: spacing[6],
+    borderRadius: radii.lg,
+    padding: spacing[5],
+    gap: spacing[5],
+    ...shadows.card,
   },
   cardHeading: {
     alignItems: 'flex-start',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    gap: spacing[4],
+    gap: spacing[3],
   },
-  orderIdentity: { gap: spacing[2], flexShrink: 1, minWidth: 0 },
+  orderIdentity: { gap: 2, flexShrink: 1, minWidth: 0 },
+  badges: { alignItems: 'flex-end', gap: spacing[2] },
+  statusPill: {
+    alignItems: 'center',
+    borderRadius: radii.pill,
+    flexDirection: 'row',
+    gap: 6,
+    paddingHorizontal: spacing[3],
+    paddingVertical: 6,
+  },
+  pill_good: { backgroundColor: colors.successSoft },
+  pill_waiting: { backgroundColor: '#FFF4D6' },
+  pill_bad: { backgroundColor: colors.dangerSoft },
+  statusDot: { borderRadius: 4, height: 8, width: 8 },
+  dot_good: { backgroundColor: colors.success },
+  dot_waiting: { backgroundColor: '#B7791F' },
+  dot_bad: { backgroundColor: colors.danger },
+  status: { fontFamily: typography.bodyBold, fontSize: 13 },
+  text_good: { color: colors.success },
+  text_waiting: { color: '#8A5A00' },
+  text_bad: { color: colors.danger },
   badge: {
     backgroundColor: colors.mintSoft,
     borderRadius: radii.pill,
     paddingHorizontal: spacing[3],
-    paddingVertical: spacing[2],
+    paddingVertical: spacing[1],
   },
-  columns: { flexDirection: 'row', gap: spacing[8], alignItems: 'flex-start' },
-  stacked: { flexDirection: 'column', gap: spacing[5] },
-  details: { flex: 1, minWidth: 0, width: '100%', gap: spacing[3] },
-  status: { color: colors.violet },
-  tracking: {
-    flex: 0.7,
-    minWidth: 0,
-    backgroundColor: colors.graphiteSurface,
+  progress: { flexDirection: 'row', gap: spacing[2] },
+  progressStep: { flex: 1, gap: spacing[2] },
+  progressTrack: { backgroundColor: colors.line, borderRadius: 3, height: 6, overflow: 'hidden' },
+  progressBar: { height: 6 },
+  progressReached: { backgroundColor: colors.mint, width: '100%' },
+  progressLabel: { color: colors.mineral, fontSize: 11.5, lineHeight: 16 },
+  progressLabelReached: { color: colors.ink, fontFamily: typography.bodySemibold },
+  columns: { flexDirection: 'row', gap: spacing[6], alignItems: 'stretch' },
+  stacked: { flexDirection: 'column', gap: spacing[4] },
+  details: { flex: 1, minWidth: 0, width: '100%', gap: spacing[4] },
+  items: { gap: spacing[2] },
+  itemRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[3] },
+  itemIcon: {
+    alignItems: 'center',
+    backgroundColor: colors.mintSoft,
     borderRadius: radii.sm,
-    padding: spacing[5],
+    height: 32,
+    justifyContent: 'center',
+    width: 32,
+  },
+  itemName: { color: colors.ink, flex: 1, fontSize: 14 },
+  totals: {
+    borderTopColor: colors.line,
+    borderTopWidth: 1,
+    gap: spacing[1],
+    paddingTop: spacing[3],
+  },
+  total: { color: colors.ink, fontSize: 16 },
+  payment: { alignItems: 'center', flexDirection: 'row', gap: 6 },
+  tracking: {
+    flex: 0.8,
+    minWidth: 0,
+    backgroundColor: colors.graphite,
+    borderRadius: radii.md,
+    padding: spacing[4],
     gap: spacing[3],
   },
   fullWidth: { width: '100%', flex: 0 },
-  trackingHeading: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing[2],
+  trackingHeading: { flexDirection: 'row', alignItems: 'center', gap: spacing[2] },
+  trackingTitle: { color: colors.onDark },
+  trackingMuted: { color: colors.graphiteMuted },
+  trackingValue: { color: colors.onDark },
+  helpLink: {
+    color: colors.mint,
+    fontFamily: typography.bodyBold,
+    fontSize: 14,
+    paddingVertical: spacing[1],
+    textDecorationLine: 'none',
   },
   empty: {
-    alignItems: 'flex-start',
-    gap: spacing[5],
+    alignItems: 'center',
+    gap: spacing[3],
     backgroundColor: colors.paper,
     borderColor: colors.line,
+    borderRadius: radii.lg,
     borderWidth: 1,
-    borderRadius: radii.md,
-    padding: spacing[8],
+    paddingHorizontal: spacing[6],
+    paddingVertical: spacing[12],
   },
   link: {
-    color: colors.violet,
-    fontFamily: typography.bodySemibold,
-    minHeight: 44,
+    backgroundColor: colors.mint,
+    borderRadius: radii.xs,
+    color: colors.onMint,
+    fontFamily: typography.bodyBold,
+    marginTop: spacing[2],
+    paddingHorizontal: spacing[5],
     paddingVertical: spacing[3],
     textDecorationLine: 'none',
   },
-  error: { gap: spacing[3] },
+  error: {
+    backgroundColor: colors.dangerSoft,
+    borderRadius: radii.md,
+    gap: spacing[3],
+    padding: spacing[4],
+  },
 });

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageShell } from "@/components/layout/PageShell";
 import { AppText } from "@/components/ui/AppText";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { BrandGrid } from "@/features/catalog/BrandGrid";
 import { catalogRepository } from "@/features/catalog/supabase-catalog-repository";
 import { colors } from "@/theme/tokens";
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
 
 export default function BrandsRoute() {
   const [brands, setBrands] = useState<string[] | null>(null);
@@ -29,7 +30,7 @@ export default function BrandsRoute() {
   }, [attempt]);
 
   return (
-    <ScrollView
+    <ChromeScrollView
       style={{ flex: 1, backgroundColor: colors.obsidian }}
       contentContainerStyle={{ paddingBottom: 112 }}
     >
@@ -66,6 +67,6 @@ export default function BrandsRoute() {
           )}
         </View>
       </PageShell>
-    </ScrollView>
+    </ChromeScrollView>
   );
 }

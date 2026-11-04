@@ -9,6 +9,12 @@ const ordersSchema = z.array(z.object({
   id: z.string(), status: z.string(), totalPaise: z.number().int().positive(), userId: z.string(),
   items: z.array(z.object({ productName: z.string(), quantity: z.number().int().positive() })),
   mode: z.enum(['test','live']).optional(), paymentMethod: z.enum(['razorpay','cod']).optional(),
+  createdAt: z.string().optional(),
+  subtotalPaise: z.number().int().nonnegative().optional(),
+  shippingPaise: z.number().int().nonnegative().optional(),
+  codFeePaise: z.number().int().nonnegative().optional(),
+  address: z.object({ fullName: z.string().optional(), phone: z.string().optional(), email: z.string().optional(),
+    line1: z.string().optional(), line2: z.string().optional(), city: z.string().optional(), state: z.string().optional(), pincode: z.string().optional() }).optional(),
   tracking: z.object({ shipmentId: z.number().optional(), awb: z.string().optional(), courierName: z.string().optional(), status: z.string(), url: z.url().optional() }).nullish(),
 }));
 export type AdminOrder = z.infer<typeof ordersSchema>[number];
@@ -16,8 +22,11 @@ export const adminRepository = {
   async products() { return resolveProductMedia(catalogSchema.parse(await storeRequest('products.list'))); },
   async orders() { return ordersSchema.parse(await storeRequest('orders.adminList')); },
   async save(product: Product) { return productSchema.parse(await storeRequest('product.save', product)); },
+  async remove(product: Product) { return this.save({ ...product, status: 'archived' }); },
   async advance(id: string, status: string) { await storeRequest('order.advance', { id, status }); },
-  async createShipment(orderId: string) { return orderSummarySchema.parse(await storeRequest('shipment.create', { orderId })); },
+  async createShipment(orderId: string, dimensions: { lengthCm: number; widthCm: number; heightCm: number }) {
+    return orderSummarySchema.parse(await storeRequest('shipment.create', { orderId, dimensions }));
+  },
   async syncShipment(orderId: string) { return orderSummarySchema.parse(await storeRequest('shipment.sync', { orderId })); },
   async integrationStatus() {
     return z.object({ mode: z.enum(['test','live']), razorpay: z.object({testConfigured:z.boolean(),liveConfigured:z.boolean()}),

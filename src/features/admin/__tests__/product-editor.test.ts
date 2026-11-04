@@ -49,7 +49,7 @@ describe("product draft validation", () => {
     expect(result.errors["variants.0.shipping.weightGrams"]).toMatch(
       /packed weight/i,
     );
-    expect(result.errors["variants.0.shipping.widthCm"]).toMatch(/width/i);
+    expect(result.errors["variants.0.shipping.widthCm"]).toBeUndefined();
   });
   it("checks price against MRP with inline feedback", () => {
     const product = makeProduct({ status: "draft" });

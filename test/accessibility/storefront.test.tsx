@@ -12,11 +12,11 @@ describe('storefront accessibility', () => {
     const { unmount } = await render(<AdvisorRoute />);
 
     expect(screen.getAllByRole('header')).toHaveLength(1);
-    expect(screen.getByRole('header')).toHaveTextContent(/YOUR GOAL/);
-    expect(screen.getByLabelText('Message GR Coach')).toBeOnTheScreen();
+    expect(screen.getByRole('header')).toHaveTextContent(/GR COACH/);
     expect(
-      screen.getByRole('button', { name: 'Send message' }),
-    ).toBeDisabled();
+      screen.getByRole('button', { name: 'muscle gain' }),
+    ).toBeOnTheScreen();
+    expect(screen.getByText('Choose a goal to see your matches.')).toBeOnTheScreen();
 
     await unmount();
     await render(<AccountRoute />);

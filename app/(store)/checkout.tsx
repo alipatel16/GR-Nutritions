@@ -1,10 +1,11 @@
 import { Link, Redirect } from 'expo-router';
 import {
   ActivityIndicator,
+  Platform,
   Pressable,
-  ScrollView,
   StyleSheet,
   View,
+  type ViewStyle,
 } from 'react-native';
 import {
   Check,
@@ -19,13 +20,19 @@ import { AddressBook } from '@/features/addresses/AddressBook';
 import { useCheckout } from '@/features/checkout/use-checkout';
 import { orderStatusLabel } from '@/features/checkout/checkout-service';
 import { AppText } from '@/components/ui/AppText';
-import { PageHero } from '@/components/layout/PageHero';
 import { PageShell } from '@/components/layout/PageShell';
 import { Button } from '@/components/ui/Button';
 import { cartTotals } from '@/features/cart/cart-domain';
 import { formatInr } from '@/lib/money';
 import { colors, radii, spacing, typography, shadows } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
+
+const checkoutSteps = ['Bag', 'Delivery', 'Payment', 'Done'] as const;
+const stickySummary =
+  Platform.OS === 'web'
+    ? ({ alignSelf: 'flex-start', position: 'sticky' as ViewStyle['position'], top: 24 } satisfies ViewStyle)
+    : undefined;
 
 export default function Checkout() {
   const { user, ready } = useAuth();
@@ -48,28 +55,57 @@ function CheckoutContent({
   const desktop = useBreakpoint() === 'desktop';
   const { quote, session, confirmed, order, paymentMethod, busy } = checkout;
   const mode = session?.mode ?? quote?.mode;
+  // Visual progress only: bag is done, then delivery, payment and confirmation.
+  const currentStep = confirmed ? 4 : quote ? 3 : 2;
   return (
-    <ScrollView style={styles.page}>
-      <PageHero
-        description="Choose where we deliver and how you’d like to pay."
-        eyebrow="GR STORE / SECURE CHECKOUT"
-        title="The final step."
-      >
-        <View style={styles.secureRow}>
-          <LockKeyhole color={colors.mint} size={15} />
-          <AppText style={styles.secureText} variant="caption">
-            Payments processed by Razorpay · Your card details never touch our servers
-          </AppText>
-        </View>
-      </PageHero>
+    <ChromeScrollView style={styles.page}>
+      <View style={styles.hero}>
+        <PageShell>
+          <View style={styles.heroRow}>
+            <View style={styles.heroCopy}>
+              <View style={styles.secureRow}>
+                <LockKeyhole color={colors.mint} size={15} />
+                <AppText style={styles.eyebrow}>SECURE CHECKOUT</AppText>
+              </View>
+              <AppText accessibilityRole="header" style={styles.heroTitle}>
+                The final step.
+              </AppText>
+              <AppText style={styles.secureText} variant="caption">
+                Choose where we deliver and how you’d like to pay. Payments are processed by Razorpay; your card details never touch our servers.
+              </AppText>
+            </View>
+            <View accessible accessibilityLabel={`Checkout progress: ${checkoutSteps[currentStep - 1]}`} style={styles.steps}>
+              {checkoutSteps.map((name, index) => {
+                const done = index + 1 < currentStep || (confirmed && index + 1 === currentStep);
+                const active = index + 1 === currentStep && !confirmed;
+                return (
+                  <View
+                    accessibilityElementsHidden
+                    importantForAccessibility="no-hide-descendants"
+                    key={name}
+                    style={styles.stepItem}
+                  >
+                    <View style={[styles.stepDot, done && styles.stepDotDone, active && styles.stepDotActive]}>
+                      {done ? <Check color={colors.onMint} size={12} /> : <AppText style={[styles.stepDotText, active && styles.stepDotTextActive]}>{index + 1}</AppText>}
+                    </View>
+                    <AppText style={[styles.stepName, (done || active) && styles.stepNameOn]}>{name}</AppText>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        </PageShell>
+      </View>
       <PageShell style={styles.shell}>
         <View style={styles.content}>
           <Link href="/cart" style={styles.link}>
             ← Back to your bag
           </Link>
           {confirmed ? (
-            <View style={styles.card}>
-              <PackageCheck size={36} color={colors.violet} />
+            <View style={[styles.card, styles.confirmedCard]}>
+              <View style={styles.successIcon}>
+                <PackageCheck size={30} color={colors.onMint} />
+              </View>
               {confirmed.mode === 'test' ? (
                 <AppText tone="accent" variant="label">
                   Test mode · No live order
@@ -107,6 +143,7 @@ function CheckoutContent({
           ) : (
             <View style={[styles.columns, !desktop && styles.stacked]}>
               <View style={styles.form}>
+                <View style={styles.section}>
                 <View style={styles.sectionHeading}>
                   <View style={styles.step}>
                     <AppText style={styles.stepText} variant="label">
@@ -120,6 +157,8 @@ function CheckoutContent({
                   selectedId={checkout.address?.id}
                   onSelect={checkout.setAddress}
                 />
+                </View>
+                <View style={styles.section}>
                 <View style={styles.sectionHeading}>
                   <View style={styles.step}>
                     <AppText style={styles.stepText} variant="label">
@@ -157,7 +196,9 @@ function CheckoutContent({
                       paymentMethod === method && styles.selectedMethod,
                     ]}
                   >
-                    <Icon color={colors.violet} size={24} />
+                    <View style={[styles.methodIcon, paymentMethod === method && styles.methodIconOn]}>
+                      <Icon color={paymentMethod === method ? colors.mint : colors.ink} size={20} />
+                    </View>
                     <View style={styles.methodCopy}>
                       <AppText variant="label">{title}</AppText>
                       <AppText tone="muted" variant="caption">
@@ -176,9 +217,15 @@ function CheckoutContent({
                     </View>
                   </Pressable>
                 ))}
+                </View>
               </View>
-              <View style={[styles.summary, !desktop && styles.fullWidth]}>
-                <AppText variant="title">Your order</AppText>
+              <View style={[styles.summary, !desktop && styles.fullWidth, desktop && stickySummary]}>
+                <View style={styles.summaryHeading}>
+                  <AppText variant="title">Your order</AppText>
+                  <AppText tone="muted" variant="caption">
+                    {checkout.cart.lines.reduce((sum, line) => sum + line.quantity, 0)} items
+                  </AppText>
+                </View>
                 {(quote?.items ?? checkout.cart.lines).map((line) => (
                   <View key={line.variantId} style={styles.item}>
                     <View style={styles.itemCopy}>
@@ -216,7 +263,7 @@ function CheckoutContent({
                       large
                     />
                     <View style={styles.delivery}>
-                      <Truck color={colors.violet} size={20} />
+                      <Truck color={colors.mintInk} size={20} />
                       <View style={styles.methodCopy}>
                         <AppText variant="label">
                           {quote.delivery.courierName}
@@ -319,7 +366,7 @@ function CheckoutContent({
           )}
         </View>
       </PageShell>
-    </ScrollView>
+    </ChromeScrollView>
   );
 }
 function TotalRow({
@@ -350,8 +397,30 @@ const styles = StyleSheet.create({
   shell: { paddingTop: spacing[6], paddingBottom: spacing[20] },
   content: { gap: spacing[8] },
   heading: { gap: spacing[3] },
-  secureRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2], marginTop: spacing[2] },
-  secureText: { color: colors.onDark, flexShrink: 1 },
+  hero: { backgroundColor: colors.graphite, paddingVertical: spacing[8] },
+  heroRow: { alignItems: 'flex-end', flexDirection: 'row', flexWrap: 'wrap', gap: spacing[6], justifyContent: 'space-between' },
+  heroCopy: { flexBasis: 320, flexGrow: 1, gap: spacing[2], maxWidth: 640 },
+  eyebrow: { color: colors.mint, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.8 },
+  heroTitle: { color: colors.onDark, fontFamily: typography.displayHeavy, fontSize: 44, lineHeight: 46 },
+  secureRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
+  secureText: { color: colors.graphiteMuted, flexShrink: 1 },
+  steps: { flexDirection: 'row', gap: spacing[2] },
+  stepItem: { alignItems: 'center', gap: spacing[1], width: 64 },
+  stepDot: {
+    alignItems: 'center',
+    borderColor: colors.graphiteLine,
+    borderRadius: radii.pill,
+    borderWidth: 1.5,
+    height: 28,
+    justifyContent: 'center',
+    width: 28,
+  },
+  stepDotDone: { backgroundColor: colors.mint, borderColor: colors.mint },
+  stepDotActive: { borderColor: colors.mint },
+  stepDotText: { color: colors.graphiteMuted, fontFamily: typography.bodyBold, fontSize: 12 },
+  stepDotTextActive: { color: colors.mint },
+  stepName: { color: colors.graphiteMuted, fontSize: 11.5 },
+  stepNameOn: { color: colors.onDark, fontFamily: typography.bodySemibold },
   link: {
     color: colors.violet,
     fontFamily: typography.bodySemibold,
@@ -362,7 +431,17 @@ const styles = StyleSheet.create({
   },
   columns: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing[10] },
   stacked: { flexDirection: 'column', gap: spacing[8] },
-  form: { flex: 1, width: '100%', minWidth: 0, gap: spacing[4] },
+  form: { flex: 1, width: '100%', minWidth: 0, gap: spacing[5] },
+  section: {
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    gap: spacing[4],
+    padding: spacing[5],
+    ...shadows.card,
+  },
+  summaryHeading: { alignItems: 'baseline', flexDirection: 'row', justifyContent: 'space-between' },
   summary: {
     flex: 0.85,
     minWidth: 0,
@@ -372,7 +451,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 4,
     borderWidth: 1,
     ...shadows.raised,
-    borderRadius: radii.md,
+    borderRadius: radii.lg,
     padding: spacing[6],
     gap: spacing[5],
   },
@@ -381,15 +460,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.obsidianRaised,
     borderColor: colors.line,
     borderWidth: 1,
-    borderRadius: radii.md,
+    borderRadius: radii.lg,
     padding: spacing[6],
-    gap: spacing[5],
+    gap: spacing[4],
+  },
+  confirmedCard: { alignItems: 'flex-start', borderTopColor: colors.mint, borderTopWidth: 4 },
+  successIcon: {
+    alignItems: 'center',
+    backgroundColor: colors.mint,
+    borderRadius: radii.pill,
+    height: 60,
+    justifyContent: 'center',
+    width: 60,
   },
   sectionHeading: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing[3],
-    marginTop: spacing[3],
   },
   step: {
     width: 30,
@@ -415,6 +502,15 @@ const styles = StyleSheet.create({
     borderColor: colors.mint,
   },
   methodCopy: { flex: 1, minWidth: 0, gap: spacing[1] },
+  methodIcon: {
+    alignItems: 'center',
+    backgroundColor: colors.graphiteSurface,
+    borderRadius: radii.sm,
+    height: 44,
+    justifyContent: 'center',
+    width: 44,
+  },
+  methodIconOn: { backgroundColor: colors.graphite },
   radio: {
     width: 20,
     height: 20,

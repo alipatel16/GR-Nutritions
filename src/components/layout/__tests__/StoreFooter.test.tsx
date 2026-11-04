@@ -11,5 +11,14 @@ describe('StoreFooter', () => {
     expect(screen.getByRole('link', { name: 'Footer account' })).toBeOnTheScreen();
     expect(screen.getByRole('link', { name: 'Footer orders' })).toBeOnTheScreen();
     expect(screen.getByRole('link', { name: 'Footer GR Coach' })).toBeOnTheScreen();
+    for (const [name, href] of [
+      ['Footer about us', '/about'],
+      ['Footer contact us', '/contact'],
+      ['Footer help', '/help'],
+      ['Footer terms', '/terms'],
+      ['Footer privacy', '/privacy'],
+    ]) {
+      expect(screen.getByRole('link', { name })).toHaveProp('href', href);
+    }
   });
 });

@@ -7,15 +7,17 @@
 //
 // publish.sql is applied separately (it changes the live store):
 //   npx supabase db query --remote -f catalog-import/<brand>/publish.sql
-import { execFileSync } from 'node:child_process';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { randomUUID } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, extname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import sharp from 'sharp';
+import { createClient } from '@supabase/supabase-js';
 
-import { COLUMNS, parseCsv, rowsToProducts, slugify, toCsv, validatePayload } from './catalog-import-lib.mjs';
+import { COLUMNS, parseCsv, rowsToProducts, slugify, storageUploadTargets, toCsv, validatePayload } from './catalog-import-lib.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const IMAGE_MAX_PX = 1200;
@@ -120,19 +122,19 @@ async function prepare(brand) {
 const sqlText = (value) => `'${String(value).replace(/'/g, "''")}'`;
 const sqlJson = (value) => `${sqlText(JSON.stringify(value))}::jsonb`;
 
-function publish(brand, { upload = true } = {}) {
+async function publish(brand, { upload = true } = {}) {
   const config = readConfig(brand);
   const manifestFile = join(outputDir(brand), 'manifest.json');
   if (!existsSync(manifestFile)) throw new Error(`Run npm run catalog:prepare -- ${brand} first.`);
   const { products } = JSON.parse(readFileSync(manifestFile, 'utf8'));
   if (!products.length) throw new Error('Nothing to publish: the manifest has no ready products.');
 
-  if (upload) uploadPhotos(brand, products);
+  if (upload) await uploadPhotos(brand, products);
   else console.log('--sql-only: photos were not uploaded.');
   writePublishSql(brand, config, products);
 }
 
-function uploadPhotos(brand, products) {
+async function uploadPhotos(brand, products) {
   const stage = join(outputDir(brand), '.upload');
   rmSync(stage, { recursive: true, force: true });
   for (const product of products) {
@@ -143,8 +145,43 @@ function uploadPhotos(brand, products) {
     }
   }
   console.log(`Uploading ${products.reduce((s, p) => s + p.media.length, 0)} photos to Supabase Storage (product-media)…`);
-  execFileSync('npx', ['supabase', 'storage', 'cp', '-r', `${stage}/`, 'ss:///product-media/', '--remote', '--experimental',
-    '--jobs', '4', '--content-type', 'image/webp', '--cache-control', 'public, max-age=31536000, immutable'], { cwd: root, stdio: 'inherit' });
+  const execute = promisify(execFile);
+  const prefix = brand.replaceAll("'", "''");
+  const existing = await execute('npx', ['supabase', 'db', 'query', '--remote', '--read-only', '--output-format', 'json',
+    `select name from storage.objects where bucket_id='product-media' and name like '${prefix}-%'`], { cwd: root });
+  const uploaded = new Set(JSON.parse(existing.stdout).rows.map((row) => `ss:///product-media/${row.name}`));
+  const targets = storageUploadTargets(stage, products).filter((target) => !uploaded.has(target.destination));
+  console.log(`${targets.length} photos remaining after checking live storage`);
+  const keyResult = await execute('npx', ['supabase', 'projects', 'api-keys', '--reveal', '--output', 'json'], { cwd: root });
+  const keys = JSON.parse(keyResult.stdout);
+  const secret = keys.find((key) => key.type === 'secret') ?? keys.find((key) => key.name === 'service_role');
+  if (!secret?.api_key) throw new Error('Storage upload authorization is unavailable');
+  const projectRef = readFileSync(join(root, 'supabase', '.temp', 'project-ref'), 'utf8').trim();
+  const storage = createClient(`https://${projectRef}.supabase.co`, secret.api_key,
+    { auth: { persistSession: false, autoRefreshToken: false } }).storage.from('product-media');
+  let completed = 0;
+  const workers = Array.from({ length: 6 }, async () => {
+    while (targets.length) {
+      const { source, destination } = targets.shift();
+      for (let attempt = 0; ; attempt += 1) {
+        try {
+          const storagePath = destination.replace('ss:///product-media/', '');
+          const { error } = await storage.upload(storagePath, readFileSync(source),
+            { contentType: 'image/webp', cacheControl: '31536000', upsert: false });
+          if (error) throw new Error(`Image upload failed (${error.statusCode ?? error.name})`);
+          break;
+        } catch (error) {
+          if (attempt >= 2) throw new Error(`${error.message}\n${error.stdout ?? ''}`);
+          await new Promise((resolve) => setTimeout(resolve, 5000 * (attempt + 1)));
+        }
+      }
+      completed += 1;
+      if (completed % 20 === 0) console.log(`Uploaded ${completed} photos`);
+    }
+  });
+  const results = await Promise.allSettled(workers);
+  const failed = results.find((result) => result.status === 'rejected');
+  if (failed) throw failed.reason;
   rmSync(stage, { recursive: true, force: true });
 }
 
@@ -184,7 +221,7 @@ const [command, brand, ...rest] = process.argv.slice(2);
 try {
   if (command === 'template') template(brand, rest.join(' '));
   else if (command === 'prepare') await prepare(brand);
-  else if (command === 'publish') publish(brand, { upload: !rest.includes('--sql-only') });
+  else if (command === 'publish') await publish(brand, { upload: !rest.includes('--sql-only') });
   else throw new Error('Usage: node scripts/import-catalog.mjs <template|prepare|publish> <brand> [Brand Name]');
 } catch (error) {
   console.error(error.message);

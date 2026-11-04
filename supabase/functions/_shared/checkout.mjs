@@ -110,8 +110,9 @@ export function createCheckoutService({rpc,env,providers=createProviders({env})}
    const p=z.object({id:reference}).parse(input);const row=await rpc('order.provider',{orderId:p.id},uid);return summary(await reconcile(row));
   }
   if(action==='shipment.create'){
-   const p=z.object({orderId:reference}).parse(input);await staff(uid);
-   const row=await rpc('shipment.begin',p,uid);
+   const dimension=z.number().min(0.51).max(200);
+   const p=z.object({orderId:reference,dimensions:z.object({lengthCm:dimension,widthCm:dimension,heightCm:dimension})}).parse(input);await staff(uid);
+   const row=await rpc('shipment.begin',{orderId:p.orderId},uid);
    if(!row.performCreate&&row.order.shipment_state!=='created')throw new CheckoutError('Shipment confirmation is pending. Review this order in Shiprocket before retrying.',503);
    if(row.performCreate){
     if(!isValidCustomerEmail(row.order.address?.email)){
@@ -122,7 +123,7 @@ export function createCheckoutService({rpc,env,providers=createProviders({env})}
     try{selectPickup(await providers.shiprocketPickups(),row.order.pickup_location);}
     catch(error){await rpc('shipment.failed',{orderId:p.orderId,ambiguous:false},'');throw error;}
     let shipment;
-    try{shipment=await providers.shiprocketCreate(row.order);if(!Number.isSafeInteger(shipment.shipment_id)||shipment.shipment_id<1||!Number.isSafeInteger(shipment.order_id)||shipment.order_id<1)throw new ProviderError('Shipment confirmation is pending');}
+    try{shipment=await providers.shiprocketCreate({...row.order,parcel:{...row.order.parcel,...p.dimensions}});if(!Number.isSafeInteger(shipment.shipment_id)||shipment.shipment_id<1||!Number.isSafeInteger(shipment.order_id)||shipment.order_id<1)throw new ProviderError('Shipment confirmation is pending');}
     catch(error){await rpc('shipment.failed',{orderId:p.orderId,ambiguous:!(error instanceof ProviderError)||error.ambiguous},'');throw new CheckoutError('Shipment confirmation is pending. Review this order in Shiprocket before retrying.',503);}
     await rpc('shipment.attach',{orderId:p.orderId,shipmentId:shipment.shipment_id,shiprocketOrderId:shipment.order_id},'');
    }

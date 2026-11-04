@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { COLUMNS, gramsFromSize, parseCsv, rowsToProducts, toCsv, validatePayload } from '../catalog-import-lib.mjs';
+import { COLUMNS, gramsFromSize, parseCsv, rowsToProducts, storageUploadTargets, toCsv, validatePayload } from '../catalog-import-lib.mjs';
 
 const sheet = (rows) => parseCsv(toCsv([COLUMNS, ...rows.map((row) => COLUMNS.map((c) => row[c] ?? ''))]));
 const whey = { product_key: 'biozyme-whey', name: 'Biozyme Whey', category: 'protein', goals: 'muscle-gain; Recovery', diet: 'veg',
@@ -29,7 +29,7 @@ test('rows sharing a product_key become one product with options and brand-prefi
   assert.equal(p.variants[0].mrp.amountPaise, 329900);
   assert.deepEqual(p.variants.map((v) => v.isDefault), [false, true]);
   assert.equal(p.variants[1].stockAvailable, 12);
-  assert.equal(p.variants[0].stockAvailable, 100);
+  assert.equal(p.variants[0].stockAvailable, 0);
   // Placeholder protein box; net weight from the size column.
   assert.deepEqual(p.variants[1].shipping, { weightGrams: 2200, lengthCm: 20, widthCm: 20, heightCm: 30 });
   assert.equal(validatePayload({ ...p, media: [] }), null);
@@ -57,4 +57,37 @@ test('sizes convert to grams', () => {
   assert.equal(gramsFromSize('4.4 lb'), 1996);
   assert.equal(gramsFromSize('250 g'), 250);
   assert.equal(gramsFromSize('60 tablets'), null);
+});
+
+test('retailer boilerplate is replaced using the actual product and variant details', () => {
+  const { products } = rowsToProducts(sheet([{ ...whey,
+    summary: 'Buy the wrong 5 kg pack at HealthKart.com',
+    description: 'Buy the wrong 5 kg pack at HealthKart.com',
+  }]), 'MuscleBlaze');
+  assert.equal(products[0].payload.summary, 'Biozyme Whey. Available at GR Nutritions.');
+  assert.match(products[0].payload.description, /Chocolate • 1 kg/);
+  assert.doesNotMatch(products[0].payload.description, /HealthKart|5 kg/i);
+});
+
+test('storage uploads each image to its exact path so retries never create nested folders', () => {
+  assert.deepEqual(storageUploadTargets('/tmp/stage', [
+    { id: 'brand-product-a', media: [{ storagePath: 'brand-product-a/a.webp' }, { storagePath: 'brand-product-a/b.webp' }] },
+    { id: 'brand-product-b', media: [{ storagePath: 'brand-product-b/c.webp' }] },
+  ]), [
+    { source: '/tmp/stage/brand-product-a/a.webp', destination: 'ss:///product-media/brand-product-a/a.webp' },
+    { source: '/tmp/stage/brand-product-a/b.webp', destination: 'ss:///product-media/brand-product-a/b.webp' },
+    { source: '/tmp/stage/brand-product-b/c.webp', destination: 'ss:///product-media/brand-product-b/c.webp' },
+  ]);
+});
+
+test('long product keys that share the same first 80 characters still receive unique ids', () => {
+  const shared = 'very-long-product-name-that-keeps-going-with-the-same-brand-and-description-prefix-';
+  const { products, errors } = rowsToProducts(sheet([
+    { ...whey, product_key: `${shared}chocolate` },
+    { ...whey, product_key: `${shared}vanilla` },
+  ]), 'One Science Nutrition');
+
+  assert.deepEqual(errors, []);
+  assert.equal(new Set(products.map((product) => product.id)).size, 2);
+  assert.ok(products.every((product) => product.id.length <= 80));
 });

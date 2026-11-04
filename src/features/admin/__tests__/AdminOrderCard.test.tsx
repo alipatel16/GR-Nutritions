@@ -9,8 +9,12 @@ it('requires a deliberate confirmation before sending a paid live order to Shipr
   await render(<AdminOrderCard order={order} onChanged={()=>{}} />);
   await user.press(screen.getByRole('button',{name:'Create Shiprocket order'}));
   expect(adminRepository.createShipment).not.toHaveBeenCalled();
+  expect(screen.getByRole('button',{name:'Confirm shipment creation'})).toBeDisabled();
+  await user.type(screen.getByLabelText('Packed length (cm)'),'20');
+  await user.type(screen.getByLabelText('Packed width (cm)'),'15');
+  await user.type(screen.getByLabelText('Packed height (cm)'),'12');
   await user.press(screen.getByRole('button',{name:'Confirm shipment creation'}));
-  expect(adminRepository.createShipment).toHaveBeenCalledWith(order.id);
+  expect(adminRepository.createShipment).toHaveBeenCalledWith(order.id,{lengthCm:20,widthCm:15,heightCm:12});
 });
 it.each([{mode:'test',status:'paid'},{mode:'live',status:'payment_pending'}])('does not offer shipping for $mode/$status',async value=>{
   await render(<AdminOrderCard order={{...order,...value,mode:value.mode as 'test'|'live'}} onChanged={()=>{}} />);

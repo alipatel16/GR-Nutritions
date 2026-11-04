@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from 'expo-router';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { ShoppingBag } from 'lucide-react-native';
 
 import { PageHero } from '@/components/layout/PageHero';
@@ -13,6 +13,7 @@ import { cartTotals } from './cart-domain';
 import { CartLine } from './CartLine';
 import { CartSummary } from './CartSummary';
 import { useCartStore } from './cart-store';
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
 
 export function CartScreen() {
   const breakpoint = useBreakpoint();
@@ -22,7 +23,7 @@ export function CartScreen() {
   const totals = useMemo(() => cartTotals(cart), [cart]);
 
   return (
-    <ScrollView
+    <ChromeScrollView
       contentContainerStyle={styles.scrollContent}
       style={styles.page}
     >
@@ -83,7 +84,7 @@ export function CartScreen() {
           </View>
         )}
       </PageShell>
-    </ScrollView>
+    </ChromeScrollView>
   );
 }
 

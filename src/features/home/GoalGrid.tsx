@@ -64,7 +64,7 @@ export function GoalGrid() {
                 <MessageCircle color={colors.mint} size={24} />
                 <View>
                   <AppText style={[styles.label, styles.coachText]}>{mobile ? 'Ask Coach' : 'Not sure? Ask Coach'}</AppText>
-                  {mobile ? null : <AppText style={styles.detail}>AI answers in seconds</AppText>}
+                  {mobile ? null : <AppText style={styles.detail}>Find catalogue matches</AppText>}
                 </View>
               </Pressable>
             </Link>

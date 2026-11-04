@@ -2,6 +2,21 @@
 // spreadsheet rows into product payloads the admin_action product.save accepts.
 import { productInputSchema } from '../supabase/functions/_shared/commerce.mjs';
 
+const retailerPattern = /health\s*kart|nutrabay|amazon|flipkart/i;
+export function cleanCatalogCopy(value) {
+  return String(value ?? '')
+    .replace(/(health\s*kart|nutrabay|amazon|flipkart)(\.co\.in|\.com|\.in)?/gi, 'GR Nutritions')
+    .replace(/https?:\/\/[^\s<>]+|www\.[^\s<>]+/gi, '').trim();
+}
+
+export function storageUploadTargets(stage, products) {
+  const base = stage.replace(/[\\/]+$/, '');
+  return products.flatMap(({ media }) => media.map(({ storagePath }) => ({
+    source: `${base}/${storagePath}`,
+    destination: `ss:///product-media/${storagePath}`,
+  })));
+}
+
 export const COLUMNS = [
   'product_key', 'name', 'category', 'goals', 'diet', 'summary', 'description', 'usage', 'warnings', 'nutrition',
   'flavour', 'size', 'mrp', 'price', 'stock', 'default', 'status', 'sku',
@@ -89,6 +104,15 @@ function nutrition(value) {
 
 const yes = (value) => /^(y|yes|true|1)$/i.test(String(value ?? '').trim());
 
+function shortHash(value) {
+  let hash = 0x811c9dc5;
+  for (const char of String(value)) {
+    hash ^= char.codePointAt(0);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return (hash >>> 0).toString(36).padStart(7, '0').slice(-7);
+}
+
 // Groups option rows by product_key. Product-level cells come from the first row
 // that fills them, so the team only has to type them once per product.
 export function rowsToProducts(rows, brandName) {
@@ -109,10 +133,22 @@ export function rowsToProducts(rows, brandName) {
 
   const brandSlug = slugify(brandName);
   const products = [];
+  const usedIds = new Set();
   for (const [key, entries] of groups) {
     const pick = (column) => entries.map((e) => e.row[column]).find(Boolean) ?? '';
     const keySlug = slugify(key);
-    const id = (keySlug.startsWith(`${brandSlug}-`) ? keySlug : `${brandSlug}-${keySlug}`).slice(0, 80).replace(/-+$/, '');
+    const fullId = keySlug.startsWith(`${brandSlug}-`) ? keySlug : `${brandSlug}-${keySlug}`;
+    let id = fullId.slice(0, 80).replace(/-+$/, '');
+    if (usedIds.has(id)) {
+      const suffix = `-${shortHash(key)}`;
+      id = `${fullId.slice(0, 80 - suffix.length).replace(/-+$/, '')}${suffix}`;
+    }
+    let collision = 2;
+    while (usedIds.has(id)) {
+      const suffix = `-${shortHash(key)}-${collision++}`;
+      id = `${fullId.slice(0, 80 - suffix.length).replace(/-+$/, '')}${suffix}`;
+    }
+    usedIds.add(id);
     const category = pick('category').toLowerCase();
     const where = `product "${key}" (rows ${entries.map((e) => e.line).join(', ')})`;
     if (!CATEGORIES.includes(category)) { errors.push(`${where}: category must be one of ${CATEGORIES.join(', ')}`); continue; }
@@ -149,7 +185,7 @@ export function rowsToProducts(rows, brandName) {
         },
         price: { amountPaise: price, currency: 'INR' },
         mrp: { amountPaise: mrp, currency: 'INR' },
-        stockAvailable: row.stock === '' ? 100 : Math.max(0, Math.round(Number(row.stock) || 0)),
+        stockAvailable: Math.max(0, Math.round(Number(row.stock) || 0)),
         isDefault: yes(row.default),
       });
     }
@@ -159,7 +195,12 @@ export function rowsToProducts(rows, brandName) {
     variants.forEach((v, i) => { v.isDefault = i === defaultIndex; });
 
     const status = (pick('status') || 'active').toLowerCase();
-    const name = pick('name');
+    const name = pick('name').replace(/\s+/g, ' ');
+    const summary = retailerPattern.test(pick('summary'))
+      ? `${name}. Available at GR Nutritions.` : cleanCatalogCopy(pick('summary')) || name;
+    const description = retailerPattern.test(pick('description')) && /^buy /i.test(pick('description'))
+      ? `${name}\n\nBrand: ${brandName}\nProduct type: ${category.replaceAll('-', ' ')}\nAvailable options: ${variants.map((variant) => variant.label).join(', ')}\n\nCheck the product label for serving instructions, nutrition, ingredients and allergens.`
+      : cleanCatalogCopy(pick('description')) || summary;
     products.push({
       key,
       id,
@@ -171,8 +212,8 @@ export function rowsToProducts(rows, brandName) {
         brand: brandName,
         category,
         status: ['active', 'draft'].includes(status) ? status : 'active',
-        summary: pick('summary') || name,
-        description: pick('description') || pick('summary') || name,
+        summary,
+        description,
         featuredRank: 0,
         createdAt: new Date().toISOString(),
         goals: goals.length ? goals : [{ protein: 'muscle-gain', 'pre-workout': 'energy', 'post-workout': 'recovery', energy: 'energy' }[category] ?? 'everyday-wellness'],
@@ -180,8 +221,8 @@ export function rowsToProducts(rows, brandName) {
         ingredients: nutrition(pick('nutrition')),
         media: [],
         variants,
-        usage: pick('usage') || 'Follow the serving directions on the product label.',
-        warnings: list(pick('warnings')).length ? list(pick('warnings')) : DEFAULT_WARNINGS,
+        usage: cleanCatalogCopy(pick('usage')) || 'Follow the serving directions on the product label.',
+        warnings: list(pick('warnings')).length ? list(pick('warnings')).map(cleanCatalogCopy).filter(Boolean) : DEFAULT_WARNINGS,
         demoContent: false,
       },
     });

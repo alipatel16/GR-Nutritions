@@ -1,385 +1,166 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useLocalSearchParams, type Href } from 'expo-router';
-import { Image } from 'expo-image';
-import {
-  ActivityIndicator,
-  Pressable,
-  ScrollView,
-  ScrollViewInstance,
-  StyleSheet,
-  TextInput,
-  View,
-} from 'react-native';
-import {
-  ArrowRight,
-  BadgeCheck,
-  Bot,
-  HeartPulse,
-  RotateCcw,
-  SendHorizontal,
-  ShieldCheck,
-  Sparkles,
-} from 'lucide-react-native';
+import { useEffect, useState } from 'react';
+import { Link, useLocalSearchParams } from 'expo-router';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { RotateCcw, Sparkles } from 'lucide-react-native';
 
-import { AppText } from '@/components/ui/AppText';
 import { PageShell } from '@/components/layout/PageShell';
+import { AppText } from '@/components/ui/AppText';
 import { Price } from '@/components/ui/Price';
+import { recommendProducts, type Preferences } from '@/features/advisor/advisor-domain';
 import { catalogRepository } from '@/features/catalog/supabase-catalog-repository';
-import type { Product } from '@/features/catalog/types';
-import {
-  needsProfessionalAdvice,
-  parseGoal,
-  recommendProducts,
-} from '@/features/advisor/advisor-domain';
-import { askCoach, CoachUnavailableError, type CoachTurn } from '@/features/advisor/coach-api';
+import { productGoalValues, type Product } from '@/features/catalog/types';
 import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
 import { useBreakpoint } from '@/theme/use-breakpoint';
+import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
 
-type ChatMessage = CoachTurn & {
-  id: string;
-  productIds?: string[];
-  followUps?: string[];
-  offline?: boolean;
-};
+const label = (value: string) => value.replaceAll('-', ' ');
 
-const welcome: ChatMessage = {
-  id: 'welcome',
-  role: 'assistant',
-  content:
-    'Hi, I’m GR Coach. Ask me anything about protein, creatine, pre-workout, vitamins or your training nutrition. Tell me your goal, diet and budget and I’ll pick the best products for you from our shelf.',
-};
-
-const starters = [
-  'Which protein is best for muscle gain under ₹3,000?',
-  'Whey vs isolate — which suits a lactose-sensitive beginner?',
-  'Is creatine safe to take every day?',
-  'Suggest a stimulant-free pre-workout',
-];
-
-const professionalAdvice =
-  'Your message mentions a situation where a qualified professional should guide you. I won’t suggest a supplement plan for this. Please speak with your doctor, pharmacist or a registered dietitian first, and share the product label with them.';
-
-let messageCounter = 0;
-const nextId = () => `m${(messageCounter += 1)}`;
-
-// Used only when the AI service can't be reached: a deterministic catalogue match.
-function offlineReply(text: string, products: Product[]): ChatMessage {
-  const budget = text.match(/(?:₹|rs\.?|inr)\s*([\d,]+)|([\d,]{3,})\s*(?:rs|rupees|₹)/i);
-  const amount = budget ? Number((budget[1] ?? budget[2]).replaceAll(',', '')) : NaN;
-  const goal = parseGoal(text);
-  const matches = recommendProducts(products, {
-    goal,
-    budgetPaise: Number.isFinite(amount) && amount > 0 ? amount * 100 : Number.MAX_SAFE_INTEGER,
-    diet: /vegan/i.test(text) ? 'vegan' : /vegetarian|veg\b/i.test(text) ? 'vegetarian' : 'any',
-    avoidStimulants: /no caffeine|caffeine.?free|stim(ulant)?.?free|no stim/i.test(text),
-  });
-  return {
-    id: nextId(),
-    role: 'assistant',
-    offline: true,
-    productIds: matches.map((match) => match.product.id),
-    content: matches.length
-      ? `GR Coach AI is offline for a moment, so here are catalogue matches for your ${goal.replaceAll('-', ' ')} goal. Check ingredients, allergens and the full label before choosing.`
-      : 'GR Coach AI is offline for a moment and nothing on the shelf matches those details. Try again shortly, or browse the shop by goal.',
-  };
+function Choice<T extends string | number | boolean>({ step, title, options, value, onChange }: {
+  step: number;
+  title: string;
+  options: readonly (readonly [T, string])[];
+  value: T | undefined;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <View style={styles.group}>
+      <View style={styles.groupHeading}>
+        <View style={[styles.stepBadge, value !== undefined && styles.stepDone]}>
+          <AppText style={[styles.stepText, value !== undefined && styles.stepTextDone]}>{step}</AppText>
+        </View>
+        <AppText style={styles.groupTitle}>{title}</AppText>
+      </View>
+      <View style={styles.options}>
+        {options.map(([key, name]) => (
+          <Pressable accessibilityRole="button" accessibilityState={{ selected: key === value }}
+            key={String(key)} onPress={() => onChange(key)}
+            style={[styles.choice, key === value && styles.selected]}>
+            <AppText style={[styles.choiceText, key === value && styles.selectedText]}>{name}</AppText>
+          </Pressable>
+        ))}
+      </View>
+    </View>
+  );
 }
 
 export default function AdvisorRoute() {
-  const { product: productSlug } = useLocalSearchParams<{ product?: string }>();
-  const mobile = useBreakpoint() === 'mobile';
-  const [products, setProducts] = useState<Product[]>([]);
-  const [messages, setMessages] = useState<ChatMessage[]>([welcome]);
-  const [draft, setDraft] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
-  const scrollRef = useRef<ScrollViewInstance>(null);
+  const { product } = useLocalSearchParams<{ product?: string }>();
+  const desktop = useBreakpoint() === 'desktop';
+  const [products, setProducts] = useState<Product[]>();
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [goal, setGoal] = useState<Preferences['goal']>();
+  const [diet, setDiet] = useState<Preferences['diet']>('any');
+  const [budget, setBudget] = useState(Number.MAX_SAFE_INTEGER);
+  const [avoidStimulants, setAvoidStimulants] = useState(false);
 
   useEffect(() => {
-    void catalogRepository
-      .list({ pageSize: 100 })
-      .then((r) => setProducts(r.items))
-      .catch(() => setProducts([]));
-  }, []);
+    let current = true;
+    void (async () => {
+      const first = await catalogRepository.list({ page: 1, pageSize: 100 });
+      const pages = await Promise.all(Array.from({ length: Math.max(0, first.totalPages - 1) },
+        (_, index) => catalogRepository.list({ page: index + 2, pageSize: 100 })));
+      if (current) setProducts([first, ...pages].flatMap((page) => page.items));
+    })().catch(() => { if (current) setFailed(true); });
+    return () => { current = false; };
+  }, [attempt]);
 
-  const productById = useMemo(() => new Map(products.map((p) => [p.id, p])), [products]);
-  const viewing = productSlug ? products.find((p) => p.slug === productSlug) : undefined;
-  const suggestions = viewing
-    ? [`Is ${viewing.name} right for my goal?`, `How should I use ${viewing.name}?`, ...starters.slice(0, 2)]
-    : starters;
-
-  async function send(text: string) {
-    const content = text.trim();
-    if (!content || busy) return;
-    const userMessage: ChatMessage = { id: nextId(), role: 'user', content };
-    const history = [...messages, userMessage];
-    setMessages(history);
-    setDraft('');
-    setError('');
-    if (needsProfessionalAdvice(content)) {
-      setMessages([...history, { id: nextId(), role: 'assistant', content: professionalAdvice }]);
-      return;
-    }
-    setBusy(true);
-    try {
-      const turns = history
-        .filter((m) => m.id !== 'welcome' && !m.offline)
-        .map(({ role, content: c }) => ({ role, content: c }));
-      const reply = await askCoach(turns, productSlug);
-      setMessages((current) => [
-        ...current,
-        { id: nextId(), role: 'assistant', content: reply.reply, productIds: reply.productIds, followUps: reply.followUps },
-      ]);
-    } catch (caught) {
-      const status = caught instanceof CoachUnavailableError ? caught.status : 0;
-      if (status === 429 || status === 400) {
-        setError(caught instanceof Error ? caught.message : 'Please try again.');
-        setMessages(messages);
-        setDraft(content);
-      } else {
-        setMessages((current) => [...current, offlineReply(content, products)]);
-      }
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  function reset() {
-    setMessages([welcome]);
-    setError('');
-    setDraft('');
-  }
-
-  const disclaimer = (
-    <AppText style={styles.disclaimer} variant="caption">
-      For adults only. GR Coach gives general information, not medical advice. If you’re
-      pregnant, breastfeeding, take medication or have a medical condition, consult a
-      qualified professional before using supplements.
-    </AppText>
-  );
-
-  const lastAssistant = [...messages].reverse().find((m) => m.role === 'assistant');
+  const viewing = products?.find((item) => item.slug === product);
+  const matches = products && goal ? recommendProducts(products, { goal, budgetPaise: budget, diet, avoidStimulants }) : [];
+  const reset = () => {
+    setGoal(undefined);
+    setDiet('any');
+    setBudget(Number.MAX_SAFE_INTEGER);
+    setAvoidStimulants(false);
+  };
 
   return (
-    <ScrollView style={styles.page} contentContainerStyle={styles.pageContent}>
-      <PageShell style={styles.shell}>
-        <View style={[styles.layout, mobile && styles.mobileLayout]}>
-          <View style={[styles.intro, mobile && styles.mobileIntro]}>
+    <ChromeScrollView style={styles.page} contentContainerStyle={styles.content}>
+      <View style={styles.hero}>
+        <PageShell>
+          <View style={styles.heroCopy}>
             <View style={styles.badge}>
-              <Sparkles color={colors.graphite} size={14} />
-              <AppText style={styles.badgeText}>GR COACH AI</AppText>
+              <Sparkles color={colors.onMint} size={14} />
+              <AppText style={styles.badgeText}>Product finder</AppText>
             </View>
-            <AppText accessibilityRole="header" style={mobile ? styles.mobileTitle : undefined} tone="inverse" variant="display">
-              YOUR GOAL.{'\n'}YOUR COACH.
-            </AppText>
-            {!mobile ? (
-              <AppText style={styles.introCopy}>
-                Ask anything about supplements and training nutrition. GR Coach compares
-                options, explains ingredients, and recommends the best fit from our in-stock shelf.
-              </AppText>
-            ) : null}
-            {!mobile ? (
-              <View style={styles.features}>
-                {(
-                  [
-                    [BadgeCheck, 'Recommends only genuine products we stock'],
-                    [ShieldCheck, 'Honest answers, no pushy upsells'],
-                    [HeartPulse, 'Flags when you should ask a doctor first'],
-                  ] as const
-                ).map(([Icon, label]) => (
-                  <View key={label} style={styles.feature}>
-                    <View style={styles.featureIcon}>
-                      <Icon color={colors.mint} size={18} />
-                    </View>
-                    <AppText style={styles.featureText}>{label}</AppText>
-                  </View>
-                ))}
+            <AppText tone="inverse" variant="display" accessibilityRole="header" style={!desktop && styles.mobileTitle}>GR COACH</AppText>
+            <AppText style={styles.heroText}>Choose your preferences to find in-stock products from the GR Nutritions catalogue.</AppText>
+            {viewing ? (
+              <View style={styles.viewing}>
+                <AppText style={styles.viewingText}>Exploring alternatives to {viewing.name}</AppText>
               </View>
             ) : null}
-            {!mobile ? disclaimer : null}
           </View>
+        </PageShell>
+      </View>
 
-          <View style={[styles.chat, mobile && styles.mobileChat]}>
-            <View style={styles.chatHeader}>
-              <View style={styles.avatar}>
-                <Bot color={colors.graphite} size={20} />
-              </View>
-              <View style={styles.chatHeaderCopy}>
-                <AppText style={styles.chatName}>GR Coach</AppText>
-                <View style={styles.onlineRow}>
-                  <View style={styles.onlineDot} />
-                  <AppText style={styles.onlineText} variant="caption">
-                    Nutrition assistant · replies in seconds
-                  </AppText>
-                </View>
-              </View>
-              {messages.length > 1 ? (
-                <Pressable accessibilityLabel="Start a new chat" accessibilityRole="button" onPress={reset} style={styles.resetButton}>
-                  <RotateCcw color={colors.onDarkMuted} size={16} />
-                </Pressable>
-              ) : null}
-            </View>
-
-            <ScrollView
-              ref={scrollRef}
-              accessibilityLabel="Conversation with GR Coach"
-              contentContainerStyle={styles.thread}
-              onContentSizeChange={() => scrollRef.current?.scrollToEnd({ animated: true })}
-              style={styles.threadScroll}
-            >
-              {messages.map((message) => (
-                <View key={message.id} style={message.role === 'user' ? styles.userRow : styles.assistantRow}>
-                  {message.role === 'assistant' ? (
-                    <View style={styles.smallAvatar}>
-                      <Bot color={colors.graphite} size={14} />
-                    </View>
-                  ) : null}
-                  <View style={styles.messageColumn}>
-                    <View style={message.role === 'user' ? styles.userBubble : styles.assistantBubble}>
-                      <AppText style={message.role === 'user' ? styles.userText : styles.assistantText}>
-                        {message.content}
-                      </AppText>
-                    </View>
-                    {message.productIds?.length ? (
-                      <View style={styles.picks}>
-                        {message.productIds
-                          .map((id) => productById.get(id))
-                          .filter((p): p is Product => Boolean(p))
-                          .map((p, index) => (
-                            <ProductPick key={p.id} product={p} rank={index + 1} />
-                          ))}
-                      </View>
-                    ) : null}
-                  </View>
-                </View>
-              ))}
-              {busy ? (
-                <View style={styles.assistantRow}>
-                  <View style={styles.smallAvatar}>
-                    <Bot color={colors.graphite} size={14} />
-                  </View>
-                  <View style={[styles.assistantBubble, styles.typing]}>
-                    <ActivityIndicator color={colors.mintInk} size="small" />
-                    <AppText tone="muted" variant="caption">
-                      GR Coach is checking the shelf…
-                    </AppText>
-                  </View>
-                </View>
-              ) : null}
-            </ScrollView>
-
-            {!busy ? (
-              <ScrollView
-                contentContainerStyle={styles.chips}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                style={styles.chipScroll}
-              >
-                {(messages.length === 1 ? suggestions : lastAssistant?.followUps ?? []).map((prompt) => (
-                  <Pressable
-                    accessibilityRole="button"
-                    key={prompt}
-                    onPress={() => void send(prompt)}
-                    style={styles.chip}
-                  >
-                    <AppText style={styles.chipText} variant="caption">
-                      {prompt}
-                    </AppText>
-                  </Pressable>
-                ))}
-              </ScrollView>
-            ) : null}
-
-            {error ? (
-              <AppText accessibilityRole="alert" style={styles.error} tone="danger" variant="caption">
-                {error}
-              </AppText>
-            ) : null}
-
-            <View style={styles.composer}>
-              <TextInput
-                accessibilityLabel="Message GR Coach"
-                editable={!busy}
-                maxLength={2000}
-                multiline
-                onChangeText={setDraft}
-                onKeyPress={(event) => {
-                  const native = event.nativeEvent as { key: string; shiftKey?: boolean };
-                  if (native.key === 'Enter' && !native.shiftKey) {
-                    event.preventDefault?.();
-                    void send(draft);
-                  }
-                }}
-                placeholder="Ask about your goal, diet, budget…"
-                placeholderTextColor={colors.mineral}
-                style={styles.input}
-                value={draft}
-              />
-              <Pressable
-                accessibilityLabel="Send message"
-                accessibilityRole="button"
-                accessibilityState={{ disabled: !draft.trim() || busy }}
-                disabled={!draft.trim() || busy}
-                onPress={() => void send(draft)}
-                style={[styles.send, (!draft.trim() || busy) && styles.sendDisabled]}
-              >
-                <SendHorizontal color={colors.graphite} size={20} />
+      <PageShell style={styles.shell}>
+        <View style={[styles.layout, !desktop && styles.stacked]}>
+          <View style={[styles.panel, desktop && styles.panelDesktop]}>
+            <Choice step={1} title="Your goal" options={productGoalValues.map((item) => [item, label(item)] as const)} value={goal} onChange={setGoal} />
+            <Choice<Preferences['diet']> step={2} title="Diet" options={[[ 'any', 'Any diet' ], ['vegetarian', 'Vegetarian'], ['vegan', 'Vegan']]} value={diet} onChange={setDiet} />
+            <Choice step={3} title="Budget per product" options={[[Number.MAX_SAFE_INTEGER, 'Any budget'], [150000, 'Up to ₹1,500'], [300000, 'Up to ₹3,000'], [500000, 'Up to ₹5,000']]} value={budget} onChange={setBudget} />
+            <Choice step={4} title="Stimulant preference" options={[[false, 'No preference'], [true, 'Avoid stimulant products']]} value={avoidStimulants} onChange={setAvoidStimulants} />
+            {goal ? (
+              <Pressable accessibilityRole="button" onPress={reset} style={styles.reset}>
+                <RotateCcw color={colors.mineral} size={15} />
+                <AppText style={styles.resetText}>Start over</AppText>
               </Pressable>
-            </View>
+            ) : null}
           </View>
-          {mobile ? disclaimer : null}
+
+          <View style={styles.results}>
+            {failed ? (
+              <Pressable accessibilityRole="button" onPress={() => { setFailed(false); setAttempt(attempt + 1); }} style={styles.stateCard}>
+                <AppText tone="danger">The catalogue could not load. Tap to retry.</AppText>
+              </Pressable>
+            ) : !products ? (
+              <View style={styles.stateCard}><AppText tone="muted">Loading the catalogue…</AppText></View>
+            ) : goal ? (
+              <View style={styles.resultList} accessibilityLiveRegion="polite">
+                <View style={styles.resultsHeading}>
+                  <AppText variant="heading">Your matches</AppText>
+                  <AppText tone="muted" variant="caption">{matches.length} {matches.length === 1 ? 'product' : 'products'}</AppText>
+                </View>
+                {matches.length === 0 ? (
+                  <View style={styles.stateCard}>
+                    <AppText tone="muted">No in-stock products match these preferences. Adjust your choices to try again.</AppText>
+                  </View>
+                ) : null}
+                {matches.map(({ product: item, variantId, pricePaise, reason }, index) => (
+                  <View key={item.id} style={styles.card}>
+                    <View style={styles.rank}><AppText style={styles.rankText}>{index + 1}</AppText></View>
+                    <View style={styles.cardBody}>
+                      <AppText style={styles.cardBrand}>{item.brand.toUpperCase()}</AppText>
+                      <AppText style={styles.cardTitle}>{item.name}</AppText>
+                      <AppText tone="muted" variant="caption">{item.variants.find((variant) => variant.id === variantId)?.label}</AppText>
+                      <Price amountPaise={pricePaise} size="compact" />
+                      <AppText style={styles.reason}>{reason}</AppText>
+                      <Link href={{ pathname: '/product/[slug]', params: { slug: item.slug } }} style={styles.link}>View product →</Link>
+                    </View>
+                  </View>
+                ))}
+              </View>
+            ) : (
+              <View style={styles.emptyCard}>
+                <Sparkles color={colors.mintInk} size={28} />
+                <AppText style={styles.emptyTitle}>Choose a goal to see your matches.</AppText>
+                <AppText tone="muted" variant="caption">Your picks update as soon as you change a preference.</AppText>
+              </View>
+            )}
+            <AppText tone="muted" variant="caption">Catalogue matches are for shopping guidance. Check the product label for ingredients, allergens and warnings.</AppText>
+          </View>
         </View>
       </PageShell>
-    </ScrollView>
-  );
-}
-
-function ProductPick({ product, rank }: { product: Product; rank: number }) {
-  // Lowest in-stock price, so budget-based picks show the option that fits.
-  const inStock = product.variants.filter((v) => v.stockAvailable > 0);
-  const variant = [...(inStock.length ? inStock : product.variants)].sort(
-    (a, b) => a.price.amountPaise - b.price.amountPaise,
-  )[0];
-  const media = product.media[0];
-  return (
-    <Link accessibilityLabel={`View ${product.name}`} asChild href={`/product/${product.slug}` as Href}>
-      <Pressable style={styles.pick}>
-        <View style={[styles.pickMedia, { backgroundColor: media?.backgroundColor ?? colors.graphiteSurface }]}>
-          {media?.uri ? (
-            <Image accessibilityLabel={media.alt} contentFit="contain" source={{ uri: media.uri }} style={styles.pickImage} />
-          ) : (
-            <AppText style={styles.pickRank}>{rank}</AppText>
-          )}
-        </View>
-        <View style={styles.pickCopy}>
-          <AppText style={styles.pickBrand}>{product.brand.toUpperCase()}</AppText>
-          <AppText numberOfLines={2} style={styles.pickName}>
-            {product.name}
-          </AppText>
-          {variant ? (
-            <View style={styles.pickPrice}>
-              {product.variants.length > 1 ? (
-                <AppText tone="muted" variant="caption">
-                  From
-                </AppText>
-              ) : null}
-              <Price amountPaise={variant.price.amountPaise} mrpPaise={variant.mrp.amountPaise} size="compact" />
-            </View>
-          ) : null}
-        </View>
-        <ArrowRight color={colors.mintInk} size={18} />
-      </Pressable>
-    </Link>
+    </ChromeScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  page: { backgroundColor: colors.graphite, flex: 1 },
-  pageContent: { flexGrow: 1 },
-  shell: { paddingBottom: spacing[16], paddingTop: spacing[8] },
-  layout: { alignItems: 'stretch', flexDirection: 'row', gap: spacing[12] },
-  mobileLayout: { flexDirection: 'column', gap: spacing[6] },
-  intro: { flex: 0.85, gap: spacing[5], minWidth: 0, paddingTop: spacing[4] },
-  mobileIntro: { gap: spacing[3], paddingTop: 0 },
+  page: { backgroundColor: colors.obsidian, flex: 1 },
+  content: { paddingBottom: spacing[16] },
+  hero: { backgroundColor: colors.graphite, paddingBottom: spacing[8], paddingTop: spacing[8] },
+  heroCopy: { gap: spacing[3], maxWidth: 720 },
   badge: {
     alignItems: 'center',
     alignSelf: 'flex-start',
@@ -388,171 +169,110 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 6,
     paddingHorizontal: spacing[3],
-    paddingVertical: 6,
+    paddingVertical: 5,
   },
-  badgeText: { color: colors.graphite, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.6 },
+  badgeText: { color: colors.onMint, fontFamily: typography.bodyBold, fontSize: 12 },
   mobileTitle: { fontSize: 46, lineHeight: 46 },
-  introCopy: { color: colors.onDarkMuted, fontSize: 16, lineHeight: 26, maxWidth: 480 },
-  features: { gap: spacing[3], marginTop: spacing[2] },
-  feature: { alignItems: 'center', flexDirection: 'row', gap: spacing[3] },
-  featureIcon: {
-    alignItems: 'center',
+  heroText: { color: colors.graphiteMuted, fontSize: 16, lineHeight: 24 },
+  viewing: {
+    alignSelf: 'flex-start',
     backgroundColor: colors.graphiteRaised,
     borderColor: colors.graphiteLine,
     borderRadius: radii.sm,
     borderWidth: 1,
-    height: 40,
-    justifyContent: 'center',
-    width: 40,
+    paddingHorizontal: spacing[3],
+    paddingVertical: spacing[2],
   },
-  featureText: { color: colors.onDark, flexShrink: 1, fontFamily: typography.bodySemibold, fontSize: 14 },
-  disclaimer: { color: colors.onDarkMuted, marginTop: spacing[2], maxWidth: 480 },
-  chat: {
-    backgroundColor: colors.obsidian,
-    borderColor: colors.graphiteLine,
+  viewingText: { color: colors.onDark, fontSize: 13 },
+  shell: { paddingTop: spacing[6] },
+  layout: { alignItems: 'flex-start', flexDirection: 'row', gap: spacing[8] },
+  stacked: { flexDirection: 'column', gap: spacing[6] },
+  panel: {
+    alignSelf: 'stretch',
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
     borderRadius: radii.lg,
     borderWidth: 1,
-    flex: 1.15,
-    height: 680,
-    minWidth: 0,
-    overflow: 'hidden',
-    ...shadows.raised,
+    gap: spacing[6],
+    padding: spacing[5],
+    ...shadows.card,
   },
-  mobileChat: { height: 600 },
-  chatHeader: {
+  panelDesktop: { alignSelf: 'flex-start', flex: 1, padding: spacing[6] },
+  group: { gap: spacing[3] },
+  groupHeading: { alignItems: 'center', flexDirection: 'row', gap: spacing[3] },
+  stepBadge: {
     alignItems: 'center',
-    backgroundColor: colors.graphiteRaised,
-    borderBottomColor: colors.mint,
-    borderBottomWidth: 2,
-    flexDirection: 'row',
-    gap: spacing[3],
-    paddingHorizontal: spacing[5],
-    paddingVertical: spacing[4],
-  },
-  avatar: {
-    alignItems: 'center',
-    backgroundColor: colors.mint,
-    borderRadius: radii.pill,
-    height: 40,
-    justifyContent: 'center',
-    width: 40,
-  },
-  chatHeaderCopy: { flex: 1, gap: 2 },
-  chatName: { color: colors.onDark, fontFamily: typography.bodyBold, fontSize: 16 },
-  onlineRow: { alignItems: 'center', flexDirection: 'row', gap: 6 },
-  onlineDot: { backgroundColor: '#3DDC84', borderRadius: 4, height: 8, width: 8 },
-  onlineText: { color: colors.onDarkMuted },
-  resetButton: {
-    alignItems: 'center',
-    borderColor: colors.graphiteLine,
+    backgroundColor: colors.graphiteSurface,
+    borderColor: colors.line,
     borderRadius: radii.pill,
     borderWidth: 1,
-    height: 40,
+    height: 26,
     justifyContent: 'center',
-    width: 40,
+    width: 26,
   },
-  threadScroll: { flex: 1 },
-  thread: { gap: spacing[4], padding: spacing[5] },
-  assistantRow: { alignItems: 'flex-start', flexDirection: 'row', gap: spacing[2], maxWidth: '92%' },
-  userRow: { alignSelf: 'flex-end', maxWidth: '85%' },
-  smallAvatar: {
-    alignItems: 'center',
-    backgroundColor: colors.mint,
+  stepDone: { backgroundColor: colors.graphite, borderColor: colors.graphite },
+  stepText: { color: colors.mineral, fontFamily: typography.bodyBold, fontSize: 12 },
+  stepTextDone: { color: colors.mint },
+  groupTitle: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 16 },
+  options: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[2] },
+  choice: {
+    backgroundColor: colors.paper,
+    borderColor: colors.line,
     borderRadius: radii.pill,
-    height: 28,
+    borderWidth: 1.5,
     justifyContent: 'center',
-    marginTop: 2,
-    width: 28,
+    minHeight: 40,
+    paddingHorizontal: spacing[4],
   },
-  messageColumn: { flexShrink: 1, gap: spacing[2], minWidth: 0 },
-  assistantBubble: {
+  selected: { backgroundColor: colors.graphite, borderColor: colors.graphite },
+  choiceText: { color: colors.ink, fontFamily: typography.bodySemibold, fontSize: 13.5, textTransform: 'capitalize' },
+  selectedText: { color: colors.mint },
+  reset: { alignItems: 'center', alignSelf: 'flex-start', flexDirection: 'row', gap: spacing[2], minHeight: 36 },
+  resetText: { color: colors.mineral, fontFamily: typography.bodySemibold, fontSize: 13 },
+  results: { flex: 1.2, gap: spacing[4], minWidth: 0, width: '100%' },
+  resultList: { gap: spacing[3] },
+  resultsHeading: { alignItems: 'baseline', flexDirection: 'row', justifyContent: 'space-between' },
+  stateCard: {
     backgroundColor: colors.paper,
     borderColor: colors.line,
     borderRadius: radii.md,
-    borderTopLeftRadius: 4,
     borderWidth: 1,
-    paddingHorizontal: spacing[4],
-    paddingVertical: spacing[3],
+    padding: spacing[5],
   },
-  userBubble: {
-    backgroundColor: colors.graphite,
-    borderRadius: radii.md,
-    borderTopRightRadius: 4,
-    paddingHorizontal: spacing[4],
-    paddingVertical: spacing[3],
-  },
-  assistantText: { color: colors.ink, fontSize: 15, lineHeight: 23 },
-  userText: { color: colors.onDark, fontSize: 15, lineHeight: 23 },
-  typing: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
-  picks: { gap: spacing[2] },
-  pick: {
+  emptyCard: {
     alignItems: 'center',
     backgroundColor: colors.paper,
-    borderColor: colors.mint,
-    borderRadius: radii.md,
+    borderColor: colors.line,
+    borderRadius: radii.lg,
+    borderStyle: 'dashed',
     borderWidth: 1.5,
-    flexDirection: 'row',
-    gap: spacing[3],
-    padding: spacing[3],
+    gap: spacing[2],
+    paddingHorizontal: spacing[6],
+    paddingVertical: spacing[10],
   },
-  pickMedia: {
-    alignItems: 'center',
-    borderRadius: radii.sm,
-    height: 64,
-    justifyContent: 'center',
-    overflow: 'hidden',
-    width: 64,
-  },
-  pickImage: { height: '88%', width: '88%' },
-  pickRank: { color: colors.graphite, fontFamily: typography.displayHeavy, fontSize: 28 },
-  pickCopy: { flex: 1, gap: 2, minWidth: 0 },
-  pickBrand: { color: colors.mintInk, fontFamily: typography.bodyBold, fontSize: 10.5, letterSpacing: 1.2 },
-  pickPrice: { alignItems: 'baseline', flexDirection: 'row', flexWrap: 'wrap', gap: 4 },
-  pickName: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 14.5, lineHeight: 20 },
-  chipScroll: { flexGrow: 0 },
-  chips: { gap: spacing[2], paddingHorizontal: spacing[5], paddingVertical: spacing[3] },
-  chip: {
-    backgroundColor: colors.mintSoft,
-    borderColor: '#A8EBD3',
-    borderRadius: radii.pill,
-    borderWidth: 1,
-    justifyContent: 'center',
-    minHeight: 38,
-    paddingHorizontal: spacing[4],
-  },
-  chipText: { color: colors.mintInk, fontFamily: typography.bodySemibold },
-  error: { paddingHorizontal: spacing[5], paddingBottom: spacing[2] },
-  composer: {
-    alignItems: 'flex-end',
+  emptyTitle: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 16, textAlign: 'center' },
+  card: {
     backgroundColor: colors.paper,
-    borderTopColor: colors.line,
-    borderTopWidth: 1,
+    borderColor: colors.line,
+    borderRadius: radii.md,
+    borderWidth: 1,
     flexDirection: 'row',
-    gap: spacing[3],
+    gap: spacing[4],
     padding: spacing[4],
+    ...shadows.card,
   },
-  input: {
-    backgroundColor: colors.obsidian,
-    borderColor: colors.line,
-    borderRadius: radii.md,
-    borderWidth: 1.5,
-    color: colors.ink,
-    flex: 1,
-    fontFamily: typography.body,
-    fontSize: 15,
-    maxHeight: 140,
-    minHeight: 50,
-    paddingHorizontal: spacing[4],
-    paddingTop: 14,
-    paddingBottom: 14,
-  },
-  send: {
+  rank: {
     alignItems: 'center',
     backgroundColor: colors.mint,
-    borderRadius: radii.md,
-    height: 50,
+    borderRadius: radii.pill,
+    height: 32,
     justifyContent: 'center',
-    width: 50,
+    width: 32,
   },
-  sendDisabled: { opacity: 0.4 },
+  rankText: { color: colors.onMint, fontFamily: typography.bodyBold, fontSize: 14 },
+  cardBody: { flex: 1, gap: spacing[1], minWidth: 0 },
+  cardBrand: { color: colors.olive, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 1.2 },
+  cardTitle: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 16, lineHeight: 22 },
+  reason: { color: colors.inkMuted, fontSize: 13, lineHeight: 19 },
+  link: { color: colors.mintInk, fontFamily: typography.bodyBold, fontSize: 14, marginTop: spacing[1], textDecorationLine: 'none' },
 });

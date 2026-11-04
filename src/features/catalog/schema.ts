@@ -20,9 +20,9 @@ export const productVariantSchema = z.object({
   weightGrams: z.number().int().positive(),
   shipping: z.object({
     weightGrams: z.number().int().positive().max(100000),
-    lengthCm: z.number().gt(0.5).max(200),
-    widthCm: z.number().gt(0.5).max(200),
-    heightCm: z.number().gt(0.5).max(200),
+    lengthCm: z.number().gt(0.5).max(200).optional(),
+    widthCm: z.number().gt(0.5).max(200).optional(),
+    heightCm: z.number().gt(0.5).max(200).optional(),
   }).optional(),
   mrp: moneySchema,
   price: moneySchema,

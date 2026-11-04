@@ -150,7 +150,7 @@ export function WebHeader() {
         <Link href="/advisor" asChild>
           <Pressable style={styles.coach}>
             <Sparkles size={15} color={colors.graphite} />
-            <AppText style={styles.coachText}>Ask GR Coach AI</AppText>
+            <AppText style={styles.coachText}>GR Coach</AppText>
           </Pressable>
         </Link>
       </ScrollView>

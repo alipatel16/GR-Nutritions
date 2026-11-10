@@ -24,9 +24,11 @@ import {
 } from "@/lib/form-errors";
 import { colors, radii, shadows, spacing, typography } from "@/theme/tokens";
 import { ChromeScrollView } from '@/components/navigation/ScrollChrome';
+import { useBreakpoint } from "@/theme/use-breakpoint";
 
 export default function AccountRoute() {
   const { user, ready, isAdmin, logout } = useAuth();
+  const phone = useBreakpoint() === "mobile";
   const router = useRouter();
   const { next } = useLocalSearchParams<{ next?: string }>();
   const [email, setEmail] = useState("");
@@ -82,15 +84,15 @@ export default function AccountRoute() {
         <ActivityIndicator color={colors.violet} style={{ marginTop: 48 }} />
       ) : user ? (
         <>
-          <View style={styles.profileBand}>
+          <View style={[styles.profileBand, phone && styles.mobileProfileBand]}>
             <PageShell>
               <View style={styles.profileRow}>
-                <View style={styles.avatar}>
+                <View style={[styles.avatar, phone && styles.mobileAvatar]}>
                   <AppText style={styles.avatarText}>{initial}</AppText>
                 </View>
                 <View style={styles.profileCopy}>
                   <AppText style={styles.eyebrow}>YOUR GR ACCOUNT</AppText>
-                  <AppText accessibilityRole="header" style={styles.profileName}>
+                  <AppText accessibilityRole="header" style={[styles.profileName, phone && styles.mobileProfileName]}>
                     GOOD TO SEE YOU.
                   </AppText>
                   <AppText style={styles.profileEmail}>{user.email}</AppText>
@@ -162,13 +164,13 @@ export default function AccountRoute() {
         </>
       ) : (
         <PageShell style={styles.shell}>
-          <View style={styles.authLayout}>
-            <View style={styles.intro}>
+          <View style={[styles.authLayout, phone && styles.mobileAuthLayout]}>
+            <View style={[styles.intro, phone && styles.mobileStackItem]}>
               <View style={styles.shield}><ShieldCheck size={26} color={colors.mint} /></View>
               <AppText tone="accent" variant="caption">
                 YOUR ROUTINE, ALL TOGETHER
               </AppText>
-              <AppText accessibilityRole="header" style={styles.welcome}>
+              <AppText accessibilityRole="header" style={[styles.welcome, phone && styles.mobileWelcome]}>
                 WELCOME{"\n"}TO YOUR NEXT LEVEL.
               </AppText>
               <AppText tone="muted">
@@ -194,7 +196,7 @@ export default function AccountRoute() {
                 </AppText>
               </View>
             </View>
-            <View style={styles.card}>
+            <View style={[styles.card, phone && styles.mobileStackItem, phone && styles.mobileCard]}>
               <AppText variant="heading">
                 {register ? "CREATE YOUR ACCOUNT" : "SIGN IN TO GR"}
               </AppText>
@@ -383,6 +385,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: spacing[5],
   },
+  // Phones show the sign-in card first; the welcome copy follows below it.
+  mobileAuthLayout: { flexDirection: "column-reverse", gap: spacing[6] },
+  mobileStackItem: { flexBasis: "auto", flexGrow: 0, flexShrink: 0, maxWidth: "100%", minWidth: 0, width: "100%" },
+  mobileCard: { borderRadius: 14, padding: 18 },
+  mobileWelcome: { fontSize: 30, lineHeight: 32 },
+  mobileProfileName: { fontSize: 26, lineHeight: 30 },
+  mobileAvatar: { height: 52, width: 52 },
+  mobileProfileBand: { paddingVertical: spacing[6] },
   authLayout: {
     alignItems: "flex-start",
     flexDirection: "row",

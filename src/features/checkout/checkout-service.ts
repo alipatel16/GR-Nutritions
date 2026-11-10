@@ -5,6 +5,7 @@ const paise = z.number().int().nonnegative();
 export type PaymentMethod = 'razorpay' | 'cod';
 export const deliveryQuoteSchema = z.object({
   quoteId: z.string(), mode: z.enum(['test','live']), currency: z.literal('INR'), subtotalPaise: paise,
+  couponCode: z.string().nullable().default(null), discountPaise: paise.default(0), discountedSubtotalPaise: paise.optional(),
   shippingPaise: paise, codFeePaise: paise, totalPaise: paise.positive(),
   expiresAt: z.iso.datetime({ offset: true }),
   items: z.array(z.object({ productId: z.string(), variantId: z.string(), productName: z.string(), quantity: z.number().int().positive(), unitPricePaise: paise.positive() })),
@@ -18,6 +19,7 @@ const trackingSchema = z.object({
 export const orderSummarySchema = z.object({
   id: z.string(), status: z.string(), totalPaise: paise.positive(),
   paymentMethod: z.enum(['razorpay', 'cod']), mode: z.enum(['test','live']),
+  couponCode: z.string().nullable().optional(), discountPaise: paise.optional(), discountedSubtotalPaise: paise.optional(),
   shippingPaise: paise.optional(), codFeePaise: paise.optional(), tracking: trackingSchema.nullish(),
 });
 export type OrderSummary = z.infer<typeof orderSummarySchema>;
@@ -31,8 +33,8 @@ export type PaymentResult = { razorpay_payment_id: string; razorpay_order_id: st
 export type CartItemRequest = { productId: string; variantId: string; quantity: number };
 
 export const checkoutService = {
-  async delivery(addressId: string, items: CartItemRequest[], paymentMethod: PaymentMethod) {
-    return deliveryQuoteSchema.parse(await storeRequest('checkout.delivery', { addressId, items, paymentMethod }));
+  async delivery(addressId: string, items: CartItemRequest[], paymentMethod: PaymentMethod, couponCode?: string) {
+    return deliveryQuoteSchema.parse(await storeRequest('checkout.delivery', { addressId, items, paymentMethod, ...(couponCode ? { couponCode } : {}) }));
   },
   async create(quoteId: string, requestKey: string) {
     return paymentSessionSchema.parse(await storeRequest('checkout.create', { quoteId, requestKey }));

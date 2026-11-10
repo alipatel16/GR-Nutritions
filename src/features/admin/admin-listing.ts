@@ -33,7 +33,8 @@ export function salesMetrics(orders: AdminOrder[]) {
     earningsPaise: earned.reduce(
       (sum, order) =>
         sum +
-        (order.subtotalPaise ??
+        (order.discountedSubtotalPaise ??
+          (order.subtotalPaise !== undefined ? Math.max(0, order.subtotalPaise - (order.discountPaise ?? 0)) : undefined) ??
           Math.max(
             0,
             order.totalPaise -

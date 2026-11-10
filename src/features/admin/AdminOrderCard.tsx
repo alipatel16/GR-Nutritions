@@ -32,6 +32,7 @@ export function AdminOrderCard({order,onChanged}:{order:AdminOrder;onChanged():v
       <AppText variant="caption" selectable>{[order.address.line1,order.address.line2,order.address.city,order.address.state,order.address.pincode].filter(Boolean).join(', ')}</AppText>
       {order.address.email && <AppText variant="caption" selectable>{order.address.email}</AppText>}
     </View>}
+    {order.couponCode && (order.discountPaise??0)>0 ? <AppText variant="caption">Coupon {order.couponCode} · Discount {formatInr(order.discountPaise!)}</AppText> : null}
     {order.paymentMethod==='cod'&&<AppText variant="caption">Cash on delivery · payment collected on delivery</AppText>}
     {order.mode==='test'&&<AppText variant="caption" tone="accent">Test order · no live stock or shipping</AppText>}
     {order.items.map((item,index)=><AppText key={index} variant="caption" tone="muted">{item.productName} × {item.quantity}</AppText>)}

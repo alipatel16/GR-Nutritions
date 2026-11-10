@@ -109,7 +109,7 @@ export default function AdvisorRoute() {
             ) : null}
           </View>
 
-          <View style={styles.results}>
+          <View style={[styles.results, !desktop && styles.stackedItem]}>
             {failed ? (
               <Pressable accessibilityRole="button" onPress={() => { setFailed(false); setAttempt(attempt + 1); }} style={styles.stateCard}>
                 <AppText tone="danger">The catalogue could not load. Tap to retry.</AppText>
@@ -187,6 +187,8 @@ const styles = StyleSheet.create({
   shell: { paddingTop: spacing[6] },
   layout: { alignItems: 'flex-start', flexDirection: 'row', gap: spacing[8] },
   stacked: { flexDirection: 'column', gap: spacing[6] },
+  // Explicit auto sizing: flex in a stacked column collapses the height on web.
+  stackedItem: { flexBasis: 'auto', flexGrow: 0, flexShrink: 0 },
   panel: {
     alignSelf: 'stretch',
     backgroundColor: colors.paper,

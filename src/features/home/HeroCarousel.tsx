@@ -80,7 +80,7 @@ export function HeroCarousel() {
                 <View key={step} style={[styles.scrimStep, { opacity: mobile ? Math.max(opacity, 0.55) : opacity }]} />
               ))}
             </View>
-            <PageShell style={styles.heroShell}>
+            <PageShell style={[styles.heroShell, mobile && styles.mobileShell]}>
               <View style={[styles.layout, mobile && styles.mobileLayout]}>
                 <View
                   style={[styles.copy, mobile && styles.mobileColumn]}
@@ -100,14 +100,14 @@ export function HeroCarousel() {
                   >
                     {campaign.title}
                   </AppText>
-                  <AppText style={styles.body}>{campaign.body}</AppText>
-                  <View style={styles.actions}>
+                  <AppText style={[styles.body, mobile && styles.mobileBody]}>{campaign.body}</AppText>
+                  <View style={[styles.actions, mobile && styles.mobileActions]}>
                     <Link
                       accessibilityLabel={campaign.primaryAccessibilityLabel}
                       asChild
                       href={campaign.primaryHref as Href}
                     >
-                      <Pressable style={styles.primaryButton}>
+                      <Pressable style={StyleSheet.flatten([styles.primaryButton, mobile && styles.mobileButton])}>
                         <AppText style={styles.primaryText}>{campaign.primaryLabel}</AppText>
                         <ArrowRight color={colors.graphite} size={17} />
                       </Pressable>
@@ -117,13 +117,14 @@ export function HeroCarousel() {
                       asChild
                       href={campaign.secondaryHref as Href}
                     >
-                      <Pressable style={styles.secondaryButton}>
+                      <Pressable style={StyleSheet.flatten([styles.secondaryButton, mobile && styles.mobileButton])}>
                         <Sparkles color={colors.mint} size={16} />
                         <AppText style={styles.buttonText}>{campaign.secondaryLabel}</AppText>
                       </Pressable>
                     </Link>
                   </View>
-                  <View style={styles.notes}>
+                  {/* Phones show these promises in the trust bar below instead. */}
+                  {mobile ? null : <View style={styles.notes}>
                     {([
                       [BadgeCheck, 'Authentic products'],
                       [Truck, 'Free delivery over ₹999'],
@@ -134,7 +135,7 @@ export function HeroCarousel() {
                         <AppText style={styles.noteText}>{label}</AppText>
                       </View>
                     ))}
-                  </View>
+                  </View>}
                 </View>
                 <View
                   style={[styles.visual, mobile && styles.mobileColumn]}
@@ -152,7 +153,7 @@ export function HeroCarousel() {
 const styles = StyleSheet.create({
   frame: { backgroundColor: colors.graphite, overflow: 'hidden', paddingBottom: spacing[4] },
   slide: { justifyContent: 'center', minHeight: 560, overflow: 'hidden' },
-  mobileSlide: { minHeight: 600 },
+  mobileSlide: { minHeight: 0 },
   scrim: { flexDirection: 'row' },
   scrimStep: { backgroundColor: colors.graphite, flex: 1 },
   heroShell: { paddingVertical: spacing[12] },
@@ -187,7 +188,11 @@ const styles = StyleSheet.create({
     lineHeight: 88,
     maxWidth: 660,
   },
-  mobileTitle: { fontSize: 60, letterSpacing: -0.5, lineHeight: 56 },
+  mobileTitle: { fontSize: 46, letterSpacing: -0.5, lineHeight: 44 },
+  mobileShell: { paddingVertical: spacing[8] },
+  mobileBody: { fontSize: 14.5, lineHeight: 22 },
+  mobileActions: { flexDirection: 'row', flexWrap: 'nowrap', gap: spacing[2] },
+  mobileButton: { flex: 1, justifyContent: 'center', minHeight: 48, paddingHorizontal: spacing[3] },
   body: { color: '#D5DCE8', fontSize: 16, lineHeight: 26, maxWidth: 500 },
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[3], marginTop: spacing[1] },
   primaryButton: {

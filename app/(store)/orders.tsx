@@ -3,10 +3,11 @@ import { Link, Redirect } from 'expo-router';
 import {
   ActivityIndicator,
   Linking,
+  Pressable,
   StyleSheet,
   View,
 } from 'react-native';
-import { CreditCard, Package, Truck, Wallet } from 'lucide-react-native';
+import { CreditCard, LifeBuoy, Package, Truck, Wallet } from 'lucide-react-native';
 import { storeRequest } from '@/lib/store-api';
 import { useAuth } from '@/features/auth/AuthProvider';
 import {
@@ -187,38 +188,39 @@ function OrdersContent() {
                 const tone = statusTone(order.status);
                 const step = progressStep(order.status);
                 const placed = formatPlaced(order.createdAt);
+                const codDue =
+                  order.paymentMethod === 'cod' &&
+                  !['cancelled', 'refunded', 'delivered'].includes(order.status);
                 return (
-                  <View key={order.id} style={styles.card}>
-                    <View style={styles.cardHeading}>
-                      <View style={styles.orderIdentity}>
+                  <View key={order.id} style={[styles.card, !desktop && styles.mobileCard]}>
+                    <View style={styles.cardTop}>
+                      <View style={[styles.statusPill, styles[`pill_${tone}`]]}>
+                        <View style={[styles.statusDot, styles[`dot_${tone}`]]} />
+                        <AppText style={[styles.status, styles[`text_${tone}`]]}>
+                          {orderStatusLabel(order.status)}
+                        </AppText>
+                      </View>
+                      {placed ? (
                         <AppText tone="muted" variant="caption">
-                          ORDER REFERENCE
+                          {placed}
                         </AppText>
-                        <AppText selectable variant="label">
-                          {order.id}
-                        </AppText>
-                        {placed ? (
-                          <AppText tone="muted" variant="caption">
-                            Placed {placed}
-                          </AppText>
-                        ) : null}
-                      </View>
-                      <View style={styles.badges}>
-                        <View style={[styles.statusPill, styles[`pill_${tone}`]]}>
-                          <View style={[styles.statusDot, styles[`dot_${tone}`]]} />
-                          <AppText style={[styles.status, styles[`text_${tone}`]]}>
-                            {orderStatusLabel(order.status)}
-                          </AppText>
-                        </View>
-                        {order.mode === 'test' ? (
-                          <View style={styles.badge}>
-                            <AppText tone="accent" variant="caption">
-                              Test order · Will not ship
-                            </AppText>
-                          </View>
-                        ) : null}
-                      </View>
+                      ) : null}
                     </View>
+                    <View style={styles.orderIdentity}>
+                      <AppText tone="muted" variant="caption">
+                        ORDER REFERENCE
+                      </AppText>
+                      <AppText numberOfLines={1} selectable style={styles.orderRef} variant="label">
+                        {order.id}
+                      </AppText>
+                    </View>
+                    {order.mode === 'test' ? (
+                      <View style={styles.badge}>
+                        <AppText tone="accent" variant="caption">
+                          Test order · Will not ship
+                        </AppText>
+                      </View>
+                    ) : null}
 
                     {step > 0 ? (
                       <View
@@ -238,7 +240,7 @@ function OrdersContent() {
                               <View style={styles.progressTrack}>
                                 <View style={[styles.progressBar, reached && styles.progressReached]} />
                               </View>
-                              <AppText style={[styles.progressLabel, reached && styles.progressLabelReached]}>
+                              <AppText numberOfLines={1} style={[styles.progressLabel, reached && styles.progressLabelReached]}>
                                 {name}
                               </AppText>
                             </View>
@@ -248,15 +250,15 @@ function OrdersContent() {
                     ) : null}
 
                     <View style={[styles.columns, !desktop && styles.stacked]}>
-                      <View style={styles.details}>
+                      <View style={[styles.details, !desktop && styles.fullWidth]}>
                         {order.items?.length ? (
                           <View style={styles.items}>
                             {order.items.map((item, index) => (
                               <View key={`${item.productName}-${index}`} style={styles.itemRow}>
                                 <View style={styles.itemIcon}>
-                                  <Package color={colors.mintInk} size={16} />
+                                  <Package color={colors.mintInk} size={15} />
                                 </View>
-                                <AppText style={styles.itemName} variant="caption">
+                                <AppText numberOfLines={2} style={styles.itemName} variant="caption">
                                   {item.productName} × {item.quantity}
                                 </AppText>
                               </View>
@@ -264,6 +266,7 @@ function OrdersContent() {
                           </View>
                         ) : null}
                         <View style={styles.totals}>
+                          {order.couponCode && (order.discountPaise??0)>0 ? <AppText variant="caption">Coupon {order.couponCode} · Discount {formatInr(order.discountPaise!)}</AppText> : null}
                           {order.shippingPaise != null ? (
                             <AppText tone="muted" variant="caption">
                               Delivery {formatInr(order.shippingPaise)}
@@ -273,12 +276,7 @@ function OrdersContent() {
                             </AppText>
                           ) : null}
                           <AppText style={styles.total} variant="label">
-                            {order.paymentMethod === 'cod' &&
-                            !['cancelled', 'refunded', 'delivered'].includes(
-                              order.status,
-                            )
-                              ? 'Amount due on delivery: '
-                              : 'Order total: '}
+                            {codDue ? 'Amount due on delivery: ' : 'Order total: '}
                             {formatInr(order.totalPaise)}
                           </AppText>
                           <View style={styles.payment}>
@@ -299,19 +297,19 @@ function OrdersContent() {
                       </View>
                       <View style={[styles.tracking, !desktop && styles.fullWidth]}>
                         <View style={styles.trackingHeading}>
-                          <Truck color={colors.mint} size={18} />
+                          <Truck color={colors.mintInk} size={18} />
                           <AppText style={styles.trackingTitle} variant="label">Delivery tracking</AppText>
                         </View>
                         {order.tracking ? (
                           <>
                             {order.tracking.courierName ? (
-                              <AppText style={styles.trackingMuted} variant="caption">
+                              <AppText tone="muted" variant="caption">
                                 {order.tracking.courierName}
                               </AppText>
                             ) : null}
                             {order.tracking.awb ? (
-                              <View>
-                                <AppText style={styles.trackingMuted} variant="caption">
+                              <View style={styles.awb}>
+                                <AppText tone="muted" variant="caption">
                                   Tracking number
                                 </AppText>
                                 <AppText selectable style={styles.trackingValue} variant="label">
@@ -320,45 +318,52 @@ function OrdersContent() {
                               </View>
                             ) : null}
                             {order.tracking.status ? (
-                              <AppText style={styles.trackingMuted} variant="caption">
+                              <AppText tone="muted" variant="caption">
                                 Shipment update:{' '}
                                 {order.tracking.status.replace(/_/g, ' ')}
                               </AppText>
                             ) : null}
-                            {order.tracking.url ? (
-                              <Button
-                                accessibilityLabel={`Track order ${order.id}`}
-                                onPress={() => openTracking(order.tracking?.url)}
-                              >
-                                Track delivery
-                              </Button>
-                            ) : null}
                           </>
                         ) : (
-                          <AppText style={styles.trackingMuted} variant="caption">
+                          <AppText tone="muted" variant="caption">
                             {order.mode === 'test'
                               ? 'Test orders do not create a delivery.'
                               : 'Tracking will appear here once your order has a shipment.'}
                           </AppText>
                         )}
-                        <Link
-                          accessibilityLabel={`Get help with order ${order.id}`}
-                          href={{ pathname: '/help', params: { order: order.id } }}
-                          style={styles.helpLink}
-                        >
-                          Need help with this order?
-                        </Link>
-                        <Button
-                          variant="inverse"
-                          accessibilityLabel={`Refresh order ${order.id}`}
-                          disabled={Boolean(refreshing)}
-                          loading={refreshing === order.id}
-                          onPress={() => refreshOrder(order.id)}
-                        >
-                          Refresh order status
-                        </Button>
+                        <View style={styles.trackingActions}>
+                          {order.tracking?.url ? (
+                            <Button
+                              accessibilityLabel={`Track order ${order.id}`}
+                              onPress={() => openTracking(order.tracking?.url)}
+                              style={styles.actionButton}
+                            >
+                              Track delivery
+                            </Button>
+                          ) : null}
+                          <Button
+                            variant="ghost"
+                            accessibilityLabel={`Refresh order ${order.id}`}
+                            disabled={Boolean(refreshing)}
+                            loading={refreshing === order.id}
+                            onPress={() => refreshOrder(order.id)}
+                            style={styles.actionButton}
+                          >
+                            Refresh status
+                          </Button>
+                        </View>
                       </View>
                     </View>
+                    <Link
+                      accessibilityLabel={`Get help with order ${order.id}`}
+                      asChild
+                      href={{ pathname: '/help', params: { order: order.id } }}
+                    >
+                      <Pressable style={styles.helpLink}>
+                        <LifeBuoy color={colors.mintInk} size={16} />
+                        <AppText style={styles.helpText}>Need help with this order?</AppText>
+                      </Pressable>
+                    </Link>
                   </View>
                 );
               })}
@@ -371,7 +376,7 @@ function OrdersContent() {
 }
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.obsidian },
-  shell: { paddingTop: spacing[8], paddingBottom: spacing[20] },
+  shell: { paddingTop: spacing[6], paddingBottom: spacing[20] },
   content: { gap: spacing[4] },
   card: {
     backgroundColor: colors.obsidianRaised,
@@ -379,25 +384,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: radii.lg,
     padding: spacing[5],
-    gap: spacing[5],
+    gap: spacing[4],
     ...shadows.card,
   },
-  cardHeading: {
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    gap: spacing[3],
-  },
-  orderIdentity: { gap: 2, flexShrink: 1, minWidth: 0 },
-  badges: { alignItems: 'flex-end', gap: spacing[2] },
+  mobileCard: { borderRadius: radii.md, gap: spacing[3], padding: spacing[4] },
+  cardTop: { alignItems: 'center', flexDirection: 'row', gap: spacing[3], justifyContent: 'space-between' },
+  orderIdentity: { gap: 2, minWidth: 0 },
+  orderRef: { color: colors.ink },
   statusPill: {
     alignItems: 'center',
     borderRadius: radii.pill,
     flexDirection: 'row',
+    flexShrink: 1,
     gap: 6,
     paddingHorizontal: spacing[3],
-    paddingVertical: 6,
+    paddingVertical: 5,
   },
   pill_good: { backgroundColor: colors.successSoft },
   pill_waiting: { backgroundColor: '#FFF4D6' },
@@ -406,65 +407,72 @@ const styles = StyleSheet.create({
   dot_good: { backgroundColor: colors.success },
   dot_waiting: { backgroundColor: '#B7791F' },
   dot_bad: { backgroundColor: colors.danger },
-  status: { fontFamily: typography.bodyBold, fontSize: 13 },
+  status: { flexShrink: 1, fontFamily: typography.bodyBold, fontSize: 13 },
   text_good: { color: colors.success },
   text_waiting: { color: '#8A5A00' },
   text_bad: { color: colors.danger },
   badge: {
+    alignSelf: 'flex-start',
     backgroundColor: colors.mintSoft,
     borderRadius: radii.pill,
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[1],
   },
-  progress: { flexDirection: 'row', gap: spacing[2] },
-  progressStep: { flex: 1, gap: spacing[2] },
-  progressTrack: { backgroundColor: colors.line, borderRadius: 3, height: 6, overflow: 'hidden' },
-  progressBar: { height: 6 },
+  progress: { flexDirection: 'row', gap: 6 },
+  progressStep: { flex: 1, gap: 6, minWidth: 0 },
+  progressTrack: { backgroundColor: colors.line, borderRadius: 3, height: 5, overflow: 'hidden' },
+  progressBar: { height: 5 },
   progressReached: { backgroundColor: colors.mint, width: '100%' },
-  progressLabel: { color: colors.mineral, fontSize: 11.5, lineHeight: 16 },
+  progressLabel: { color: colors.mineral, fontSize: 11, lineHeight: 15 },
   progressLabelReached: { color: colors.ink, fontFamily: typography.bodySemibold },
-  columns: { flexDirection: 'row', gap: spacing[6], alignItems: 'stretch' },
-  stacked: { flexDirection: 'column', gap: spacing[4] },
-  details: { flex: 1, minWidth: 0, width: '100%', gap: spacing[4] },
+  columns: { flexDirection: 'row', gap: spacing[5], alignItems: 'stretch' },
+  stacked: { flexDirection: 'column', gap: spacing[3] },
+  details: { flex: 1, minWidth: 0, width: '100%', gap: spacing[3] },
   items: { gap: spacing[2] },
-  itemRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[3] },
+  itemRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
   itemIcon: {
     alignItems: 'center',
     backgroundColor: colors.mintSoft,
-    borderRadius: radii.sm,
-    height: 32,
+    borderRadius: radii.xs,
+    height: 28,
     justifyContent: 'center',
-    width: 32,
+    width: 28,
   },
-  itemName: { color: colors.ink, flex: 1, fontSize: 14 },
+  itemName: { color: colors.ink, flex: 1, fontSize: 14, lineHeight: 19 },
   totals: {
     borderTopColor: colors.line,
     borderTopWidth: 1,
-    gap: spacing[1],
+    gap: 2,
     paddingTop: spacing[3],
   },
   total: { color: colors.ink, fontSize: 16 },
   payment: { alignItems: 'center', flexDirection: 'row', gap: 6 },
   tracking: {
-    flex: 0.8,
+    flex: 0.85,
     minWidth: 0,
-    backgroundColor: colors.graphite,
+    backgroundColor: colors.graphiteSurface,
+    borderColor: colors.line,
     borderRadius: radii.md,
+    borderWidth: 1,
     padding: spacing[4],
-    gap: spacing[3],
+    gap: spacing[2],
   },
-  fullWidth: { width: '100%', flex: 0 },
+  fullWidth: { flexBasis: 'auto', flexGrow: 0, flexShrink: 0, width: '100%' },
   trackingHeading: { flexDirection: 'row', alignItems: 'center', gap: spacing[2] },
-  trackingTitle: { color: colors.onDark },
-  trackingMuted: { color: colors.graphiteMuted },
-  trackingValue: { color: colors.onDark },
+  trackingTitle: { color: colors.ink },
+  awb: { gap: 1 },
+  trackingValue: { color: colors.ink },
+  trackingActions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing[2], marginTop: spacing[1] },
+  actionButton: { flexGrow: 1, minHeight: 42, paddingHorizontal: spacing[3], paddingVertical: spacing[2] },
   helpLink: {
-    color: colors.mint,
-    fontFamily: typography.bodyBold,
-    fontSize: 14,
-    paddingVertical: spacing[1],
-    textDecorationLine: 'none',
+    alignItems: 'center',
+    borderTopColor: colors.line,
+    borderTopWidth: 1,
+    flexDirection: 'row',
+    gap: spacing[2],
+    paddingTop: spacing[3],
   },
+  helpText: { color: colors.mintInk, fontFamily: typography.bodyBold, fontSize: 14 },
   empty: {
     alignItems: 'center',
     gap: spacing[3],

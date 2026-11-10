@@ -10,6 +10,7 @@ const ordersSchema = z.array(z.object({
   items: z.array(z.object({ productName: z.string(), quantity: z.number().int().positive() })),
   mode: z.enum(['test','live']).optional(), paymentMethod: z.enum(['razorpay','cod']).optional(),
   createdAt: z.string().optional(),
+  couponCode: z.string().nullish(), discountPaise: z.number().int().nonnegative().optional(), discountedSubtotalPaise: z.number().int().nonnegative().optional(),
   subtotalPaise: z.number().int().nonnegative().optional(),
   shippingPaise: z.number().int().nonnegative().optional(),
   codFeePaise: z.number().int().nonnegative().optional(),

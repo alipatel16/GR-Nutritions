@@ -1,0 +1,446 @@
+{
+  "collectedAt": "2026-11-05T09:12:54.715Z",
+  "brand": "Avvatar",
+  "sourceUrl": "https://www.avvatarindia.com/",
+  "logoUrl": "https://www.avvatarindia.com/assets/images/new/logo.png",
+  "products": [
+    {
+      "productKey": "essential-whey-protein",
+      "name": "Avvatar Essential Whey Protein",
+      "sourceUrl": "https://www.avvatarindia.com/product/essential-whey-protein-triple-chocolate-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1792226534_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 1851836,
+          "sha256": "e9b33fbdaf027e9676dabf4b668fffcdbb8914abc62dc419d63bd21a1c16bcf5"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1792385685_RIGHT.jpg",
+          "file": "02.jpg",
+          "bytes": 2232937,
+          "sha256": "283a1b8c872605ed5a8d4c9defe087527f260f0f2e13e34d22e068fdcd2bcf6f"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1792385706_LEFT.jpg",
+          "file": "03.jpg",
+          "bytes": 2298631,
+          "sha256": "4797257a43562565f3bf481c616e36812e2d64baa50cf56ad6f421b2f3b9f6d7"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1792413416_triple%20chocolate.png",
+          "file": "04.png",
+          "bytes": 1788357,
+          "sha256": "56a221fdff0bb160665ec2c3f86c40db6e89d572ffb4b3632338f440c4cca393"
+        }
+      ]
+    },
+    {
+      "productKey": "whey-protein-monkfruit-stevia",
+      "name": "Avvatar Whey Protein Monkfruit Stevia",
+      "sourceUrl": "https://www.avvatarindia.com/product/whey-protein-monkfruit-stevia-strawberry-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1790237010_FOP_Clean-whey-strawberry_website-1080-x-1080.jpg",
+          "file": "01.jpg",
+          "bytes": 523684,
+          "sha256": "dbbab9274acd6fd58daf643fd0f08072c0035ded6ce3c8a03f2db75402c6aad8"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1790238065_BOP_Clean-whey-strawberry_website-1080-x-1080.jpg",
+          "file": "02.jpg",
+          "bytes": 414127,
+          "sha256": "704c6203276c7261524f09d83728248a7bac8f053c48bb942f6ed831fb1410c6"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1790238109_Infographics_1.jpeg",
+          "file": "03.jpeg",
+          "bytes": 717606,
+          "sha256": "03f9897fd2b51660f1f676c2471d5cf6fe33aa752754f473e71832b86694babb"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1790238156_Infographics_2.jpeg",
+          "file": "04.jpeg",
+          "bytes": 555837,
+          "sha256": "b8fa04650911a9d5faf1f2792fc7d30614e4526ff9ebfdfef375639aa4408a04"
+        }
+      ]
+    },
+    {
+      "productKey": "protein-chips",
+      "name": "Avvatar Protein Chips",
+      "sourceUrl": "https://www.avvatarindia.com/product/protein-chips-pudina-flavour-350g",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1788774897_Pudina_Listing.jpg",
+          "file": "01.jpg",
+          "bytes": 5171391,
+          "sha256": "cce675e5379f5f143c19d16519f6804eb57fd52837915ae65eb09d169d57c345"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1788847699_BOP_Pudina_Listing-02.jpg",
+          "file": "02.jpg",
+          "bytes": 3766436,
+          "sha256": "cbbd010b4ac02abbe9ead4e7ae417e61fd43fbc709d08458b0bf8475599b00e2"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1788847843_1%20(3).jpeg",
+          "file": "03.jpeg",
+          "bytes": 1567595,
+          "sha256": "ff681d70b8236943e7ce04ee9f373b5f8d4addb6749175b087cccdf93242faf6"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1788847861_2%20(2).jpeg",
+          "file": "04.jpeg",
+          "bytes": 851380,
+          "sha256": "ed955e3511bc176db14b5f5a5d495da132e3a50d7a0fac43e862af4d85da8f99"
+        }
+      ]
+    },
+    {
+      "productKey": "protein-shake",
+      "name": "Avvatar Protein Shake",
+      "sourceUrl": "https://www.avvatarindia.com/product/protein-cold-coffee-classic-cold-coffee-1-l",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1785134529_1280X1280-Avvatar%20Classic%20Cold%20Coffee%20.%204.jpg",
+          "file": "01.jpg",
+          "bytes": 506681,
+          "sha256": "8acf241ff50a8da77d9513e579c5852a61ed058fb7d07f0af80f09d157f3123e"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1785134601_3500%20x%203500px-Classic%20Cold%20Coffee-Sub%20Category%20Section_FOP.jpg",
+          "file": "02.jpg",
+          "bytes": 2433394,
+          "sha256": "20eb222602092faf013bee81bb1f36963cd2d8cb480ebfb8b60501fc544a4dec"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1785134628_3500%20x%203500px-Classic%20Cold%20Coffee-Sub%20Category%20Section_LSOP.jpg",
+          "file": "03.jpg",
+          "bytes": 2301709,
+          "sha256": "a1b03f7ef1aa9ddeabcb0d10389b1812d58bdc660d366c5389acdb2b5f5cba3e"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1785134657_3500%20x%203500px-Classic%20Cold%20Coffee-Sub%20Category%20Section_BOP.jpg",
+          "file": "04.jpg",
+          "bytes": 2501058,
+          "sha256": "d2dfa90d126af7325d2bb56f85ef9f6ef78e1f3878772b5e2867a3e6f79f7175"
+        }
+      ]
+    },
+    {
+      "productKey": "protein-wafer-bar",
+      "name": "Avvatar Protein Wafer Bar",
+      "sourceUrl": "https://www.avvatarindia.com/product/protein-wafer-bar-chocolate-flavour-320-g",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1745990825_PROTEIN_BAR_BOX_WITH_PACK%20(1).jpg",
+          "file": "01.jpg",
+          "bytes": 630212,
+          "sha256": "5f0f22cb2eddaeedd1709cb77cd882aab0a449a6c47c8757acdf7dbf53022fb8"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1745990992_AVVATAR%20WHEYFER%20BAR%20CHOCOLATE%2040g_FOP.jpg",
+          "file": "02.jpg",
+          "bytes": 1526049,
+          "sha256": "b056ef512b37feaa1c6743b13e240644ebe3ca108a8f14d52bef8440babc0c68"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1770964453_Chocolate-Bop.jpeg",
+          "file": "03.jpeg",
+          "bytes": 400410,
+          "sha256": "a0c3a8c25fe6e65b9a4704f2fbe187cdf1f99c001d3de04a498506d5a0192df4"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1770964775_WhatsApp%20Image%202025-04-16%20at%201.17.05%20PM.jpeg",
+          "file": "04.jpeg",
+          "bytes": 466378,
+          "sha256": "153910182a024007bd819b45db773f06db792644202a9bd02858c8a0b5eca686"
+        }
+      ]
+    },
+    {
+      "productKey": "100-performance-whey",
+      "name": "Avvatar 100 Performance Whey",
+      "sourceUrl": "https://www.avvatarindia.com/product/100-performance-whey-malai-kulfi-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1736165076_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 322717,
+          "sha256": "ee59b1a71bd7802f3c4d8a921b8e886f3ddb852be259cd54fac6fb887363a02f"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1736165076_LEFT.jpg",
+          "file": "02.jpg",
+          "bytes": 398926,
+          "sha256": "caa51ee83eedcb4d8098e4c1878fb20f3301f7b61e05684130f2709087dadb98"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1736165076_RIGHT.jpg",
+          "file": "03.jpg",
+          "bytes": 362620,
+          "sha256": "2b594b557cd6cb87e5f971fb74126234e354fe0c42a5573b424f98c84d9feb58"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1789189979_Malai%20Kulfi.jpg",
+          "file": "04.jpg",
+          "bytes": 916352,
+          "sha256": "b1d5ddd4cc45274b229d70ab77e4396b3bc3b381e861c6eee01176dceb8cd5b4"
+        }
+      ]
+    },
+    {
+      "productKey": "fuel-whey",
+      "name": "Avvatar Fuel Whey",
+      "sourceUrl": "https://www.avvatarindia.com/product/fuel-whey-caramel-creme-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1750673993_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 1509332,
+          "sha256": "0ff12ba2edc9db5bc9ed35888c47c856273c6d85836de5358c7fc17cd4a5a8a9"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1750674006_RIGHT.jpg",
+          "file": "02.jpg",
+          "bytes": 1707825,
+          "sha256": "53601ab47d513dd2d66e7a8034e33f194f17446c33d61d993a2b650ff4e85f56"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1750674043_LEFT.jpg",
+          "file": "03.jpg",
+          "bytes": 1763962,
+          "sha256": "b0028a61c205eafe07083c4db7c2be1befd0608ba382ec886c16d9d82506ded0"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1756718794_INFOGRAPHIC_FUEL_WHEY_26-06-2025-04.jpg",
+          "file": "04.jpg",
+          "bytes": 3647092,
+          "sha256": "38e79bd10e433de528b029a0f1f72bde9d2a8b7d252582b757a666a845e329f3"
+        }
+      ]
+    },
+    {
+      "productKey": "whey-protein",
+      "name": "Avvatar Whey Protein",
+      "sourceUrl": "https://www.avvatarindia.com/product/whey-protein-malai-kulfi-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697552095_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 109756,
+          "sha256": "d2df2273d7b9fb5794839ed7f2da3ee0c84c2e6b82119533b6a62c71f36a919a"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697552095_LEFT.jpg",
+          "file": "02.jpg",
+          "bytes": 104727,
+          "sha256": "1abcc01271ac8fadb8966cf2b0da923beaecc37b5621cf2b5c32eeddac42ef0f"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697552095_RIGHT.jpg",
+          "file": "03.jpg",
+          "bytes": 96202,
+          "sha256": "5ef14cea42399262a0a499d813c76f0a2870cc083cb747ffc3d94f2a62ad28ea"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1756720401_MK.jpg",
+          "file": "04.jpg",
+          "bytes": 5705173,
+          "sha256": "f143006b1deeac17ffbe50da399b9561a653f310bc93b449e3b77470c0eb5951"
+        }
+      ]
+    },
+    {
+      "productKey": "isorich-protein",
+      "name": "Avvatar Isorich Protein",
+      "sourceUrl": "https://www.avvatarindia.com/product/isorich-protein-malai-kulfi-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697618942_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 105168,
+          "sha256": "e711966b0fe0b0fb13cad79e596c717509f00f897fbe615f8927ac73b8b2c900"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697618942_LEFT.jpg",
+          "file": "02.jpg",
+          "bytes": 105465,
+          "sha256": "813896e4060328c163d1b5a177eb4118e43acd322994f6989632e7f7509c028c"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697618942_RIGHT.jpg",
+          "file": "03.jpg",
+          "bytes": 106227,
+          "sha256": "931ef68a9624f588438866bbada2c303da7da9b0cfbff2d5a1a25117a8c8af7e"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1756721607_MK.jpg",
+          "file": "04.jpg",
+          "bytes": 5324916,
+          "sha256": "d950316fe86d2daddbef8129a3399ab88f5d18d46e2e1a2337c0730c0245541a"
+        }
+      ]
+    },
+    {
+      "productKey": "creatine-monohydrate",
+      "name": "Avvatar Creatine Monohydrate",
+      "sourceUrl": "https://www.avvatarindia.com/product/creatine-monohydrate-fruit-punch-flavour-315g",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1766991431_CREATINE-315g-(FOP)FRUIT%20PUNCH.jpg",
+          "file": "01.jpg",
+          "bytes": 946679,
+          "sha256": "27b290ce612aecaf5e76985c48150ea6c97f02114e2e249ed00fc195ccc5e2a2"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1768890216_CREATINE-315g-(ROP)FRUIT%20PUNCH.jpg",
+          "file": "02.jpg",
+          "bytes": 940244,
+          "sha256": "12e5a902b7be093fda7a6ef5f3d75d5aeec9a540b3f3a488e69099fd384284a2"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1768890229_CREATINE-315g-(LOP).jpg",
+          "file": "03.jpg",
+          "bytes": 1199435,
+          "sha256": "2a7882f83e5ccc73f6a9007a5e97aa8bdefb0d52da47f93c090871564041d7a2"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1770275750_1.jpg",
+          "file": "04.jpg",
+          "bytes": 882605,
+          "sha256": "f66f53fdb4e8ebdee1afee0694a3c19a31f8a30cb66d595d3b8a4422ae7fc102"
+        }
+      ]
+    },
+    {
+      "productKey": "nitro-iso-whey",
+      "name": "Avvatar Nitro Iso Whey",
+      "sourceUrl": "https://www.avvatarindia.com/product/nitro-iso-whey-belgian-chocolate-flavour-2-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697542363_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 106180,
+          "sha256": "99bda8154382c7e2d018e81f48c8b504d8a34f6cd9b573f8cbc82f55fda1f88e"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697542363_LEFT.jpg",
+          "file": "02.jpg",
+          "bytes": 102554,
+          "sha256": "79dd475db74e2e0b73497e256d3d5ab7261f40d652674269d46b0486631475db"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697542363_RIGHT.jpg",
+          "file": "03.jpg",
+          "bytes": 108623,
+          "sha256": "43ea4c1725df73d631265890dd5f6da030adb6b69811abcedae1e94fe2644dac"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1731406265_Nitro%20Iso%20Gold.jpg",
+          "file": "04.jpg",
+          "bytes": 40319,
+          "sha256": "e84fc3320b0ad8d54ad5d4cf8205a47055ef3e5768acd07fc81c8f5ef4365e20"
+        }
+      ]
+    },
+    {
+      "productKey": "alpha-whey",
+      "name": "Avvatar Alpha Whey",
+      "sourceUrl": "https://www.avvatarindia.com/product/alpha-whey-malai-kulfi-flavour-1-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1757490800_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 1952445,
+          "sha256": "582811cfcf2815d9d16162b133dfa302c8f4fe31cc31a4f996151d9b5d2962f3"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1759475022_RIGHT.jpg",
+          "file": "02.jpg",
+          "bytes": 2207151,
+          "sha256": "6671637ab563b4634dffc4c3425637840247605ce17b6a7ae8dddde726967ed3"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1759475034_LEFT.jpg",
+          "file": "03.jpg",
+          "bytes": 2198974,
+          "sha256": "e37fbeb7401b2da5191c14f706605a927acb411a7f20abbbab0ecf9fed8189b3"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1776145318_Alpha%20whey_1080%20x%201080_05.jpg",
+          "file": "04.jpg",
+          "bytes": 581149,
+          "sha256": "5ad386e354329789a60da551e31151487a503a3eb2bc08c18990733b15d57662"
+        }
+      ]
+    },
+    {
+      "productKey": "muscle-gainer",
+      "name": "Avvatar Muscle Gainer",
+      "sourceUrl": "https://www.avvatarindia.com/product/muscle-gainer-cafe-mocha-flavour-2-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697540886_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 95157,
+          "sha256": "e4728b4084c4d0982b08f1a71198611d6ff39fa8e0c645b97066c90c67543135"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697540886_LEFT.jpg",
+          "file": "02.jpg",
+          "bytes": 110155,
+          "sha256": "06c20a798d612db499e002ce99ce9714cdb9ed39490e79c7c87edcd3fc4100f7"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697540886_RIGHT.jpg",
+          "file": "03.jpg",
+          "bytes": 104410,
+          "sha256": "44c6967b513a2df953f236a1ac341de8b838ee88279afbcf6e443a37490d5c1c"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1719986319_Trustified%20Gold_%20Muscle%20Gainer_page-0001.jpg",
+          "file": "04.jpg",
+          "bytes": 1215850,
+          "sha256": "2b827888681faa2b5c6bee93f7080c81bbc278d81dd533d6718b6a70a96de15b"
+        }
+      ]
+    },
+    {
+      "productKey": "mass-gainer",
+      "name": "Avvatar Mass Gainer",
+      "sourceUrl": "https://www.avvatarindia.com/product/mass-gainer-belgian-chocolate-flavour-2-kg",
+      "images": [
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697525196_FOP.jpg",
+          "file": "01.jpg",
+          "bytes": 94679,
+          "sha256": "c19364cd0265afe8a934761412f96e0c3ef901900f1c9fffd2ba22098f0a6457"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697525196_LEFT.jpg",
+          "file": "02.jpg",
+          "bytes": 102056,
+          "sha256": "bb148c91a947690733c1167dbeb6439ab989353d19ab3d14cce327c20ba3cd2c"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1697525196_RIGHT.jpg",
+          "file": "03.jpg",
+          "bytes": 97750,
+          "sha256": "fe70b69d64ac113ce1e80ba1bca67c0f82b40234980b906a87b66adf240907b4"
+        },
+        {
+          "sourceUrl": "https://www.avvatarindia.com/images/product_images/1719986199_Trustified%20Gold_Mass%20gainer_page-0001.jpg",
+          "file": "04.jpg",
+          "bytes": 1213739,
+          "sha256": "4a7446a43818300a6a2b11dd71e96cbd911f4e0433e335ed4e2e8156549da6f2"
+        }
+      ]
+    }
+  ],
+  "skipped": [],
+  "reviewNotes": [
+    "2026-11-10: Creatine website feature tile is pack weight, not per-serving nutrition; removed from nutrition facts. Mass Gainer webpage has inconsistent serving figures; used photographed Belgian Chocolate back label (03.jpg): 60 g in water, protein 13.5 g, carbohydrate 38 g, energy 218 kcal."
+  ]
+}

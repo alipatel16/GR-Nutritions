@@ -1,0 +1,366 @@
+{
+  "collectedAt": "2026-11-05T14:07:06.970Z",
+  "brand": "Pintola",
+  "sourceUrl": "https://pintola.in",
+  "logoUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/Pintola_Logo_PNG_e0a75445-bd35-450f-895e-ece13c165b78_4000x.png?v=1668503333",
+  "products": [
+    {
+      "productKey": "all-natural-peanut-butter",
+      "name": "Pintola All Natural Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/all-natural-peanut-butter",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/2_84da8a48-f068-45a8-b5ea-3ff18e14c919_1200x.jpg?v=1780118317",
+          "file": "01.jpg",
+          "bytes": 205383,
+          "sha256": "ba060490ce2d5d5a96c9319fc9592aa2bd97291c0057538401cbbee94c5a180d"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/1_a2c86648-7e3b-48be-8932-9bceed82161b_1200x.jpg?v=1780118317",
+          "file": "02.jpg",
+          "bytes": 203084,
+          "sha256": "7b1a5a57cdb1eb37c61d83e8c0486d8e3fa5c9b25d3dbdbdca92a023a1401629"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/3_7d2629f4-06d9-447a-8af2-c707f78dcee8_1200x.jpg?v=1780118316",
+          "file": "03.jpg",
+          "bytes": 188305,
+          "sha256": "16d30d45ac254d78029b9744025a23349cda80da34093a3722d583e0b4a7ff52"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/10_1240a6c4-2116-49ef-8211-2ce77ec527b5_1200x.jpg?v=1780118316",
+          "file": "04.jpg",
+          "bytes": 175375,
+          "sha256": "7a690707e41410f7b3b8ec0016eff964da91b898464ad56e04fc99b216a29695"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "organic-peanut-butter",
+      "name": "Pintola All Natural Organic Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/natural-organic-peanut-butter",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/Organic_PB_Creamy_1200x.jpg?v=1780314228",
+          "file": "01.jpg",
+          "bytes": 185478,
+          "sha256": "6f7a139fbc8f4febb2afaa22b955f8f0a99bb6e290b97be251d42ae3c552dacc"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/01_3_38e01127-aae3-4b28-811a-8d0244c8d6d9_1200x.jpg?v=1780120194",
+          "file": "02.jpg",
+          "bytes": 125700,
+          "sha256": "469ed9fd933e5ada5bbe5bc94feda78391f2ec1ae7847411663eb4bbf318de72"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/01_2_a707361b-aeb8-426d-94a5-81e31f2ee286_1200x.jpg?v=1780120194",
+          "file": "03.jpg",
+          "bytes": 125030,
+          "sha256": "91c9bf6f957c5f86a4e3c81108878c3259d053fefe4f0778e527ab3f33bc5be3"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/OrganicPeanutButter-1kg_Creamy_1200x.png?v=1780120194",
+          "file": "04.png",
+          "bytes": 2151866,
+          "sha256": "3a71ac12617d51cda59b1aa1ea27651945da35f97f5ef10ac5058a53bc5aedad"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "classic-peanut-butter",
+      "name": "Pintola Classic Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/classic-peanut-butter",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/Classic_350_Crunchy_1200x.jpg?v=1780313463",
+          "file": "01.jpg",
+          "bytes": 194831,
+          "sha256": "97d14cf7f9f6e2f51971e796d52ef1f8c7c905f44dfeea14557a2c18217e1530"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/01_2_9eecf1ee-9c3f-4322-b028-83e7d3f74b14_1200x.jpg?v=1780122286",
+          "file": "02.jpg",
+          "bytes": 112702,
+          "sha256": "3242c465d81bb66b4b8eebce05402cca0446bd020247b31ebdebb3a58960bd89"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/01_1_75c2b9dc-cbd9-464b-8ddc-0939db23f7c2_1200x.jpg?v=1780122286",
+          "file": "03.jpg",
+          "bytes": 116254,
+          "sha256": "e4e2dbde6b3710a54e7a6e60ff891acfff01dbc7de0162dabaa2a9f99811487c"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/WhatsAppImage2026-05-25at12.13.20PM_1200x.jpg?v=1780122286",
+          "file": "04.jpg",
+          "bytes": 185793,
+          "sha256": "8e09c624171e3299ffa7755f478b80c1bd328d5061abec57bd90dbca93f37851"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "dark-chocolate-peanut-butter",
+      "name": "Pintola Dark Chocolate Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/dark-chocolate-peanut-butter",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/Regular_Chocolate_PB_Mock_Up_350_-_Crunchy_1200x.jpg?v=1780387861",
+          "file": "01.jpg",
+          "bytes": 201938,
+          "sha256": "6a5430ab2d650bdf9df5fff859d08f677e82bd6c262da9f3b443914c93f04a13"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/01_1_ee0c21e0-9638-41a8-ad17-3caf23396e58_1200x.jpg?v=1780118678",
+          "file": "02.jpg",
+          "bytes": 122190,
+          "sha256": "850c21ab066a4c711de27110f3601135f74839610aede36399ee584292f4670b"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/01_2_31238a05-6275-45e5-86b6-5c4335452a9a_1200x.jpg?v=1780118678",
+          "file": "03.jpg",
+          "bytes": 122617,
+          "sha256": "97daded0b55d4a1e5fdba69bdb513c3ffbf51a438312b9bc4cf84e548378cf64"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/2_ce83b7de-6575-408f-b08e-a5543e1d81c0_1200x.jpg?v=1780118678",
+          "file": "04.jpg",
+          "bytes": 195544,
+          "sha256": "fe41af69b4486081921b56cbff55f1f4d826c915b6e92dc50f94e80177667a2b"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "high-protein-chocolate-pb",
+      "name": "Pintola High Protein Dark Chocolate Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/high-protein-dark-chocolate-peanut-butter",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HP_DC_Mockup_1200x.png?v=1780312471",
+          "file": "01.png",
+          "bytes": 1249095,
+          "sha256": "90d4fa9a5902ea14535f9d91fd3e0c1422bdf549a39e0d5544ef95c0fdc45d70"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/2_2_1fca3775-2e83-4bae-a73a-05c7c56652af_1200x.jpg?v=1780057711",
+          "file": "02.jpg",
+          "bytes": 176583,
+          "sha256": "c44535520a7d755eb368e607e6ebf34efe5da6a58059ae9fa2380b203f37126b"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/Hp_Chocolate_Creamy_1200x.jpg?v=1780057796",
+          "file": "03.jpg",
+          "bytes": 174770,
+          "sha256": "dc02a6a6a33e1c45da7ed0476bcbb70bf84f6a1547f0cf3b003c3fa400f4ccb5"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/7_2659c878-24f3-4a9e-8ae3-a615ac0367e0_1200x.jpg?v=1780057711",
+          "file": "04.jpg",
+          "bytes": 137590,
+          "sha256": "002232fb59c096fb3c266e18de7aa71c3b0de0afd2ea446e89d85fbb713f73a3"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "high-protein-jaggery-pb",
+      "name": "Pintola High Protein Organic Jaggery Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/high-protein-peanut-butter-jaggery",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HP_OJ_Mockup_1200x.png?v=1780314035",
+          "file": "01.png",
+          "bytes": 1210486,
+          "sha256": "4a8bc0f069c04c6e72de6b7185c3c3b01db26b4b265033b155aa76db1983ad2a"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HPJaggeryCrunchy_1200x.jpg?v=1780118937",
+          "file": "02.jpg",
+          "bytes": 154084,
+          "sha256": "043fd86c3b7c880fc0fbb5cd41a8cf06b142a9a94db4209b5e4089e4c150a98b"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HPJaggeryCreamy_1200x.jpg?v=1780118937",
+          "file": "03.jpg",
+          "bytes": 154118,
+          "sha256": "e21890b2ee7f94df8faeac262371d6bcad58351d5d095f44a0b68a70db9642c1"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HPOJ_1_1200x.png?v=1780118937",
+          "file": "04.png",
+          "bytes": 587936,
+          "sha256": "d5f2cc322c440b720ca685ff50161186dfc92d61a558411c86d32fd3154356aa"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "high-protein-natural-pb",
+      "name": "Pintola High Protein All Natural Unsweetened Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/high-protein-all-natural-peanut-butter-unsweetened",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HPAllNaturalCreamy_1200x.jpg?v=1780122980",
+          "file": "01.jpg",
+          "bytes": 149241,
+          "sha256": "0622fde12986006dc8c6159509792bdea40ae14b76c2c54a7f563b4737af218b"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HPAllNaturalCrunchy_1200x.jpg?v=1780122979",
+          "file": "02.jpg",
+          "bytes": 148998,
+          "sha256": "9f4e97e77cb76ec4353e5a00748de0aed3c4b3b2a183473540425aa02684e649"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/02_91b062a1-88d8-46dc-8f62-b518763aea13_1200x.png?v=1780122980",
+          "file": "03.png",
+          "bytes": 1607068,
+          "sha256": "5939baa4ae6287c627594d20009f934acfd91df1b148338981fade8c7cc4cd5d"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/HPAllNatural_1200x.png?v=1780122980",
+          "file": "04.png",
+          "bytes": 583725,
+          "sha256": "9e05579f5b3c5fc91d5e7575c50a653fb6903c4a5bb7dfb28680536da468af88"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "performance-dark-chocolate-pb",
+      "name": "Pintola Dark Chocolate Performance Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/dark-chocolate-performance-series-peanut-butter-vegan-protein-26-protein-high-protein-source-of-fiber",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/PF_Chocolate_Crunchy_1200x.jpg?v=1780057299",
+          "file": "01.jpg",
+          "bytes": 128192,
+          "sha256": "449b74f0fbe6d4c278523b20478f4fcfdf91560db5bf874cfb6707aa2a3e5a62"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/PF_Chocolate_Creamyy_1200x.jpg?v=1780057300",
+          "file": "02.jpg",
+          "bytes": 128235,
+          "sha256": "ca8db84a2c76a5f6367a2f61023a60b82d0333a9ce26c1d20b59fe039ca72969"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/3_55271810-a502-4e01-9080-45842726cac5_1200x.png?v=1780057240",
+          "file": "03.png",
+          "bytes": 1815769,
+          "sha256": "a86eb9c762b4b905b779c572a0b0d2b796ebb6862c71e717ef42204a35247713"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/8_1200x.png?v=1780057240",
+          "file": "04.png",
+          "bytes": 997173,
+          "sha256": "a273a19b969f53c5f20167ba9be8737c36bbcf7657db368bef016f95dfe921cf"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "performance-american-recipe-pb",
+      "name": "Pintola American Recipe Performance Peanut Butter",
+      "sourceUrl": "https://pintola.in/products/american-recipe-performance-series-peanut-butter",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/American_Recipe_Performance_Creamy_510gm_600x600_9c04b25b-00e9-4536-b4ba-1ec8d1e7d779_1200x.jpg?v=1732017762",
+          "file": "01.jpg",
+          "bytes": 73315,
+          "sha256": "45b71b55847c6296c645d4193ab057f162d010299d2e72de7b5060fec0915171"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/02_3_1200x.jpg?v=1742190896",
+          "file": "02.jpg",
+          "bytes": 231545,
+          "sha256": "5aadc8c9f24a4d62b986803c2ed21c5bb8098a057b6c061feb1b75d7490712f4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/American_Recipe_Performance_Crunchy_1kg_600x600_5fee4378-78a1-41e3-b966-f3da43a940cd_1200x.jpg?v=1742190896",
+          "file": "03.jpg",
+          "bytes": 73404,
+          "sha256": "3c08fa468202510fae15312ea658fdd8d740a5912dab9302639ce222f32dd6c4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/4_296c1f11-4f6a-4a6b-b506-eaf9bd16f889_1200x.jpg?v=1742190896",
+          "file": "04.jpg",
+          "bytes": 240386,
+          "sha256": "fd2546a536a63e78b01d9c19af833acd1fa6b1afe926a2e3f71a36ebeee0593f"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "jumbo-rolled-oats",
+      "name": "Pintola Jumbo Rolled Oats",
+      "sourceUrl": "https://pintola.in/products/jumbo-rolled-oats",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/7_1200x.png?v=1780056842",
+          "file": "01.png",
+          "bytes": 984590,
+          "sha256": "f7752b15c88941da6be7ecacec4f904103d454c4adb7981123cc33ba945c85ff"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/1_a54b6fc0-7c5b-4faa-8652-57fad122cb80_1200x.png?v=1780056840",
+          "file": "02.png",
+          "bytes": 1076467,
+          "sha256": "74912f02eeb83e0af5861a56eba8f02e4f2bbbd398d5a4aeaac790854d2ea4df"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/2_4ed767c7-86fd-4d7a-aea2-ddccf6578ec6_1200x.png?v=1780056840",
+          "file": "03.png",
+          "bytes": 1536057,
+          "sha256": "7c602282bbb4b2701b5395f322efe0220f055182054703805432e09c353186ce"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/6_954b9d3f-03f8-4965-9000-96ffc74c706f_1200x.jpg?v=1780056840",
+          "file": "04.jpg",
+          "bytes": 233142,
+          "sha256": "a8c6b2af35afa75c4f56b071a9d85b66f32978b6cdadb11f01157b04d2600c15"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    },
+    {
+      "productKey": "high-protein-oats",
+      "name": "Pintola High Protein Oats",
+      "sourceUrl": "https://pintola.in/products/high-protein-dark-chocolate-oats",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/2_1c4d3471-db4c-4798-a177-c13524c4f66e_1200x.jpg?v=1780056000",
+          "file": "01.jpg",
+          "bytes": 223709,
+          "sha256": "ff94622b2ecf429246a3e12ff85bb0048f3a5916182e44fb550e6d39c3e695f2"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/1_1db94bd3-1b75-4013-ae78-ee95f60ac845_1200x.jpg?v=1780056000",
+          "file": "02.jpg",
+          "bytes": 224571,
+          "sha256": "55faba6f85a44cfcb052f8537921fda361365a4be29efb75aa4250d4f56cf8ee"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/3_1a56fb27-562c-4af9-b31f-8ff2ecce76f8_1200x.jpg?v=1780056000",
+          "file": "03.jpg",
+          "bytes": 278468,
+          "sha256": "6f9ccf728d70efea7054d274845f315585a98eb12faa917ea109130f5c602d0b"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0538/2137/4655/files/10_592e0aef-43de-4f3a-8566-3a64676c8221_1200x.jpg?v=1780056000",
+          "file": "04.jpg",
+          "bytes": 290440,
+          "sha256": "775a453d8af40328edda4d7dacff7ae9a9e48ab0e8f7157b723d7c99b223c556"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    }
+  ],
+  "skipped": [
+    "Steel Cut Oats: no matching source MRP verified; product page cache miss.",
+    "Coconut Jaggery Performance Peanut Butter: MRP documented but no matching official gallery found in current collection navigation.",
+    "Excluded almond/cashew butters, muesli, rice cakes, quinoa, seeds, jaggery powder and peanut-butter pockets as outside oats/peanut-butter scope.",
+    "Excluded offer/combo products; texture and pack sizes remain variants of one family."
+  ]
+}

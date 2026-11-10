@@ -125,3 +125,8 @@ it('clears old account orders and ignores its late request when the signed-in us
   expect(screen.queryByText('my-order')).toBeNull();
   expect(screen.getByText(/Your orders will appear here/)).toBeOnTheScreen();
 });
+it('shows saved coupon and discount from the server order snapshot',async()=>{
+ jest.mocked(storeRequest).mockResolvedValue([{...ownOrder,couponCode:'SAVE10',discountPaise:10000}]);
+ await render(<Orders/>);
+ expect(await screen.findByText('Coupon SAVE10 · Discount ₹100')).toBeOnTheScreen();
+});

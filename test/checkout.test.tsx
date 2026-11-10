@@ -420,3 +420,105 @@ it.each(['declined', 'authorized but pending'])(
     ).toHaveLength(1);
   },
 );
+it('stacks checkout at full content height on phones with the pay bar pinned', async () => {
+  const breakpoints = jest.requireActual<typeof import('@/theme/use-breakpoint')>('@/theme/use-breakpoint');
+  const spy = jest.spyOn(breakpoints, 'useBreakpoint').mockReturnValue('mobile');
+  await render(<Checkout />);
+  for (const id of ['checkout-form', 'checkout-summary']) {
+    expect(screen.getByTestId(id)).toHaveStyle({ flexBasis: 'auto', flexGrow: 0, flexShrink: 0, width: '100%' });
+  }
+  expect(screen.getAllByRole('button', { name: 'Check delivery & total' })).toHaveLength(1);
+  expect(screen.getByText('Items subtotal · delivery calculated next')).toBeOnTheScreen();
+  spy.mockRestore();
+});
+it('only applies the coupon draft on Apply and renders the authoritative discount', async () => {
+ const user = await prepare();
+ await user.type(screen.getByLabelText('Coupon code'),'save10');
+ expect(screen.getByLabelText('Order total ₹1,048')).toBeOnTheScreen();
+ jest.mocked(storeRequest).mockResolvedValueOnce({...quote(),couponCode:'SAVE10',discountPaise:1234,discountedSubtotalPaise:98566,totalPaise:103566});
+ await user.press(screen.getByRole('button',{name:'Apply code'}));
+ expect(await screen.findByLabelText('Coupon discount -₹12.34')).toBeOnTheScreen();
+ expect(screen.getByLabelText('Order total ₹1,035.66')).toBeOnTheScreen();
+ expect(storeRequest).toHaveBeenLastCalledWith('checkout.delivery',expect.objectContaining({couponCode:'SAVE10'}));
+ await user.press(screen.getByRole('button',{name:'Remove code'}));
+ expect(screen.queryByLabelText('Coupon discount -₹12.34')).toBeNull();
+ expect(screen.getByRole('button',{name:'Pay online'})).toBeDisabled();
+});
+it('shows coupon eligibility errors without keeping an old discounted quote', async () => {
+ const user = await prepare();
+ const failure=new Error('This coupon has expired.'); failure.name='StoreRequestError';
+ jest.mocked(storeRequest).mockRejectedValueOnce(failure);
+ await user.type(screen.getByLabelText('Coupon code'),'EXPIRED');
+ await user.press(screen.getByRole('button',{name:'Apply code'}));
+ expect(await screen.findByText('This coupon has expired.')).toBeOnTheScreen();
+ expect(screen.queryByLabelText('Order total ₹1,048')).toBeNull();
+ expect(screen.getByRole('button',{name:'Pay online'})).toBeDisabled();
+});
+it('locks coupon changes after a payment attempt so retries use the original discount', async () => {
+ jest.mocked(launchPayment).mockRejectedValue(new PaymentCancelledError());
+ const user=await prepare();
+ await user.press(screen.getByRole('button',{name:'Pay online'}));
+ expect(screen.getByRole('button',{name:'Apply code'})).toBeDisabled();
+ expect(screen.getByLabelText('Coupon code')).toHaveProp('editable',false);
+});
+it('ignores a coupon quote that completes after the payment method changes',async()=>{
+ const user=await prepare();
+ let resolve!:(value:unknown)=>void;
+ jest.mocked(storeRequest).mockReturnValueOnce(new Promise(done=>{resolve=done;}));
+ await user.type(screen.getByLabelText('Coupon code'),'SAVE10');
+ await user.press(screen.getByRole('button',{name:'Apply code'}));
+ await user.press(screen.getByRole('radio',{name:'Cash on delivery'}));
+ await act(async()=>{resolve({...quote(),couponCode:'SAVE10',discountPaise:1000,discountedSubtotalPaise:98800,totalPaise:103800});});
+ expect(screen.queryByLabelText('Order total ₹1,038')).toBeNull();
+ expect(screen.getByRole('button',{name:'Confirm COD order'})).toBeDisabled();
+});
+it('discards a server-rejected stale coupon quote and allows a fresh quote instead of retrying it',async()=>{
+ const failure=Object.assign(new Error('Cart changed. Please check delivery again.'),{name:'StoreRequestError',status:400});
+ let creates=0, deliveries=0;
+ jest.mocked(storeRequest).mockImplementation(async action=>{
+  if(action==='checkout.delivery')return {...quote(),quoteId:`quote-${++deliveries}`};
+  if(action==='checkout.create'){if(++creates===1)throw failure;return session();}
+  return order();
+ });
+ const user=await prepare();
+ await user.press(screen.getByRole('button',{name:'Pay online'}));
+ expect(await screen.findByText('Cart changed. Please check delivery again.')).toBeOnTheScreen();
+ expect(screen.getByRole('button',{name:'Pay online'})).toBeDisabled();
+ expect(screen.queryByLabelText('Order total ₹1,048')).toBeNull();
+ await user.press(screen.getByRole('button',{name:'Check delivery & total'}));
+ await user.press(screen.getByRole('button',{name:'Pay online'}));
+ const requests=jest.mocked(storeRequest).mock.calls.filter(([action])=>action==='checkout.create');
+ expect(requests[0][1]?.quoteId).toBe('quote-1');
+ expect(requests[1][1]?.quoteId).toBe('quote-2');
+ expect(await screen.findByText('Payment confirmed')).toBeOnTheScreen();
+});
+it('keeps a created payment and its coupon snapshot when another payment method is selected',async()=>{
+ jest.mocked(launchPayment).mockRejectedValue(new PaymentCancelledError());
+ const user=await prepare();
+ await user.press(screen.getByRole('button',{name:'Pay online'}));
+ await user.press(screen.getByRole('radio',{name:'Cash on delivery'}));
+ expect(screen.getByRole('button',{name:'Continue payment'})).toBeEnabled();
+ expect(screen.getByRole('button',{name:'Apply code'})).toBeDisabled();
+ expect(screen.getByLabelText('Order total ₹1,048')).toBeOnTheScreen();
+ await user.press(screen.getByRole('button',{name:'Continue payment'}));
+ expect(jest.mocked(storeRequest).mock.calls.filter(([action])=>action==='checkout.create')).toHaveLength(1);
+});
+it('retries an uncertain creation with the same quote and key even after the quote time window',async()=>{
+ let creates=0;
+ jest.mocked(storeRequest).mockImplementation(async action=>{
+  if(action==='checkout.delivery')return quote();
+  if(action==='checkout.create'){if(++creates===1)throw new Error('Network response lost');return session();}
+  return order();
+ });
+ const user=await prepare();
+ await user.press(screen.getByRole('button',{name:'Pay online'}));
+ expect(await screen.findByRole('alert')).toBeOnTheScreen();
+ await act(async()=>{jest.advanceTimersByTime(300001);});
+ expect(screen.getByRole('button',{name:'Check delivery & total'})).toBeDisabled();
+ expect(screen.getByRole('button',{name:'Pay online'})).toBeEnabled();
+ await user.press(screen.getByRole('button',{name:'Pay online'}));
+ const requests=jest.mocked(storeRequest).mock.calls.filter(([action])=>action==='checkout.create');
+ expect(requests).toHaveLength(2);
+ expect(requests[1][1]).toEqual(requests[0][1]);
+ expect(await screen.findByText('Payment confirmed')).toBeOnTheScreen();
+});

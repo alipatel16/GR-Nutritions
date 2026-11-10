@@ -44,3 +44,10 @@ it("searches all supplied customer/product fields with case-insensitive multiwor
   );
   expect(matchesSearch("whey abc123", ["Chocolate Whey", "ABC123"])).toBe(true);
 });
+it('counts discounted merchandise revenue without subtracting the coupon twice', () => {
+ expect(salesMetrics([
+  order({subtotalPaise:100000,discountPaise:10000,totalPaise:110000}),
+  order({subtotalPaise:100000,discountPaise:10000,discountedSubtotalPaise:90000,totalPaise:110000}),
+  order({subtotalPaise:undefined,discountPaise:10000,totalPaise:110000}),
+ ]).earningsPaise).toBe(270000);
+});

@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native';
 import { colors, spacing, typography } from '@/theme/tokens';
 
 import { storeInfo } from '@/config/store-info';
+import { useBreakpoint } from '@/theme/use-breakpoint';
 
 import { PageShell } from './PageShell';
 import { BrandMark } from '../brand/BrandMark';
@@ -51,11 +52,12 @@ const columns = [
 ] as const;
 
 export function StoreFooter() {
+  const phone = useBreakpoint() === 'mobile';
   return (
-    <View style={styles.footer}>
+    <View style={[styles.footer, phone && styles.mobileFooter]}>
       <PageShell>
-        <View style={styles.top}>
-          <View style={styles.brandBlock}>
+        <View style={[styles.top, phone && styles.mobileTop]}>
+          <View style={[styles.brandBlock, phone && styles.mobileBrandBlock]}>
             <BrandMark />
             <AppText style={styles.brandCopy}>
               Genuine sports nutrition and everyday wellness from the brands athletes trust,
@@ -67,9 +69,10 @@ export function StoreFooter() {
             </Link>
           </View>
 
-          <View style={styles.columns}>
+          {/* Phones get an even two-column grid aligned to the left edge. */}
+          <View style={[styles.columns, phone && styles.mobileColumns]}>
             {columns.map((column) => (
-              <View key={column.title} style={styles.column}>
+              <View key={column.title} style={[styles.column, phone && styles.mobileColumn]}>
                 <AppText style={styles.columnTitle}>{column.title}</AppText>
                 {column.links.map(([label, href, accessibilityLabel]) => (
                   <Link
@@ -86,7 +89,7 @@ export function StoreFooter() {
           </View>
         </View>
 
-        <View style={styles.assurances}>
+        <View style={[styles.assurances, phone && styles.mobileAssurances]}>
           {([
             [BadgeCheck, 'Authentic brand products'],
             [LockKeyhole, 'Secure Razorpay checkout'],
@@ -99,7 +102,7 @@ export function StoreFooter() {
           ))}
         </View>
 
-        <View style={styles.bottom}>
+        <View style={[styles.bottom, phone && styles.mobileBottom]}>
           <AppText style={styles.small}>© {new Date().getFullYear()} GR Nutritions</AppText>
           <View style={styles.bottomLinks}>
             <Link href="/terms" style={styles.smallLink}>Terms</Link>
@@ -114,6 +117,13 @@ export function StoreFooter() {
 }
 
 const styles = StyleSheet.create({
+  mobileFooter: { marginTop: 48, paddingBottom: 28, paddingTop: 36 },
+  mobileTop: { flexDirection: 'column', gap: 32 },
+  mobileBrandBlock: { gap: spacing[4], maxWidth: '100%', minWidth: 0 },
+  mobileColumns: { flexBasis: 'auto', flexGrow: 0, flexShrink: 0, gap: 0, justifyContent: 'flex-start', minWidth: 0, width: '100%' },
+  mobileColumn: { gap: spacing[3], marginBottom: 28, minWidth: 0, paddingRight: spacing[3], width: '50%' },
+  mobileAssurances: { flexDirection: 'column', gap: spacing[3], marginTop: 32, paddingTop: spacing[5] },
+  mobileBottom: { alignItems: 'flex-start', flexDirection: 'column', gap: spacing[3] },
   footer: {
     backgroundColor: colors.graphite,
     borderTopColor: colors.mint,

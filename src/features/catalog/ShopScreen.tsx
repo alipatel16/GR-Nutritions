@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Pressable,
+  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -11,6 +12,7 @@ import { PageShell } from '@/components/layout/PageShell';
 import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
 import { colors, radii, shadows, spacing, typography } from '@/theme/tokens';
+import { useBreakpoint } from '@/theme/use-breakpoint';
 
 import { ActiveFilters } from './ActiveFilters';
 import type { CatalogRepository } from './catalog-repository';
@@ -44,6 +46,7 @@ export function ShopScreen({
   initialFilters = {},
   onFiltersChange,
 }: ShopScreenProps) {
+  const phone = useBreakpoint() === 'mobile';
   const initialFilterState = serializableFilters(initialFilters);
   const initialFilterKey = JSON.stringify(initialFilterState);
   const [filters, setFilters] = useState<CatalogFilters>(initialFilterState);
@@ -121,7 +124,7 @@ export function ShopScreen({
       contentContainerStyle={styles.scrollContent}
       style={styles.page}
     >
-      <View style={styles.banner}>
+      <View style={[styles.banner, phone && styles.mobileBanner]}>
         <PageShell>
           <View style={styles.intro}>
             <View style={styles.eyebrowRow}>
@@ -132,12 +135,13 @@ export function ShopScreen({
             </View>
             <AppText
               accessibilityRole="header"
+              style={phone ? styles.mobileTitle : undefined}
               tone="inverse"
               variant="display"
             >
               FIND YOUR EVERYDAY FUEL.
             </AppText>
-            <AppText style={styles.introCopy} variant="bodyLarge">
+            <AppText style={[styles.introCopy, phone && styles.mobileIntroCopy]} variant="bodyLarge">
               Training fuel, recovery essentials, and everyday
               wellness—organized to make the right choice feel obvious.
             </AppText>
@@ -145,7 +149,7 @@ export function ShopScreen({
         </PageShell>
       </View>
       <PageShell style={styles.shell}>
-        <View style={styles.filterPanel}>
+        <View style={[styles.filterPanel, phone && styles.mobileFilterPanel]}>
           <FilterRail
             filters={filters}
             onCategoryChange={changeCategory}
@@ -156,7 +160,13 @@ export function ShopScreen({
           {brands.length ? (
             <AppText style={styles.filterLabel}>BRANDS</AppText>
           ) : null}
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+          {/* Phones swipe through brands on one line instead of many wrapped rows. */}
+          <ScrollView
+            contentContainerStyle={phone ? styles.brandRow : styles.brandWrap}
+            horizontal={phone}
+            scrollEnabled={phone}
+            showsHorizontalScrollIndicator={false}
+          >
             {brands.map((b) => (
               <Pressable
                 key={b}
@@ -185,7 +195,7 @@ export function ShopScreen({
                 </AppText>
               </Pressable>
             ))}
-          </View>
+          </ScrollView>
         </View>
         {error ? (
           <AppText tone="danger" accessibilityRole="alert">
@@ -265,6 +275,12 @@ const styles = StyleSheet.create({
     color: colors.onDarkMuted,
     maxWidth: 700,
   },
+  mobileBanner: { borderBottomWidth: 2, paddingBottom: spacing[6], paddingTop: spacing[6] },
+  mobileTitle: { fontSize: 34, lineHeight: 36 },
+  mobileIntroCopy: { fontSize: 14, lineHeight: 21 },
+  mobileFilterPanel: { gap: spacing[3], marginHorizontal: -spacing[1], padding: spacing[3] },
+  brandWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  brandRow: { flexDirection: 'row', gap: 8, paddingRight: spacing[3] },
   filterPanel: {
     backgroundColor: colors.paper,
     borderColor: colors.line,

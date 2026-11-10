@@ -1,0 +1,340 @@
+{
+  "collectedAt": "2026-11-05T13:51:45.796Z",
+  "brand": "Americanz Muscles",
+  "sourceUrl": "https://usnutrition.in/americanz-muscles",
+  "logoUrl": "https://assets.zyrosite.com/d95rDezg5JsxPjNK/americanz-muscles-logo-mjE5bEye9XHZwMgG.png",
+  "products": [
+    {
+      "productKey": "creatine-monohydrate",
+      "name": "Americanz Muscles Creatine Monohydrate",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-creatine-",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709041073657-Cola.png",
+          "file": "01.png",
+          "bytes": 732145,
+          "sha256": "e7c8cf39754a8b24022e18086e893cbc7a4522afe671a90aad22c228f203b1c5"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709041073657-Fruit%20Punch.png",
+          "file": "02.png",
+          "bytes": 719329,
+          "sha256": "fa7563819c490932e12201df310e68cc84ac4a06d107fd28601bdbe4343ee975"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709041073656-16784666861.png",
+          "file": "03.png",
+          "bytes": 578019,
+          "sha256": "9895e873c71556f6ac88d09840e9407d7c60b3c812008d852a805932bce5dc93"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709041073657-16784666862.png",
+          "file": "04.png",
+          "bytes": 665415,
+          "sha256": "f98342a513ac74815d63db6eb8be548e17837c29e5ba1bfeabf24f3c3d209c80"
+        }
+      ],
+      "sourceNotes": [
+        "The retailer uses duplicate source SKU 1249 for two flavours. It is preserved in sourceSkus; import SKU cells are blank so the importer generates distinct valid SKUs."
+      ]
+    },
+    {
+      "productKey": "eaa-nootropics",
+      "name": "Americanz Muscles EAA+ Nootropics",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-eaa",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042282474-Berry%20Mango.png",
+          "file": "01.png",
+          "bytes": 649488,
+          "sha256": "add8d1d743f340db3cd64dfe39f8432ec928754117e3835110c9f3c534ead8ea"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042282475-Black%20Grapes.png",
+          "file": "02.png",
+          "bytes": 689955,
+          "sha256": "394f8ba80606b3f6b708ac8c707ba7d7001522365b66aa56e4dbd5b042a2ecc8"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042282474-16780858982.png",
+          "file": "03.png",
+          "bytes": 53331,
+          "sha256": "ba610c2d9258e6511e2e250684c609a34b62ed298e18783ba3c32541b9e0cf7b"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042282474-1678162734.png",
+          "file": "04.png",
+          "bytes": 60731,
+          "sha256": "d39d0990865ad1f77670ff658fa8c7b99c3b453015d6674950e5f0b0cd3302be"
+        }
+      ]
+    },
+    {
+      "productKey": "iso-hydro",
+      "name": "Americanz Muscles ISO Hydro",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-iso-hydro",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042659121-2%20lb.png",
+          "file": "01.png",
+          "bytes": 489340,
+          "sha256": "912589dd5783878f67c41573385438b530d470e79779ac7b80323772590fa250"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042659121-2%20lb-1.png",
+          "file": "02.png",
+          "bytes": 490281,
+          "sha256": "601a86e21d10b8a3ae10198a3b59b86d7fdd4177d8fb78cd71be38eb7e485980"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042659122-1678077653.png",
+          "file": "03.png",
+          "bytes": 610315,
+          "sha256": "3eea60470a83a7083c1ce7cc1d571ccfbed44b8355f0ef47cf537ec8b5bbd6da"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709042659122-1678078775.png",
+          "file": "04.png",
+          "bytes": 370842,
+          "sha256": "56e7951124d21b9060ae232fea3dde25398b885d69ad902a9abe484d6b9ba868"
+        }
+      ]
+    },
+    {
+      "productKey": "lean-mass",
+      "name": "Americanz Muscles Lean Mass",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-lean-mass-",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709043822795-Chocolate.png",
+          "file": "01.png",
+          "bytes": 629540,
+          "sha256": "9fbf6771a6ccf8c5c9aed40e386662210b412617b1549c3270a447d03e3458fa"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709043822796-Chocolate-1.png",
+          "file": "02.png",
+          "bytes": 579274,
+          "sha256": "0a05c95dab53745b703454d074e172d3fd8f3025b06b6f67e763ce95bccdab42"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709043822796-Chocolate-2.png",
+          "file": "03.png",
+          "bytes": 634527,
+          "sha256": "eb45b169d387dd55b4f221409708057b1340c7e1480d536db8af73f5205d8ae8"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17/assets/331384d9-b20f-4552-854b-39b17976440e.png",
+          "file": "04.png",
+          "bytes": 1465415,
+          "sha256": "d054609c514a61947a6c36f95417d3a45d4a5d5ca62a265515acfc475057ae65"
+        }
+      ]
+    },
+    {
+      "productKey": "nitro-plus",
+      "name": "Americanz Muscles Nitro Plus",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-nitro-plus",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044069039-Fudge%20Brownie.jpg",
+          "file": "01.jpg",
+          "bytes": 105460,
+          "sha256": "91b44f8501dd564a3b01ee872ec96bbf1bdbc15c27042bd03d71fbe25946c302"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044069039-Fudge%20Brownie%201.jpg",
+          "file": "02.jpg",
+          "bytes": 110961,
+          "sha256": "81068e95e4a3397f1e4df10a8331f779516ff6a26dd285c9bed7c07067235583"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044069039-Mango%20icecream.jpg",
+          "file": "03.jpg",
+          "bytes": 104364,
+          "sha256": "5858c00ab2e6d0e61235fefa828c5f00c09784e812e293766607d843c98b8bed"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044069039-16952902652.jpg",
+          "file": "04.jpg",
+          "bytes": 105653,
+          "sha256": "e8d5698e827baa8cd0ba41cb4f703306320620cfa48e3f5246f560c71476eac1"
+        }
+      ]
+    },
+    {
+      "productKey": "super-human-pre-workout",
+      "name": "Americanz Muscles Super Human Pre Workout",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-super-human-pre-workout",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1712923284552-1678598966.png",
+          "file": "01.png",
+          "bytes": 566384,
+          "sha256": "f2e277f243b60348b26d6336899cf7bf6e1c207a164db8ab63cbca65021c1fd0"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1712923284554-1678599585.png",
+          "file": "02.png",
+          "bytes": 557447,
+          "sha256": "291e84bd25b375db037d0a0c0a19572bc5aeff884993576c1fd8a2f64c0c9929"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709045072820-1678083116.png",
+          "file": "03.png",
+          "bytes": 691097,
+          "sha256": "0cb04926500c4807b9e49515cea5d2cb3fdb9b0f4a41ab163e705d5435885a32"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709045072821-1678174165.png",
+          "file": "04.png",
+          "bytes": 570277,
+          "sha256": "c8ccf7a22516eb227a5dcdd1701181a6c88cbfcaa4a714b636e58b189d33326e"
+        }
+      ],
+      "sourceNotes": [
+        "Current option is 50 Servings. Source label shows 50 servings at 6 g each, giving a 300 g pack."
+      ]
+    },
+    {
+      "productKey": "professional-whey-protein",
+      "name": "Americanz Muscles Professional Whey Protein",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-whey-protein-",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1712846134733-1686849526.jpg",
+          "file": "01.jpg",
+          "bytes": 96276,
+          "sha256": "5c21a1813b9d48998863c7d6cbc26e1db392734e2b66088c60c0ff69ec14cbad"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1712846134733-1686849637.jpg",
+          "file": "02.jpg",
+          "bytes": 95808,
+          "sha256": "bd01bd876cf2b97626eac0d19b872b785457b33fe13ac7ce41ba1b2679c3427e"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1712846134733-1686848795.jpg",
+          "file": "03.jpg",
+          "bytes": 96159,
+          "sha256": "8b4afa34c45d71c7af205e41aea73d5c73323e45f1c5e20a10bee2af99841054"
+        },
+        {
+          "sourceUrl": "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1712846146997-1678081942.png",
+          "file": "04.png",
+          "bytes": 602099,
+          "sha256": "7f7d25f80b525bf93dd1be4664bcae587bd6de48bfabeb584c599c37c82ba48f"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "key": "super-burn-pre-workout",
+      "name": "Americanz Muscles Super Burn Pre Workout",
+      "sourceUrl": "https://usnutrition.in/americanz-muscles-super-burn-pre-workout",
+      "images": [
+        "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044427447-Icy%20Blue.png",
+        "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044427448-Orange%20Lime.png",
+        "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044427447-16779293621.png",
+        "https://cdn.zyrosite.com/cdn-ecommerce/store_01HP4AMHQYB78ZRMKB7RMZCN17%2Fassets%2F1709044427446-1678169840.png"
+      ],
+      "rows": [
+        {
+          "product_key": "super-burn-pre-workout",
+          "name": "Americanz Muscles Super Burn Pre Workout",
+          "category": "pre-workout",
+          "goals": "energy;endurance",
+          "diet": "",
+          "summary": "A flavoured pre-workout powder.",
+          "description": "A flavoured pre-workout powder.",
+          "usage": "",
+          "warnings": "",
+          "nutrition": "",
+          "flavour": "Icy Blue Razz",
+          "size": "300 g",
+          "mrp": "3999.0",
+          "price": "1749.0",
+          "stock": "100",
+          "default": "yes",
+          "status": "active",
+          "sku": "",
+          "weight_g": "300",
+          "ship_weight_g": "",
+          "ship_length_cm": "",
+          "ship_width_cm": "",
+          "ship_height_cm": ""
+        },
+        {
+          "product_key": "super-burn-pre-workout",
+          "name": "Americanz Muscles Super Burn Pre Workout",
+          "category": "pre-workout",
+          "goals": "energy;endurance",
+          "diet": "",
+          "summary": "A flavoured pre-workout powder.",
+          "description": "A flavoured pre-workout powder.",
+          "usage": "",
+          "warnings": "",
+          "nutrition": "",
+          "flavour": "Orange Lime",
+          "size": "300 g",
+          "mrp": "3999.0",
+          "price": "1749.0",
+          "stock": "100",
+          "default": "no",
+          "status": "active",
+          "sku": "",
+          "weight_g": "300",
+          "ship_weight_g": "",
+          "ship_length_cm": "",
+          "ship_width_cm": "",
+          "ship_height_cm": ""
+        },
+        {
+          "product_key": "super-burn-pre-workout",
+          "name": "Americanz Muscles Super Burn Pre Workout",
+          "category": "pre-workout",
+          "goals": "energy;endurance",
+          "diet": "",
+          "summary": "A flavoured pre-workout powder.",
+          "description": "A flavoured pre-workout powder.",
+          "usage": "",
+          "warnings": "",
+          "nutrition": "",
+          "flavour": "Strawberry Mango",
+          "size": "300 g",
+          "mrp": "3999.0",
+          "price": "1749.0",
+          "stock": "100",
+          "default": "no",
+          "status": "active",
+          "sku": "",
+          "weight_g": "300",
+          "ship_weight_g": "",
+          "ship_length_cm": "",
+          "ship_width_cm": "",
+          "ship_height_cm": ""
+        }
+      ],
+      "publicDataUrl": "https://api-ecommerce.hostinger.com/store/store_01HP4AMHQYB78ZRMKB7RMZCN17/products/prod_01HQNG4RY20Q0VG0QGBDTKEHWG",
+      "variantSourceInventory": [
+        {
+          "id": "variant_01HQNG4RZ7EGW11TR0THX4ZMBT",
+          "title": "Icy Blue Razz",
+          "sourceStock": 99
+        },
+        {
+          "id": "variant_01HQNG4RZAFE71PH8AF46SGWYW",
+          "title": "Orange Lime",
+          "sourceStock": 100
+        },
+        {
+          "id": "variant_01HQNG4RZDD09BE2BE7GS65JXC",
+          "title": "Strawberry Mango",
+          "sourceStock": 100
+        }
+      ],
+      "reason": "Excluded from import-ready nutrition batch after source label review: contains yohimbe extract (Pausinystalia yohimbe)."
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import {
   View,
   type ViewStyle,
 } from 'react-native';
-import { BadgeCheck, LockKeyhole, Sparkles, Truck } from 'lucide-react-native';
+import { BadgeCheck, LockKeyhole, Minus, Plus, Sparkles, Truck } from 'lucide-react-native';
 
 import { PageShell } from '@/components/layout/PageShell';
 import { AppText } from '@/components/ui/AppText';
@@ -45,6 +45,8 @@ export function ProductDetailScreen({
 }: ProductDetailScreenProps) {
   const breakpoint = useBreakpoint();
   const addProduct = useCartStore((state) => state.addProduct);
+  const updateItem = useCartStore((state) => state.updateItem);
+  const cartLines = useCartStore((state) => state.cart.lines);
   const cartError = useCartStore((s) => s.lastError);
   const [added, setAdded] = useState(false);
   const initialVariant = useMemo(
@@ -71,8 +73,37 @@ export function ProductDetailScreen({
     setAdded(true);
   };
 
-  // On phones the price and Add to cart stay pinned above the tab bar.
-  const buyButton = (
+  // Once the option is in the bag, the button becomes a quantity stepper that
+  // uses the same cart actions as the cart page (stock limit, 0 removes it).
+  const inCart = cartLines.find((line) => line.variantId === selectedVariant.id);
+  const buyButton = inCart ? (
+    <View style={[styles.stepper, !isDesktop && styles.barButton]}>
+      <Pressable
+        accessibilityLabel={`Decrease ${product.name} quantity`}
+        accessibilityRole="button"
+        onPress={() => updateItem(inCart.variantId, inCart.quantity - 1)}
+        style={styles.stepperButton}
+      >
+        <Minus color={colors.onMint} size={20} />
+      </Pressable>
+      <View accessibilityLiveRegion="polite" style={styles.stepperCount}>
+        <AppText accessibilityLabel={`${inCart.quantity} in cart`} style={styles.stepperNumber}>
+          {inCart.quantity}
+        </AppText>
+        <AppText style={styles.stepperLabel}>in cart</AppText>
+      </View>
+      <Pressable
+        accessibilityLabel={`Increase ${product.name} quantity`}
+        accessibilityRole="button"
+        accessibilityState={{ disabled: inCart.quantity >= inCart.stockAvailable }}
+        disabled={inCart.quantity >= inCart.stockAvailable}
+        onPress={() => updateItem(inCart.variantId, inCart.quantity + 1)}
+        style={[styles.stepperButton, inCart.quantity >= inCart.stockAvailable && styles.stepperDisabled]}
+      >
+        <Plus color={colors.onMint} size={20} />
+      </Pressable>
+    </View>
+  ) : (
     <Button
       disabled={soldOut}
       style={[styles.addButton, !isDesktop && styles.barButton]}
@@ -469,6 +500,27 @@ const styles = StyleSheet.create({
   soldOutDot: { backgroundColor: colors.danger },
   addButton: { borderRadius: radii.sm, minHeight: 56 },
   barButton: { flex: 1, minHeight: 52 },
+  stepper: {
+    alignItems: 'center',
+    backgroundColor: colors.mint,
+    borderRadius: radii.sm,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    minHeight: 56,
+    padding: 5,
+  },
+  stepperButton: {
+    alignItems: 'center',
+    backgroundColor: '#2FCF9C',
+    borderRadius: radii.xs,
+    height: 44,
+    justifyContent: 'center',
+    width: 48,
+  },
+  stepperDisabled: { opacity: 0.4 },
+  stepperCount: { alignItems: 'baseline', flexDirection: 'row', gap: 6 },
+  stepperNumber: { color: colors.onMint, fontFamily: typography.bodyBold, fontSize: 20 },
+  stepperLabel: { color: colors.onMint, fontFamily: typography.bodySemibold, fontSize: 14 },
   addedNote: {
     alignItems: 'center',
     backgroundColor: colors.successSoft,

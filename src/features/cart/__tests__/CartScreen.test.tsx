@@ -55,7 +55,7 @@ describe('CartScreen', () => {
         name: 'Increase Performance Protein quantity',
       }),
     );
-    expect(screen.getByText('Quantity 2')).toBeOnTheScreen();
+    expect(screen.getByLabelText('Quantity 2')).toBeOnTheScreen();
 
     await user.press(
       screen.getByRole('button', { name: 'Remove Performance Protein' }),

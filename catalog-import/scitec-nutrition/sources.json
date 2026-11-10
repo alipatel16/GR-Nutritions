@@ -1,0 +1,69 @@
+{
+  "collectedAt": "2026-11-05T14:00:39.853Z",
+  "brand": "Scitec Nutrition",
+  "sourceUrl": "https://scitecnutrition.com",
+  "logoUrl": "",
+  "products": [
+    {
+      "productKey": "scitec-nutrition-100-whey-protein-professional",
+      "name": "Scitec Nutrition 100% Whey Protein Professional",
+      "sourceUrl": "https://mysupplementbay.com/product/scitec-nutrition-100-whey-protein-professional/",
+      "images": [
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/10/5146_8253f79d8cbe.webp",
+          "file": "01.webp",
+          "bytes": 114810,
+          "sha256": "1058f84cc5899c3199e327325d5929dfc14aba0d3c6e5c5798ae4cb234871cf7"
+        },
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/10/5146_8fd40326543e.webp",
+          "file": "02.webp",
+          "bytes": 123800,
+          "sha256": "d09664d21df8d6aa2f340d8976dfd66d4534da1a94062b85b8dc3256fbf6a61b"
+        },
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/10/5146_37f44b571004.webp",
+          "file": "03.webp",
+          "bytes": 128252,
+          "sha256": "c2acb986fb58d04e2618711a1336fd03dd13584b212404dedbc5730f83d6a411"
+        }
+      ]
+    },
+    {
+      "productKey": "scitec-nutrition-bcaa-glutamine-xpress",
+      "name": "Scitec Nutrition BCAA+Glutamine Xpress",
+      "sourceUrl": "https://mysupplementbay.com/product/scitec-nutrition-bcaaglutamine-xpress/",
+      "images": [
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/10/Scitec-Nutrition-BCAAGlutamine-Xpress-2-1.jpg",
+          "file": "01.jpg",
+          "bytes": 39006,
+          "sha256": "121297eaf90cd8de4294b8ccda6018f32e0144571ffc52618c86cfda86a18e5f"
+        },
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/10/Scitec-Nutrition-BCAAGlutamine-Xpress-1.jpg",
+          "file": "02.jpg",
+          "bytes": 38991,
+          "sha256": "8064b6a9314b4eba925d54b462fad276392d02108a6ec3404c818b9ce211dd1a"
+        },
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/06/Scitec-Nutrition-BCAAGlutamine-Xpress-3.jpg",
+          "file": "03.jpg",
+          "bytes": 41163,
+          "sha256": "ed40479654e33102f21b5d3c8b1844547d2c9a016daa25e3daeab30d18dd2058"
+        },
+        {
+          "sourceUrl": "https://mysupplementbay.com/storage/2023/06/scitec-nutrition-BCAA-Glutamine-Xpress.jpg",
+          "file": "04.jpg",
+          "bytes": 24016,
+          "sha256": "2b3dddbeff539656963904d267819c03095d0475ec74c73ad46487617f23e9c3"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    "Scitec has very limited verifiedIndiaretail catalog breadth; noEUpricesconverted.",
+    "Nutrabay BCAA600g gallery3photos found, but offer best-beforeOctober2025 is stale; excluded as price source.",
+    "Nutristar Scitec titles say5lbs and backendweights differ from photo/label; exactApex2.35kg and2kg Indiaoffers used instead."
+  ]
+}

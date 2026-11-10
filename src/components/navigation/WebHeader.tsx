@@ -25,7 +25,9 @@ import { useBreakpoint } from '@/theme/use-breakpoint';
 import { colors, typography } from '@/theme/tokens';
 export function WebHeader() {
   const router = useRouter();
-  const mobile = useBreakpoint() !== 'desktop';
+  const breakpoint = useBreakpoint();
+  const mobile = breakpoint !== 'desktop';
+  const phone = breakpoint === 'mobile';
   const [search, setSearch] = useState('');
   const count = useCartStore((s) => cartTotals(s.cart).itemCount);
   const { user, ready } = useAuth();
@@ -71,7 +73,8 @@ export function WebHeader() {
   );
   return (
     <View style={styles.header}>
-      <View style={styles.announcement}>
+      {/* Phones skip the announcement strip to give the page more room. */}
+      {phone ? null : <View style={styles.announcement}>
         <View style={styles.announceItem}>
           <BadgeCheck size={13} color={colors.mint} />
           <AppText style={styles.announceText}>100% authentic products</AppText>
@@ -82,11 +85,11 @@ export function WebHeader() {
             <AppText style={styles.announceText}>Free delivery on orders above ₹999 · Cash on delivery available</AppText>
           </View>
         ) : null}
-      </View>
+      </View>}
       <View style={[styles.main, mobile && styles.mobileMain]}>
         <Link href="/" accessibilityLabel="GR NUTRITIONS home" asChild>
           <Pressable style={styles.logo}>
-            <BrandMark />
+            <BrandMark compact={phone} />
           </Pressable>
         </Link>
         {!mobile ? searchBox : null}
@@ -131,7 +134,7 @@ export function WebHeader() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.nav}
+        contentContainerStyle={[styles.nav, mobile && styles.mobileNav]}
       >
         {(
           [
@@ -143,7 +146,7 @@ export function WebHeader() {
             ['Shop by goal', '/shop?goal=muscle-gain'],
           ] as const
         ).map(([label, href]) => (
-          <Link href={href as Href} key={label} style={styles.navLink}>
+          <Link href={href as Href} key={label} style={[styles.navLink, mobile && styles.mobileNavLink]}>
             {label}
           </Link>
         ))}
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 32,
   },
-  mobileMain: { paddingHorizontal: 16, minHeight: 68, gap: 10 },
+  mobileMain: { paddingHorizontal: 16, minHeight: 56, gap: 10 },
   logo: { flexDirection: 'row', alignItems: 'center' },
   search: {
     flex: 1,
@@ -208,14 +211,14 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
   },
   mobileSearchRow: {
-    paddingBottom: 12,
+    paddingBottom: 10,
     paddingHorizontal: 16,
   },
   mobileSearch: {
     maxWidth: '100%',
     marginLeft: 0,
-    minHeight: 48,
-    paddingRight: 5,
+    minHeight: 44,
+    paddingRight: 4,
     width: '100%',
   },
   searchSubmit: {
@@ -278,6 +281,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopColor: colors.graphiteLine,
     borderTopWidth: 1,
+  },
+  mobileNav: {
+    borderTopWidth: 0,
+    gap: 8,
+    justifyContent: 'flex-start',
+    minHeight: 0,
+    paddingBottom: 10,
+    paddingHorizontal: 16,
+  },
+  mobileNavLink: {
+    backgroundColor: colors.graphiteRaised,
+    borderColor: colors.graphiteLine,
+    borderRadius: 99,
+    borderWidth: 1,
+    color: colors.onDark,
+    fontSize: 12.5,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
   },
   navLink: {
     fontFamily: typography.bodySemibold,

@@ -1,0 +1,32 @@
+{
+  "collectedAt": "2026-11-05T14:07:08.149Z",
+  "brand": "MaaMade",
+  "sourceUrl": "https://maamadenutrition.com",
+  "logoUrl": "https://maamadenutrition.com/cdn/shop/files/Maa-Made-Logo-Color-450x140.png?v=1711034169&width=600",
+  "products": [
+    {
+      "productKey": "high-protein-no-cook-chocolate-oats",
+      "name": "MaaMade High Protein No Cook Chocolate Oats",
+      "sourceUrl": "https://maamadenutrition.com/products/high-protein-no-cook-chocolate-oats",
+      "images": [
+        {
+          "sourceUrl": "https://maamadenutrition.com/cdn/shop/files/image-26_jpg.jpg?v=1781597023",
+          "file": "01.jpg",
+          "bytes": 125674,
+          "sha256": "80a30ec9b4c36a7cc37670055bcd8657d636a38f35b18d7c0c36799d8bf7f6da"
+        },
+        {
+          "sourceUrl": "https://maamadenutrition.com/cdn/shop/files/image-29_jpg.jpg?v=1781596346",
+          "file": "02.jpg",
+          "bytes": 160606,
+          "sha256": "9fceb2d6757ac929488cebb0c8123509a57dd813e3889f29160c2ee59eff14fa"
+        }
+      ],
+      "priceProvenance": "official-regular-price"
+    }
+  ],
+  "skipped": [
+    "Only one qualifying oats family exists in the official 11-product catalog. Peanut butters and nut mixes are outside this brand scope.",
+    "Two-photo exception retained as explicitly approved; no duplicate, crop, or invented image has been added."
+  ]
+}

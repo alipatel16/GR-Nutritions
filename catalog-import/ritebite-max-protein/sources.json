@@ -1,0 +1,133 @@
+{
+  "collectedAt": "2026-11-05T14:07:26.632Z",
+  "brand": "RiteBite Max Protein",
+  "sourceUrl": "https://maxprotein.in",
+  "logoUrl": "https://maxprotein.in/cdn/shop/files/max_protein_9bb6131c-0460-4ac0-afba-bf55f4949ecf_160x@2x.png?v=1616653100",
+  "products": [
+    {
+      "productKey": "daily-protein-bar",
+      "name": "RiteBite Max Protein Daily Protein Bar",
+      "sourceUrl": "https://maxprotein.in/products/ritebite-max-protein-daily-choco-almond-10g",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/Max_Protein_Daily_Choco_Almond_Bar_2_cf52c869-89ec-4327-8a8b-51a2f3d9bc4f.png?v=1787739753",
+          "file": "01.png",
+          "bytes": 1853352,
+          "sha256": "957ca4b46934268c0b3c5506db32e5509e95909c77193a9c9003bea32e943d13"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/Max_Protein_Daily_Choco_Almond_Protein_Bar_f5009ea2-aa91-4860-b124-535e7370e8f2.png?v=1787739753",
+          "file": "02.png",
+          "bytes": 1763205,
+          "sha256": "b5aa6f2abe3ff0608ae644e1da013dfafebc5073356244b5d2022a3aac077eff"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/DailyListingChocoAlmond-1_2e4e0a75-07c4-46a4-b95c-594bbb112ad6.png?v=1787739753",
+          "file": "03.png",
+          "bytes": 63868,
+          "sha256": "d7c68d8f151fc55a2c2f1063aed07b4c45c10351426a630d7f9f149f7e0f9315"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/DailyListingChocoAlmond-2_c5fdc521-43ea-4f7d-af0f-d159b216ea20.png?v=1787739753",
+          "file": "04.png",
+          "bytes": 74639,
+          "sha256": "352651c599b9002b5c670ad2fddb82f98d6b29f169bb4bf62719230e4d97f31a"
+        }
+      ]
+    },
+    {
+      "productKey": "active-protein-bar",
+      "name": "RiteBite Max Protein Active Protein Bar",
+      "sourceUrl": "https://maxprotein.in/products/ritebite-max-protein-active-choco-fudge-20g",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/products/Max_Protein_Active_Choco_Fudge_Protein_Bar.png?v=1739260814",
+          "file": "01.png",
+          "bytes": 1974124,
+          "sha256": "0c6b24acd287bebe8c8bd0481f21183cb97bbf0c0b26710d38e69a14a81c69ec"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/products/Max_Protein_Active_Choco_Fudge_Protein_Bar_01.png?v=1739260854",
+          "file": "02.png",
+          "bytes": 1307368,
+          "sha256": "dff44308901fa22cab1b0b24dd4cd22ef9d66a15afe428108612b2cbaa973702"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/ChocoFudge-3_c7712467-ef95-4815-b523-d098b136aca7.jpg?v=1787735571",
+          "file": "03.jpg",
+          "bytes": 271972,
+          "sha256": "dba9edc5e75166254e817023435d04eb5de1ad47096cf2f1c99e364ceb3d46d4"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/ChocoFudge-4_73e11325-c940-4d87-98a5-2e470e3f75a5.jpg?v=1787735571",
+          "file": "04.jpg",
+          "bytes": 426280,
+          "sha256": "4a568349a05a7f8a373e328c02174311d62939b4c33204432b81e2b09be7d704"
+        }
+      ]
+    },
+    {
+      "productKey": "ultimate-protein-bar",
+      "name": "RiteBite Max Protein Ultimate Protein Bar",
+      "sourceUrl": "https://maxprotein.in/products/ritebite-max-protein-utimate-choco-almond-30g",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/Mood-Shot_3_ba2db643-ccf8-4517-a6ca-82835d332095.png?v=1787745287",
+          "file": "01.png",
+          "bytes": 1897990,
+          "sha256": "3af3460aa64fed97ad7d07e1aee3b231a325c555f0d6a6335fb8769532c64a2c"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/Single-Pack_3_1168531b-889e-480e-b061-6ff65f6ece4e.png?v=1787745287",
+          "file": "02.png",
+          "bytes": 1744022,
+          "sha256": "8b8ef95d62045d16261a8fe4b802f208c9e11c24c96e1f2e54626fcd2e4f111f"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/ChocoAlmond-1_77e6bdae-9b13-4e34-80fd-c9c5c9559beb.jpg?v=1787745287",
+          "file": "03.jpg",
+          "bytes": 271465,
+          "sha256": "3fe7d72ccc5367f19b847198447898436dc852834e0425e9ea79300254b6bd82"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/ChocoAlmond-2_84e1c633-263e-4d22-9cf0-94036cb9d8bb.jpg?v=1787745287",
+          "file": "04.jpg",
+          "bytes": 311707,
+          "sha256": "03390991944573e72e5a31e5640aed4e9a5b798c9c2a329c959a7a642ff10d53"
+        }
+      ]
+    },
+    {
+      "productKey": "millet-wafer-protein-bar",
+      "name": "RiteBite Max Protein Millet Wafer Protein Bar",
+      "sourceUrl": "https://maxprotein.in/products/choco-temptation-1",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/ChocoTemptation_Single_5a6130e3-5641-4702-8ed2-9cacadd75f2c.jpg?v=1753695677",
+          "file": "01.jpg",
+          "bytes": 190887,
+          "sha256": "87debd6115328898d7a701cf2d9cebc9a1d7e592afb82e0febf794b67e900ff7"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/Front_c881a25b-9403-4697-993a-69a05f83c241.jpg?v=1753695677",
+          "file": "02.jpg",
+          "bytes": 322706,
+          "sha256": "081b7efa388859c2bfdefd757ea3a14aaa7c7dd69ceb0d0b5ae160d03fda7faf"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/Ingredient_fece83b4-60a5-4a2d-ac06-39a63dd672ef.jpg?v=1787144879",
+          "file": "03.jpg",
+          "bytes": 279201,
+          "sha256": "d6fc4b7f5942933c8343d158854897ef0bd9887809d9771b717a4e4a2fa1fa53"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0512/8827/7146/files/NutritionalTable_4f279757-0766-4516-a8e5-c0b22c216ecd.jpg?v=1787144879",
+          "file": "04.jpg",
+          "bytes": 274590,
+          "sha256": "983b7f36e592ea77d281faa45783eaa352f6e9dbfb8623702678d8f3691f5256"
+        }
+      ]
+    }
+  ],
+  "skipped": []
+}

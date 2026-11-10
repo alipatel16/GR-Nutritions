@@ -204,6 +204,24 @@ describe('ProductDetailScreen', () => {
     expect(screen.queryByText(/Added to your bag/)).toBeNull();
   });
 
+  it('turns Add to cart into a quantity stepper backed by the bag', async () => {
+    const user = userEvent.setup();
+    await render(<ProductDetailScreen product={product} />);
+
+    await user.press(screen.getByRole('button', { name: 'Add to cart' }));
+    expect(screen.queryByRole('button', { name: 'Add to cart' })).toBeNull();
+    expect(screen.getByLabelText('1 in cart')).toBeOnTheScreen();
+
+    await user.press(screen.getByRole('button', { name: `Increase ${product.name} quantity` }));
+    expect(useCartStore.getState().cart.lines[0].quantity).toBe(2);
+    expect(screen.getByLabelText('2 in cart')).toBeOnTheScreen();
+
+    await user.press(screen.getByRole('button', { name: `Decrease ${product.name} quantity` }));
+    await user.press(screen.getByRole('button', { name: `Decrease ${product.name} quantity` }));
+    expect(useCartStore.getState().cart.lines).toEqual([]);
+    expect(screen.getByRole('button', { name: 'Add to cart' })).toBeOnTheScreen();
+  });
+
   it('selects the first in-stock variant and updates price when selection changes', async () => {
     const user = userEvent.setup();
     await render(

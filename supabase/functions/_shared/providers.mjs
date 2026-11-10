@@ -50,11 +50,13 @@ export function createProviders({env,fetchImpl=fetch,timeoutMs=12000}) {
   async shiprocketCreate(order){
    const a=order.address,p=order.parcel;
    if(!isValidCustomerEmail(a?.email))throw new ProviderError('This order needs a valid billing email before creating a shipment',false);
+   const discount=order.discount_paise??0;
+   if(discount!==0&&(!Number.isSafeInteger(discount)||discount<0||discount>order.subtotal_paise-100||order.subtotal_paise-discount+order.shipping_paise+order.cod_fee_paise!==order.total_paise))throw new ProviderError('Order invoice totals do not match',false);
    // Staff measure the packed parcel. Other values come from the saved order.
    return shiprocket('orders/create/adhoc',{method:'POST',body:{order_id:`gr-${order.id}`,order_date:new Date(order.created_at).toISOString().replace('T',' ').slice(0,16),pickup_location:order.pickup_location,
     billing_customer_name:a.fullName,billing_last_name:'',billing_address:a.line1,billing_address_2:a.line2??'',billing_city:a.city,billing_pincode:a.pincode,billing_state:a.state,billing_country:'India',billing_email:a.email,billing_phone:a.phone,shipping_is_billing:true,
     order_items:order.items.map(i=>({name:i.productName,sku:i.sku,units:i.quantity,selling_price:i.unitPricePaise/100})),payment_method:order.payment_method==='cod'?'COD':'Prepaid',
-    shipping_charges:order.shipping_paise/100,transaction_charges:order.cod_fee_paise/100,sub_total:order.subtotal_paise/100,total_discount:0,length:p.lengthCm,breadth:p.widthCm,height:p.heightCm,weight:p.weightGrams/1000}});
+    shipping_charges:order.shipping_paise/100,transaction_charges:order.cod_fee_paise/100,sub_total:order.subtotal_paise/100,total_discount:discount/100,length:p.lengthCm,breadth:p.widthCm,height:p.heightCm,weight:p.weightGrams/1000}});
   },
   async shiprocketTrack(shipmentId){if(!Number.isSafeInteger(shipmentId)||shipmentId<1)throw new Error('Invalid shipment');return shiprocket(`courier/track/shipment/${shipmentId}`);},
  };

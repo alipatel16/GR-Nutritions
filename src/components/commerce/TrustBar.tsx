@@ -27,7 +27,9 @@ export function TrustBar({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
           </View>
           <View style={styles.copy}>
             <AppText style={[styles.title, { color: dark ? colors.onDark : colors.ink }]}>{title}</AppText>
-            <AppText style={[styles.body, { color: dark ? colors.onDarkMuted : colors.mineral }]}>{body}</AppText>
+            {mobile ? null : (
+              <AppText style={[styles.body, { color: dark ? colors.onDarkMuted : colors.mineral }]}>{body}</AppText>
+            )}
           </View>
         </View>
       ))}
@@ -45,9 +47,9 @@ const styles = StyleSheet.create({
   },
   light: { backgroundColor: colors.paper, borderColor: colors.line },
   dark: { backgroundColor: colors.graphiteRaised, borderColor: colors.graphiteLine },
-  mobileBar: { flexWrap: 'wrap', gap: spacing[4], padding: spacing[4] },
+  mobileBar: { flexWrap: 'wrap', gap: spacing[3], padding: spacing[3] },
   item: { alignItems: 'center', flex: 1, flexDirection: 'row', gap: spacing[3], minWidth: 0 },
-  mobileItem: { flexBasis: '46%', minWidth: 140 },
+  mobileItem: { flexBasis: '46%', gap: spacing[2], minWidth: 0 },
   icon: {
     alignItems: 'center',
     backgroundColor: colors.mintSoft,

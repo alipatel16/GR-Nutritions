@@ -1,0 +1,45 @@
+{
+  "collectedAt": "2026-11-05T14:05:58.291Z",
+  "brand": "TruNativ",
+  "sourceUrl": "https://trunativ.co",
+  "logoUrl": "https://cdn.kindlife.in/images/feature_variant/19/Brand_Logo.jpg?t=1644842144",
+  "products": [
+    {
+      "productKey": "raw-whey-concentrate",
+      "name": "TruNativ Raw Whey Concentrate",
+      "sourceUrl": "https://trunativ.co/products/protein-concentrate",
+      "images": [
+        {
+          "sourceUrl": "https://trunativ.co/cdn/shop/files/Concentrate-Web-Images_01_60354d33-8725-4055-af19-801cc0dd029e.png?v=1750483697",
+          "file": "01.png",
+          "bytes": 378336,
+          "sha256": "f026f38041bca49a7a94b8b225d5bf4051200703d64ae06c14cf0cd9f61d97ff"
+        },
+        {
+          "sourceUrl": "https://trunativ.co/cdn/shop/files/Concentrate-Web-Images_02_f9d26638-ca14-4d87-a03d-54859b23f665.png?v=1750483984",
+          "file": "02.png",
+          "bytes": 468086,
+          "sha256": "5e3e5ed7d16a0077af885f3a4095facd5d8c061ad6cd552feb189e9b99ea0a42"
+        },
+        {
+          "sourceUrl": "https://trunativ.co/cdn/shop/files/Concentrate-Web-Images_03_7d5de7ab-361b-43b8-b07c-a80145b0f3b2.png?v=1750483636",
+          "file": "03.png",
+          "bytes": 395565,
+          "sha256": "d69cdccda5dde9cdd31c80dcc3b7dd83c228a1e229f97e44a46506ff9749a4aa"
+        },
+        {
+          "sourceUrl": "https://trunativ.co/cdn/shop/files/Concentrate-Web-Images_07_0d98d695-0602-46db-917d-656ed75c887f.png?v=1750483984",
+          "file": "04.png",
+          "bytes": 765045,
+          "sha256": "22c69b5d4365b6db3f7feee7e2c6fdbe34d820ea3106441e265ac80f8c78ad41"
+        }
+      ],
+      "priceProvenance": "official-mrp"
+    }
+  ],
+  "skipped": [
+    "Official shop is password-protected (feed401; most product routes/password). Matching sourceMRPusedwithoutinventeddiscount.",
+    "User-approved usnutrition.in/trunative-whey-protein- is a placeholder $0/sample-description page.",
+    "Other retailer TruNativ offers need exact gallery/variant verification. The raw isolate retailer page also displays an expired batch reference; not included."
+  ]
+}

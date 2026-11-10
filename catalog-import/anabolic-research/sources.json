@@ -1,0 +1,630 @@
+{
+  "collectedAt": "2026-11-05T13:51:45.782Z",
+  "brand": "Anabolic Research",
+  "sourceUrl": "https://www.anabolicresearch.global/#/",
+  "logoUrl": "https://www.anabolicresearch.global/images/frontend/Img_H_78.png",
+  "products": [
+    {
+      "productKey": "tri-fusion-whey",
+      "name": "Anabolic Research Tri Fusion Whey",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/tri-fusion-whey-5-5-lbs---strawberry-shortcake",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Tri-Whey-Fusion---Strawberry-Shortcake---1.jpg",
+          "file": "01.jpg",
+          "bytes": 468307,
+          "sha256": "598648c9bba11053244d3d0ee242d929238c12d9fd21b08ac8836f939b7fc502"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Tri-Whey-Fusion---Strawberry-Shortcake---2.jpg",
+          "file": "02.jpg",
+          "bytes": 472366,
+          "sha256": "bd84f46c6716b72290ee4cdb8a1220d87f82114387766c2255de3e47b0eaa057"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Tri-Whey-Fusion---Strawberry-Shortcake---3.jpg",
+          "file": "03.jpg",
+          "bytes": 768698,
+          "sha256": "d216e8d79af1f04f0f2b372aa93fcc2663abc9cd518b1f4c8120d30276a92853"
+        }
+      ]
+    },
+    {
+      "productKey": "l-carnitine",
+      "name": "Anabolic Research L-Carnitine",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/l-carnitine-valencia-orange---450-ml",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/L-Carnitine---Valencia-Orange---1.jpg",
+          "file": "01.jpg",
+          "bytes": 286057,
+          "sha256": "f46b3e4e80f613e72e50d4d5c60a59069ad8921c641c0d21596916f53088e768"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/L-Carnitine---Valencia-Orange---2.jpg",
+          "file": "02.jpg",
+          "bytes": 319787,
+          "sha256": "e184e1b7d9f7e194210f788c13622ca9c8a76bbdc766b2c5ee7d09e7fae6e813"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/L-Carnitine---Valencia-Orange---3.jpg",
+          "file": "03.jpg",
+          "bytes": 285686,
+          "sha256": "cbee94da79d97ed06c6c57af58f4ecbdf0ed1608ba1a30607bac022c7b10808f"
+        }
+      ]
+    },
+    {
+      "productKey": "vitamin-d3-k2-mk-7",
+      "name": "Anabolic Research Vitamin D3 & K2 (MK-7)",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/vitamin-d3-k2-mk-7---60-tablets",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Vitamin-D3-&-K2---1.jpg",
+          "file": "01.jpg",
+          "bytes": 427362,
+          "sha256": "882779d886669b30fec6eeef5c7c211e8b9e3328f3f67b785107a587932a7b74"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Vitamin-D3-&-K2---2.jpg",
+          "file": "02.jpg",
+          "bytes": 359634,
+          "sha256": "5eae52188e88eb0e574cec37bf82725a16ad8a3730dedcf9386e05db04e240c4"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Vitamin-D3-&-K2---3.jpg",
+          "file": "03.jpg",
+          "bytes": 559158,
+          "sha256": "c803ef73a4b14204af6ce726734273d44ccd11ba172d447809cb11016158d593"
+        }
+      ]
+    },
+    {
+      "productKey": "triple-ginseng",
+      "name": "Anabolic Research Triple Ginseng",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/triple-ginseng---90-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Triple-Ginseng---1.jpg",
+          "file": "01.jpg",
+          "bytes": 512942,
+          "sha256": "4cac17a6e520f395cd423a65ba2d92548cdd30b2552349ac5e22fd95a2741483"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Triple-Ginseng---2.jpg",
+          "file": "02.jpg",
+          "bytes": 427810,
+          "sha256": "3f803e55f88c7ee8374598a72a15b40774c0530a1108e0adfd7128f05eef7236"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/Triple-Ginseng---3.jpg",
+          "file": "03.jpg",
+          "bytes": 598266,
+          "sha256": "a0e6b5232344ef7d7d92f769f68ce7516f7c8dab603a97b63f579d9291d176c7"
+        }
+      ]
+    },
+    {
+      "productKey": "iso-gold-performance",
+      "name": "Anabolic Research ISO Gold Performance",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/iso-gold-performance-5-5-lbs---cookies-n-creme",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/ISO-Gold-Performance---Cookies-N-Creme---1.jpg",
+          "file": "01.jpg",
+          "bytes": 269596,
+          "sha256": "0fde60b9d95d290f2a682cf23bc82ab542746a1a25603197f12158ab4972b83b"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/ISO-Gold-Performance---Cookies-N-Creme---2.jpg",
+          "file": "02.jpg",
+          "bytes": 255264,
+          "sha256": "679d2a4e34f1dfa0ad663b77a7d1dde1aa554500e63e544cbd989c740d155899"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/ISO-Gold-Performance---Cookies-N-Creme---3.jpg",
+          "file": "03.jpg",
+          "bytes": 258802,
+          "sha256": "b0786fb9cee7cb68b1391c52790d56399d1f45b62356a975eb476c9ca107fbaa"
+        }
+      ]
+    },
+    {
+      "productKey": "advanced-cellular-antioxidant",
+      "name": "Anabolic Research Advanced Cellular Antioxidant",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/advanced-cellular-antioxidant---60-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/17105824089631.jpg",
+          "file": "01.jpg",
+          "bytes": 258760,
+          "sha256": "eaefb9bc08a10bc725e8fc74820fd03250e216b625f03268e5fb272b75c4a437"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/17105824089632.jpg",
+          "file": "02.jpg",
+          "bytes": 182226,
+          "sha256": "3b48ec91f2899242319512e6fba0da531f35788c04638775f43ab6bc24dc88a1"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/17105824089633.jpg",
+          "file": "03.jpg",
+          "bytes": 206171,
+          "sha256": "8c3b07bf6eb97efc61f01804ad577f710392f968329731121c00976e9f6dd807"
+        }
+      ]
+    },
+    {
+      "productKey": "nitrix-3-0-professional",
+      "name": "Anabolic Research Nitrix 3.0 Professional",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/nitrix-3-0-professional",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1710576046340.jpg",
+          "file": "01.jpg",
+          "bytes": 1374828,
+          "sha256": "5958c02d3e818bf6dd3c4114e01404813006e5f54bb311b87b101ace0e91345e"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1710576046613.jpg",
+          "file": "02.jpg",
+          "bytes": 1368413,
+          "sha256": "a2ce3f8a45a6c3a95cddeefc436a7690cde387b0911ec30adddd9e96b5ccf6c1"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1710576046636.jpg",
+          "file": "03.jpg",
+          "bytes": 1397101,
+          "sha256": "64025a19380de97d816cdcec3105b6463950dc57f178fc69f8230ad27953984f"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1710576046889.jpg",
+          "file": "04.jpg",
+          "bytes": 1605587,
+          "sha256": "af47130df9b51267dbe3b489a845c6d4908b874a3e0ff39cff74b867a61ebe2c"
+        }
+      ]
+    },
+    {
+      "productKey": "citrulline-arginine",
+      "name": "Anabolic Research Citrulline + Arginine",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/citrulline-arginine---tangy-orange",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/2.jpg",
+          "file": "01.jpg",
+          "bytes": 293262,
+          "sha256": "4534153834ba59949727b601e2a34b0bb70f5c8e0e8ee816f006bfa0cee9b59e"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/3.jpg",
+          "file": "02.jpg",
+          "bytes": 295804,
+          "sha256": "185f3e399a331e477ae57f45dda63a7ed9a4552052e7d881a0d2f746c74b9abc"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/4.jpg",
+          "file": "03.jpg",
+          "bytes": 342329,
+          "sha256": "cfde06c781adabb475140d71e4c8f30a241a637a605bbac98d9c95c83c593a94"
+        }
+      ]
+    },
+    {
+      "productKey": "eaa-bcaa-complete",
+      "name": "Anabolic Research EAA + BCAA Complete",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/eaa-bcaa-complete---tequilla-sunscreen",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1696331388118.jpg",
+          "file": "01.jpg",
+          "bytes": 319528,
+          "sha256": "c547e40711048c0a07c7fe14edcb0bf464208fad7e66ec8400158799dc3db8ac"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1696397712299.jpg",
+          "file": "02.jpg",
+          "bytes": 264432,
+          "sha256": "b30c1f7298ae159b03713aee92784853be83eb797f12b6095164626184611a2f"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1696397712817.jpg",
+          "file": "03.jpg",
+          "bytes": 416887,
+          "sha256": "6f26fc113f610113659a59c7495b0dc55db9638c73d3bc08ed1865088c921557"
+        }
+      ]
+    },
+    {
+      "productKey": "2023-final-destination",
+      "name": "Anabolic Research 2023 Final Destination",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/2023-final-destination---sex-on-the-beach",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1696328374198.jpg",
+          "file": "01.jpg",
+          "bytes": 295345,
+          "sha256": "73d864a6a2cd03028fe7c8d1c397b7ba200db94f318b7ce30231ba623c0657d9"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1696328607464.jpg",
+          "file": "02.jpg",
+          "bytes": 275589,
+          "sha256": "210953107e88c71b74a57c41b62727e635690967d052c87aa0e286b8e28c3d6b"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1696328607583.jpg",
+          "file": "03.jpg",
+          "bytes": 368409,
+          "sha256": "7bbf0a9a7263fe6b110c65b4ad91b716e1160dd1e883521ca118db10bf6d372b"
+        }
+      ]
+    },
+    {
+      "productKey": "hexa-tein-5-sr",
+      "name": "Anabolic Research Hexa-Tein 5 SR",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/hexa-tein-5-sr---mango-cr-me-5lbs",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1686567890213.jpg",
+          "file": "01.jpg",
+          "bytes": 610439,
+          "sha256": "f3a81812423308b32d1342d692b4d43cf5c6cd04a15ac93ce983eeca5ee15aac"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1686567939334.jpg",
+          "file": "02.jpg",
+          "bytes": 669829,
+          "sha256": "b77b67100b0d5ae8418d2dc932183907fb5d98ad46e15b893aed10360d20bd4d"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1686567939256.jpg",
+          "file": "03.jpg",
+          "bytes": 744055,
+          "sha256": "8d8f677307921ca2062fb9c017628976eb67f3d4794e274e88d3d7e764f6e978"
+        }
+      ]
+    },
+    {
+      "productKey": "hexa-tein-6-sr",
+      "name": "Anabolic Research Hexa-Tein 6 SR",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/hexa-tein-6-sr---double-rich-chocolate-5lbs",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1686565323362.jpg",
+          "file": "01.jpg",
+          "bytes": 302759,
+          "sha256": "6039b0ff6c595587b8bb17680653db5bd28cfc1d0009cdcbd91a54923ad46e14"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1686565337546.jpg",
+          "file": "02.jpg",
+          "bytes": 296538,
+          "sha256": "22a94577a6d0bd73bb861f02423fabd8e3874d3280d21f0634b27549eaba6a4f"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1686565337659.jpg",
+          "file": "03.jpg",
+          "bytes": 349708,
+          "sha256": "c7906057c00bd465806cd6ee299b3b05773ac1c74d1dbde2177531d4a4c0f29b"
+        }
+      ]
+    },
+    {
+      "productKey": "essential-whey",
+      "name": "Anabolic Research Essential Whey",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/essential-whey---cookies-n-cr-me",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1684231166725.jpg",
+          "file": "01.jpg",
+          "bytes": 307707,
+          "sha256": "9ea5ae77fecc142386a0af3a12efd0b5898f17aa8cd66b71e5cd20e9d7f5e885"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1684231273382.jpg",
+          "file": "02.jpg",
+          "bytes": 294277,
+          "sha256": "be51ee87948bce53b632b98c66347c2367ca559de99f7d102d209b1e8174a72a"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1684231273303.jpg",
+          "file": "03.jpg",
+          "bytes": 266284,
+          "sha256": "803002c9ee77348044e27e19f9476355ca66695b0ab064146646167832d9ea08"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1684231273178.jpg",
+          "file": "04.jpg",
+          "bytes": 341325,
+          "sha256": "90967d381b83ff48f7e74441d90e4904bf8fcf0605231cad4715920851e53d99"
+        }
+      ]
+    },
+    {
+      "productKey": "freak-gainz",
+      "name": "Anabolic Research Freak Gainz",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/freak-gainz---mango-souffl-",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674025606107.jpg",
+          "file": "01.jpg",
+          "bytes": 359557,
+          "sha256": "b533f1e28ae308b0aa8e10ed603e182ea653778bb8586b114a3c99d31f58a1f5"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674025587222.jpg",
+          "file": "02.jpg",
+          "bytes": 317682,
+          "sha256": "f86b10c82da1192b1fe64bb8dbac0dedb57cab7ca6c19bfc2d11d8d3a9815458"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674025587804.jpg",
+          "file": "03.jpg",
+          "bytes": 308331,
+          "sha256": "61adffc7e07baebc26b5aa87929997dfad09745ba30be5a151d48e0a18050b2e"
+        }
+      ]
+    },
+    {
+      "productKey": "omega-3-fish-oil",
+      "name": "Anabolic Research Omega 3 Fish Oil",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/omega-3-fish-oil---90-soft-gels",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1673946692522.jpg",
+          "file": "01.jpg",
+          "bytes": 299512,
+          "sha256": "eef2bb106b847b3f1e1dd449e2908b014381909c50cfe226dc041c4636c8dd9d"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1673946706672.jpg",
+          "file": "02.jpg",
+          "bytes": 284271,
+          "sha256": "e87da54d70c547f8c9c99faddf459e1ccdf4f8241fc3c63035efd6d2b9be5262"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1673946718388.jpg",
+          "file": "03.jpg",
+          "bytes": 350699,
+          "sha256": "c33a7ca57506f38a4665482e4081ad6c2732e96e55f7f53426113a1097686730"
+        }
+      ]
+    },
+    {
+      "productKey": "l-glutamine",
+      "name": "Anabolic Research L-Glutamine",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/l-glutamine",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674026478469.jpg",
+          "file": "01.jpg",
+          "bytes": 183335,
+          "sha256": "e7bb03ac58a6035c8b1cc39e0fe7f77b0773c04cc354511375b2ed7c11adb3ff"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674026478252.jpg",
+          "file": "02.jpg",
+          "bytes": 200652,
+          "sha256": "3d39ef188b9e6b02ee6166d9f8fadb31a64122c99c376d8112fc4214f994eac0"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674026478265.jpg",
+          "file": "03.jpg",
+          "bytes": 201385,
+          "sha256": "27af10ee6121918bcce27fe2ccd770456cff81ba9c84dd1b6e0c3012f254150c"
+        }
+      ]
+    },
+    {
+      "productKey": "creatine-monohydrate",
+      "name": "Anabolic Research Creatine Monohydrate",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/creatine-monohydrate",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674026510113.jpg",
+          "file": "01.jpg",
+          "bytes": 200525,
+          "sha256": "3e90d97a80def5cbcb500fcf56bf9e371d7863ef8ef3fb9b83f01e2804ad08b2"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674026510592.jpg",
+          "file": "02.jpg",
+          "bytes": 210353,
+          "sha256": "2681be5c71521fd771310834316af94f9ea870e48607f43f64dc94407b1b82d5"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674026510326.jpg",
+          "file": "03.jpg",
+          "bytes": 214099,
+          "sha256": "64de79fccd98cf3c9058ea2ac49d8f237f74461e3580b7e85f33772493610cfb"
+        }
+      ]
+    },
+    {
+      "productKey": "peptide-protein",
+      "name": "Anabolic Research Peptide Protein",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/peptide-protein-vanilla-caramel-latte-5-lbs-",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674027093727.jpg",
+          "file": "01.jpg",
+          "bytes": 264209,
+          "sha256": "513cb9e3bdd2b486d58929a0307526b38e442efe56adeb4d1f854ab51ec9dba0"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674027093323.jpg",
+          "file": "02.jpg",
+          "bytes": 270405,
+          "sha256": "d83b521eb579c6062c08120c4392cd5f98dc0cfbd9fd1a59772c08bf468d164e"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1674027093757.jpg",
+          "file": "03.jpg",
+          "bytes": 283932,
+          "sha256": "7e0a561e1a2eb6782e943faa0ed46359ea212f0d024771414438b60c7a3ec32a"
+        }
+      ]
+    },
+    {
+      "productKey": "nitro-pro",
+      "name": "Anabolic Research Nitro Pro",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/nitro-pro-2-lbs-chocolate-truffle-",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1590346247937.jpg",
+          "file": "01.jpg",
+          "bytes": 696894,
+          "sha256": "0882270ec2759e543e17a059204d4d6b1ae8b6f1141350e8c9ad525b643c3be8"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1590346096910.png",
+          "file": "02.png",
+          "bytes": 50078,
+          "sha256": "a9e4bf45d694b55b2cb168c77aa606f7e62cacd2ae64e87a5988f94b1ac9c693"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1590346247702.jpg",
+          "file": "03.jpg",
+          "bytes": 303324,
+          "sha256": "1c0a8bc6a38d220ce7fc5a4f2c02173554e6d28b1749bb81b0305ed68255de4d"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1590346247181.jpg",
+          "file": "04.jpg",
+          "bytes": 547386,
+          "sha256": "375b72145a003ef21d422e1c7d44cd57496968f842dbfee32bbcc2c8b72815d5"
+        }
+      ]
+    },
+    {
+      "productKey": "instant-immunity-xt",
+      "name": "Anabolic Research Instant Immunity XT",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/instant-immunity-xt",
+      "images": [
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1587041625452.jpeg",
+          "file": "01.jpeg",
+          "bytes": 59851,
+          "sha256": "c9b766c9b9451868528b0af9a90499d5a87d13bafcb7a584e22f48cb32395961"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1587041625804.jpeg",
+          "file": "02.jpeg",
+          "bytes": 71924,
+          "sha256": "6f087fa18451b6bb9f1c16a3e2844f29c3c0b8423310c646fbb40359209ae0b1"
+        },
+        {
+          "sourceUrl": "https://www.anabolicresearch.global/images/uploads/1587041625611.jpeg",
+          "file": "03.jpeg",
+          "bytes": 71223,
+          "sha256": "3c2cf3e967405a516704dee748632cbd0d23874541e0741858ee70aaecb355cb"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "name": "ZMA-T - 90 Capsules",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/zma-t---90-capsules",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Cardioace Heart Support - 90 Capsules",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/cardioace-heart-support---90-capsules",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "1-DHEA - 60 Tablets",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/1-dhea---60-tablets",
+      "reason": "Excluded hormone/prohormone or post-cycle product."
+    },
+    {
+      "name": "Cortisol Support - 60 Capsules",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/cortisol-support---60-capsules",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Endura Peak Pro - 150 Capsules",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/endura-peak-pro---150-capsules",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Test Whey 5 Lbs - Hazelnut",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/test-whey-5-lbs---hazelnut",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Test Whey 5 Lbs - Iced Coffee",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/test-whey-5-lbs---iced-coffee",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Black Dragon",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/black-dragon",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Anabolic GH Whey - Pecan Pie",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/anabolic-gh-whey---pecan-pie",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Vitamin Test 60",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/vitamin-test-60",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "HGH Complete",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/hgh-complete",
+      "reason": "Excluded hormone/prohormone or post-cycle product."
+    },
+    {
+      "name": "Slin- GDA",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/slin--gda",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "After Cycle Hardcore",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/after-cycle-hardcore",
+      "reason": "Excluded hormone/prohormone or post-cycle product."
+    },
+    {
+      "name": "Liver-Protect",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/liver-protect",
+      "reason": "Outside selected 20 nutrition families; additional specialist formula requires separate ingredient review."
+    },
+    {
+      "name": "Freak Gainz - Vanilla Saffron Biscoff",
+      "sourceUrl": "https://www.anabolicresearch.global/#/product/freak-gainz---vanilla-saffron-biscoff",
+      "reason": "Official page title says Vanilla Saffron Biscoff, but its actual Flavour field says Vanilla Caramel Latte. Held for source clarification.",
+      "rows": [
+        {
+          "product_key": "freak-gainz",
+          "name": "Anabolic Research Freak Gainz",
+          "category": "protein",
+          "goals": "muscle-gain;recovery",
+          "diet": "",
+          "summary": "A mass-gainer powder containing protein, carbohydrates, vitamins and minerals.",
+          "description": "A mass-gainer powder containing protein, carbohydrates, vitamins and minerals.",
+          "usage": "",
+          "warnings": "",
+          "nutrition": "",
+          "flavour": "Vanilla Saffron Biscoff",
+          "size": "3 kg",
+          "mrp": "8200",
+          "price": "7000",
+          "stock": "100",
+          "default": "no",
+          "status": "active",
+          "sku": "",
+          "weight_g": "3000",
+          "ship_weight_g": "",
+          "ship_length_cm": "",
+          "ship_width_cm": "",
+          "ship_height_cm": ""
+        }
+      ]
+    }
+  ]
+}

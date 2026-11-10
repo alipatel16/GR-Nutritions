@@ -1,0 +1,629 @@
+{
+  "collectedAt": "2026-11-05T13:56:25.505Z",
+  "brand": "TrueBasics",
+  "sourceUrl": "https://www.truebasics.com/",
+  "logoUrl": "https://static1.hkrtcdn.com/tbnext/static/media/header/Truebasics_Logo.png",
+  "products": [
+    {
+      "productKey": "clean-yeast-protein",
+      "name": "TrueBasics Clean Yeast Protein",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-clean-yeast-protein/SP-140799?navKey=VRNT-284557",
+      "images": [
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/43989/prd_4398899-TrueBasics-Clean-Yeast-Protein-2.2-lb-Coffee_o.jpg",
+          "file": "01.jpg",
+          "bytes": 89884,
+          "sha256": "ae980c8c5bdb0b068be9ca3560cbc9197c5f9b7bbfb532f33dd94117f9f1b890"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/43990/prd_4398901-TrueBasics-Clean-Yeast-Protein-2.2-lb-Coffee_o.jpg",
+          "file": "02.jpg",
+          "bytes": 84119,
+          "sha256": "32f038776604b3672cccbc2246305e0f3e8caaaa0b9bfe651962b2d56f9ea286"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/43990/prd_4398905-TrueBasics-Clean-Yeast-Protein-2.2-lb-Coffee_o.jpg",
+          "file": "03.jpg",
+          "bytes": 29648,
+          "sha256": "5461631d85065e46e49e33105e53e937cc42f7f8171fd92206c8ba3e2b3754d7"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/43990/prd_4398903-TrueBasics-Clean-Yeast-Protein-2.2-lb-Coffee_o.jpg",
+          "file": "04.jpg",
+          "bytes": 33050,
+          "sha256": "c77ef972ba6582dbff333e886cce6a49c3bec347cee8aa643c023a2eecf67c3f"
+        }
+      ]
+    },
+    {
+      "productKey": "clean-plant-protein",
+      "name": "TrueBasics Clean Plant Protein",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-clean-plant-protein/SP-136871?navKey=VRNT-272429",
+      "images": [
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/46671/prd_4667081_o.jpg",
+          "file": "01.jpg",
+          "bytes": 93891,
+          "sha256": "e64ec21ac2162e1289ad26cdc02a2e93fbda573dfa692f35ef8855fd5d2fa484"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/43004/prd_4300367-TrueBasics-Clean-Plant-Protein-2.2-lb-Chocolate_o.jpg",
+          "file": "02.jpg",
+          "bytes": 84054,
+          "sha256": "be37636510118e4a42c4c51fc758efa8e64f219185f893f1cef56e4ccc342a50"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/43004/prd_4300363-TrueBasics-Clean-Plant-Protein-2.2-lb-Chocolate_o.jpg",
+          "file": "03.jpg",
+          "bytes": 63526,
+          "sha256": "ebd9e9066d49cd98d20389f5fe1af9058b1ae19a1af2a3c91ae6a4aa5184cae2"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/43004/prd_4300361-TrueBasics-Clean-Plant-Protein-2.2-lb-Chocolate_o.jpg",
+          "file": "04.jpg",
+          "bytes": 36822,
+          "sha256": "87a51a35f7252d8344a6a487213da627a8d27141c3fe706063080d62c0c12d60"
+        }
+      ]
+    },
+    {
+      "productKey": "clean-whey-protein-isolate-concentrate",
+      "name": "TrueBasics Clean Whey Protein (Isolate + Concentrate)",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-clean-whey-protein-isolate-plus-concentrate/SP-135011?navKey=VRNT-274779",
+      "images": [
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/44876/prd_4487545-TrueBasics-Clean-Whey-Protein-Isolate-Concentrate-1-kg-Coffee_o.jpg",
+          "file": "01.jpg",
+          "bytes": 98823,
+          "sha256": "46259739102336455b333f2457603b8ffd520357e969974f5852986975ceca41"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/41271/prd_4127029-TrueBasics-Clean-Whey-Protein-Isolate-Concentrate-2.2-lb-Coffee_o.jpg",
+          "file": "02.jpg",
+          "bytes": 77291,
+          "sha256": "5ecff871d08c5ea583f0b9752efa91e66a5e0cee6b6e6c6b3bac659c917fcab0"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/41271/prd_4127031-TrueBasics-Clean-Whey-Protein-Isolate-Concentrate-2.2-lb-Coffee_o.jpg",
+          "file": "03.jpg",
+          "bytes": 90369,
+          "sha256": "89208b80e822633d3f63d3f7c1ab7d2e5c4b3478488872dbe11991aeeab5795b"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/41271/prd_4127021-TrueBasics-Clean-Whey-Protein-Isolate-Concentrate-2.2-lb-Coffee_o.jpg",
+          "file": "04.jpg",
+          "bytes": 44226,
+          "sha256": "00fb8e2f522e80427c017db042bd58f5e84e14d1cd58b27eb174cbee7dc9ae47"
+        }
+      ]
+    },
+    {
+      "productKey": "clean-whey-protein-isolate",
+      "name": "TrueBasics Clean Whey Protein (Isolate)",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-clean-whey-protein-isolate/SP-135063?navKey=VRNT-274397",
+      "images": [
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/45889/prd_4588857-TrueBasics-Clean-Whey-Protein-Isolate-1-kg-Chocolate-Isolate_o.jpg",
+          "file": "01.jpg",
+          "bytes": 87896,
+          "sha256": "a8662ad8a8de425d4a868997de987f083347a68616a82ee84ed642f13aee269a"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/41234/prd_4123319-TrueBasics-Clean-Whey-Protein-Isolate-2.2-lb-Chocolate_o.jpg",
+          "file": "02.jpg",
+          "bytes": 101831,
+          "sha256": "422a8814cd997f04c2624a6fc6d54aec40a62a40743d7fe5fac18ed10983b1a2"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/41234/prd_4123313-TrueBasics-Clean-Whey-Protein-Isolate-2.2-lb-Chocolate_o.jpg",
+          "file": "03.jpg",
+          "bytes": 60530,
+          "sha256": "cc1bc3bb268ab0d3cbda3a27ac0d0aad2e5a487de5811689616a383cff0fc327"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/41234/prd_4123317-TrueBasics-Clean-Whey-Protein-Isolate-2.2-lb-Chocolate_o.jpg",
+          "file": "04.jpg",
+          "bytes": 66749,
+          "sha256": "abdff06429bdb9f1b204fc84bf6cfa35b0cafefa4027e6266d72ad5a90090638"
+        }
+      ]
+    },
+    {
+      "productKey": "clean-raw-whey-isolate",
+      "name": "TrueBasics Clean Raw Whey Isolate",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-clean-raw-whey-isolate/SP-139677?navKey=VRNT-281081",
+      "images": [
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/44876/prd_4487541-TrueBasics-Clean-Raw-Whey-Isolate-1-kg-Unflavoured_o.jpg",
+          "file": "01.jpg",
+          "bytes": 78266,
+          "sha256": "f852f9fdf11cd9489fe9f1aa71bbe8b29f4ffbe25a8af2e4befae89fe407a1a9"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/43064/prd_4306349-TrueBasics-Clean-Raw-Whey-Isolate-2.2-lb-Unflavoured_o.jpg",
+          "file": "02.jpg",
+          "bytes": 90955,
+          "sha256": "5d268627dafb4a068835e319f22bfe679d73d6e67da140d4e339901971869871"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/43064/prd_4306343-TrueBasics-Clean-Raw-Whey-Isolate-2.2-lb-Unflavoured_o.jpg",
+          "file": "03.jpg",
+          "bytes": 94188,
+          "sha256": "74377b718854722996b2f199b8b646928bada3814cbaea1e7e51f5470d40904f"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/43064/prd_4306351-TrueBasics-Clean-Raw-Whey-Isolate-2.2-lb-Unflavoured_o.jpg",
+          "file": "04.jpg",
+          "bytes": 89476,
+          "sha256": "755594adb48ebfa09aa96edc14c87c5986df719ecd11f6be5646cf5abd856450"
+        }
+      ]
+    },
+    {
+      "productKey": "clean-raw-whey-concentrate",
+      "name": "TrueBasics Clean Raw Whey Concentrate",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-clean-raw-whey-concentrate/SP-136503",
+      "images": [
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/44876/prd_4487539-TrueBasics-Clean-Raw-Whey-Concentrate-1-kg-Unflavoured_o.jpg",
+          "file": "01.jpg",
+          "bytes": 77575,
+          "sha256": "f30af7e26140eb552fd39673758e0a3fb69c1f4269be1c5e6d9767eadc59e32a"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/40340/prd_4033999-TrueBasics-Clean-Raw-Whey-Concentrate-2.2-lb-Unflavoured_o.jpg",
+          "file": "02.jpg",
+          "bytes": 61329,
+          "sha256": "77f2b2d43cc83895e3190a9ea1d389131e562044b45ea9deb8243763c86f7b32"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/40341/prd_4034011-TrueBasics-Clean-Raw-Whey-Concentrate-2.2-lb-Unflavoured_o.jpg",
+          "file": "03.jpg",
+          "bytes": 102806,
+          "sha256": "691e012ce8c0f90c8546071d0c8fde38c045c35e6d6416b17206a6f80d60b429"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/40341/prd_4034017-TrueBasics-Clean-Raw-Whey-Concentrate-2.2-lb-Unflavoured_o.jpg",
+          "file": "04.jpg",
+          "bytes": 102195,
+          "sha256": "f56d8222d5b32237e58cf4ea3cb3481dd623c70cf822f3468c930e47ea7f6f23"
+        }
+      ]
+    },
+    {
+      "productKey": "fish-oil-1150mg-omega-3",
+      "name": "TrueBasics Fish Oil 1150mg Omega-3",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-fish-oil-with-1150mg-omega-3-525mg-epa-375mg-dha/SP-69915?navKey=VRNT-159189",
+      "images": [
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/46806/prd_4680535_o.jpg",
+          "file": "01.jpg",
+          "bytes": 84989,
+          "sha256": "0ae2d3afdabbfa499dbeb022c5d3bda481d32848036d112df4733d6daa274a87"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/43132/prd_4313155-TrueBasics-Fish-Oil-with-1150mg-Omega3-525mg-EPA-375mg-DHA-90-capsules_o.jpg",
+          "file": "02.jpg",
+          "bytes": 99418,
+          "sha256": "43676e566db486d57a62eca43fb8169d82ea72a712e4a088f51d4e93459aa332"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/43132/prd_4313157-TrueBasics-Fish-Oil-with-1150mg-Omega3-525mg-EPA-375mg-DHA-90-capsules_o.jpg",
+          "file": "03.jpg",
+          "bytes": 74993,
+          "sha256": "9daa40228a1f8ce78fe320d2d8ec5f9827f555677d4001507d735344bab607e4"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/43132/prd_4313159-TrueBasics-Fish-Oil-with-1150mg-Omega3-525mg-EPA-375mg-DHA-90-capsules_o.jpg",
+          "file": "04.jpg",
+          "bytes": 91146,
+          "sha256": "b67b9e6c907ba02054fda1884239cbcb4629b825d6d113c3c8ddf14cfad27f07"
+        }
+      ]
+    },
+    {
+      "productKey": "heart-omega-3-antarctic-krill-oil",
+      "name": "TrueBasics Heart Omega-3 Antarctic Krill Oil",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-heart-omega-3-antarctic-krill-oil/SP-101004?navKey=VRNT-188306",
+      "images": [
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/40757/prd_4075665-TrueBasics-Heart-Omega3-Antarctic-Krill-Oil-30-capsules_o.jpg",
+          "file": "01.jpg",
+          "bytes": 63893,
+          "sha256": "1eed7714948f75d8e155c02c3cf55f06c4c7be4a998134eb5f4ca8702e1661c2"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/43027/prd_4302603-TrueBasics-Heart-Omega3-Antarctic-Krill-Oil-30-capsules_o.jpg",
+          "file": "02.jpg",
+          "bytes": 68876,
+          "sha256": "6b5e167486ae0959f3ebfe804aeeb66b24404218366d8450bd530b858d729443"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/43026/prd_4302585-TrueBasics-Heart-Omega3-Antarctic-Krill-Oil-30-capsules_o.jpg",
+          "file": "03.jpg",
+          "bytes": 63734,
+          "sha256": "3f2c95f39ab6076f7ee9e16055522af8b7f3b00f13fb4694bb56185fd1725b7d"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/43026/prd_4302587-TrueBasics-Heart-Omega3-Antarctic-Krill-Oil-30-capsules_o.jpg",
+          "file": "04.jpg",
+          "bytes": 82862,
+          "sha256": "83984d7078c1a904765e6c35b19e0bcf792031b78024562be5d6e2f2941d7619"
+        }
+      ]
+    },
+    {
+      "productKey": "advance-calcium",
+      "name": "TrueBasics Advance Calcium",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-advance-calcium/SP-64541?navKey=VRNT-114687",
+      "images": [
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/30922/prd_3092177-TrueBasics-Advance-Calcium-90-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 49704,
+          "sha256": "5b1a722c946f0f1ba75ba29a88145b7bafe2a99a64db2d15162d7f9f1b592493"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/30922/prd_3092185-TrueBasics-Advance-Calcium-90-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 62522,
+          "sha256": "2af63cd5e7b6a3cc78f620803335fb9d87850415eb0709b37b013454200000dc"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/30922/prd_3092183-TrueBasics-Advance-Calcium-90-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 68169,
+          "sha256": "67f631ab8550a28906843a2ef89ac6f5d9c2f9ac03fd8d899a70e3fb774895bf"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/30922/prd_3092181-TrueBasics-Advance-Calcium-90-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 53521,
+          "sha256": "02ca740353fc13c931b03fc80bb4f695de1ddfddf4fd08568986a4943c0884b4"
+        }
+      ]
+    },
+    {
+      "productKey": "ashwagandha",
+      "name": "TrueBasics Ashwagandha",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-ashwagandha/SP-68029?navKey=VRNT-128241",
+      "images": [
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/32579/prd_3257831-TrueBasics-Ashwagandha-60-capsules_o.jpg",
+          "file": "01.jpg",
+          "bytes": 50293,
+          "sha256": "c596a3aed12645fd74013fe9b2e7e89ea1ad56d00e42dbbeabf6aaab4db0e530"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/32579/prd_3257833-TrueBasics-Ashwagandha-60-capsules_o.jpg",
+          "file": "02.jpg",
+          "bytes": 46965,
+          "sha256": "799a1d04e2df24f142af2c132c0cd11519094e196a440e05045ca53c000a5c2b"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/32579/prd_3257835-TrueBasics-Ashwagandha-60-capsules_o.jpg",
+          "file": "03.jpg",
+          "bytes": 55020,
+          "sha256": "b69506eb1c2ea2b02984e5635ec3d94b59e33302006a2e8fd216f663c2c740e4"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/32579/prd_3257837-TrueBasics-Ashwagandha-60-capsules_o.jpg",
+          "file": "04.jpg",
+          "bytes": 56794,
+          "sha256": "8147b95198f5a6a3ede22fe90fc63e3450746a79d72a36ac8ba3348640ce20e6"
+        }
+      ]
+    },
+    {
+      "productKey": "vitamin-d3-600iu",
+      "name": "TrueBasics Vitamin D3 600iu",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-vitamin-d3-600iu/SP-101002?navKey=VRNT-188302",
+      "images": [
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/38852/prd_3885119-TrueBasics-Vitamin-D3-600iu-50-capsules-Unflavoured_o.jpg",
+          "file": "01.jpg",
+          "bytes": 57256,
+          "sha256": "b556ec48cccc93620d405015460bd094f9842c527f19d46100cdb29f9637cf0b"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/38852/prd_3885129-TrueBasics-Vitamin-D3-600iu-50-capsules-Unflavoured_o.jpg",
+          "file": "02.jpg",
+          "bytes": 95165,
+          "sha256": "11b2283e106f6504994b79cd73c4442354148d6750dbc49856b71cd7dc85dec9"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/38852/prd_3885131-TrueBasics-Vitamin-D3-600iu-50-capsules-Unflavoured_o.jpg",
+          "file": "03.jpg",
+          "bytes": 58297,
+          "sha256": "cc581badf6b4ccd0cd810e9c80311903772da919fb29d954a18df4ea98325ec6"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/38852/prd_3885115-TrueBasics-Vitamin-D3-600iu-50-capsules-Unflavoured_o.jpg",
+          "file": "04.jpg",
+          "bytes": 74308,
+          "sha256": "ea0b6adbbd4c16b0e1a73d026422cf70e8d0175340ef4c2cd3c8e7eeb4480c27"
+        }
+      ]
+    },
+    {
+      "productKey": "t-boost",
+      "name": "TrueBasics T Boost",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-t-boost/SP-97260?navKey=VRNT-184792",
+      "images": [
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/30720/prd_3071919-TrueBasics-T-Boost-60-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 47781,
+          "sha256": "6fe235965dc3b849c34c87bbbcce9253492943a1264e291f44b073dc21f3e6bb"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/30720/prd_3071927-TrueBasics-T-Boost-60-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 89427,
+          "sha256": "7a0dbbb418bd136f42c5db933cdb57bf8383dba7b101c24baffab8ba5787bb28"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/30720/prd_3071925-TrueBasics-T-Boost-60-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 56819,
+          "sha256": "ca7498bbbd7226afb3197adcbf9a3af359ab60fc11416f16f0f378ed1c04f146"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/30720/prd_3071923-TrueBasics-T-Boost-60-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 51289,
+          "sha256": "84674bef65f87717ad2b39fd4a0f08f3062259854c6c48cbbedc698e1245185f"
+        }
+      ]
+    },
+    {
+      "productKey": "glutathione-nutroxsun",
+      "name": "TrueBasics Glutathione + Nutroxsun",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-glutathione-plus-nutroxsun/SP-74171",
+      "images": [
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/30719/prd_3071897-TrueBasics-Glutathione-Nutroxsun-30-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 45470,
+          "sha256": "76ce858b44b41e26b235b2fccf8b15971b80be172fa194b1bceaf8dd2f9fd86f"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/30719/prd_3071865-TrueBasics-Glutathione-Nutroxsun-30-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 86605,
+          "sha256": "833ec93fca3aaf5440cc19518ef24d2d9cc456a26139572d393321a967c69299"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/30719/prd_3071863-TrueBasics-Glutathione-Nutroxsun-30-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 63710,
+          "sha256": "e68d7e8d3e2a7f6e225ac13ef9e2a39c6a0de6f3cdbaba3ec02d9b0edb598172"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/30719/prd_3071861-TrueBasics-Glutathione-Nutroxsun-30-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 61496,
+          "sha256": "537b2eaa36d47617008690ce3e4158d3c50bd78c8399db32ef1dc84cb3e06d13"
+        }
+      ]
+    },
+    {
+      "productKey": "liver-detox",
+      "name": "TrueBasics Liver Detox",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-liver-detox/SP-61165",
+      "images": [
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/47004/prd_4700395-TrueBasics-Liver-Detox-75-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 91002,
+          "sha256": "3248f61edd1685b5b3e782fe531c17805e85565e24b830cdf3a61074a46b5835"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/47005/prd_4700405-TrueBasics-Liver-Detox-75-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 89695,
+          "sha256": "f0cd19a315059ceac92553823867dffcdcd5fc9c43099dac7dad62adffbdb8b3"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/47005/prd_4700403-TrueBasics-Liver-Detox-75-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 82242,
+          "sha256": "c964fa563901fbe063368696d1c118eb0b27fb5714bdb22f659d3c36b585e745"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/47004/prd_4700397-TrueBasics-Liver-Detox-75-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 85703,
+          "sha256": "95606fd20da222ca7f5433eb926d3fc0a4e7ac49396e7010138015aadc45f467"
+        }
+      ]
+    },
+    {
+      "productKey": "joint-ease-with-1500mg-of-glucosamine-1200mg-of-chondroitin",
+      "name": "TrueBasics Joint Ease with 1500mg of Glucosamine & 1200mg of Chondroitin",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-joint-ease-with-1500mg-of-glucosamine-n-1200mg-of-chondroitin/SP-61171",
+      "images": [
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/30718/prd_3071735-TrueBasics-Joint-Ease-with-1500mg-of-Glucosamine-1200mg-of-Chondroitin-90-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 50041,
+          "sha256": "3d1b32fa1bb245d5a372c7ad99f3502ec9b35cb2001f745253cedbc0a45b8c38"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/30718/prd_3071781-TrueBasics-Joint-Ease-with-1500mg-of-Glucosamine-1200mg-of-Chondroitin-90-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 61233,
+          "sha256": "ea1af98253df5af78c46c646ca88f48a1adccdcb9d544f1ab449fda5106909e7"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/30718/prd_3071731-TrueBasics-Joint-Ease-with-1500mg-of-Glucosamine-1200mg-of-Chondroitin-90-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 95839,
+          "sha256": "16991e0a0c4462cb1944cf4cc96d9cced1bd88160640ac95e40d2a22a28ee336"
+        },
+        {
+          "sourceUrl": "https://img10.hkrtcdn.com/30718/prd_3071779-TrueBasics-Joint-Ease-with-1500mg-of-Glucosamine-1200mg-of-Chondroitin-90-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 68769,
+          "sha256": "a0955b24237326930ae5d515698cefe8d42521bd628b77b81cdc9224f14f063c"
+        }
+      ]
+    },
+    {
+      "productKey": "shilajit-with-80-trace-minerals",
+      "name": "TrueBasics Shilajit with 80+ Trace Minerals",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-shilajit-with-80plus-trace-minerals/SP-107576?navKey=VRNT-201276",
+      "images": [
+        {
+          "sourceUrl": "https://img1.hkrtcdn.com/21762/prd_2176110-TrueBasics-Shilajit-with-80-Trace-Minerals-20-g_o.jpg",
+          "file": "01.jpg",
+          "bytes": 86595,
+          "sha256": "85034236fdae9809d53ec25a5b6ea58b33394f4c8852177a96e8b50fba59639b"
+        },
+        {
+          "sourceUrl": "https://img5.hkrtcdn.com/21655/prd_2165454-TrueBasics-Shilajit-with-80-Trace-Minerals-20-g_o.jpg",
+          "file": "02.jpg",
+          "bytes": 92708,
+          "sha256": "a22806b3cbdd1ed55c4b5b0e57ee612bf2a3086419637a72d572bf48b5d2c21a"
+        },
+        {
+          "sourceUrl": "https://img3.hkrtcdn.com/21655/prd_2165442-TrueBasics-Shilajit-with-80-Trace-Minerals-20-g_o.jpg",
+          "file": "03.jpg",
+          "bytes": 26105,
+          "sha256": "fa7192fd4b34147ad4b8fbb661ae7700d5019aad23e2afeaa053620a9233cc0e"
+        },
+        {
+          "sourceUrl": "https://img1.hkrtcdn.com/21655/prd_2165450-TrueBasics-Shilajit-with-80-Trace-Minerals-20-g_o.jpg",
+          "file": "04.jpg",
+          "bytes": 70461,
+          "sha256": "ffeaab90a40de7c566710c94a213355fc539ac3b3f642bf46b6e35a70d31f69a"
+        }
+      ]
+    },
+    {
+      "productKey": "multivitamin",
+      "name": "TrueBasics Multivitamin",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-multivitamin/SP-84937",
+      "images": [
+        {
+          "sourceUrl": "https://img9.hkrtcdn.com/22820/prd_2281918-TrueBasics-Multivitamin-60-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 52186,
+          "sha256": "372dc2ad08984eb744ee675c6cc61da01a37f08415d74b9df86cd7b9ced245c4"
+        },
+        {
+          "sourceUrl": "https://img9.hkrtcdn.com/22820/prd_2281928-TrueBasics-Multivitamin-60-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 56668,
+          "sha256": "6b804f29f917192da51b43e4ab0a69bdda3fd437fb56c6e81529959240a7db9d"
+        },
+        {
+          "sourceUrl": "https://img5.hkrtcdn.com/22820/prd_2281934-TrueBasics-Multivitamin-60-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 47801,
+          "sha256": "fab0b068003de8c1abb5c1f0a3205d8710be55ba0fe23b8e5bca61663995befe"
+        },
+        {
+          "sourceUrl": "https://img7.hkrtcdn.com/22820/prd_2281916-TrueBasics-Multivitamin-60-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 99172,
+          "sha256": "857b0815e6c91361fcbeb69a6344934ffbcdd3f21ba2ca7a2ebf6052427c1af0"
+        }
+      ]
+    },
+    {
+      "productKey": "advanced-multivitamin-for-men",
+      "name": "TrueBasics Advanced Multivitamin for Men",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-advanced-multivitamin-for-men/SP-61173",
+      "images": [
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/30401/prd_3040067-TrueBasics-Multivit-Men-30-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 58288,
+          "sha256": "8d35c2114d138b68507cc63f0c59710cfdac73d68765537badc4ed7d64e8e0cc"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/30401/prd_3040073-TrueBasics-Multivit-Men-30-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 69141,
+          "sha256": "db28cb00fdc6950048ce2e63a76af6a3fefda6fe20cc134f9197287e36c504bc"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/30401/prd_3040075-TrueBasics-Multivit-Men-30-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 67867,
+          "sha256": "6dfbb2f8029faa076f9aaf380c98ed05f7ca8c19ba4871f82ba90a33162d3f9d"
+        },
+        {
+          "sourceUrl": "https://img6.hkrtcdn.com/30401/prd_3040065-TrueBasics-Multivit-Men-30-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 73311,
+          "sha256": "01be1a011ac5381ab14b183837f79f49b1796e932933661c3639577315673f70"
+        }
+      ]
+    },
+    {
+      "productKey": "advanced-multivitamin-for-women",
+      "name": "TrueBasics Advanced Multivitamin for Women",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-advanced-multivitamin-for-women/SP-63519?navKey=VRNT-112129",
+      "images": [
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/30718/prd_3071793-TrueBasics-Advanced-Multivitamin-for-Women-90-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 86187,
+          "sha256": "953dad899dbf67a648dfe547f1dea46c4b4e4485302a68962066f70092316069"
+        },
+        {
+          "sourceUrl": "https://img4.hkrtcdn.com/30718/prd_3071753-TrueBasics-Advanced-Multivitamin-for-Women-90-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 65744,
+          "sha256": "2d85e9e02f425809642ba76d6f5c5a2a9ba385a76e4101706642cb083ac6835f"
+        },
+        {
+          "sourceUrl": "https://img2.hkrtcdn.com/30718/prd_3071751-TrueBasics-Advanced-Multivitamin-for-Women-90-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 87715,
+          "sha256": "1c45985a565bde942475eacd3a6c3e2cba6bf3b162b5c8bfe76c9b4df5495a97"
+        },
+        {
+          "sourceUrl": "https://img8.hkrtcdn.com/30718/prd_3071797-TrueBasics-Advanced-Multivitamin-for-Women-90-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 75562,
+          "sha256": "95c4c6d162024916a97dbef77bc159ac9857513841c3bf9c9df8e8fc1f44b93a"
+        }
+      ]
+    },
+    {
+      "productKey": "advanced-multivitamin-for-sports-with-amino-acids-energy-immunity-blends",
+      "name": "TrueBasics Advanced Multivitamin for Sports with Amino Acids, Energy & Immunity Blends",
+      "sourceUrl": "https://www.truebasics.com/sv/truebasics-advanced-multivitamin-for-sports-with-amino-acids/SP-63567",
+      "images": [
+        {
+          "sourceUrl": "https://img7.hkrtcdn.com/22438/prd_2243706-TrueBasics-Multivit-Sport-One-Daily-Vitamins-Minerals-Amino-Acids-with-Joint-Energy-Blends-30-tablets_o.jpg",
+          "file": "01.jpg",
+          "bytes": 145365,
+          "sha256": "87395b59ce0733306e275f1a7faacfb522c4fdbe657f32011a1517ff86ff7274"
+        },
+        {
+          "sourceUrl": "https://img1.hkrtcdn.com/22438/prd_2243720-TrueBasics-Multivit-Sport-One-Daily-Vitamins-Minerals-Amino-Acids-with-Joint-Energy-Blends-30-tablets_o.jpg",
+          "file": "02.jpg",
+          "bytes": 91577,
+          "sha256": "bea227f7fe29a414e574fd1ce122d5a782b1d8b72a486cb454f53720d7cd58a4"
+        },
+        {
+          "sourceUrl": "https://img3.hkrtcdn.com/22437/prd_2243682-TrueBasics-Multivit-Sport-One-Daily-Vitamins-Minerals-Amino-Acids-with-Joint-Energy-Blends-30-tablets_o.jpg",
+          "file": "03.jpg",
+          "bytes": 112550,
+          "sha256": "d62195e8272c067117a6a51af767a5b2b18c65e1cdb7df388b0d6b30c110cfe1"
+        },
+        {
+          "sourceUrl": "https://img3.hkrtcdn.com/22438/prd_2243702-TrueBasics-Multivit-Sport-One-Daily-Vitamins-Minerals-Amino-Acids-with-Joint-Energy-Blends-90-tablets-TrueBasics-Multivit-Sport-One-Daily-Vitamins-Minerals-Amino-Acids-with-Joint-Energy-Blends-30-tablets_o.jpg",
+          "file": "04.jpg",
+          "bytes": 116813,
+          "sha256": "3c82445af93cfad0612e5b7ec83a42b51ce26c5c07c3ef252ab4d890c064bd06"
+        }
+      ]
+    }
+  ],
+  "skipped": []
+}

@@ -29,6 +29,8 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
   const cart = useCartStore((state) => state.cart);
   const [address, setAddress] = useState<Address>();
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('razorpay');
+  const [couponCode, setCouponCode] = useState('');
+  const autoCouponCheck = useRef(false);
   const [quoteState, setQuoteState] = useState<QuoteState | null>(null);
   const [attempt, setAttempt] = useState<Attempt | null>(null);
   const [order, setOrder] = useState<OrderSummary | null>(null);
@@ -39,6 +41,7 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
     uid: customer.uid,
     address,
     paymentMethod,
+    couponCode,
     items: cart.lines.map((line) => [
       line.productId,
       line.variantId,
@@ -71,13 +74,13 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
     setOrder(null);
     setError('');
   }
-  const createdSession = attempt?.session;
+  const hasAttempt = attempt?.signature === signature;
   useEffect(() => {
     if (!quoteState) return;
     const timer = setTimeout(
       () => {
         setQuoteState(null);
-        if (!createdSession)
+        if (!hasAttempt)
           setError(
             'Your delivery quote has expired. Check delivery again for current pricing.',
           );
@@ -85,11 +88,11 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
       Math.max(0, Date.parse(quoteState.value.expiresAt) - Date.now()),
     );
     return () => clearTimeout(timer);
-  }, [quoteState, createdSession]);
+  }, [quoteState, hasAttempt]);
 
   const activeAttempt = attempt?.signature === signature ? attempt : null;
   const session = activeAttempt?.session;
-  const quote = session
+  const quote = activeAttempt
     ? activeAttempt.quote
     : quoteState?.signature === signature
       ? quoteState.value
@@ -104,15 +107,49 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
       'refunded',
     ].includes(order.status);
   const canCheckDelivery = Boolean(
-    address && cart.lines.length && !busy && (!session || terminal),
+    address && cart.lines.length && !busy && (!activeAttempt || terminal),
   );
   const canContinue = Boolean(
     address &&
     cart.lines.length &&
     !busy &&
     !terminal &&
-    ((session && activeAttempt?.phase === 'ready') || (!session && quote)),
+    ((activeAttempt && activeAttempt.phase === 'ready') ||
+      (!activeAttempt && quote)),
   );
+
+  const paymentLocked = Boolean(attempt && !terminal);
+  const couponLocked = busy || paymentLocked;
+  function applyCoupon(value: string) {
+    if (couponLocked) return;
+    const normalized = value.trim().toUpperCase();
+    if (!/^[A-Z0-9_-]{3,32}$/.test(normalized)) {
+      setError(
+        'Enter a code with 3–32 letters, numbers, hyphens or underscores.',
+      );
+      return;
+    }
+    if (!address) {
+      setError('Choose a delivery address before applying a coupon.');
+      return;
+    }
+    if (normalized === couponCode) {
+      void checkDelivery();
+      return;
+    }
+    autoCouponCheck.current = true;
+    setCouponCode(normalized);
+  }
+  function removeCoupon() {
+    if (couponLocked) return;
+    autoCouponCheck.current = false;
+    setCouponCode('');
+  }
+  useEffect(() => {
+    if (!autoCouponCheck.current) return;
+    autoCouponCheck.current = false;
+    void checkDelivery();
+  }, [couponCode]);
 
   function begin() {
     if (running.current) return null;
@@ -171,6 +208,7 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
           quantity: line.quantity,
         })),
         paymentMethod,
+        couponCode || undefined,
       );
       if (!request.valid()) return;
       if (Date.parse(value.expiresAt) <= Date.now()) {
@@ -194,7 +232,10 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
   }
   async function continueCheckout() {
     if (!canContinue || !address) return;
-    if (!session && (!quote || Date.parse(quote.expiresAt) <= Date.now())) {
+    if (
+      !activeAttempt &&
+      (!quote || Date.parse(quote.expiresAt) <= Date.now())
+    ) {
       setQuoteState(null);
       setError(
         'Your delivery quote has expired. Check delivery again for current pricing.',
@@ -260,7 +301,20 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
         failure.name !== 'PaymentUnavailableError'
       )
         next.phase = 'review';
-      setAttempt({ ...next });
+      const rejectedBeforeOrder =
+        !next.session &&
+        failure instanceof Error &&
+        failure.name === 'StoreRequestError' &&
+        (failure as Error & { status?: number }).status === 400 &&
+        /^(Cart changed\. Please check delivery again\.|Quote expired\. Please check delivery again\.|Payment mode changed\. Please check delivery again\.|Coupon (not found|is not active|has expired|minimum spend is not met|already used or reserved by your account|usage limit reached))$/.test(
+          failure.message,
+        );
+      if (rejectedBeforeOrder) {
+        // These server validation errors roll back before creating an order. Network/provider
+        // failures retain the attempt and its idempotency key because an order may exist.
+        setAttempt(null);
+        setQuoteState(null);
+      } else setAttempt({ ...next });
       setError(
         checkoutErrorMessage(
           failure,
@@ -309,9 +363,18 @@ export function useCheckout(customer: { uid: string; email?: string | null }) {
   return {
     cart,
     address,
-    setAddress,
+    setAddress: (value: Address) => {
+      if (!paymentLocked) setAddress(value);
+    },
     paymentMethod,
-    setPaymentMethod,
+    setPaymentMethod: (value: PaymentMethod) => {
+      if (!paymentLocked) setPaymentMethod(value);
+    },
+    paymentLocked,
+    couponCode,
+    couponLocked,
+    applyCoupon,
+    removeCoupon,
     quote,
     session,
     order,

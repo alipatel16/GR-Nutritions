@@ -1,0 +1,805 @@
+{
+  "collectedAt": "2026-11-05T09:11:15.085Z",
+  "brand": "Kapiva",
+  "sourceUrl": "https://kapiva.in/",
+  "logoUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/images/stencil/250x100/subtract_1617795361__77099.original.png",
+  "products": [
+    {
+      "productKey": "dia-free-juice",
+      "name": "Kapiva Dia Free Juice",
+      "sourceUrl": "https://kapiva.in/kapiva-dia-free-juice-1-l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/350/images/14387/1__53888.1789480373.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 182807,
+          "sha256": "3ef3275fa5fab02e2bac2613f2cc95214f0bb47b9aadbcffe03426e50f5d8703"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/350/images/14379/20_copy-01__45052.1789462925.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 238016,
+          "sha256": "1d276f892f8ea1e0163092b0ac7b2a6a86d23aad5eb0334eb1438c626ef61cbc"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/350/images/14381/20_copy__62094.1789462925.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 272063,
+          "sha256": "54cf4af7cf888fdba874a19cc939014b1eab9b259def50d8fb4273c16ebe11ed"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/350/images/14382/20_copy-03__38063.1789462925.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 215295,
+          "sha256": "7abc445de1816c2acb514e91aaf20aedce1a8a0d0fc61586a17e5b92c13e9d45"
+        }
+      ]
+    },
+    {
+      "productKey": "dia-free-tablets",
+      "name": "Kapiva Dia Free Tablets",
+      "sourceUrl": "https://kapiva.in/blood-sugar-chronic-care/dia-free-capsules-helps-manage-sugar-levels/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1294/images/13513/FOP__54061.1779347868.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 104093,
+          "sha256": "c9e13ab2c23d2702cbc3a1b525e942456295d9a20b4c5f135d4bb55184ec30f7"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1294/images/13517/BOP__25191.1779347868.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 156747,
+          "sha256": "849334925c85d930272d2b62478756018c5e5d784d12c54d1b8d21eccdd4a8d9"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1294/images/13510/SOP__72109.1779347868.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 168744,
+          "sha256": "b2c94205225685d5c686d87fdfc80e11036ab538fa7fc971e899f385ea0694e8"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1294/images/13520/1__79477.1779347868.1280.1280.png?c=1",
+          "file": "04.png",
+          "bytes": 761828,
+          "sha256": "d2e54d74269f079bd98c05aec88b450e58c0892d6f6eb8b3196412226d9925a5"
+        }
+      ]
+    },
+    {
+      "productKey": "karela-jamun-juice",
+      "name": "Kapiva Karela Jamun Juice",
+      "sourceUrl": "https://kapiva.in/diabetes-care/kapiva-karela-jamun-juice-1-l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/343/images/12789/Karela_Jamun_Juice343__83396.1781178554.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 106219,
+          "sha256": "92020afa5da04f2833d25721192c0c219d563f13c83ce1e7fcd9d6c2f6e622b0"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/343/images/6401/Karela-Jamun_monocarton-FOP__83209.1781178554.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 110089,
+          "sha256": "9be094ad9cdcddfda42d68f306963345e6c9a802815c6522e97e36d932a718d9"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/343/images/6404/Karela-Jamun_monocarton-SOP1__95043.1781178554.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 148109,
+          "sha256": "5e98c07b6c6f51a7b249efa2ab0a62595a106dca3ac189088883809684d43192"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/343/images/6408/Karela-Jamun_monocarton-SOP2__05612.1781178554.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 134706,
+          "sha256": "959f9e2ca5b63ff24837757bd6b130e1ef89cb487e02a96dda830ccad1c6230d"
+        }
+      ]
+    },
+    {
+      "productKey": "artho-sure-juice",
+      "name": "Kapiva Artho Sure Juice",
+      "sourceUrl": "https://kapiva.in/weight-pain-mangement/artho-sure-juice/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1383/images/14040/7__10878.1779354637.1280.1280__18066.1787122156.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 188099,
+          "sha256": "54198c766b614908a0aaac56c1540ee9d5ce500d5851555fb0605fbe24e09e60"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1383/images/14034/83__71815.1779354637.1280.1280__85735.1787122156.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 158352,
+          "sha256": "76a61c5e36585838ffc6bc435928d3e11a3bd45e87c256ece709af3e2cd3968e"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1383/images/14045/2__15312.1779354637.1280.1280__31595.1787122156.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 178113,
+          "sha256": "ca62393412fee531db7b826e7e5cab2718193e2626eaef77a46ba1ebb6887fa0"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1383/images/14039/3__11893.1779354637.1280.1280__15116.1787122156.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 160466,
+          "sha256": "2f8b4f42c992eee0bda621c9b5dd47429fb6ad638a7c2ba56368b6557f499a0b"
+        }
+      ]
+    },
+    {
+      "productKey": "sea-buckthorn-juice",
+      "name": "Kapiva Sea Buckthorn Juice",
+      "sourceUrl": "https://kapiva.in/pure-herbs/sea-buckthorn-juice/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1345/images/13623/FOP_D2C__06100.1789047072.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 189000,
+          "sha256": "b2c23c04c7070cdf78405e70488422de63c9f0e8dd25eb79482b82d200944f2b"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1345/images/13849/BOP_updated__69864.1789047072.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 132207,
+          "sha256": "fd423743f2e8457b97d734f440cbb81d5ff594fd85258e720d58a219072149a6"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1345/images/13848/SOP-2__08115.1789047072.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 141964,
+          "sha256": "469a7ba04f2067b4e12e355ad10c39ee4565043197d752f57b1ca4a175620e21"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1345/images/13847/SOP-1__50462.1789047072.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 127205,
+          "sha256": "f570d11f039751fd967055cb002cd7a2d00f536b586b09ec2b9359692b2d7f78"
+        }
+      ]
+    },
+    {
+      "productKey": "himalayan-shilajit-resin",
+      "name": "Kapiva Himalayan Shilajit Resin",
+      "sourceUrl": "https://kapiva.in/mens-health/kapiva-himalayan-shilajit-resin-20g/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/467/images/13713/Hiamalayan_Shilajit467__10853.1778840638__31189.1785213033.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 81390,
+          "sha256": "f944d9df126fdf773f80ca55b3c0109c28759a361b07cc813d62d4a5867f80f3"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/467/images/11123/SOP__32700.1785213033.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 43516,
+          "sha256": "27b01e9be42990ff24c926fd7dc36c3435916cfe1e83c22f621bc352e38bd07f"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/467/images/11118/SOP2__82127.1785213033.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 39769,
+          "sha256": "3015013df1a74e1dbf384e798dbe1aebddd4c65fd934263cd67bfdd53bcfb314"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/467/images/11113/SOP3__11443.1785213033.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 37836,
+          "sha256": "a5f83d12515664148401b976852d9d0c8283dcaea2b4664d7c39bf45e148a3b7"
+        }
+      ]
+    },
+    {
+      "productKey": "liver-care-juice",
+      "name": "Kapiva Liver Care Juice",
+      "sourceUrl": "https://kapiva.in/solution/detox/liver-care-juice/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/553/images/12791/Liver_Care_Juice553__32225.1779352471.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 94956,
+          "sha256": "072963bbf0742412a738074101aef15b0d71e75d7e02309a895af44244316ed9"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/553/images/11566/monocarton_FOP__66153.1779352471.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 117230,
+          "sha256": "b1fb0d7dcb1fd927431a8f9062eea0d012693901d16f646a2cd00bc916f53499"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/553/images/11577/lable_SOP__03332.1782738008.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 155788,
+          "sha256": "05d34d8f31f28ab8581c15532da20770e80d527a5dc836f3d50dedd34f879abe"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/553/images/11576/monocarton_BOP__59884.1782738008.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 162034,
+          "sha256": "f097864d59a4ebd1c4bb3d110342a3e43409af7b3e6509d0029c50ed62702206"
+        }
+      ]
+    },
+    {
+      "productKey": "shilajit-gold-resin",
+      "name": "Kapiva Shilajit Gold Resin",
+      "sourceUrl": "https://kapiva.in/mens-health/him-foods-shilajit-gold-20g/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/819/images/12799/Shilajit_Gold_Resin819__86807.1785213000.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 131820,
+          "sha256": "643ac249908bf58eecc304f2104456f75ba13c842e06ee37589d09bf1df5c4c7"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/product_images/attribute_rule_images/647_source_1789536141.webp",
+          "file": "02.webp",
+          "bytes": 48380,
+          "sha256": "e6e9f5c7fd1324d873b2153648ab7c778456239559f09f476e4103f535df84ff"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/819/images/13544/1-2-us-vs-them_1__44601.1779344872.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 117495,
+          "sha256": "c755eeeaa8094f1af9c9f1991ff16e2f40ec189285f4ea0e47da86036564f7c7"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/819/images/14389/933435__69058.1789536110.1280.1280.webp?c=1",
+          "file": "04.webp",
+          "bytes": 67820,
+          "sha256": "a2123f62b8be66e542a5b5e8e68f725d38a0a3dae0db1039d94b42cb865a8080"
+        }
+      ]
+    },
+    {
+      "productKey": "her-foods-shatavari-balance-juice",
+      "name": "Kapiva Her Foods Shatavari Balance Juice",
+      "sourceUrl": "https://kapiva.in/women-s-health/shatavari-balance-juice/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1291/images/12588/Sharavari_Juice_FOP_Website__98439.1747823209.1280.1280__12025.1754375598.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 183974,
+          "sha256": "afa96ac58ae35555734e0d32560717bd7448815d63c09150c4790e77de28a1ea"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1291/images/12599/monocarton_BOP__41471.1747823209.1280.1280__60473.1754375598.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 160454,
+          "sha256": "51101490ee85901433b00b6dd37cce6a58edabf6764e5f6bdd1e088f0787ea36"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1291/images/12591/monocarton_FOP__69300.1747823209.1280.1280__31143.1754375598.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 158721,
+          "sha256": "1c5ebf06693143a96c4154a7b5d21913f2dad8dbf45d64edaa6b3b325444c15a"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1291/images/12600/monocarton_SOP_2__94532.1747823209.1280.1280__41606.1754375598.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 204978,
+          "sha256": "94da72726d2c7eefe54316539a0deb1f8ba19cd335cbe4e5fe12152de884fd9c"
+        }
+      ]
+    },
+    {
+      "productKey": "shilajit-energy-resin",
+      "name": "Kapiva Shilajit Energy Resin",
+      "sourceUrl": "https://kapiva.in/men-s-health/shilajit-energy-resin/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1292/images/12654/FOP__00508.1754891397.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 130089,
+          "sha256": "a5cd718a2e5b67536b01560f8d477296fb504e0a0fcbf34f0ce7e3f9940af83f"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1292/images/12658/FOP_jar__32266.1754891397.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 85888,
+          "sha256": "05a1a30e681a6f74f49cf9ee5920e0646c1dbdddb517803e57f5ce2544170b5d"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1292/images/12653/FOP_White_background__33872.1754891397.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 124229,
+          "sha256": "dd50b468abfcbefe103ec860cc86ad770dad65bec15720d96611da8e2b4da815"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1292/images/12648/SOP_1__96288.1754891397.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 41761,
+          "sha256": "57cbd031e950ebdc52e9d7de29471122b6ee2a4e94a4bbb93e29e6dfdd18ae58"
+        }
+      ]
+    },
+    {
+      "productKey": "shilajit-energy-capsules",
+      "name": "Kapiva Shilajit Energy Capsules",
+      "sourceUrl": "https://kapiva.in/mens-health/shilajit-energy-capsules/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1182/images/12794/Shilajit_Energy_Capsules1182__82580.1785214680.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 76436,
+          "sha256": "335b820628f4c81b0bd53bf8e1f651639894a85231747cee8e945497abbef1d8"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/product_images/attribute_rule_images/1554_source_1741607901.jpg",
+          "file": "02.jpg",
+          "bytes": 159145,
+          "sha256": "3e12fdb6fe4f2c436e74a1db97526c63e8991025b2005c629dbc443ba0e9ca7c"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1182/images/11703/Shilajit_Capsule__75150.1744796745.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 209039,
+          "sha256": "4325b058b2abc63339738f141d764fd603c7780ad38192ea165d8329af453801"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1182/images/10982/Ecom_2__59228.1744796766.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 136236,
+          "sha256": "5c1c6377f335ba63ec5b2e878191195d522b17237abad86683ac6106942851e7"
+        }
+      ]
+    },
+    {
+      "productKey": "shilajit-energy-sips",
+      "name": "Kapiva Shilajit Energy Sips",
+      "sourceUrl": "https://kapiva.in/mens-health/shilajit-energy-sips/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1252/images/12796/Shilajit_Energy_Sips1252__98795.1785213143.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 83416,
+          "sha256": "847cb1a257541be3571924331b92ad71a06d2a0c291f244348d28668543490c3"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1252/images/13825/energy_sips__45978.1784716021.1280.1280.webp?c=1",
+          "file": "02.webp",
+          "bytes": 146420,
+          "sha256": "bb8bad096333b9123fd4387cadf03d270a0f93bb921a7c7d1ed2c1448c96badd"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1252/images/11742/Ecom_02__65566.1745240949.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 159627,
+          "sha256": "9dd9d13e8293cdc3244ec98369eb6ba94a8d99be77c7de3a555eb3d3532fcf01"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1252/images/11739/Ecom_03__45752.1745240949.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 180557,
+          "sha256": "f51a13843b15afaf6bc175134c920b53bb94f5ff9db5a406187f6dd32444f9bb"
+        }
+      ]
+    },
+    {
+      "productKey": "moringa-powder",
+      "name": "Kapiva Moringa Powder",
+      "sourceUrl": "https://kapiva.in/daily-wellness/moringa-powder-200g/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1184/images/10583/D2C_FOP__44335.1735541197.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 202935,
+          "sha256": "58848d3582707d829d05a5557729a673e459237d05df1b154648143ab416f999"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1184/images/10451/BOP__34059.1735541197.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 192722,
+          "sha256": "5593cc8dc4b8f2fe18fe267b84646f04dc65b6928d51393fff9c1883b397d011"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1184/images/10453/FOP__40638.1735541197.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 151063,
+          "sha256": "d143309ae3b28949d318378d6043581cbee5dd9228db08604a6f04d816f28169"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1184/images/10588/2__54057.1735541208.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 211008,
+          "sha256": "86c1272a356f0c35983b0b37f472b2d9831d6c4bf99db598cb5673307f5d65b0"
+        }
+      ]
+    },
+    {
+      "productKey": "shilajit-energy-mix",
+      "name": "Kapiva Shilajit Energy Mix",
+      "sourceUrl": "https://kapiva.in/mens-health/shilajit-energy-mix/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1259/images/12067/D2C___41868.1746698707.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 196026,
+          "sha256": "b9b6c01c3979fec073f4137b762b26d6e0e12ef4f75d9c73a5d56690b7967b6a"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1259/images/11747/BOP__82882.1745391813.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 193078,
+          "sha256": "5efa79c0f9c62151b841171a7b1e9bb413466bc6ff3056aa8364db06faf987fb"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1259/images/11754/SOP_1__38505.1745391813.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 61000,
+          "sha256": "f3c536cb9f8bb2c6e4c680249aac2e8f297cb68d57efd82a1d9adb044c9289d3"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1259/images/11751/SOP_2__05146.1745391813.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 103284,
+          "sha256": "31931e68499fe6ed5af3ad3a3b2487841a9a0edfcf4b5dbfbb75f55c2e4cded7"
+        }
+      ]
+    },
+    {
+      "productKey": "him-foods-endurance",
+      "name": "Kapiva Him Foods Endurance",
+      "sourceUrl": "https://kapiva.in/solution/mens-care/him-foods-endurance-60-capsules/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/690/images/13374/Ecom_0__93271.1772001228.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 118225,
+          "sha256": "02898c83037e95b6e9eb699aaf03b1ee6945963c02cfcf8c04c317a08fafdd24"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/690/images/13375/Ecom_1__38318.1772001228.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 162876,
+          "sha256": "2cd2f1a9dcb98ffbc63cb15ef934b8dfbf93ed3d48685ff44db7f39cc77ac35d"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/690/images/13376/Ecom_2__53062.1772001228.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 228604,
+          "sha256": "2f9ae34420ac17b9832864eabb165eccd8b406f0560909a49a36af7dcde2ceb0"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/690/images/13377/Ecom_3__02860.1772001228.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 159960,
+          "sha256": "5bf20eec21160f7813abee97cf049657223a1cf2e2823f16a9378e1fee6f305a"
+        }
+      ]
+    },
+    {
+      "productKey": "cholest-fit-juice",
+      "name": "Kapiva Cholest Fit Juice",
+      "sourceUrl": "https://kapiva.in/bp-care-cholesterol/cholest-fit-juice/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1256/images/14011/2_5__13643.1790245891.1280.1280.png?c=1",
+          "file": "01.png",
+          "bytes": 768576,
+          "sha256": "ad927e01af6983cf40a151f525a2e72fb1def72a077713ee76b5baef722284ef"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1256/images/14010/First_image_D2C__52916.1786619391.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 207912,
+          "sha256": "d84d8657a68026bfcf11c38d039f1fa84cad81a78f0a365de84ed4f9a5924a6a"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1256/images/14004/Transition_Image__93718.1790245891.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 201294,
+          "sha256": "a21254841168a4f5126523b4706ded94f112dc4b0af2e7971b28b3ad836e94bd"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1256/images/12620/2__68583.1790245891.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 82012,
+          "sha256": "c93adb76c551870ca73364f2d7051b688e4150dae6cf7252d2eaad2500168c13"
+        }
+      ]
+    },
+    {
+      "productKey": "bp-xpert-juice",
+      "name": "Kapiva BP Xpert Juice",
+      "sourceUrl": "https://kapiva.in/bp-care-juice-with-10-potent-herbs/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/593/images/13712/2_3_1__30344.1791526631.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 208001,
+          "sha256": "84fef5a894569c40c02145edede0914b3a5f01bd33578a70eb59308c615c9fd9"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/593/images/14337/Artboard_1_7__06508.1789042624.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 167858,
+          "sha256": "102738f08fd3ef3d5e15a74670eba050fc102ffbdbdcb90dfe2d359a4a031f2e"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/593/images/13828/new_and_improve__32478.1784780249.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 196379,
+          "sha256": "916f9e5979a9f4eda28c2943cc31d36ab26091196a3280bbb7a01bec606bcf53"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/593/images/14451/3_6__65952.1791526631.1280.1280.png?c=1",
+          "file": "04.png",
+          "bytes": 744246,
+          "sha256": "3d6ac5ebac936525f82ea0c80528864fba317dcfcc0b8505ddde8612ed9869b7"
+        }
+      ]
+    },
+    {
+      "productKey": "bp-care-capsules",
+      "name": "Kapiva BP Care Capsules",
+      "sourceUrl": "https://kapiva.in/solution/bp-care-capsules/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1013/images/14503/BP-11__97472.1793699715.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 110239,
+          "sha256": "5a5975211488e95af6604f2fe39a30aad3185cfb0e19df1e5a3352c77b5d0d71"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1013/images/14505/BP-1__48851.1793699715.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 149717,
+          "sha256": "8ff01ef3e088c74fcc30ebcace5b738a82374c84d61999016e9c466722c3ba57"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1013/images/14504/BP-2__07686.1793699714.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 178794,
+          "sha256": "d6d50d92f8354387c3fefd2cee3860f4e80490c269affb18489d686349dff5ca"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1013/images/14512/BP-7__00048.1793699736.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 208981,
+          "sha256": "19cfb17135974bfc03334beb7a3829f088446c829c1984ce3d6a2e4d90b218a7"
+        }
+      ]
+    },
+    {
+      "productKey": "cholest-fit-capsules-90-day-detox",
+      "name": "Kapiva Cholest Fit Capsules",
+      "sourceUrl": "https://kapiva.in/bp-care-cholesterol/cholest-fit-capsules-maintains-healthy-cholesterol/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1283/images/12406/8__14930.1793344277.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 108594,
+          "sha256": "9d0d6cedee23564f5ae9e551546c1f0564e626dc7d486dc0e7f1f9d2c87b42a1"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1283/images/14501/First-Ecomm-cholest-caps__92302.1793344277.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 206748,
+          "sha256": "8db4496a797f39eea934839403d395a4e77a37823af9a8f477707f8d80bbf486"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1283/images/12413/1__35765.1793344277.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 172061,
+          "sha256": "c6ccf0618717b0f89b4914dcb98d3eb1b9378e44121528a13c230bb1cd55ec51"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/1283/images/12415/2__66308.1793344277.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 264859,
+          "sha256": "09824a159961bcb41cab5b2265d82a85f9286bea82a48892e8cfc1582bc71e7a"
+        }
+      ]
+    },
+    {
+      "productKey": "wild-amla-juice",
+      "name": "Kapiva Wild Amla Juice",
+      "sourceUrl": "https://kapiva.in/immunity/kapiva-amla-juice-1-l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/398/images/12803/Wild_Amla_Juice398__79216.1760705361.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 86558,
+          "sha256": "dac5b6070f5563e2a9652e1aa7074020550ca971c1c9d5db0f7f6a07c56069a0"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/398/images/5373/ECOM_Amla_Juice_0__81503.1761629164.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 114777,
+          "sha256": "9bdefbbdd6bf9950c66324bea0a8fc36f78904343669275186a9e3961f9fbcd3"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/398/images/3784/ECOM_Amla_1_2_11zon__11145.1761629164.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 179002,
+          "sha256": "cd7620a1d9789d5fe6db1cf57217da9a0c6d7cc24c8aece17b338fceb3ebd60b"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/398/images/5374/ECOM_Amla_Juice_01__38620.1673248339.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 196602,
+          "sha256": "b53b562f5605ab4a65db9d846404df887ebedee69cfbb4737409e20a556e6a3e"
+        }
+      ]
+    },
+    {
+      "productKey": "wheat-grass-juice",
+      "name": "Kapiva Wheat Grass Juice",
+      "sourceUrl": "https://kapiva.in/detox/kapiva-wheat-grass-juice-1-l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/272/images/12802/Wheatgrass_Juice272__53560.1760705294.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 99731,
+          "sha256": "de7441d5006a8fbdba31b4a40ad00b48da439088916eb13c72321906816d9f48"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/272/images/8269/wheatgrassmonocarton_BOP__29894.1760705294.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 158214,
+          "sha256": "36110fad7b260b86d8d61dd635043033d43af12dbd6836d42272cfcfea0da043"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/272/images/8271/wheatgrassmonocarton_FOP__62945.1760705294.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 145209,
+          "sha256": "7df249dff76b5f239350d9ae1cb1520260110efaeb10d4487d6ab79417e8689a"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/272/images/8272/wheatgrassmonocarton_SOP1__54107.1760705294.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 182951,
+          "sha256": "2ac20a5385cf283c1bcbff3b5be1706460581d75bca2c88cfbb2cec470ef0275"
+        }
+      ]
+    },
+    {
+      "productKey": "noni-juice",
+      "name": "Kapiva Noni Juice",
+      "sourceUrl": "https://kapiva.in/detox/kapiva-noni-juice-1l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/261/images/12793/Noni_Juice261__91189.1775480899.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 95411,
+          "sha256": "3672d054a5d32881643502ed5d0a4b35c0beebd41a0de50a9b758474a713d2f7"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/261/images/13586/BOP_1__77938.1777375129.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 164387,
+          "sha256": "fcea249b648e73780903ae9fccb8e0c5b00fe42d91ee40348dd03e0f39a50cf9"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/261/images/8238/noni_monocarton_FOP__34593.1775480899.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 121705,
+          "sha256": "2d8740cc802592b19c4b5fd2cf590581d23a01bc7dccd8534f7c0641242e9c39"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/261/images/8244/noni_monocarton_SOP1__46961.1775480899.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 162148,
+          "sha256": "95cb92de06b2244168fc127020618103c87eae4bc2870d8c37719a2915b205af"
+        }
+      ]
+    },
+    {
+      "productKey": "ashwagandha-gold-capsules",
+      "name": "Kapiva Ashwagandha Gold Capsules",
+      "sourceUrl": "https://kapiva.in/solution/daily-wellness/ashwagandha-gold-capsules-60-caps/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/722/images/12781/Ashwagandha_Gold722__45190.1760703582.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 82568,
+          "sha256": "acf1dc5b7f935e2dac344913529fc41903421fc060bfbaf893770cbdc71d4cbb"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/product_images/attribute_rule_images/759_source_1784715903.webp",
+          "file": "02.webp",
+          "bytes": 66454,
+          "sha256": "6d2925ffff166dd21f6a865eca68a8c893c9be92f821c19a9c894f3eb1e7b96a"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/722/images/11066/Ashwagandha_ecomms1__45603.1738847254.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 222135,
+          "sha256": "82532f3312241b6cb59872957808d0ad77f240586c56679dc37d28b01aaa7de0"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/722/images/11065/Ashwagandha_ecomms2__35944.1738847254.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 421930,
+          "sha256": "1e57a101d895404a8eeb32ea7471212973b080c027d360d920dc90446174461c"
+        }
+      ]
+    },
+    {
+      "productKey": "tulsi-giloy-juice",
+      "name": "Kapiva Tulsi Giloy Juice",
+      "sourceUrl": "https://kapiva.in/immunity/kapiva-tulsi-giloy-juice-1-l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/435/images/10515/FOP__07221.1734694839.1280.1280.png?c=1",
+          "file": "01.png",
+          "bytes": 703344,
+          "sha256": "f4373961f4aff5d3ffd41c2a96ed369bdd762f47d896733aea375d5adc251329"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/435/images/10512/2__18401.1734694837.1280.1280.png?c=1",
+          "file": "02.png",
+          "bytes": 498277,
+          "sha256": "327fdf02cb5713050dccd092f7f56256317a4b0a5ec1caf55754bd5c996a0e58"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/435/images/10511/3__93670.1734694835.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 170771,
+          "sha256": "a7455556d8ff550c80cdde6a7171f9158208ad2a0449a04c4187992c0151b41c"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/435/images/10510/4__48728.1734694834.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 181097,
+          "sha256": "3cff017b1a467c43efa9fa61c4bcb0caced36a2e16365101dd3a0e51bf12dcd5"
+        }
+      ]
+    },
+    {
+      "productKey": "neem-juice-1l",
+      "name": "Kapiva Neem Juice 1L",
+      "sourceUrl": "https://kapiva.in/diabetes-care/kapiva-neem-juice-1-l/",
+      "images": [
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/321/images/12792/neem_juice321__24472.1760704700.1280.1280.jpg?c=1",
+          "file": "01.jpg",
+          "bytes": 109232,
+          "sha256": "44b997e7f5eff711d6197fdbf46c032b8deff4ef8966f5475f8fbe7d732cd0b3"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/321/images/5505/ECOM_Neem_0__27033.1760704700.1280.1280.jpg?c=1",
+          "file": "02.jpg",
+          "bytes": 141712,
+          "sha256": "00e42bef1757a373536a136adcc4117d6f94a3b52f5d283e2d1a015db413ad3f"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/321/images/5515/ECOM_Neem_1__45275.1760704700.1280.1280.jpg?c=1",
+          "file": "03.jpg",
+          "bytes": 122520,
+          "sha256": "40bcda7e00aa2b1e4274d3e7721e59297bd7a7c7168b7887098f7292cf8d8b42"
+        },
+        {
+          "sourceUrl": "https://cdn11.bigcommerce.com/s-5h8rqg02f8/products/321/images/5513/ECOM_Neem_2__28696.1760704700.1280.1280.jpg?c=1",
+          "file": "04.jpg",
+          "bytes": 222467,
+          "sha256": "f79f2767610784f5352e7918518c22a5a9383e58b675f05b57657d24a4a9af84"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "url": "https://kapiva.in/mens-health/shilajit-energy-gummies/",
+      "reason": "No verified pack-specificprice"
+    },
+    {
+      "url": "https://kapiva.in/daily-diet/kapiva-organic-gulkand-300gm/",
+      "reason": "Grocery item or duplicate combination outside wellness-only scope"
+    },
+    {
+      "url": "https://kapiva.in/skin-hair/virgin-coconut-oil-500-ml/",
+      "reason": "Grocery item or duplicate combination outside wellness-only scope"
+    },
+    {
+      "url": "https://kapiva.in/daily-diet/organic-honey-500g/",
+      "reason": "Grocery item or duplicate combination outside wellness-only scope"
+    },
+    {
+      "url": "https://kapiva.in/skin-hair/kapiva-magic-mix-aloe-juice-1l-amla-juice-1l/",
+      "reason": "Grocery item or duplicate combination outside wellness-only scope"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { AppText } from "@/components/ui/AppText";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { addressFieldErrors, type FieldErrors } from "@/lib/form-errors";
-import { colors } from "@/theme/tokens";
+import { colors, typography } from "@/theme/tokens";
 import { addressRepository } from "./address-repository";
 import {
   addressSchema,
@@ -110,7 +110,7 @@ function AddressBookContent({ uid, onSelect, selectedId }: AddressBookProps) {
   return (
     <View style={{ gap: 16 }}>
       <View style={styles.heading}>
-        <AppText variant="title">DELIVERY ADDRESSES</AppText>
+        <AppText style={styles.title}>Delivery addresses</AppText>
         <Button
           variant="ghost"
           onPress={() => {
@@ -145,15 +145,12 @@ function AddressBookContent({ uid, onSelect, selectedId }: AddressBookProps) {
           key={a.id}
           style={[
             styles.address,
-            selectedId === a.id && {
-              borderColor: colors.violet,
-              borderWidth: 2,
-            },
+            selectedId === a.id && styles.selected,
           ]}
         >
           <View style={styles.heading}>
             <View style={styles.addressLabel}>
-              <MapPin size={14} color={colors.violet} />
+              <MapPin size={14} color={colors.mintInk} />
               <AppText variant="label">
                 {a.label}
                 {defaultId === a.id ? " · Default" : ""}
@@ -191,17 +188,19 @@ function AddressBookContent({ uid, onSelect, selectedId }: AddressBookProps) {
             {"\n"}
             {a.phone}
           </AppText>
-          <View style={{ flexDirection: "row", gap: 12, flexWrap: "wrap" }}>
+          <View style={styles.addressActions}>
             {onSelect && (
               <Button
                 variant={selectedId === a.id ? "primary" : "ghost"}
                 onPress={() => onSelect(a)}
+                style={styles.smallButton}
               >
                 {selectedId === a.id ? "Selected" : "Deliver here"}
               </Button>
             )}
             {defaultId !== a.id && (
               <Button
+                style={styles.smallButton}
                 variant="ghost"
                 onPress={async () => {
                   try {
@@ -247,8 +246,8 @@ function AddressBookContent({ uid, onSelect, selectedId }: AddressBookProps) {
       )}
       {show && (
         <View style={styles.address}>
-          <AppText variant="title">
-            {editing ? "EDIT ADDRESS" : "NEW ADDRESS"}
+          <AppText style={styles.title}>
+            {editing ? "Edit address" : "New address"}
           </AppText>
           {(
             [
@@ -317,14 +316,18 @@ const styles = StyleSheet.create({
     gap: 12,
     flexWrap: "wrap",
   },
+  title: { color: colors.ink, fontFamily: typography.bodyBold, fontSize: 18 },
   address: {
-    backgroundColor: "#FFF",
+    backgroundColor: colors.paper,
     borderColor: colors.line,
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 20,
-    gap: 14,
+    borderWidth: 1.5,
+    borderRadius: 12,
+    padding: 16,
+    gap: 8,
   },
+  selected: { backgroundColor: colors.mintSoft, borderColor: colors.mint },
+  addressActions: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginTop: 4 },
+  smallButton: { flexGrow: 1, minHeight: 40, paddingHorizontal: 14, paddingVertical: 8 },
   addressLabel: {
     flexDirection: "row",
     gap: 8,

@@ -20,3 +20,7 @@ it.each([{mode:'test',status:'paid'},{mode:'live',status:'payment_pending'}])('d
   await render(<AdminOrderCard order={{...order,...value,mode:value.mode as 'test'|'live'}} onChanged={()=>{}} />);
   expect(screen.queryByRole('button',{name:'Create Shiprocket order'})).toBeNull();
 });
+it('shows the stored coupon discount in the order details',async()=>{
+ await render(<AdminOrderCard order={{...order,couponCode:'SAVE10',discountPaise:10000}} onChanged={()=>{}}/>);
+ expect(screen.getByText('Coupon SAVE10 · Discount ₹100')).toBeOnTheScreen();
+});

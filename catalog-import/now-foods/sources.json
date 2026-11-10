@@ -1,0 +1,652 @@
+{
+  "collectedAt": "2026-11-05T14:00:24.826Z",
+  "brand": "NOW Foods",
+  "sourceUrl": "https://www.nowfoods.com",
+  "logoUrl": "",
+  "products": [
+    {
+      "productKey": "now-foods-gaba-750-mg",
+      "name": "NOW Foods GABA 750 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-gaba-750mg-relaxation-and-neurotransmitter-support-100-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-004_B0013OVZAG_0_58dd9a8e-28e5-4edc-a756-34e55167c7ce.jpg?v=1769762024",
+          "file": "01.jpg",
+          "bytes": 105674,
+          "sha256": "2f12ca9c2ff3353c587afb280ab3515640adc426e569b31337248b48d4731b16"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-004_B0013OVZAG_1_abae407c-f107-44ce-aae2-d5467c316994.jpg?v=1769762025",
+          "file": "02.jpg",
+          "bytes": 125862,
+          "sha256": "067993cfcd00a13e57c8971514634b210bb5c03ad8e594a5116aab5ede7395fa"
+        },
+        {
+          "sourceUrl": "https://www.nowfoods.com/sites/default/files/styles/cloudzoom_image/public/2022-12/0089_nowproductlabels2.png?itok=e52hCDep",
+          "file": "03.png",
+          "bytes": 218851,
+          "sha256": "9fbc979ee5da7c88850c638c070fb3c9976a72d551ef4e6e118442d998dee386"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-relora-300-mg",
+      "name": "NOW Foods Relora 300 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-relora-300mg-120-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71Q5w70XGmL..jpg?v=1783074868",
+          "file": "01.jpg",
+          "bytes": 152949,
+          "sha256": "4620015130e69bed011a4e34e9248bea86e5884cfd5cf22b0ee9d0f473eee38e"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/7196qOEyprL._SL1500.jpg?v=1783074871",
+          "file": "02.jpg",
+          "bytes": 93813,
+          "sha256": "8765a7ec388efa06ec562cac13470999aba2a1f25c7eda8774493f87761504ea"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71Yhc1JhhiL..jpg?v=1783074874",
+          "file": "03.jpg",
+          "bytes": 188025,
+          "sha256": "1bd8ad1c91428919049ddc8eb3504e7cdd38181725e307b3d4006e4a92753378"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-cod-liver-oil-1000-mg",
+      "name": "NOW Foods Cod Liver Oil 1000 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-cod-liver-oil-1000mg-vitamins-a-d-3-epa-dha-90-softgels",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71u89zFYi4L._AC_SL1500.jpg?v=1787326583",
+          "file": "01.jpg",
+          "bytes": 135587,
+          "sha256": "c93462bab27b88cc3c6df31b099412e0dfec69c6df9e2f280eb5495a92d6f715"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71Gh_QBezBL._AC_SL1500.jpg?v=1787326583",
+          "file": "02.jpg",
+          "bytes": 151806,
+          "sha256": "fc288c4d8197eced2af89216a6a857d119139d910b4974850cec500732133077"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71rwwAbSYiL._AC_SL1500.jpg?v=1787326583",
+          "file": "03.jpg",
+          "bytes": 164303,
+          "sha256": "d3fe6274188affa2177e0672c1dfe5f9bc02c01e12a9caa2d180bc967365a004"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-nac-1000-mg",
+      "name": "NOW Foods NAC 1000 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-nac-1000mg-n-acetyl-cysteine-free-radical-protection-60-tablets",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-008_B0C63L1VQ6_0_9b5e7695-512a-43cc-9f21-bd174c998b5f.jpg?v=1787727018",
+          "file": "01.jpg",
+          "bytes": 82910,
+          "sha256": "5d0691e7701f6cb05425c5caacdfc79021bd2878076b4936b62bdd5d12d111e3"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-008_B0C63L1VQ6_1_2367d8e9-57d6-4a73-845a-a04a240bf11f.jpg?v=1787727018",
+          "file": "02.jpg",
+          "bytes": 111545,
+          "sha256": "5c12f0806df61576c0a7beff1ae31659314a8b8a03725e2b0e2d0b1dafc3bbc0"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71uw8JBSd9L._SL1500.jpg?v=1790688306",
+          "file": "03.jpg",
+          "bytes": 76828,
+          "sha256": "34a0e406caa8b893a92c6ddf87533b14e8568adca9062b3a4f886ad5ec63291e"
+        },
+        {
+          "sourceUrl": "https://www.nowfoods.com/sites/default/files/styles/cloudzoom_image/public/2023-11/0184_v2_Left_WEB.png?itok=rG7IJqtv",
+          "file": "04.png",
+          "bytes": 246917,
+          "sha256": "40b60827dca18412a2e1f6a0935ea82fd34f80c4fc029f9806f52af8f89024e3"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-cordyceps-750-mg",
+      "name": "NOW Foods Cordyceps 750 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-cordyceps-supplement-750mg-90-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71UyatmUDFL._SL1500.jpg?v=1781602618",
+          "file": "01.jpg",
+          "bytes": 92549,
+          "sha256": "31894c8f54c070db75de248e396648bf348baa341b36409bb5e1de2e90f0f2bd"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71oe80nm6OL._SL1500.jpg?v=1781602625",
+          "file": "02.jpg",
+          "bytes": 108845,
+          "sha256": "ec6175a5c1e79f387106a932fb27fd06c7bd30cb84233aad49af457501442d3b"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71Byv_cprAL._SL1500.jpg?v=1781602627",
+          "file": "03.jpg",
+          "bytes": 116623,
+          "sha256": "b048fd50fa8a0daf89cc027206d82e3d3bc5bdb7668a783025e31e128d77d31e"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-alpha-gpc-300-mg",
+      "name": "NOW Foods Alpha GPC 300 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-alpha-gpc-300mg-60-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/610pWqghONL._SL1500.jpg?v=1788601531",
+          "file": "01.jpg",
+          "bytes": 93421,
+          "sha256": "9d2f6813a1275778474a267a84b8b618f73a7db646cebd58575daa2eabdc1165"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/61E457QUKCL._SL1500.jpg?v=1788601539",
+          "file": "02.jpg",
+          "bytes": 91824,
+          "sha256": "521ec4122c2c04fb6d10b6c7212326f009494ba8e44d7e7467f82cdff458ad73"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/41eejo694pL.jpg?v=1788601551",
+          "file": "03.jpg",
+          "bytes": 29840,
+          "sha256": "cb5ae5c0bd2eba0854f7e1e7b0867bf0e6450426a9f7d24f91d67caee7d98d75"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-mk-7-vitamin-k-2-300-mcg",
+      "name": "NOW Foods MK-7 Vitamin K-2 300 mcg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-vitamin-k2-mk-7-extra-strength-300mcg-60-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71RZAw604YL.jpg?v=1788777414",
+          "file": "01.jpg",
+          "bytes": 159458,
+          "sha256": "2fd9dfef8c7e1c8ce8738f73f252c6d37e44931bd1e64fc78550b39cc595dfa2"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71ck0Ei9oXL.jpg?v=1788777418",
+          "file": "02.jpg",
+          "bytes": 180139,
+          "sha256": "cf057ec50fc385537ff24635745747b3832339a3fe39bc88ee9cd84aeb5ccf67"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71rPpThHFVL..jpg?v=1788777421",
+          "file": "03.jpg",
+          "bytes": 187030,
+          "sha256": "f62be4a7d359b25ab6fcc69636dbe49fa91c47417d0e8d8f913d681073559940"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-vitamin-d3",
+      "name": "NOW Foods Vitamin D3",
+      "sourceUrl": "https://nutristar.in/products/now-foods-vitamin-d-3-5000-iu-high-potency-structural-support-120-softgels",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/0364_v13.png?v=1788779653",
+          "file": "01.png",
+          "bytes": 273380,
+          "sha256": "d4024a4a1e59fde3e98db9a337dafa6e8e340ad977ef14445d56fbadcb086213"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/0364_v13_Left.png?v=1788779653",
+          "file": "02.png",
+          "bytes": 298978,
+          "sha256": "f3cbdf42e4640759e24646e6f9b6266b60d9fa9c3184c388db511a9579631d8e"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/0364_v13_Right.png?v=1788779653",
+          "file": "03.png",
+          "bytes": 258693,
+          "sha256": "3ea6c8ef16f04b73b00ca4658299bbb911a5cce8d27cefd4c15210c1d11cf1ff"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/1_649cc748-fff5-4688-afad-ef6e02e6c487.jpg?v=1781530841",
+          "file": "04.jpg",
+          "bytes": 101400,
+          "sha256": "e4bc9bfe598cc3d1d79e1db24ac4f9533f096e6ce98339dde82002b0640a25d9"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-berberine-glucose-support",
+      "name": "NOW Foods Berberine Glucose Support",
+      "sourceUrl": "https://nutristar.in/products/now-foods-berberine-glucose-support-supplement-90-softgels",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-38.jpg?v=1781605050",
+          "file": "01.jpg",
+          "bytes": 139826,
+          "sha256": "e88724e54a8600893d36f84a6e43f3dc4e5d32ee4351bd864b49df0a60c91e9e"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-38_2.jpg?v=1781605051",
+          "file": "02.jpg",
+          "bytes": 150656,
+          "sha256": "7464f48a817a4a2afc18a6c50bf548e9c3775294de24c6b90d025ad681190745"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-38_3.jpg?v=1781605051",
+          "file": "03.jpg",
+          "bytes": 156184,
+          "sha256": "6016665e86627dac50c5596609e76c8b3ab41f11902b59e7f2bd3c0510740645"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-maca-500-mg",
+      "name": "NOW Foods Maca 500 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-maca-500mg-100-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/4721_mainimage.png?v=1788776424",
+          "file": "01.png",
+          "bytes": 186037,
+          "sha256": "c6118ec3642de80047f68aa4010ad22c0014e7055b4e8eab9a70f02aef35d5f0"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/4721_nowproductlabels.png?v=1788776424",
+          "file": "02.png",
+          "bytes": 199287,
+          "sha256": "7b3eeec6bcf6467ceb94c40c5c09b2810e9a62579b1729c4ad0c11092d11856a"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/4721_nowproductlabels2.png?v=1788776425",
+          "file": "03.png",
+          "bytes": 230224,
+          "sha256": "15f256aaab70a888aaec521760b8a2a548b5dd554b9d4b6c1047f455d9a2397d"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-glutathione-500-mg",
+      "name": "NOW Foods Glutathione 500 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-glutathione-500mg-antioxidant-support-60-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-005_B0019LWV92_0_1a4e3149-36bb-4618-9e19-b2982958f5c1.jpg?v=1772257440",
+          "file": "01.jpg",
+          "bytes": 106253,
+          "sha256": "1c7f38c737cf24b3f68f383785fd6dbc98816153fb5af781969d63d2f3b25832"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-005_B0019LWV92_1_1bda47f3-1b04-4f36-9111-764f76bfb9cb.jpg?v=1772257442",
+          "file": "02.jpg",
+          "bytes": 124988,
+          "sha256": "4636ed57edaff722f1a91c372850e2e0504e3a16a46825ac9913866a6ffcd923"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/1_491062eb-2984-45c9-81fa-4a55e1cc675d.jpg?v=1792133108",
+          "file": "03.jpg",
+          "bytes": 90897,
+          "sha256": "da11d22b7d7dca660a6bb5f7651153d23c8b108250757475255ad69f1e1f7e9b"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-vitamin-d3-k2",
+      "name": "NOW Foods Vitamin D3 & K2",
+      "sourceUrl": "https://nutristar.in/products/now-foods-vitamin-d3-k2-supplement-120-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-39.png?v=1791299527",
+          "file": "01.png",
+          "bytes": 254588,
+          "sha256": "3b0bb3d29e143530b519142e3a0905acfca711d9ae9f2b774512d18d36d8b2c2"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-39_2.png?v=1791299527",
+          "file": "02.png",
+          "bytes": 253037,
+          "sha256": "5ba53df97beabcfa47903bbc8a4d6adac85925a5d7af0fec8c27bd33e3fc2ff2"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-39_3.png?v=1791299527",
+          "file": "03.png",
+          "bytes": 270564,
+          "sha256": "4fc6567fd1c2ab03e65c3eff60faac6e9a40adcd98683ee07af0a58778323a1a"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-magnesium-glycinate",
+      "name": "NOW Foods Magnesium Glycinate",
+      "sourceUrl": "https://nutristar.in/products/now-foods-magnesium-glycinate-supplement-180-tablets",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-37.jpg?v=1791299602",
+          "file": "01.jpg",
+          "bytes": 138694,
+          "sha256": "df8da0111165afefb5af235b3a38d548f6bd32807b9fa0c0a21690238e75cee7"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-37_2.jpg?v=1791299602",
+          "file": "02.jpg",
+          "bytes": 136047,
+          "sha256": "4f2e094c5eada0679600cfb3fce1d745f7aac4843b7cf5797461c69c39e41879"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-37_3.jpg?v=1791299602",
+          "file": "03.jpg",
+          "bytes": 55312,
+          "sha256": "ac0e4f1ba509ef4525083f03510117872ad2dcd760c5ca893e83a7d3be3c67f3"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-ultra-omega-3-fish-softgels",
+      "name": "NOW Foods Ultra Omega-3 Fish Softgels",
+      "sourceUrl": "https://nutristar.in/products/now-foods-ultra-omega-3-fish-oil-180-fish-softgels",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-34.png?v=1791814070",
+          "file": "01.png",
+          "bytes": 304906,
+          "sha256": "dcd029366f8929fc584f9e6174c9577871c84e9a39f83fafb2c6e6f30f4eb623"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-34_2.png?v=1791814070",
+          "file": "02.png",
+          "bytes": 260763,
+          "sha256": "ecea610ca3f8278163211fc51374bc1c26c09e41a2b5bd4eaf86cdce002b5fce"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-34_3.png?v=1791814070",
+          "file": "03.png",
+          "bytes": 286910,
+          "sha256": "eca8436240e78421ff9719b159cd8bb5d25f8267ae8f5a104cf8327e6b00573f"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-liver-refresh",
+      "name": "NOW Foods Liver Refresh",
+      "sourceUrl": "https://nutristar.in/products/now-foods-liver-refresh-liver-support-milk-thistle-extract-and-unique-herb-enzyme-blend-90-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/now-foods-liver-referesh-90-tablets.jpg?v=1791552034",
+          "file": "01.jpg",
+          "bytes": 99716,
+          "sha256": "6b046b201d314198fb9e31aa4a03435bdbe3044042d6add27373bc8e6cc9a716"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/now-foods-liver-referesh-90-tablets-nutritional-info.jpg?v=1791552034",
+          "file": "02.jpg",
+          "bytes": 136556,
+          "sha256": "7132d3a007df16206488d81d57cb35bed457b98616a6b77f1167c3fc1fd955a0"
+        },
+        {
+          "sourceUrl": "https://www.nowfoods.com/sites/default/files/styles/cloudzoom_image/public/2026-04/2448_v25_Left.png?itok=SB908ygA",
+          "file": "03.png",
+          "bytes": 224819,
+          "sha256": "8a53646262a39c6fc4167906e75183b6b8b682c29002bac7a6f757a4513e2848"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-kidney-cleanse",
+      "name": "NOW Foods Kidney Cleanse",
+      "sourceUrl": "https://nutristar.in/products/now-foods-kidney-cleanse-urinary-tract-support-90-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-006_B014MHHV7G_0_5d41057c-a88b-48c0-a5fd-d263b663f19e.jpg?v=1770624820",
+          "file": "01.jpg",
+          "bytes": 104711,
+          "sha256": "f5d1e2adb74bddf04692df6628e9a2f4de35f4b79893545ab4b6691e77557fc2"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-006_B014MHHV7G_1_f18fbce0-f57e-4fae-a0ee-ca407d4af809.jpg?v=1770624820",
+          "file": "02.jpg",
+          "bytes": 137997,
+          "sha256": "186a5fc24ff90f5e9f48dbe052027870cd8664274968c7a0bda418e62b179a45"
+        },
+        {
+          "sourceUrl": "https://www.nowfoods.com/sites/default/files/styles/cloudzoom_image/public/2024-02/2463_v3_Left.png?itok=991aOJOu",
+          "file": "03.png",
+          "bytes": 275114,
+          "sha256": "ef90b9d79f979877c20c64763ee5dde2811e6c52f6cf29ba002e2bc4c826d46c"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-iron-18-mg",
+      "name": "NOW Foods Iron 18 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-iron-supplement-18mg-120-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71_a-IgrwML._SL1500.jpg?v=1792395337",
+          "file": "01.jpg",
+          "bytes": 71736,
+          "sha256": "463f99fa848df83fc7e6282817193b8f24df53802aa453abb1a1c658046e17dc"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/717WSmmyqNL._SL1500.jpg?v=1792395337",
+          "file": "02.jpg",
+          "bytes": 83733,
+          "sha256": "53247f85b2e8aebf48fb96c8752bf233a379c8614a6acb41178290883c25f544"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71jBdQLVQkL._SL1500.jpg?v=1792395337",
+          "file": "03.jpg",
+          "bytes": 113127,
+          "sha256": "94c7e3ec94e9b1d263b7dca13ea4b2559561d9a3793e604fbaf33fb49927d401"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-inositol-500-mg",
+      "name": "NOW Foods Inositol 500 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-inositol-supplement-500mg-100-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-36.png?v=1792395375",
+          "file": "01.png",
+          "bytes": 311812,
+          "sha256": "6bdd833e787b3ba12daf0ba774b2d4b86c073050b8660650037378ccb0caab7a"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-36_2.png?v=1792395375",
+          "file": "02.png",
+          "bytes": 243295,
+          "sha256": "7eb4e926d104d4937d03386cef0c78fcfb905364980cd114f5322bd97d9292a0"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-36_3.png?v=1792395375",
+          "file": "03.png",
+          "bytes": 284032,
+          "sha256": "7785d8eb3da3cc32630996e2f2fe92a871214eaef9cf5c54990a89af17884899"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-tri-chromium-500-mcg",
+      "name": "NOW Foods Tri-Chromium 500 mcg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-tri-chromium-500mcg-with-cinnamon-90-veg-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-29.png?v=1781604768",
+          "file": "01.png",
+          "bytes": 214460,
+          "sha256": "ac76d58b2b2b24175357348e3e9683e87affc662827fe9b6225dda0c479d0aa1"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-29_2.png?v=1781604768",
+          "file": "02.png",
+          "bytes": 249239,
+          "sha256": "204ad6429004133fc7218529cf771d40cd375876bb7fb361512574c87e7a800d"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-29_3.png?v=1781604767",
+          "file": "03.png",
+          "bytes": 297808,
+          "sha256": "06223b1ec1c050913b384cd63c2bd2169c99cf90dfc5d7fb58e94b149f91199b"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-daily-vits",
+      "name": "NOW Foods Daily Vits",
+      "sourceUrl": "https://nutristar.in/products/now-daily-vits-multi-vitamin-and-mineral-100-veg-tablets",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/now-foods-daily-vits-100-vitamins.jpg?v=1790342694",
+          "file": "01.jpg",
+          "bytes": 143276,
+          "sha256": "4b4d18f27f2e6a7b92e5ef2293980646e8824ebacbfe196617d14ae20cba5e2c"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/now-foods-daily-vits-100-vitamins-nutritional-info.jpg?v=1790342695",
+          "file": "02.jpg",
+          "bytes": 177895,
+          "sha256": "1474a2841f6ef3a6fb592284acaeb83cc426194192dc1927fffa45d8861e0ff5"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/now-foods-daily-vits-100-vitamins-ingredients.jpg?v=1790342694",
+          "file": "03.jpg",
+          "bytes": 184146,
+          "sha256": "8ca9df39accf4d0702c6e3fc047fdadc95c11760a98d8fad42b92df395a29ff3"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-c-1000",
+      "name": "NOW Foods C-1000",
+      "sourceUrl": "https://nutristar.in/products/now-foods-vitamin-c-1000-supplement-100-tablets",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-30.png?v=1787328196",
+          "file": "01.png",
+          "bytes": 209925,
+          "sha256": "85e2215768bc95945cb11e0b9c665388db1fc9de06c56f33562850a64dda6831"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-30_2.png?v=1787328196",
+          "file": "02.png",
+          "bytes": 421106,
+          "sha256": "1b75226a348c7570993b720ebdc6c8f4ee370e75a1434c3ccd9cc0bb17340e32"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-30_3.png?v=1787328197",
+          "file": "03.png",
+          "bytes": 555943,
+          "sha256": "462f04c220977b02a499929ca42bdeb82039208c31b0caa7353def6284d3eccf"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-zinc-glycinate-30-mg",
+      "name": "NOW Foods Zinc Glycinate 30 mg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-zinc-glycinate-250mg-pumpkin-seed-oil-120-softgels",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71rUsJ4jxTL..jpg?v=1787327929",
+          "file": "01.jpg",
+          "bytes": 156505,
+          "sha256": "0e57f1f281959f5cedee164f0ee6bbf3804ce8c6198753edd27ee837607d62e5"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71Gfkt6POZL.jpg?v=1787327930",
+          "file": "02.jpg",
+          "bytes": 182287,
+          "sha256": "f657f9c6da76982f6f1236a4edf8b147f4a5054b74951d2952fb18ecd37137db"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/71D50fTVuML.jpg?v=1787327930",
+          "file": "03.jpg",
+          "bytes": 193961,
+          "sha256": "81bd9f1f113af9a91a8f1001cf98b19d17b14d9f5fb1727e246e6f8515812fcf"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-vitamin-b-12-1000-mcg",
+      "name": "NOW Foods Vitamin B-12 1000 mcg",
+      "sourceUrl": "https://nutristar.in/products/now-foods-vitamin-b12-1000mcg-supplement-100-lozenges",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-33.png?v=1790688345",
+          "file": "01.png",
+          "bytes": 210214,
+          "sha256": "8d081c0531ff0d4e3efaf467318138ca5c55243c32d90272cd1785a08461ae01"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-33_2.png?v=1790688345",
+          "file": "02.png",
+          "bytes": 242096,
+          "sha256": "4b6e20a59c9e9a0bdb93c93ffc8bf295e4740e4bdea4cb39cc9d81289a5d9ac7"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-33_3.png?v=1790688345",
+          "file": "03.png",
+          "bytes": 290986,
+          "sha256": "381d75d31190332b2dea5177c558ebfaed15b181a965290889274f898e247fe0"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-uc-ii-type-ii-collagen",
+      "name": "NOW Foods UC-II Type II Collagen",
+      "sourceUrl": "https://nutristar.in/products/now-foods-uc-ii-type-ii-collagen-supplement-60-capsules",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-32.png?v=1787752972",
+          "file": "01.png",
+          "bytes": 190004,
+          "sha256": "eb41fb10998ae260a035fe9a8a6d22b52f2d176c1378c057557022bc2434f202"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-32_2.png?v=1787752972",
+          "file": "02.png",
+          "bytes": 213660,
+          "sha256": "ee2207bd6ad355eed54a868baa1dc1924cb82fb656555b2861645810696e9cb0"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/NUT-NOW-32_3.png?v=1787752972",
+          "file": "03.png",
+          "bytes": 273644,
+          "sha256": "2fc4f02a5eb12cb02070ee7023395683ac6eddefa1fcd72723c2e3cb45c50059"
+        }
+      ]
+    },
+    {
+      "productKey": "now-foods-omega-3-fish-oil",
+      "name": "NOW Foods Omega-3 Fish Oil",
+      "sourceUrl": "https://nutrabay.com/product/now-foods-omega-3/?pId=4502995&vId=7133014",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/1_529db7af-09e5-40f2-aa64-ef8f3e8cdf3a.png?v=1792132676",
+          "file": "01.png",
+          "bytes": 304869,
+          "sha256": "e69cfacd2a7da9a2e31d21cb46367cf19517078abed26654d7b150ef6171f98f"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/4_66dea998-59b5-4635-bebe-b2d03c312be0.jpg?v=1792132676",
+          "file": "02.jpg",
+          "bytes": 78416,
+          "sha256": "150e6cdc1a1b48b1887cac8cf6cebf9475378c0f3aee677bdd5bcb2a90c99d9f"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0876/6105/2198/files/3_832c812d-5504-47b9-afb7-10f41ae3fb66.jpg?v=1792132676",
+          "file": "03.jpg",
+          "bytes": 90121,
+          "sha256": "0766c37907add37bf718f6af3466f65ca0f2f04aef69acc1e0051dd9ee446bd6"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    "Sports protein, sports powders, equipment, foods and cosmetic products excluded from NOW range.",
+    "Ashwagandha excluded: retail title states400mg while all bottle photos state450mg; exact current matching offer not established.",
+    "Super Enzymes90 capsules excluded: matching retailer photos show90 tablets.",
+    "Uniform Shopify250/300g capsule weights are not verified net weights and were not imported.",
+    "No pharmacological steroids, SARMs or prohormones included."
+  ]
+}

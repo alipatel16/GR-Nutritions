@@ -4,7 +4,15 @@ import {createProviders,ProviderError} from './providers.mjs';
 import {isValidCustomerEmail} from './email.mjs';
 const reference=z.string().regex(/^[a-zA-Z0-9_-]{1,100}$/);
 const paymentReference=z.string().regex(/^pay_[a-zA-Z0-9]{1,100}$/);
-export const checkoutActions=new Set(['checkout.delivery','checkout.create','checkout.verify','order.status','shipment.create','shipment.sync','integration.status','integration.check']);
+const couponCode=z.string().trim().toUpperCase().regex(/^[A-Z0-9_-]{3,32}$/);
+const couponPaise=z.number().int().min(0).max(100000000);
+export const couponInputSchema=z.object({id:reference.optional(),code:couponCode,type:z.enum(['percentage','fixed']),value:z.number().positive().max(1000000).multipleOf(0.01),
+ minSpendPaise:couponPaise,maxDiscountPaise:couponPaise.positive().nullable().default(null),startsAt:z.iso.datetime({offset:true}).nullable().default(null),
+ expiresAt:z.iso.datetime({offset:true}),usageLimit:z.number().int().min(1).max(1000000),enabled:z.boolean()})
+ .refine(c=>c.type!=='percentage'||c.value<=100)
+ .refine(c=>c.type!=='fixed'||c.maxDiscountPaise===null)
+ .refine(c=>c.startsAt===null||Date.parse(c.startsAt)<Date.parse(c.expiresAt));
+export const checkoutActions=new Set(['checkout.delivery','checkout.create','checkout.verify','order.status','shipment.create','shipment.sync','integration.status','integration.check','coupon.adminList','coupon.save']);
 export class CheckoutError extends Error {constructor(message,status=400){super(message);this.status=status;}}
 export async function paymentSignatureValid(orderId,paymentId,signature,secret){
  if(!secret||!/^[a-fA-F0-9]{64}$/.test(signature))return false;
@@ -43,7 +51,8 @@ export function shipmentTracking(response,shipmentId){
  else if([6,17,18,38,42,49,50,51,54,57].includes(status))result.fulfillmentStatus='shipped';
  return result;
 }
-const summary=o=>({id:o.id,status:o.status,paymentMethod:o.paymentMethod,mode:o.mode,totalPaise:o.totalPaise,...(o.tracking?{tracking:o.tracking}:{})});
+const summary=o=>({id:o.id,status:o.status,paymentMethod:o.paymentMethod,mode:o.mode,totalPaise:o.totalPaise,
+ ...(o.couponCode?{couponCode:o.couponCode,discountPaise:o.discountPaise,discountedSubtotalPaise:o.discountedSubtotalPaise}:{}),...(o.tracking?{tracking:o.tracking}:{})});
 function paymentMatches(payment,order,providerOrderId,paymentId){return payment&&payment.id===paymentId&&payment.order_id===providerOrderId&&payment.amount===order.totalPaise&&payment.currency==='INR';}
 const paymentHasRefund=payment=>Number.isSafeInteger(payment?.amount_refunded)&&payment.amount_refunded>0||['partial','full'].includes(payment?.refund_status);
 export function createCheckoutService({rpc,env,providers=createProviders({env})}) {
@@ -58,6 +67,11 @@ export function createCheckoutService({rpc,env,providers=createProviders({env})}
  }
  const service=async(uid,action,input={},identity)=>{
   if(!['test','live'].includes(mode))throw new CheckoutError('The store payment mode is not configured correctly.',503);
+  if(action==='coupon.adminList'||action==='coupon.save'){
+   await staff(uid);
+   const payload=action==='coupon.save'?couponInputSchema.parse(input):z.object({search:z.string().trim().max(100).optional()}).parse(input);
+   return rpc(action,payload,uid);
+  }
   if(action==='integration.status'){
    await staff(uid);return {mode,razorpay:{testConfigured:Boolean(modeCredentials('test').keyId&&modeCredentials('test').secret),liveConfigured:Boolean(modeCredentials('live').keyId&&modeCredentials('live').secret)},shiprocket:{configured:Boolean(env.SHIPROCKET_API_EMAIL&&env.SHIPROCKET_API_KEY)}};
   }
@@ -69,7 +83,7 @@ export function createCheckoutService({rpc,env,providers=createProviders({env})}
    return {mode,razorpay:{testConnected:test.status==='fulfilled'&&test.value===true,liveConnected:live.status==='fulfilled'&&live.value===true},shiprocket:{connected:shipping.status==='fulfilled',pickupMatched}};
   }
   if(action==='checkout.delivery'){
-   const payload=z.object({addressId:reference,items:checkoutItemsSchema,paymentMethod:z.enum(['razorpay','cod'])}).parse(input);
+   const payload=z.object({addressId:reference,items:checkoutItemsSchema,paymentMethod:z.enum(['razorpay','cod']),couponCode:couponCode.optional()}).parse(input);
    if(identity?.uid!==uid||!isValidCustomerEmail(identity.email))throw new CheckoutError('Your signed-in account needs a valid email address to check delivery. Please sign in with an email account.');
    if(payload.paymentMethod==='cod'&&identity.emailVerified!==true)throw new CheckoutError('Verify your email address before choosing cash on delivery.');
    if(payload.paymentMethod==='razorpay'&&(!modeCredentials(mode).keyId||!modeCredentials(mode).secret))throw new CheckoutError('Payments are not configured for this mode',503);

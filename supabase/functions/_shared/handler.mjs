@@ -99,6 +99,9 @@ export function createCommerceHandler({ db, storage, allowedOrigins, checkout, v
       const message=String(error?.message??'');
       if (message==='Staff access required') return respond({error:message},403);
       const safe=['Address not found','A product is unavailable','Duplicate product option','Invalid quantity',
+        'Invalid coupon settings','Coupon code already exists','Coupon not found','Coupon is not active','Coupon has expired',
+        'Coupon minimum spend is not met','Coupon already used or reserved by your account','Coupon usage limit reached',
+        'Coupon limit cannot be below existing uses and reservations',
         'Maximum 20 saved addresses','Product changed since you opened it. Reload before saving.',
         'Product no longer exists','Invalid order transition','Order not found','Product image must be uploaded and verified first',
         'Quote not found','Quote expired. Please check delivery again.','Cart changed. Please check delivery again.',

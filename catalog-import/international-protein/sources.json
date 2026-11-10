@@ -1,0 +1,119 @@
+{
+  "collectedAt": "2026-11-05T14:00:33.515Z",
+  "brand": "International Protein",
+  "sourceUrl": "https://www.international-protein.com",
+  "logoUrl": "",
+  "products": [
+    {
+      "productKey": "international-protein-complete-aminos",
+      "name": "International Protein Complete Aminos EAA+ BCAA",
+      "sourceUrl": "https://nutrabay.com/product/international-protein-complete-aminos-eaa-bcaa/?pId=7042832",
+      "images": [
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-29110-featured_image-International_Protein_Complete_Aminos_EAA_BCAA__300_gm_066_Lb_Watermelon.jpg",
+          "file": "01.jpg",
+          "bytes": 190222,
+          "sha256": "e17e0b5efc3f72bb9a4f0772589361e327fe1e3994e456ddd53df67f102a2b55"
+        },
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-29110-image_2-International_Protein_Complete_Aminos_EAA_BCAA__300_gm_066_Lb_Watermelon.jpg",
+          "file": "02.jpg",
+          "bytes": 192197,
+          "sha256": "b0ea7e7e1281c4e68c0f2ec036c2e257a8c7730b2c65cd5952e254ef9da8f431"
+        },
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-29112-featured_image-International_Protein_Complete_Aminos_EAA_BCAA__300_gm_066_Lb_Orange.jpg",
+          "file": "03.jpg",
+          "bytes": 188334,
+          "sha256": "ce714669b683703e110f72caec3eae48587c88d71c6e60db7aff63fb6cc923f9"
+        }
+      ]
+    },
+    {
+      "productKey": "international-protein-superior-whey",
+      "name": "International Protein Superior Whey",
+      "sourceUrl": "https://nutrabay.com/product/international-protein-superior-whey/?pId=1366959",
+      "images": [
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-28752-featured_image-International_Protein_Superior_Whey___227kg_strawberry.jpg",
+          "file": "01.jpg",
+          "bytes": 72576,
+          "sha256": "fe62bc4646359c58e9e7b1cf09b5d12dfbf3abb964de92a9086defda6686bc53"
+        },
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-28752-image_2-International_Protein_Superior_Whey___227kg_strawberry.jpg",
+          "file": "02.jpg",
+          "bytes": 91608,
+          "sha256": "087b7263fe098f6e02cb0b48e5499e532a990602db29e69b9a415c742adbb830"
+        },
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-28752-image_3-International_Protein_Superior_Whey___227kg_strawberry.jpg",
+          "file": "03.jpg",
+          "bytes": 78324,
+          "sha256": "b92a47c8565bc278acd38011e8aadb50ca57b24f8015555c4658322506dcfe48"
+        }
+      ]
+    },
+    {
+      "productKey": "international-protein-liquid-l-carnitine",
+      "name": "International Protein Liquid L-Carnitine",
+      "sourceUrl": "https://nutrabay.com/product/international-protein-liquid-l-carnitine/?pId=4937177",
+      "images": [
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-28641-featured_image-International_Protein_Liquid_L_Carnitine___blueberry_450ml.jpg",
+          "file": "01.jpg",
+          "bytes": 58289,
+          "sha256": "04da2de32cb3592381f2d8f8441beba87624c3218b6ead99a50a10d36dcbc296"
+        },
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-28641-image_2-International_Protein_Liquid_L_Carnitine___blueberry_450ml.jpg",
+          "file": "02.jpg",
+          "bytes": 64820,
+          "sha256": "732bab220b060bfebc0280e069b69ecfe960c68990f8244e0bf9a88b1aa0ea7d"
+        },
+        {
+          "sourceUrl": "https://cdn2.nutrabay.com/uploads/variant/images/variant-28641-image_3-International_Protein_Liquid_L_Carnitine___blueberry_450ml.png",
+          "file": "03.png",
+          "bytes": 225884,
+          "sha256": "c84bad92a94ef7fc9200e735fedc60f1b5d3183024b2c3e5f30f124aa07907ae"
+        }
+      ]
+    },
+    {
+      "productKey": "international-protein-creatine-monohydrate",
+      "name": "International Protein Creatine Monohydrate",
+      "sourceUrl": "https://www.bodybuildingindia.com/products/international-protein-creatine-monohydrate-250gm",
+      "images": [
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0585/3845/9329/files/International-Protein-Creatine-Monohydrate-International-Protein-122886869.jpg?v=1754404713",
+          "file": "01.jpg",
+          "bytes": 73562,
+          "sha256": "01cddf4e080afd065a6b9f80284f1305b2274f3cfcc33bc6739cca16e4d37597"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0585/3845/9329/files/International-Protein-Creatine-Monohydrate-International-Protein-122869441.jpg?v=1754404713",
+          "file": "02.jpg",
+          "bytes": 76930,
+          "sha256": "947da9fbb3c8bcd3a6e96140f00e4542667a9df6b4b2980b84a3aff629eb2371"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0585/3845/9329/files/International-Protein-Creatine-Monohydrate-International-Protein-43031939.webp?v=1754404713",
+          "file": "03.webp",
+          "bytes": 85462,
+          "sha256": "8634f2ec693b6707d9f2fc6cbb1001aaeff67ee21aeeae5859ef8aa4da55fa0a"
+        },
+        {
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0585/3845/9329/files/International-Protein-Creatine-Monohydrate-International-Protein-43032033.png?v=1754404713",
+          "file": "04.png",
+          "bytes": 328924,
+          "sha256": "d0b455eb184a6d19e70cced6207179fdfe5716bab019f42e20c3c61bbbdce2eb"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    "Official Australian prices were not converted toINR.",
+    "OfficialAustralian and Indian-market formulas/serving sizes can differ; Indian exact-pack label used where available.",
+    "AdditionalIndiaretail importer catalogs returnedaccessblocks, so collection stopped atthosehosts."
+  ]
+}

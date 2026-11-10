@@ -1,0 +1,162 @@
+{
+  "collectedAt": "2026-11-05T14:06:17.550Z",
+  "brand": "Hypertrophy",
+  "sourceUrl": "https://hypertrophybym.com",
+  "logoUrl": "https://hypertrophybym.com/cdn/shop/files/hyper_logo_new.png?v=1732118550&width=480",
+  "products": [
+    {
+      "productKey": "whey-trophy",
+      "name": "Hypertrophy Whey-Trophy",
+      "sourceUrl": "https://spartaenergia.com/products/whey-trophy",
+      "images": [
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/Hypertrophy_1.png?v=1767609809&width=1080",
+          "file": "01.png",
+          "bytes": 552131,
+          "sha256": "1020500b111dd53fee927654a1bcf6152b73847890fd7883302c290cf5cc835b"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/Hypertrophy_2.png?v=1767609810&width=1080",
+          "file": "02.png",
+          "bytes": 1238478,
+          "sha256": "df3f7369bf099e7eaf76b6fff6e5daa5b5fee5610be2069689dd77cc65cd17f3"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/Hypertrophy_4.png?v=1767609810&width=1080",
+          "file": "03.png",
+          "bytes": 1074914,
+          "sha256": "f7abec48cf297e51905456a1c231e3d2494c6fd6e3f5df66690b3d6b487a498a"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/Hypertrophy_3.png?v=1767609811&width=1080",
+          "file": "04.png",
+          "bytes": 1233895,
+          "sha256": "de61ea1dc304d4bdd93c99d424f6d09aa596f9d26b5d53d7659307317cd4df73"
+        }
+      ]
+    },
+    {
+      "productKey": "isotrophy",
+      "name": "Hypertrophy ISO-Trophy",
+      "sourceUrl": "https://spartaenergia.com/products/isotrophy",
+      "images": [
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/172.png?v=1767952637&width=1080",
+          "file": "01.png",
+          "bytes": 412032,
+          "sha256": "18849f5294d013c6bb91af4229e46fe26ea0702dc2ba871f70f045e1272bc1ef"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/173.png?v=1767952637&width=1080",
+          "file": "02.png",
+          "bytes": 964418,
+          "sha256": "d27a7582ba936fea3d870d037c6006b2fa36b26564ef94a88976a9ca9db5bfdf"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/174.png?v=1767952637&width=1080",
+          "file": "03.png",
+          "bytes": 1051177,
+          "sha256": "988e1df307e7a6e36707150fca1bdcd73aed9edba37a596b5ffedb052c90a0ca"
+        }
+      ]
+    },
+    {
+      "productKey": "creatine",
+      "name": "Hypertrophy Creatine Monohydrate",
+      "sourceUrl": "https://spartaenergia.com/products/creatine",
+      "images": [
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/179.png?v=1768283296&width=1080",
+          "file": "01.png",
+          "bytes": 614186,
+          "sha256": "80273cf33dbc56dbd12265956f7b6d6c3785c4bca17ef24c72195ea3413d23ac"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/180.png?v=1768283296&width=1080",
+          "file": "02.png",
+          "bytes": 828353,
+          "sha256": "0d91dd0266eed9c9a1dad06fa49f165ad2ade00bf26b4861dca316438a96b28d"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/181.png?v=1768283297&width=1080",
+          "file": "03.png",
+          "bytes": 1331921,
+          "sha256": "2b3d3a607e4847f65e0a4a3f34c0a2b1ded755cf20234b71694e88d11007b7d7"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/182.png?v=1768283297&width=1080",
+          "file": "04.png",
+          "bytes": 1260585,
+          "sha256": "520dbd1d2a781e2a3a4a06355491a1598acb88c7c4468337a5f2f6287e184fb3"
+        }
+      ]
+    },
+    {
+      "productKey": "hyper-i7",
+      "name": "Hypertrophy HYPER i7 Pre-Workout",
+      "sourceUrl": "https://spartaenergia.com/products/hyper-i7",
+      "images": [
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/158.png?v=1767942871&width=1080",
+          "file": "01.png",
+          "bytes": 573038,
+          "sha256": "8b3350b7e50e6c75f4928ee9e0be2dbdb89fe09f9c650fef88faf49a026a14a4"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/159.png?v=1767942872&width=1080",
+          "file": "02.png",
+          "bytes": 1254508,
+          "sha256": "09eb41abad57301fbfe3983f667361542f927d5793cac3fd718055da9c8d4a32"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/161.png?v=1767942872&width=1080",
+          "file": "03.png",
+          "bytes": 1150863,
+          "sha256": "c5b07d1776fb354b512927ccc4b5224179cf0144f52c7dcf1831b5549af4b017"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/160.png?v=1767942872&width=1080",
+          "file": "04.png",
+          "bytes": 1173221,
+          "sha256": "68bb36e7bfc130be9dcf9c2d1f4353a12c7a7f3fa8a7fa609eabfcf7a53c5e2f"
+        }
+      ]
+    },
+    {
+      "productKey": "omega-fish-oil",
+      "name": "Hypertrophy Omega Fish Oil",
+      "sourceUrl": "https://spartaenergia.com/products/omega-fish-oil",
+      "images": [
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/175.png?v=1768283297&width=1080",
+          "file": "01.png",
+          "bytes": 515813,
+          "sha256": "8fa4fa48d205b40b8b48c6fc0951ee6a7dfc062bc693206f0f98273b6654e61d"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/176.png?v=1768283297&width=1080",
+          "file": "02.png",
+          "bytes": 975254,
+          "sha256": "3d6cdd71ca09e9bb69fdaa64ba71900d8db977e20b592c3f69914fe71bf18250"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/177.png?v=1768283297&width=1080",
+          "file": "03.png",
+          "bytes": 1253779,
+          "sha256": "17a243010c2c78acb509b336e88a50c3cb36d711ee7ac0d652e2c1dc0523c5dd"
+        },
+        {
+          "sourceUrl": "https://spartaenergia.com/cdn/shop/files/178.png?v=1768283296&width=1080",
+          "file": "04.png",
+          "bytes": 1176294,
+          "sha256": "f20959c9fd51c3cf3724ab61e1576e95f9cc27e0326af0e75135b3ab0bc40ad6"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    "Official store uses EUR. INR variants sourced instead from the India distributor linked by the manufacturer.",
+    "Professional Gainz omitted: source lists prohormones/designer steroids. Fast Gain omitted: source lists SARMs, ibutamoren and a synthetic testosterone derivative.",
+    "Carni-Trophy, Glutamine, Hyper-ISO Peptide and Alpha Nitro-phy not yet normalized; their exact product/label pairing remains under review."
+  ]
+}

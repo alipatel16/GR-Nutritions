@@ -32,7 +32,7 @@ export function ProductGallery({
       style={[styles.gallery, breakpoint !== 'desktop' && styles.mobileGallery]}
       testID="product-gallery"
     >
-      <View style={styles.stage}>
+      <View style={[styles.stage, breakpoint === 'mobile' && styles.mobileStage]}>
         {hasPhoto ? (
           <Image
             accessibilityLabel={active.alt || productName}
@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     width: '100%',
     ...shadows.card,
   },
+  mobileStage: { aspectRatio: 1.25, borderRadius: radii.md },
   photo: { height: '86%', width: '86%' },
   placeholder: {
     alignItems: 'center',

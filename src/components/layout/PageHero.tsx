@@ -32,7 +32,7 @@ export function PageHero({ eyebrow, title, description, children }: PageHeroProp
           >
             {title}
           </AppText>
-          {description ? <AppText style={styles.description}>{description}</AppText> : null}
+          {description ? <AppText style={[styles.description, mobile && styles.mobileDescription]}>{description}</AppText> : null}
           {children}
         </View>
       </PageShell>
@@ -47,11 +47,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     paddingVertical: spacing[12],
   },
-  mobileHero: { paddingVertical: spacing[8] },
+  mobileHero: { borderBottomWidth: 2, paddingVertical: spacing[6] },
   copy: { gap: spacing[3], maxWidth: 760 },
   eyebrowRow: { alignItems: 'center', flexDirection: 'row', gap: spacing[2] },
   rule: { backgroundColor: colors.mint, height: 2, width: 22 },
   eyebrow: { color: colors.mint, fontFamily: typography.bodyBold, fontSize: 11, letterSpacing: 2 },
-  mobileTitle: { fontSize: 44, lineHeight: 46 },
+  mobileTitle: { fontSize: 34, lineHeight: 36 },
+  mobileDescription: { fontSize: 14, lineHeight: 21 },
   description: { color: colors.onDarkMuted, fontSize: 16, lineHeight: 25 },
 });

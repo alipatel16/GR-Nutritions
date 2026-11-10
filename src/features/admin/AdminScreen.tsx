@@ -10,6 +10,7 @@ import { AdminOrdersPanel } from './AdminOrdersPanel';
 import { salesMetrics } from './admin-listing';
 import { formatInr } from '@/lib/money';
 import { compressProductImage } from './compress-image';
+import { AdminCouponPanel } from './AdminCouponPanel';
 import { AdminIntegrationPanel } from './AdminIntegrationPanel';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { AppText } from '@/components/ui/AppText';
@@ -65,7 +66,7 @@ export function AdminScreen() {
   const [dataLoading, setDataLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [messageSuccess, setMessageSuccess] = useState(false);
-  const [tab, setTab] = useState<'products' | 'orders' | 'settings'>('products');
+  const [tab, setTab] = useState<'products' | 'orders' | 'settings' | 'coupons'>('products');
   const scroll = useRef<ScrollViewInstance>(null);
   async function load() {
     setDataLoading(true);
@@ -257,7 +258,7 @@ export function AdminScreen() {
               </View>
             ))}
           </View>
-          <AppText tone="muted" variant="caption">Earnings are merchandise sales from paid online orders and delivered COD orders. Test orders, shipping fees and orders under payment review are excluded.</AppText>
+          <AppText tone="muted" variant="caption">Earnings are merchandise sales after coupon discounts from paid online orders and delivered COD orders. Test orders, shipping fees and orders under payment review are excluded.</AppText>
           {message ? (
             <AppText accessibilityRole={messageSuccess ? undefined : "alert"} accessibilityLiveRegion="polite" tone={messageSuccess ? "primary" : "danger"} style={messageSuccess ? { color: colors.success } : undefined}>
               {message}
@@ -283,12 +284,13 @@ export function AdminScreen() {
                 >
                   Orders
                 </Button>
+                <Button variant={tab === 'coupons' ? 'primary' : 'ghost'} onPress={() => setTab('coupons')}>Coupons</Button>
                 <Button variant={tab === 'settings' ? 'primary' : 'ghost'} onPress={() => setTab('settings')}>Payments & delivery</Button>
                 <Button variant="ghost" onPress={load}>
                   Refresh
                 </Button>
               </View>
-              {tab === 'settings' ? <AdminIntegrationPanel /> : dataLoading || loadError ? null : tab === 'products' ? (
+              {tab === 'coupons' ? <AdminCouponPanel /> : tab === 'settings' ? <AdminIntegrationPanel /> : dataLoading || loadError ? null : tab === 'products' ? (
                 <AdminCatalogPanel products={products} busy={busy} onEdit={(product) => { setEdit(product); setMessage(''); }} onRemove={remove} />
               ) : (
                 <AdminOrdersPanel orders={orders} onChanged={() => { void load(); }} />
